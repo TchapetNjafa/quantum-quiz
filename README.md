@@ -137,7 +137,7 @@ php -S localhost:8000
    - Dans le menu de gauche, cliquez sur **Pages**
    - Sous "Source", sélectionnez la branche **main** (ou **master**)
    - Cliquez sur **Save**
-   - Notez l'URL fournie : `https://[votre-username].github.io/[nom-du-repo]`
+   - Notez l'URL fournie : `https://tchapetnjafa.github.io/quantum-quiz/`
 
 4. **Vérifiez le déploiement** :
    - Attendez 1-2 minutes
