@@ -79,6 +79,10 @@ function setupEventListeners() {
     document.getElementById('resume-btn')?.addEventListener('click', togglePause);
     document.getElementById('abandon-btn')?.addEventListener('click', showAbandonConfirm);
     document.getElementById('abandon-confirm-btn')?.addEventListener('click', abandonQuiz);
+    
+    // Next question buttons
+    document.getElementById('qcm-next')?.addEventListener('click', nextQuestion);
+    document.getElementById('flashcard-next')?.addEventListener('click', nextQuestion);
 }
 
 // Start quiz
@@ -598,16 +602,26 @@ function retryWrongQuestions() {
     displayQuestion();
 }
 
+// Detect if device is mobile/touch device
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+           (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) ||
+           ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+}
+
 // Handle keyboard shortcuts
 function handleKeyboard(e) {
     // Don't handle if typing in input
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
     
+    // Disable space key shortcut on mobile devices - only use button clicks
+    const isMobile = isMobileDevice();
+    
     const currentScreen = document.querySelector('.screen[style*="flex"]')?.id;
     
     if (currentScreen === 'quiz-screen') {
-        // QCM shortcuts (1-4)
-        if (e.key >= '1' && e.key <= '4') {
+        // QCM shortcuts (1-4) - only on desktop
+        if (!isMobile && e.key >= '1' && e.key <= '4') {
             const index = parseInt(e.key) - 1;
             const options = document.querySelectorAll('.option');
             if (options[index] && !options[index].classList.contains('selected')) {
@@ -615,8 +629,8 @@ function handleKeyboard(e) {
             }
         }
         
-        // Space for next
-        if (e.key === ' ') {
+        // Space for next - DISABLED on mobile, only works on desktop
+        if (e.key === ' ' && !isMobile) {
             e.preventDefault();
             const nextBtn = document.querySelector('.next-btn[style*="block"]');
             if (nextBtn) {
@@ -624,21 +638,21 @@ function handleKeyboard(e) {
             }
         }
         
-        // F to flip flashcard
-        if (e.key === 'f' || e.key === 'F') {
+        // F to flip flashcard - only on desktop
+        if (!isMobile && (e.key === 'f' || e.key === 'F')) {
             const flipBtn = document.getElementById('flip-btn');
             if (flipBtn && flipBtn.offsetParent !== null) {
                 flipBtn.click();
             }
         }
         
-        // P for pause
-        if (e.key === 'p' || e.key === 'P') {
+        // P for pause - only on desktop
+        if (!isMobile && (e.key === 'p' || e.key === 'P')) {
             togglePause();
         }
         
-        // Esc for abandon
-        if (e.key === 'Escape') {
+        // Esc for abandon - only on desktop
+        if (!isMobile && e.key === 'Escape') {
             showAbandonConfirm();
         }
     }
