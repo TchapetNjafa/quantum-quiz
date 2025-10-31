@@ -1,0 +1,24 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Source PDF (too large for GitHub)
+*.pdf
+
+# Extracted content
+extracted_content.txt
+
+# Python
+__pycache__/
+*.pyc
+generate_questions.py
