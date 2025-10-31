@@ -1,0 +1,17 @@
+/* Theme variations */
+
+/* Light theme (optional) */
+body.light-theme {
+    --color-bg-dark: #F8FAFC;
+    --color-white: #0A192F;
+    --color-gray-light: #1E293B;
+    --color-gray-dark: #64748B;
+}
+
+/* High contrast mode */
+body.high-contrast {
+    --color-bg-dark: #000000;
+    --color-white: #FFFFFF;
+    --glow-purple: 0 0 30px rgba(139, 92, 246, 1);
+    --glow-cyan: 0 0 30px rgba(34, 211, 238, 1);
+}
