@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Debug</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #1a1a2e;
+            color: #fff;
+        }
+        .log {
+            background: #16213e;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border-left: 3px solid #0f3460;
+        }
+        .error {
+            border-left-color: #e94560;
+        }
+        .success {
+            border-left-color: #00d9ff;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px 5px;
+            cursor: pointer;
+            background: #0f3460;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #16213e;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Test de Diagnostic - Quiz Engine</h1>
+    <div id="logs"></div>
+
+    <div style="margin-top: 20px;">
+        <button onclick="testLoadFiles()">1. Tester Chargement Scripts</button>
+        <button onclick="testQuizEngine()">2. Tester QuizEngine</button>
+        <button onclick="testStartQuiz()">3. Simuler Démarrage Quiz</button>
+    </div>
+
+    <script>
+        const logs = document.getElementById('logs');
+
+        function log(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `log ${type}`;
+            div.textContent = `${new Date().toLocaleTimeString()} - ${message}`;
+            logs.appendChild(div);
+            console.log(message);
+        }
+
+        function testLoadFiles() {
+            log('Test 1: Vérification des scripts...', 'info');
+
+            const scripts = [
+                'js/utils.js',
+                'js/storage.js',
+                'js/audio.js',
+                'js/question-renderer.js',
+                'js/quiz-engine.js'
+            ];
+
+            scripts.forEach(src => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.onload = () => log(`✅ ${src} chargé`, 'success');
+                script.onerror = () => log(`❌ Erreur chargement ${src}`, 'error');
+                document.head.appendChild(script);
+            });
+        }
+
+        function testQuizEngine() {
+            log('Test 2: Vérification QuizEngine...', 'info');
+
+            if (typeof QuizEngine === 'undefined') {
+                log('❌ QuizEngine non défini', 'error');
+                return;
+            }
+
+            log('✅ QuizEngine existe', 'success');
+            log(`Type: ${typeof QuizEngine}`, 'info');
+            log(`Méthodes: ${Object.keys(QuizEngine).join(', ')}`, 'info');
+        }
+
+        function testStartQuiz() {
+            log('Test 3: Simulation démarrage quiz...', 'info');
+
+            // Créer une config de test
+            const testConfig = {
+                chapter: '2',
+                questionCount: 5,
+                difficulties: ['easy', 'medium'],
+                questionTypes: ['qcm', 'vrai_faux'],
+                mode: 'learning',
+                timestamp: new Date().toISOString()
+            };
+
+            log(`Config créée: ${JSON.stringify(testConfig)}`, 'info');
+
+            // Stocker dans sessionStorage
+            sessionStorage.setItem('quiz_config', JSON.stringify(testConfig));
+            log('✅ Config stockée dans sessionStorage', 'success');
+
+            // Tester le chargement
+            const loaded = sessionStorage.getItem('quiz_config');
+            if (loaded) {
+                log('✅ Config récupérée avec succès', 'success');
+                log(`Contenu: ${loaded.substring(0, 100)}...`, 'info');
+            } else {
+                log('❌ Impossible de récupérer la config', 'error');
+            }
+        }
+
+        // Auto-test au chargement
+        window.addEventListener('DOMContentLoaded', () => {
+            log('🚀 Page de diagnostic chargée', 'success');
+            log('Cliquez sur les boutons pour tester les différents composants', 'info');
+        });
+    </script>
+</body>
+</html>

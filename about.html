@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos du cours - PHY321</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="about-page">
+    <canvas id="particle-canvas" class="particle-background"></canvas>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="btn-secondary">← Retour à l'accueil</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="about-hero">
+                <h1>PHY321 - Introduction à la Mécanique Quantique</h1>
+                <p class="subtitle">Université de Yaoundé I - Année Académique 2025-2026</p>
+            </div>
+
+            <!-- Course Description -->
+            <section class="about-section">
+                <h2>📚 Description du Cours</h2>
+                <p>
+                    Le cours PHY321 offre une introduction complète aux concepts fondamentaux de la mécanique quantique,
+                    science qui décrit le comportement de la matière et de l'énergie à l'échelle atomique et subatomique.
+                    Ce cours vous permettra de comprendre les phénomènes quantiques qui régissent notre univers à son
+                    niveau le plus fondamental.
+                </p>
+            </section>
+
+            <!-- Course Objectives -->
+            <section class="about-section">
+                <h2>🎯 Objectifs du Cours</h2>
+                <ul class="objectives-list">
+                    <li>Comprendre les postulats fondamentaux de la mécanique quantique</li>
+                    <li>Maîtriser le formalisme mathématique (espace de Hilbert, opérateurs, notation de Dirac)</li>
+                    <li>Analyser et résoudre des problèmes quantiques classiques</li>
+                    <li>Développer une intuition pour les phénomènes quantiques (superposition, intrication, mesure)</li>
+                    <li>Appliquer les concepts à des systèmes physiques réels</li>
+                </ul>
+            </section>
+
+            <!-- Course Structure -->
+            <section class="about-section">
+                <h2>📖 Structure du Cours</h2>
+
+                <div class="chapter-details">
+                    <div class="chapter-card">
+                        <h3>Chapitre 1 : États Quantiques</h3>
+                        <p><strong>Sections :</strong> 1.1 - 1.4</p>
+                        <p>Découverte des phénomènes quantiques, dualité onde-corpuscule, interférences quantiques,
+                        amplitudes de probabilité, superposition d'états, qubits, espace de Hilbert, sphère de Bloch,
+                        et décohérence.</p>
+                        <p class="key-experiments">
+                            <strong>Expériences clés :</strong> Fentes d'Young, Chat de Schrödinger
+                        </p>
+                    </div>
+
+                    <div class="chapter-card">
+                        <h3>Chapitre 2 : Mesure et Opérateurs</h3>
+                        <p><strong>Sections :</strong> 2.1 - 2.5</p>
+                        <p>Processus de mesure quantique, opérateurs hermitiens, observables physiques, valeurs propres
+                        et vecteurs propres, matrices de Pauli, commutateurs, et principe d'incertitude de Heisenberg.</p>
+                        <p class="key-experiments">
+                            <strong>Expériences clés :</strong> Stern-Gerlach, mesures de spin
+                        </p>
+                    </div>
+
+                    <div class="chapter-card">
+                        <h3>Chapitre 3 : Dynamique Quantique - Les Postulats</h3>
+                        <p><strong>Sections :</strong> 3.1 - 3.5</p>
+                        <p>Les cinq postulats de la mécanique quantique, équation de Schrödinger (dépendante et
+                        indépendante du temps), hamiltonien, évolution temporelle, conservation de la probabilité,
+                        et états stationnaires.</p>
+                        <p class="key-concepts">
+                            <strong>Concepts fondamentaux :</strong> Règle de Born, réduction du paquet d'onde
+                        </p>
+                    </div>
+
+                    <div class="chapter-card">
+                        <h3>Chapitre 4 : Systèmes Multi-Qubits et Intrication</h3>
+                        <p><strong>Sections :</strong> 4.1 - 4.4</p>
+                        <p>Produit tensoriel, états séparables et intriqués, états de Bell, paradoxe EPR,
+                        inégalités de Bell, téléportation quantique, cryptographie quantique, et calcul quantique.</p>
+                        <p class="key-experiments">
+                            <strong>Applications :</strong> Cryptographie BB84, portes quantiques
+                        </p>
+                    </div>
+
+                    <div class="chapter-card">
+                        <h3>Chapitre 5 : Fonction d'État et Espace Continu</h3>
+                        <p><strong>Sections :</strong> 5.1 - 5.4</p>
+                        <p>Transition vers l'espace continu, fonctions d'onde, équation de Schrödinger en représentation
+                        position, paquet d'ondes, particule libre, relation de dispersion, et limite classique.</p>
+                        <p class="key-concepts">
+                            <strong>Outils mathématiques :</strong> Transformée de Fourier, représentations
+                        </p>
+                    </div>
+
+                    <div class="chapter-card">
+                        <h3>Chapitre 6 : Oscillateur Harmonique Quantique</h3>
+                        <p><strong>Sections :</strong> 6.1 - 6.4</p>
+                        <p>Système paradigmatique de la physique quantique, opérateurs de création et d'annihilation,
+                        états propres d'énergie, fonctions d'onde de Hermite, états cohérents, et applications physiques
+                        (vibrations moléculaires, photons, phonons).</p>
+                        <p class="key-concepts">
+                            <strong>Applications :</strong> Spectroscopie, optique quantique
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Prerequisites -->
+            <section class="about-section">
+                <h2>📋 Prérequis</h2>
+                <ul class="prerequisites-list">
+                    <li><strong>Mathématiques :</strong> Algèbre linéaire (vecteurs, matrices, valeurs propres),
+                    analyse (dérivées, intégrales, équations différentielles), nombres complexes</li>
+                    <li><strong>Physique :</strong> Mécanique classique, ondes et oscillations, notions d'électromagnétisme</li>
+                    <li><strong>Compétences :</strong> Raisonnement abstrait, manipulation de formules mathématiques</li>
+                </ul>
+            </section>
+
+            <!-- Evaluation -->
+            <section class="about-section">
+                <h2>📊 Évaluation</h2>
+                <div class="evaluation-grid">
+                    <div class="eval-card">
+                        <h4>Contrôles Continus</h4>
+                        <p class="percentage">30%</p>
+                        <p>Quiz hebdomadaires et devoirs</p>
+                    </div>
+                    <div class="eval-card">
+                        <h4>Examen Partiel</h4>
+                        <p class="percentage">30%</p>
+                        <p>Mi-semestre</p>
+                    </div>
+                    <div class="eval-card">
+                        <h4>Examen Final</h4>
+                        <p class="percentage">40%</p>
+                        <p>Fin de semestre</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resources -->
+            <section class="about-section">
+                <h2>📚 Bibliographie Recommandée</h2>
+
+                <h3>Ouvrages de Référence</h3>
+                <ul class="bibliography">
+                    <li>
+                        <strong>Cohen-Tannoudji, Diu, Laloë</strong> -
+                        <em>Mécanique Quantique (Tomes I et II)</em><br>
+                        <small>Référence complète et rigoureuse, approche mathématique détaillée</small>
+                    </li>
+                    <li>
+                        <strong>Griffiths, D.J.</strong> -
+                        <em>Introduction to Quantum Mechanics</em><br>
+                        <small>Approche pédagogique, nombreux exemples et exercices</small>
+                    </li>
+                    <li>
+                        <strong>Sakurai, J.J.</strong> -
+                        <em>Modern Quantum Mechanics</em><br>
+                        <small>Approche moderne, formalisme de Dirac dès le début</small>
+                    </li>
+                    <li>
+                        <strong>Feynman, R.P.</strong> -
+                        <em>Lectures on Physics, Volume III</em><br>
+                        <small>Approche intuitive et originale par un maître</small>
+                    </li>
+                </ul>
+
+                <h3>Ressources Complémentaires</h3>
+                <ul class="bibliography">
+                    <li>
+                        <strong>MIT OpenCourseWare</strong> -
+                        <em>8.04 Quantum Physics I</em><br>
+                        <small>Cours vidéo et notes de cours gratuits</small>
+                    </li>
+                    <li>
+                        <strong>Susskind, L.</strong> -
+                        <em>Quantum Mechanics: The Theoretical Minimum</em><br>
+                        <small>Introduction accessible pour débutants</small>
+                    </li>
+                    <li>
+                        <strong>Nielsen & Chuang</strong> -
+                        <em>Quantum Computation and Quantum Information</em><br>
+                        <small>Pour les applications en informatique quantique</small>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- About Quiz Platform -->
+            <section class="about-section">
+                <h2>💻 À Propos de cette Plateforme</h2>
+                <p>
+                    Cette plateforme de quiz interactive a été développée pour accompagner le cours PHY321.
+                    Elle permet aux étudiants de tester leurs connaissances, identifier leurs lacunes,
+                    et progresser à leur rythme à travers 509 questions soigneusement élaborées.
+                </p>
+
+                <h3>Fonctionnalités</h3>
+                <ul class="features-list">
+                    <li>✅ 509 questions réparties sur 6 chapitres</li>
+                    <li>✅ 5 types de questions (QCM, Vrai/Faux, Correspondances, Numériques, Interprétation)</li>
+                    <li>✅ 3 niveaux de difficulté (Facile, Moyen, Difficile)</li>
+                    <li>✅ 2 modes d'entraînement (Apprentissage, Examen)</li>
+                    <li>✅ Statistiques détaillées de progression</li>
+                    <li>✅ Révision ciblée des erreurs</li>
+                    <li>✅ Formules LaTeX et images illustratives</li>
+                    <li>✅ Interface responsive (ordinateur, tablette, mobile)</li>
+                </ul>
+            </section>
+
+            <!-- Contact -->
+            <section class="about-section">
+                <h2>📧 Contact</h2>
+                <p>
+                    <strong>Département de Physique</strong><br>
+                    Faculté des Sciences<br>
+                    Université de Yaoundé I<br>
+                    BP 812 Yaoundé, Cameroun
+                </p>
+                <p>
+                    Pour toute question concernant le cours, veuillez contacter votre enseignant
+                    ou vous rendre au secrétariat du département.
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Université de Yaoundé I - PHY321</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/particles.js"></script>
+</body>
+</html>

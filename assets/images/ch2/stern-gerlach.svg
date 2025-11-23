@@ -1,0 +1,50 @@
+<svg width="700" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="700" height="300" fill="#0f172a"/>
+
+  <!-- Source -->
+  <rect x="30" y="130" width="60" height="40" fill="#334155" stroke="#475569" stroke-width="2"/>
+  <text x="60" y="155" text-anchor="middle" fill="#cbd5e1" font-size="11">Four</text>
+  <circle cx="95" cy="150" r="4" fill="#fbbf24"/>
+
+  <!-- Beam -->
+  <line x1="100" y1="150" x2="280" y2="150" stroke="#fbbf24" stroke-width="3"/>
+
+  <!-- Magnet (inhomogeneous field) -->
+  <path d="M 280 80 L 320 80 L 340 100 L 340 140 L 280 140 Z" fill="#7c3aed" stroke="#6d28d9" stroke-width="2"/>
+  <text x="310" y="100" text-anchor="middle" fill="#f8fafc" font-size="16" font-weight="bold">N</text>
+
+  <path d="M 280 160 L 320 160 L 340 180 L 340 220 L 280 220 Z" fill="#ec4899" stroke="#db2777" stroke-width="2"/>
+  <text x="310" y="200" text-anchor="middle" fill="#f8fafc" font-size="16" font-weight="bold">S</text>
+
+  <!-- Field gradient lines -->
+  <line x1="340" y1="120" x2="360" y2="110" stroke="#7c3aed" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="340" y1="130" x2="360" y2="125" stroke="#7c3aed" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="340" y1="170" x2="360" y2="175" stroke="#ec4899" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="340" y1="180" x2="360" y2="190" stroke="#ec4899" stroke-width="1" stroke-dasharray="2,2"/>
+
+  <!-- Split beams -->
+  <line x1="340" y1="130" x2="580" y2="90" stroke="#10b981" stroke-width="3"/>
+  <line x1="340" y1="170" x2="580" y2="210" stroke="#ef4444" stroke-width="3"/>
+
+  <!-- Screen -->
+  <rect x="580" y="50" width="10" height="200" fill="#475569"/>
+
+  <!-- Impact spots -->
+  <circle cx="600" cy="90" r="12" fill="#10b981" opacity="0.8"/>
+  <circle cx="600" cy="210" r="12" fill="#ef4444" opacity="0.8"/>
+
+  <!-- Labels -->
+  <text x="350" y="25" text-anchor="middle" fill="#f8fafc" font-size="18" font-weight="bold">Expérience de Stern-Gerlach</text>
+
+  <text x="620" y="85" text-anchor="start" fill="#10b981" font-size="13" font-weight="bold">Spin ↑</text>
+  <text x="620" y="100" text-anchor="start" fill="#10b981" font-size="11">|↑⟩ ou |+½⟩</text>
+
+  <text x="620" y="210" text-anchor="start" fill="#ef4444" font-size="13" font-weight="bold">Spin ↓</text>
+  <text x="620" y="225" text-anchor="start" fill="#ef4444" font-size="11">|↓⟩ ou |-½⟩</text>
+
+  <text x="310" y="255" text-anchor="middle" fill="#cbd5e1" font-size="11">Champ magnétique</text>
+  <text x="310" y="268" text-anchor="middle" fill="#cbd5e1" font-size="11">inhomogène</text>
+
+  <text x="350" y="290" text-anchor="middle" fill="#94a3b8" font-size="10">Preuve de la quantification du spin (1922)</text>
+</svg>

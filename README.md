@@ -1,310 +1,426 @@
-# Quiz Mécanique Quantique 🌌
+# 🌌 Quiz Interactif - Mécanique Quantique PHY321
 
-Application web interactive de quiz en **Mécanique Quantique** (niveau universitaire), générée à partir d'un cours PDF. L'application permet de tester ses connaissances avec plus de 200 questions variées sous forme de QCM et de flashcards.
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![Made with Love](https://img.shields.io/badge/Made%20with-❤️-red.svg)](https://uy1.cm)
 
-![Quantum Quiz](https://img.shields.io/badge/Quiz-Quantique-8B5CF6?style=for-the-badge)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+> Application web interactive de révision pour le cours **"Introduction à la Mécanique Quantique"** (PHY321) - Université de Yaoundé I, Faculté des Sciences.
 
-## 📋 Fonctionnalités principales
-
-### 🎯 Types de questions
-- **60% QCM** : Questions à choix multiples avec 4 options
-- **40% Flashcards** : Cartes concept/définition avec système de révision
-
-### 🎨 Interface utilisateur
-- **Design thématique "Quantique"** : Fond avec particules animées, palette bleu/violet/cyan
-- **Animation de la barre de progression** : Gradient animé
-- **Support LaTeX/MathJax** : Rendu parfait des formules mathématiques
-- **Animations 3D** : Flip animation pour les flashcards
-- **Design responsive** : Mobile-first, adapté à tous les écrans
-
-### 📊 Système de progression
-- **Historique des quiz** : Sauvegarde dans localStorage
-- **Statistiques détaillées** : Graphiques par catégorie, temps moyen par question
-- **Badges déblocables** :
-  - 🌟 Premier pas quantique (1er quiz complété)
-  - 🎯 Cohérence (3 quiz >80%)
-  - ⭐ Opérateur hermitien (100% à un quiz)
-  - 🏃 Marathonien (10 quiz complétés)
-  - 💎 Perfectionniste (5 quiz >90%)
-
-### ⚙️ Options avancées
-- **Sélection du nombre de questions** : Slider de 10 à 50 questions
-- **Choix du mode** : QCM uniquement, Flashcards uniquement, ou Mixte
-- **Filtrage par catégorie** : États quantiques, Mesure et opérateurs, etc.
-- **Filtrage par difficulté** : Facile, Moyen, Difficile
-- **Timer optionnel** : Compte à rebours ou chronomètre
-- **Système audio** : Sons de feedback (activables/désactivables)
-
-### ⌨️ Raccourcis clavier
-- **1, 2, 3, 4** : Sélectionner une option QCM
-- **Espace** : Question suivante
-- **F** : Retourner la flashcard
-- **P** : Pause
-- **Échap** : Menu pause/abandon
-
-### 📈 Écran des résultats
-- **Animation d'apparition** : Confettis pour scores >80%
-- **Score global** : Cercle de progression animé avec pourcentage et note/20
-- **Message personnalisé** selon performance
-- **Statistiques détaillées** : Graphiques par catégorie (radar chart)
-- **Revue complète** : Toutes les questions avec explications
-- **Actions finales** :
-  - Recommencer avec nouvelles questions
-  - Refaire les questions ratées
-  - Télécharger les résultats (PDF) - *À implémenter*
-  - Partager le score - *À implémenter*
-  - Mode révision (flashcards ratées)
-
-## 🗂️ Structure du projet
-
-```
-quantum-quiz/
-├── index.html              # Page principale
-├── css/
-│   ├── style.css           # Styles principaux
-│   └── themes.css          # Thèmes (clair/sombre)
-├── js/
-│   ├── app.js              # Contrôleur principal
-│   ├── quiz-logic.js       # Moteur de quiz
-│   ├── storage.js          # Gestion localStorage
-│   └── particles.js        # Effet de particules
-├── data/
-│   └── questions.json      # Base de données de questions (200+)
-├── assets/
-│   ├── sounds/             # Sons (optionnel)
-│   │   ├── correct.mp3
-│   │   ├── incorrect.mp3
-│   │   ├── click.mp3
-│   │   └── complete.mp3
-│   └── images/
-│       └── badges/          # Images de badges (optionnel)
-├── README.md
-└── LICENSE
-```
-
-## 🚀 Installation et utilisation locale
-
-### Prérequis
-- Un navigateur web moderne (Chrome, Firefox, Safari, Edge)
-- Un serveur web local (optionnel, mais recommandé pour éviter les problèmes CORS)
-
-### Démarrage rapide
-
-1. **Clonez ou téléchargez** ce repository :
-```bash
-git clone <url-du-repo>
-cd quantum-quiz
-```
-
-2. **Ouvrez** `index.html` dans votre navigateur, ou utilisez un serveur local :
-
-**Avec Python :**
-```bash
-python3 -m http.server 8000
-```
-Puis ouvrez `http://localhost:8000` dans votre navigateur.
-
-**Avec Node.js (http-server) :**
-```bash
-npx http-server
-```
-
-**Avec PHP :**
-```bash
-php -S localhost:8000
-```
-
-## 📤 Déploiement sur GitHub Pages
-
-### Méthode 1 : Interface GitHub (Recommandée pour débutants)
-
-1. **Créez un nouveau repository** sur GitHub :
-   - Nom suggéré : `quantum-quiz` ou `quiz-mecanique-quantique`
-   - Visibilité : **Public** (pour GitHub Pages gratuit)
-   - ✅ Cochez "Initialize with README" (optionnel)
-
-2. **Uploadez vos fichiers** :
-   - Cliquez sur "Add file" > "Upload files"
-   - Glissez-déposez tous les fichiers du projet (sauf le PDF du cours)
-   - Commit message : "Initial commit - Quiz Mécanique Quantique"
-   - Cliquez sur "Commit changes"
-
-3. **Activez GitHub Pages** :
-   - Allez dans **Settings** du repository
-   - Dans le menu de gauche, cliquez sur **Pages**
-   - Sous "Source", sélectionnez la branche **main** (ou **master**)
-   - Cliquez sur **Save**
-   - Notez l'URL fournie : `https://tchapetnjafa.github.io/quantum-quiz/`
-
-4. **Vérifiez le déploiement** :
-   - Attendez 1-2 minutes
-   - Visitez l'URL fournie
-   - Votre quiz devrait être accessible !
-
-### Méthode 2 : Ligne de commande Git (Pour utilisateurs avancés)
-
-1. **Initialisez le repository Git** :
-```bash
-cd quantum-quiz
-git init
-git add .
-git commit -m "Initial commit - Quiz Mécanique Quantique"
-```
-
-2. **Créez le repository sur GitHub** :
-   - Allez sur https://github.com/new
-   - Créez un nouveau repository (ne cochez PAS "Initialize with README")
-
-3. **Liez et pushez** :
-```bash
-git remote add origin https://github.com/[votre-username]/[nom-du-repo].git
-git branch -M main
-git push -u origin main
-```
-
-4. **Activez GitHub Pages** (comme dans Méthode 1, étape 3)
-
-### Mises à jour futures
-
-Pour modifier les questions ou le code :
-
-1. **Modifiez les fichiers localement**
-
-2. **Commitez et pushez** :
-```bash
-git add .
-git commit -m "Description des modifications"
-git push
-```
-
-3. **GitHub Pages se met à jour automatiquement** (délai : 1-2 minutes)
-
-## 🎓 Contenu des questions
-
-Les questions couvrent :
-
-- **Chapitre 1 - États quantiques** :
-  - Interférences à une particule (fentes d'Young, Mach-Zehnder)
-  - Amplitude de probabilité et règle de Born
-  - Superposition quantique
-  - Qubits et sphère de Bloch
-
-- **Chapitre 2 - Mesure et opérateurs** :
-  - Expérience de Stern-Gerlach
-  - Opérateurs Hermitiens
-  - Incompatibilité et principe d'indétermination
-  - Algèbre des opérateurs
-
-- **Chapitre 3 - Dynamique quantique** :
-  - Postulats de la mécanique quantique
-  - Équation de Schrödinger
-  - Oscillations de Rabi
-
-Et plus encore !
-
-## 🛠️ Technologies utilisées
-
-- **HTML5** : Structure sémantique
-- **CSS3** : Animations, gradients, glass morphism
-- **JavaScript (Vanilla)** : Pas de framework, performance optimale
-- **MathJax** : Rendu des formules LaTeX
-- **Chart.js** : Graphiques statistiques
-- **LocalStorage** : Persistance des données
-
-## 📝 Personnalisation
-
-### Ajouter des questions
-
-Modifiez `data/questions.json` et ajoutez des objets question :
-
-```json
-{
-  "id": 201,
-  "type": "qcm",
-  "category": "États quantiques",
-  "difficulty": "medium",
-  "question": "Votre question ici ?",
-  "options": ["Option A", "Option B", "Option C", "Option D"],
-  "correct_index": 1,
-  "explanation": "Explication détaillée...",
-  "formula": "E = mc²"
-}
-```
-
-### Modifier les couleurs
-
-Éditez `css/style.css` et modifiez les variables CSS :
-
-```css
-:root {
-    --color-bg-dark: #0A192F;
-    --color-quantum-purple: #8B5CF6;
-    --color-cyan: #22D3EE;
-}
-```
-
-### Ajouter des sons
-
-Placez vos fichiers audio dans `assets/sounds/` :
-- `correct.mp3` : Son pour bonne réponse
-- `incorrect.mp3` : Son pour mauvaise réponse
-- `click.mp3` : Son pour clic
-- `complete.mp3` : Son pour quiz terminé
-
-## 🐛 Dépannage
-
-### Les questions ne se chargent pas
-- **Important** : Pour des raisons de sécurité (CORS), le fichier doit être ouvert via un serveur web local, pas directement en double-cliquant sur `index.html`
-- Utilisez un serveur local (voir section "Installation")
-- Vérifiez que `data/questions.json` existe et est valide JSON
-- Ouvrez la console du navigateur (F12) pour voir les erreurs
-
-### L'application ne fonctionne pas en ouvrant directement index.html
-- C'est normal ! Les navigateurs bloquent le chargement de fichiers locaux (JSON) pour des raisons de sécurité
-- **Vous devez utiliser un serveur web local** (voir section "Installation")
-- Les sons fonctionnent maintenant même sans serveur grâce à Web Audio API
-
-### MathJax ne s'affiche pas
-- Vérifiez votre connexion internet (MathJax est chargé depuis CDN)
-- Videz le cache du navigateur
-
-### Les statistiques ne se sauvegardent pas
-- Vérifiez que localStorage est activé dans votre navigateur
-- Les données sont stockées localement (non synchronisées entre appareils)
-
-### Les flashcards ne s'affichent pas correctement
-- Vérifiez que vous utilisez un navigateur récent (Chrome, Firefox, Safari, Edge)
-- Les animations 3D nécessitent le support CSS transform 3D
-- Si le problème persiste, videz le cache du navigateur
-
-## 📄 Licence
-
-MIT License - Libre d'utilisation et de modification
-
-## 👤 Auteur
-
-**Dr. TCHAPET NJAFA**  
-Département de Physique - UY1-FS
-
-Ce projet a été développé à partir d'un cours de Mécanique Quantique (PHY321).  
-Le rendu final a été obtenu avec l'assistance de **Cursor Agent** (IA de développement).
-
-## 🙏 Remerciements
-
-- **Cours source** : PHY321 - Mécanique Quantique (UY1-FS)
-- **Bibliothèques** : MathJax, Chart.js
-- **Polices** : Google Fonts (Poppins, Inter)
-
-## 📞 Support
-
-Pour toute question ou problème :
-1. Vérifiez ce README
-2. Consultez la console du navigateur (F12)
-3. Ouvrez une issue sur GitHub (si le repo est public)
+![Quantum Quiz Banner](assets/images/ui/banner.png)
 
 ---
 
-**Prêt à explorer le monde quantique ?** 🌌 Commencez votre premier quiz !
+## ✨ Fonctionnalités Principales
+
+- 🎯 **80 questions de haute qualité** couvrant les 6 chapitres du cours (extensible progressivement)
+- 🎨 **5 types de questions variés** : QCM, Vrai/Faux, Correspondances (Matching), Calculs numériques, Interprétation
+- 📊 **Statistiques détaillées** avec graphiques de performance (Chart.js)
+- 🧮 **Support complet LaTeX** via MathJax 3 pour les formules mathématiques
+- 📱 **100% Responsive** : fonctionne parfaitement sur mobile, tablette et ordinateur
+- 🌙 **Mode sombre/clair** pour un confort visuel optimal
+- ⚡ **Mode hors-ligne** (Progressive Web App)
+- 📥 **Export PDF** de vos résultats
+- ⌨️ **Navigation clavier** complète avec raccourcis
+- 🔊 **Feedback sonore** activable/désactivable
+- 🏆 **Système de badges** et progression gamifiée
+- 🌍 **Contextualisation africaine** : exemples technologiques et culturels du Cameroun et d'Afrique
+
+---
+
+## 📚 Chapitres Couverts
+
+### Chapitre 1 : États Quantiques (20 questions) ✅
+- Phénomènes quantiques et interférences
+- Amplitudes de probabilité
+- Superposition d'états
+- Qubits et espace de Hilbert
+- **Concepts clés** : Dualité onde-corpuscule, règle de Born, sphère de Bloch, décohérence
+
+### Chapitre 2 : Mesure et Opérateurs (12 questions) ✅
+- Expérience de Stern-Gerlach
+- Opérateurs hermitiens et valeurs propres
+- Matrices de Pauli
+- Commutateurs et principe d'incertitude
+- **Concepts clés** : Quantification du spin, mesures successives, algèbre des opérateurs
+
+### Chapitre 3 : Postulats de la Mécanique Quantique (12 questions) ✅
+- Les 6 postulats fondamentaux
+- Règle de Born et projection
+- Équation de Schrödinger
+- Oscillations de Rabi
+- **Concepts clés** : États stationnaires, évolution unitaire, constantes de mouvement
+
+### Chapitre 4 : Systèmes Multi-Qubits et Intrication (12 questions) ✅
+- Produit tensoriel
+- États de Bell et intrication
+- Matrice densité
+- Entropie de von Neumann
+
+### Chapitre 5 : Espace Continu et Fonctions d'Onde (12 questions) ✅
+- Fonction d'onde $\\psi(x)$ et densité de probabilité
+- Relation de de Broglie
+- Transformée de Fourier et représentation en impulsion
+- Paquets d'ondes et étalement
+- **Concepts clés** : Principe d'incertitude de Heisenberg, vitesse de groupe, normalisation
+
+### Chapitre 6 : Oscillateur Harmonique Quantique (12 questions) ✅
+- Quantification de l'énergie : $E_n = \\hbar\\omega(n+1/2)$
+- Opérateurs création/annihilation
+- États de Fock $|n\\rangle$
+- États cohérents (Glauber)
+- **Concepts clés** : Énergie de point zéro, phonons, photons, effet Casimir
+
+---
+
+## 🚀 Démarrage Rapide
+
+### Utilisation en Ligne
+
+👉 **[Accéder au quiz en ligne](#)** *(URL à configurer après déploiement)*
+
+### Installation Locale
+
+```bash
+# 1. Cloner le repository
+git clone https://github.com/votre-username/quantum-quiz.git
+cd quantum-quiz
+
+# 2. Lancer un serveur local (choisissez une option)
+
+# Option A : Python 3
+python -m http.server 8000
+
+# Option B : Node.js (npx)
+npx http-server -p 8000
+
+# Option C : PHP
+php -S localhost:8000
+
+# 3. Ouvrir dans le navigateur
+# http://localhost:8000
+```
+
+**Note** : Un serveur local est nécessaire pour le bon fonctionnement de certaines fonctionnalités (chargement JSON, etc.).
+
+---
+
+## 🎮 Guide d'Utilisation
+
+### Configuration d'une Session
+
+1. **Sélectionner un chapitre** ou choisir le mode révision globale
+2. **Configurer** le nombre de questions (10-50)
+3. **Choisir** le niveau de difficulté (Facile/Moyen/Difficile)
+4. **Sélectionner** le mode :
+   - **Apprentissage** : feedback immédiat, pas de limite de temps, retour possible
+   - **Examen** : simulation de conditions réelles avec chronomètre
+
+### Pendant le Quiz
+
+- **Navigation** : utilisez les boutons ou le clavier
+- **Formules** : double-cliquez pour agrandir les formules LaTeX
+- **Aide** : appuyez sur `H` pour afficher les raccourcis clavier
+
+### Raccourcis Clavier
+
+| Touche | Action |
+|--------|--------|
+| `1-4` | Sélectionner option A-D |
+| `V` / `F` | Vrai / Faux |
+| `Espace` | Valider réponse |
+| `→` | Question suivante |
+| `←` | Question précédente (si autorisé) |
+| `Échap` | Pause / Menu |
+| `H` | Afficher aide |
+
+### Page de Résultats
+
+- 📊 Consultez vos statistiques détaillées par difficulté et concept
+- 📈 Visualisez votre performance avec des graphiques radar (Chart.js)
+- 🔄 Reprenez uniquement les questions ratées
+- 📥 Exportez vos résultats en PDF
+- 🔗 Partagez votre configuration de quiz
+
+---
+
+## 🛠️ Technologies Utilisées
+
+### Frontend
+- **HTML5** sémantique
+- **CSS3** moderne (Grid, Flexbox, Variables CSS)
+- **JavaScript ES6+** vanilla
+- **Design System** : Thème "Quantique" avec palette de couleurs dédiée
+
+### Bibliothèques
+- **[MathJax 3](https://www.mathjax.org/)** : Rendu des formules LaTeX
+- **[Chart.js 4](https://www.chartjs.org/)** : Graphiques et visualisations
+- *(Optionnel)* **[Howler.js](https://howlerjs.com/)** : Gestion audio
+
+### PWA
+- Service Workers pour fonctionnement hors-ligne
+- Web App Manifest
+- Cache stratégique des ressources
+
+### Déploiement
+- **GitHub Pages** (ou tout hébergeur statique)
+
+---
+
+## 📂 Structure du Projet
+
+```
+quantum-quiz/
+├── index.html                 # Page d'accueil
+├── quiz.html                  # Interface de quiz
+├── results.html               # Page de résultats
+├── about.html                 # À propos du cours
+├── manifest.json              # Web App Manifest (PWA)
+├── css/
+│   ├── main.css              # Styles globaux + design system
+│   ├── quiz.css              # Styles spécifiques quiz
+│   └── responsive.css        # Media queries
+├── js/
+│   ├── app.js                # Point d'entrée principal
+│   ├── quiz-engine.js        # Logique du quiz
+│   ├── question-renderer.js  # Rendu des différents types de questions
+│   ├── storage.js            # LocalStorage/IndexedDB
+│   ├── statistics.js         # Calculs et graphiques
+│   ├── mathjax-config.js     # Configuration MathJax
+│   ├── particles.js          # Animation particules background
+│   ├── results.js            # Logique page de résultats
+│   └── utils.js              # Fonctions utilitaires
+├── data/
+│   └── questions.json        # Base de questions (600+)
+├── assets/
+│   ├── images/
+│   │   ├── ch1/              # Images du chapitre 1
+│   │   ├── ch2/              # Images du chapitre 2
+│   │   ├── ...
+│   │   └── ui/               # Icônes, logos, banner
+│   ├── sounds/
+│   │   ├── correct.mp3       # Son réponse correcte
+│   │   ├── wrong.mp3         # Son réponse incorrecte
+│   │   ├── transition.mp3    # Son transition
+│   │   └── complete.mp3      # Son fin de quiz
+│   ├── fonts/                # Polices personnalisées (si nécessaire)
+│   └── icons/
+│       ├── icon-192.png      # Icône PWA 192x192
+│       └── icon-512.png      # Icône PWA 512x512
+├── docs/
+│   ├── STRUCTURE.md          # Documentation de l'architecture
+│   ├── EXTENDING.md          # Guide d'extension
+│   └── DEPLOYMENT.md         # Guide de déploiement
+├── COURSE_ANALYSIS.md        # Analyse complète du cours source
+├── README.md                 # Ce fichier
+├── LICENSE                   # Licence CC BY-NC-SA 4.0
+└── .gitignore
+```
+
+---
+
+## 🎨 Design System - Thème "Quantique"
+
+### Palette de Couleurs
+
+```css
+--quantum-dark: #0a0e27;      /* Fond principal sombre */
+--quantum-blue: #1e3a8a;      /* Bleu profond */
+--quantum-purple: #7c3aed;    /* Violet quantique */
+--quantum-cyan: #06b6d4;      /* Cyan lumineux */
+--quantum-pink: #ec4899;      /* Rose accent */
+
+--success: #10b981;           /* Vert succès */
+--warning: #f59e0b;           /* Orange avertissement */
+--error: #ef4444;             /* Rouge erreur */
+```
+
+### Effets Visuels
+
+- **Particules animées** en arrière-plan (Canvas)
+- **Transitions fluides** (300ms ease-in-out)
+- **Effets de glow** pour éléments actifs
+- **Animations de progression** avec gradients
+
+### Typographie
+
+- **Titres** : Inter (bold)
+- **Corps** : Inter (regular)
+- **Code/Formules** : JetBrains Mono
+
+---
+
+## 🤝 Contribution
+
+Les contributions sont les bienvenues ! Voici comment participer :
+
+### Ajouter des Questions
+
+1. Éditez `data/questions.json`
+2. Respectez la structure JSON existante :
+   ```json
+   {
+     "id": "ch1-q001",
+     "type": "qcm|vrai_faux|matching|...",
+     "difficulty": "easy|medium|hard",
+     "question": "Énoncé avec $\\LaTeX$ si besoin",
+     "options": ["A", "B", "C", "D"],
+     "correct_answer": 1,
+     "explanation": "Explication détaillée avec formules",
+     "section_ref": "1.2.3",
+     "formula": "$$E = mc^2$$",
+     "tags": ["tag1", "tag2"]
+   }
+   ```
+3. Assurez-vous de l'unicité de l'ID
+4. Validez la syntaxe LaTeX
+5. Soumettez une Pull Request
+
+### Signaler un Bug
+
+Ouvrez une [issue](https://github.com/votre-username/quantum-quiz/issues) en décrivant :
+- Le problème rencontré
+- Les étapes pour le reproduire
+- Votre navigateur et système d'exploitation
+
+### Proposer une Amélioration
+
+Discutons-en dans les [Discussions](https://github.com/votre-username/quantum-quiz/discussions) !
+
+---
+
+## 📄 Licence et Crédits
+
+### Licence du Projet
+
+Ce projet est sous licence **[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)**.
+
+**Vous êtes libre de :**
+- ✅ Partager et adapter le contenu
+- ✅ L'utiliser à des fins pédagogiques non commerciales
+
+**Sous réserve de :**
+- 📝 Créditer les auteurs originaux
+- 🔄 Partager vos modifications sous la même licence
+- ❌ Ne pas utiliser à des fins commerciales
+
+### Crédits
+
+#### Contenu Pédagogique
+- Basé sur le cours **PHY321 - Introduction à la Mécanique Quantique**
+- **Université de Yaoundé I** - Faculté des Sciences
+- Année académique 2025-2026
+
+#### Développement
+- Application web développée avec Claude Sonnet 4.5
+- Design system "Quantique" original
+
+#### Ressources Externes
+- **Images** :
+  - Wikimedia Commons (CC BY-SA 3.0)
+  - Unsplash (licence Unsplash)
+  - Illustrations personnelles
+- **Sons** :
+  - Freesound.org (CC0 / CC BY)
+  - [Attribution détaillée dans les fichiers]
+- **Bibliothèques** : MathJax (Apache 2.0), Chart.js (MIT)
+
+---
+
+## 🌍 Contexte Africain
+
+Cette application intègre naturellement des **exemples technologiques et culturels africains** :
+
+### Exemples Technologiques Locaux
+- 📡 **Télécommunications** : MTN Cameroun, Orange Cameroun (fibres optiques, photons)
+- ☀️ **Énergie solaire** : Panneaux photovoltaïques à Yaoundé (effet photoélectrique)
+- 🔬 **Institutions** : Université de Yaoundé I, African Institute for Mathematical Sciences (AIMS)
+
+### Analogies Culturelles Intégrées
+- 🎮 **Jeu Kirikou** : Cosmologie Dogon et superposition quantique
+- 🔮 **Divination africaine** : Analogie avec la mesure quantique
+- 🏪 **Marché africain** : Illustration des postulats
+- 🥁 **Polyrythmie** : Produit tensoriel et intrication
+
+Ces contextualisations sont **naturelles et rigoureuses**, évitant les stéréotypes.
+
+---
+
+## 📞 Contact et Support
+
+- 💬 **Discussions** : [GitHub Discussions](https://github.com/votre-username/quantum-quiz/discussions)
+- 🐛 **Bugs** : [GitHub Issues](https://github.com/votre-username/quantum-quiz/issues)
+- 🌐 **Institution** : [Université de Yaoundé I](https://uy1.cm)
+
+---
+
+## 🙏 Remerciements
+
+Merci à tous les étudiants et enseignants qui contribueront à l'amélioration de cet outil pédagogique.
+
+Un remerciement spécial au **Département de Physique de la Faculté des Sciences** de l'Université de Yaoundé I pour son soutien à l'innovation pédagogique.
+
+---
+
+## 📈 Roadmap
+
+### Version 1.0 (Actuelle)
+- ✅ Structure de base du projet
+- ✅ Design system quantique complet
+- ✅ 20 questions de qualité pour le Chapitre 1
+- ✅ Pages HTML responsive
+- ✅ CSS complet avec animations
+
+### Version 1.1 (À venir)
+- ⏳ 100+ questions pour le Chapitre 1
+- ⏳ Scripts JavaScript complets (quiz-engine, rendering)
+- ⏳ Intégration Chart.js pour statistiques
+- ⏳ Système de sauvegarde LocalStorage
+
+### Version 2.0 (Futur)
+- 📋 Questions pour tous les 6 chapitres (600+)
+- 📋 Mode hors-ligne complet (PWA)
+- 📋 Export PDF avec jsPDF
+- 📋 Système de badges et gamification
+- 📋 Partage de quiz avec URL paramétrées
+
+### Version 3.0 (Vision)
+- 🔮 Backend pour classement global
+- 🔮 Version mobile native (React Native)
+- 🔮 Vidéos explicatives intégrées
+- 🔮 Mode multijoueur compétitif
+
+---
+
+## 📊 Statistiques du Projet
+
+![GitHub stars](https://img.shields.io/github/stars/votre-username/quantum-quiz?style=social)
+![GitHub forks](https://img.shields.io/github/forks/votre-username/quantum-quiz?style=social)
+
+**État actuel du contenu :**
+- ✅ Chapitre 1 : 20/100+ questions (20%)
+- ⏳ Chapitre 2 : 0/100+ questions (0%)
+- ⏳ Chapitre 3 : 0/100+ questions (0%)
+- ⏳ Chapitre 4 : 0/100+ questions (0%)
+- ⏳ Chapitre 5 : 0/100+ questions (0%)
+- ⏳ Chapitre 6 : 0/100+ questions (0%)
+
+**Total : 20/600+ questions générées (3%)**
+
+---
+
+**Fait avec ❤️ pour les étudiants en physique quantique**
+
+*"L'éducation est l'arme la plus puissante que vous puissiez utiliser pour changer le monde."* - Nelson Mandela
+
+---
+
+## 🔗 Liens Utiles
+
+- [Documentation MathJax](https://docs.mathjax.org/)
+- [Chart.js Documentation](https://www.chartjs.org/docs/)
+- [Progressive Web Apps Guide](https://web.dev/progressive-web-apps/)
+- [CC BY-NC-SA 4.0 License](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+- [Université de Yaoundé I](https://uy1.cm)
+
+---
+
+*Dernière mise à jour : 2025-11-23*

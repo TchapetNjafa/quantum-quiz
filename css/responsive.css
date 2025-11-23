@@ -1,0 +1,95 @@
+/**
+ * Styles responsifs supplémentaires
+ * Complète main.css avec des media queries additionnelles
+ */
+
+/* Petits écrans (smartphones) */
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .question-text {
+        font-size: 1rem;
+    }
+
+    .option-item label {
+        font-size: 0.9rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .config-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Tablettes portrait */
+@media (min-width: 481px) and (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .config-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Tablettes paysage et petits ordinateurs */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        max-width: 90%;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Grands écrans */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+/* Mode impression */
+@media print {
+    header,
+    footer,
+    .particles-canvas,
+    .btn,
+    .nav-buttons {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    .question-card,
+    .results-card {
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+}

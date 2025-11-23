@@ -1,0 +1,42 @@
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="300" fill="#0f172a"/>
+
+  <!-- Source -->
+  <circle cx="50" cy="150" r="15" fill="#fbbf24" stroke="#f59e0b" stroke-width="2"/>
+  <text x="50" y="190" text-anchor="middle" fill="#cbd5e1" font-size="12">Source</text>
+
+  <!-- Fentes -->
+  <rect x="250" y="50" width="20" height="200" fill="#334155"/>
+  <rect x="250" y="100" width="20" height="30" fill="#0f172a"/>
+  <rect x="250" y="170" width="20" height="30" fill="#0f172a"/>
+  <text x="260" y="120" text-anchor="middle" fill="#06b6d4" font-size="11">S₁</text>
+  <text x="260" y="190" text-anchor="middle" fill="#06b6d4" font-size="11">S₂</text>
+
+  <!-- Waves from source -->
+  <circle cx="50" cy="150" r="30" fill="none" stroke="#fbbf24" stroke-width="1" opacity="0.6"/>
+  <circle cx="50" cy="150" r="50" fill="none" stroke="#fbbf24" stroke-width="1" opacity="0.4"/>
+  <circle cx="50" cy="150" r="70" fill="none" stroke="#fbbf24" stroke-width="1" opacity="0.3"/>
+
+  <!-- Waves from slits -->
+  <circle cx="270" cy="115" r="30" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0.5"/>
+  <circle cx="270" cy="115" r="50" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0.3"/>
+  <circle cx="270" cy="185" r="30" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0.5"/>
+  <circle cx="270" cy="185" r="50" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0.3"/>
+
+  <!-- Screen -->
+  <rect x="500" y="50" width="10" height="200" fill="#475569"/>
+  <text x="540" y="150" text-anchor="middle" fill="#cbd5e1" font-size="12">Écran</text>
+
+  <!-- Interference pattern on screen -->
+  <rect x="510" y="90" width="15" height="8" fill="#10b981" opacity="0.8"/>
+  <rect x="510" y="110" width="15" height="6" fill="#10b981" opacity="0.4"/>
+  <rect x="510" y="128" width="15" height="10" fill="#10b981" opacity="0.9"/>
+  <rect x="510" y="148" width="15" height="6" fill="#10b981" opacity="0.4"/>
+  <rect x="510" y="165" width="15" height="9" fill="#10b981" opacity="0.8"/>
+  <rect x="510" y="185" width="15" height="5" fill="#10b981" opacity="0.3"/>
+
+  <!-- Labels -->
+  <text x="300" y="30" text-anchor="middle" fill="#f8fafc" font-size="16" font-weight="bold">Expérience de Young</text>
+  <text x="300" y="280" text-anchor="middle" fill="#94a3b8" font-size="11">Figure d'interférence → Preuve de la dualité onde-corpuscule</text>
+</svg>

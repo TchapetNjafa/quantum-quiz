@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats - Quantum Quiz PHY321</title>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/modal.css">
+
+    <!-- Chart.js for statistics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- MathJax -->
+    <script src="js/mathjax-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="results-page">
+    <canvas id="particle-canvas" class="particle-background"></canvas>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="btn-secondary">← Retour à l'accueil</a>
+        </div>
+    </header>
+
+    <!-- Results Hero -->
+    <section class="results-hero">
+        <div class="container">
+            <div class="results-hero-content">
+                <div class="celebration-icon" id="celebration-icon">🎉</div>
+                <h1 class="results-title" id="results-title">Félicitations !</h1>
+                <div class="score-display">
+                    <div class="score-circle">
+                        <svg class="score-ring" width="200" height="200">
+                            <circle class="score-ring-background" cx="100" cy="100" r="90"></circle>
+                            <circle class="score-ring-fill" id="score-ring-fill" cx="100" cy="100" r="90"></circle>
+                        </svg>
+                        <div class="score-text">
+                            <span class="score-percentage" id="score-percentage">85%</span>
+                            <span class="score-fraction" id="score-fraction">17/20</span>
+                            <span class="score-grade" id="score-grade">A</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="results-message" id="results-message">
+                    Excellente performance ! Vous maîtrisez bien les concepts.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Statistics -->
+    <section class="detailed-stats">
+        <div class="container">
+            <h2 class="section-title">Statistiques Détaillées</h2>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Score par Difficulté</div>
+                        <div class="difficulty-scores">
+                            <div class="difficulty-score">
+                                <span>🟢 Facile:</span>
+                                <strong id="easy-score">0/0</strong>
+                            </div>
+                            <div class="difficulty-score">
+                                <span>🟡 Moyen:</span>
+                                <strong id="medium-score">0/0</strong>
+                            </div>
+                            <div class="difficulty-score">
+                                <span>🔴 Difficile:</span>
+                                <strong id="hard-score">0/0</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Temps</div>
+                        <div class="stat-value" id="total-time">0 min</div>
+                        <div class="stat-sublabel">Temps moyen/question: <span id="avg-time">0s</span></div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Types de Questions</div>
+                        <div id="question-types-summary"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Radar Chart -->
+            <div class="chart-container">
+                <h3 class="subsection-title">Performance par Concept</h3>
+                <canvas id="performance-radar"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Question Review -->
+    <section class="question-review">
+        <div class="container">
+            <h2 class="section-title">Révision des Questions</h2>
+
+            <div class="review-filters">
+                <button class="filter-btn active" data-filter="all">Toutes</button>
+                <button class="filter-btn" data-filter="correct">✓ Correctes</button>
+                <button class="filter-btn" data-filter="incorrect">✗ Incorrectes</button>
+            </div>
+
+            <div id="questions-review-list" class="review-list">
+                <!-- Questions will be injected here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Actions -->
+    <section class="results-actions">
+        <div class="container">
+            <h2 class="section-title">Et Maintenant ?</h2>
+
+            <div class="actions-grid">
+                <button id="retry-quiz" class="action-card">
+                    <span class="action-icon">🔄</span>
+                    <strong>Refaire ce Quiz</strong>
+                    <small>Même configuration</small>
+                </button>
+
+                <button id="retry-errors" class="action-card">
+                    <span class="action-icon">🎯</span>
+                    <strong>Reprendre les Erreurs</strong>
+                    <small>Uniquement les questions ratées</small>
+                </button>
+
+                <a href="index.html" class="action-card">
+                    <span class="action-icon">📚</span>
+                    <strong>Nouveau Chapitre</strong>
+                    <small>Choisir un autre sujet</small>
+                </a>
+
+                <button id="export-pdf" class="action-card">
+                    <span class="action-icon">📥</span>
+                    <strong>Exporter en PDF</strong>
+                    <small>Sauvegarder vos résultats</small>
+                </button>
+
+                <button id="share-results" class="action-card">
+                    <span class="action-icon">🔗</span>
+                    <strong>Partager</strong>
+                    <small>Générer un lien</small>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress History -->
+    <section class="progress-history">
+        <div class="container">
+            <h2 class="section-title">Historique de Progression</h2>
+            <canvas id="progress-chart"></canvas>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Université de Yaoundé I - PHY321</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/statistics.js"></script>
+    <script src="js/results.js"></script>
+</body>
+</html>

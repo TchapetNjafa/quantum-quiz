@@ -1,115 +1,140 @@
-// localStorage management for quiz progress tracking
+/**
+ * Gestion du stockage local pour Quantum Quiz
+ */
 
-const Storage = {
-    // Save quiz results
-    saveQuizResult(quizData) {
-        const results = this.getQuizResults();
-        results.push({
-            ...quizData,
-            timestamp: new Date().toISOString()
-        });
-        localStorage.setItem('quantum_quiz_results', JSON.stringify(results));
-        this.updateStats();
+const StorageManager = {
+    KEYS: {
+        USER_STATS: 'quantum_quiz_user_stats',
+        QUIZ_HISTORY: 'quantum_quiz_history',
+        CURRENT_QUIZ: 'quantum_quiz_current',
+        SETTINGS: 'quantum_quiz_settings'
     },
-    
-    // Get all quiz results
-    getQuizResults() {
-        const data = localStorage.getItem('quantum_quiz_results');
-        return data ? JSON.parse(data) : [];
+
+    // Initialise les statistiques utilisateur
+    initUserStats() {
+        const stats = storage.get(this.KEYS.USER_STATS);
+        if (!stats) {
+            const defaultStats = {
+                totalQuizzes: 0,
+                totalQuestions: 0,
+                correctAnswers: 0,
+                averageScore: 0,
+                timeSpent: 0,
+                byChapter: {},
+                byDifficulty: { easy: 0, medium: 0, hard: 0 },
+                lastActivity: new Date().toISOString()
+            };
+            storage.set(this.KEYS.USER_STATS, defaultStats);
+            return defaultStats;
+        }
+        return stats;
     },
-    
-    // Get statistics
-    getStats() {
-        const stats = localStorage.getItem('quantum_quiz_stats');
-        return stats ? JSON.parse(stats) : {
-            totalQuizzes: 0,
-            averageScore: 0,
-            totalQuestions: 0,
-            correctAnswers: 0,
-            badges: []
+
+    // Récupère les statistiques
+    getUserStats() {
+        return storage.get(this.KEYS.USER_STATS) || this.initUserStats();
+    },
+
+    // Met à jour les statistiques après un quiz
+    updateStats(quizResults) {
+        const stats = this.getUserStats();
+
+        stats.totalQuizzes++;
+        stats.totalQuestions += quizResults.totalQuestions;
+        stats.correctAnswers += quizResults.correctAnswers;
+        stats.averageScore = Math.round((stats.correctAnswers / stats.totalQuestions) * 100);
+        stats.timeSpent += quizResults.timeSpent || 0;
+        stats.lastActivity = new Date().toISOString();
+
+        // Statistiques par chapitre
+        const chapterId = quizResults.chapterId || 'all';
+        if (!stats.byChapter[chapterId]) {
+            stats.byChapter[chapterId] = {
+                quizzes: 0,
+                questions: 0,
+                correct: 0,
+                score: 0
+            };
+        }
+        stats.byChapter[chapterId].quizzes++;
+        stats.byChapter[chapterId].questions += quizResults.totalQuestions;
+        stats.byChapter[chapterId].correct += quizResults.correctAnswers;
+        stats.byChapter[chapterId].score = Math.round(
+            (stats.byChapter[chapterId].correct / stats.byChapter[chapterId].questions) * 100
+        );
+
+        storage.set(this.KEYS.USER_STATS, stats);
+        return stats;
+    },
+
+    // Sauvegarde l'état actuel du quiz
+    saveCurrentQuiz(quizState) {
+        storage.set(this.KEYS.CURRENT_QUIZ, quizState);
+    },
+
+    // Récupère l'état du quiz en cours
+    getCurrentQuiz() {
+        return storage.get(this.KEYS.CURRENT_QUIZ);
+    },
+
+    // Supprime le quiz en cours
+    clearCurrentQuiz() {
+        storage.remove(this.KEYS.CURRENT_QUIZ);
+    },
+
+    // Ajoute un quiz à l'historique
+    addToHistory(quizResults) {
+        const history = storage.get(this.KEYS.QUIZ_HISTORY) || [];
+
+        const entry = {
+            id: generateId(),
+            date: new Date().toISOString(),
+            ...quizResults
+        };
+
+        history.unshift(entry);
+
+        // Garde seulement les 50 derniers
+        if (history.length > 50) {
+            history.splice(50);
+        }
+
+        storage.set(this.KEYS.QUIZ_HISTORY, history);
+        return entry;
+    },
+
+    // Récupère l'historique
+    getHistory() {
+        return storage.get(this.KEYS.QUIZ_HISTORY) || [];
+    },
+
+    // Alias pour compatibilité
+    getQuizHistory() {
+        return this.getHistory();
+    },
+
+    // Paramètres utilisateur
+    getSettings() {
+        return storage.get(this.KEYS.SETTINGS) || {
+            theme: 'dark',
+            soundEnabled: true,
+            showTimer: true,
+            showHints: true
         };
     },
-    
-    // Update statistics
-    updateStats() {
-        const results = this.getQuizResults();
-        if (results.length === 0) return;
-        
-        const totalQuizzes = results.length;
-        const totalQuestions = results.reduce((sum, r) => sum + r.totalQuestions, 0);
-        const correctAnswers = results.reduce((sum, r) => sum + r.correctAnswers, 0);
-        const averageScore = (correctAnswers / totalQuestions) * 100;
-        
-        const stats = {
-            totalQuizzes,
-            averageScore: Math.round(averageScore),
-            totalQuestions,
-            correctAnswers,
-            badges: this.calculateBadges(results)
-        };
-        
-        localStorage.setItem('quantum_quiz_stats', JSON.stringify(stats));
+
+    updateSettings(settings) {
+        const current = this.getSettings();
+        const updated = { ...current, ...settings };
+        storage.set(this.KEYS.SETTINGS, updated);
+        return updated;
     },
-    
-    // Calculate badges
-    calculateBadges(results) {
-        const badges = [];
-        
-        // Premier pas quantique
-        if (results.length >= 1) {
-            badges.push('premier_pas');
-        }
-        
-        // Cohérence (3 quiz > 80%)
-        const highScores = results.filter(r => r.score >= 80);
-        if (highScores.length >= 3) {
-            badges.push('coherence');
-        }
-        
-        // Opérateur hermitien (100% à un quiz)
-        const perfectScores = results.filter(r => r.score === 100);
-        if (perfectScores.length >= 1) {
-            badges.push('operateur_hermitien');
-        }
-        
-        // Marathonien (10 quiz complétés)
-        if (results.length >= 10) {
-            badges.push('marathonien');
-        }
-        
-        // Perfectionniste (5 quiz > 90%)
-        const excellentScores = results.filter(r => r.score >= 90);
-        if (excellentScores.length >= 5) {
-            badges.push('perfectionniste');
-        }
-        
-        return badges;
-    },
-    
-    // Get questions to review
-    getQuestionsToReview() {
-        const data = localStorage.getItem('quantum_quiz_review');
-        return data ? JSON.parse(data) : [];
-    },
-    
-    // Add question to review
-    addToReview(questionId) {
-        const review = this.getQuestionsToReview();
-        if (!review.includes(questionId)) {
-            review.push(questionId);
-            localStorage.setItem('quantum_quiz_review', JSON.stringify(review));
-        }
-    },
-    
-    // Clear review list
-    clearReview() {
-        localStorage.removeItem('quantum_quiz_review');
-    },
-    
-    // Clear all data
-    clearAll() {
-        localStorage.removeItem('quantum_quiz_results');
-        localStorage.removeItem('quantum_quiz_stats');
-        localStorage.removeItem('quantum_quiz_review');
+
+    // Réinitialise toutes les données
+    resetAll() {
+        Object.values(this.KEYS).forEach(key => storage.remove(key));
+        return this.initUserStats();
     }
 };
+
+console.log('✅ storage.js chargé');

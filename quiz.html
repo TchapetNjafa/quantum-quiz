@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz en Cours - Quantum Quiz PHY321</title>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- MathJax -->
+    <script src="js/mathjax-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body class="quiz-page">
+    <!-- Particle Background -->
+    <canvas id="particle-canvas" class="particle-background"></canvas>
+
+    <!-- Quiz Header -->
+    <header class="quiz-header">
+        <div class="container">
+            <div class="quiz-header-content">
+                <button id="quit-quiz" class="btn-secondary btn-icon-only" title="Quitter le quiz">
+                    ← Quitter
+                </button>
+
+                <div class="quiz-info">
+                    <h2 id="quiz-chapter-title">Chapitre 1 : États Quantiques</h2>
+                    <div class="quiz-mode-badge" id="quiz-mode-badge">Mode Apprentissage</div>
+                </div>
+
+                <div id="timer-display" class="timer" style="display: none;">
+                    ⏱️ <span id="time-remaining">00:00</span>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="progress-text">Question 1/20</span>
+                    <span id="progress-percentage">0%</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Quiz Container -->
+    <main class="quiz-container">
+        <div class="container">
+            <div class="quiz-card">
+                <!-- Question Header -->
+                <div class="question-header">
+                    <div class="question-meta">
+                        <span class="question-number" id="question-number">Question 1/20</span>
+                        <span class="difficulty-badge" id="difficulty-badge">🟡 Moyen</span>
+                    </div>
+                    <div class="question-tags" id="question-tags"></div>
+                </div>
+
+                <!-- Question Content -->
+                <div class="question-content" id="question-content">
+                    <!-- Le contenu de la question sera injecté ici dynamiquement -->
+                </div>
+
+                <!-- La zone de réponse sera générée dynamiquement par le JavaScript -->
+
+                <!-- Feedback Area -->
+                <div class="feedback-area" id="feedback-area" style="display: none;">
+                    <div class="feedback-content">
+                        <div class="feedback-icon" id="feedback-icon"></div>
+                        <div class="feedback-message" id="feedback-message"></div>
+                        <div class="feedback-explanation" id="feedback-explanation"></div>
+                        <div class="feedback-reference" id="feedback-reference"></div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="quiz-actions">
+                    <button id="prev-btn" class="btn btn-secondary">
+                        ← Précédent
+                    </button>
+
+                    <div class="spacer"></div>
+
+                    <button id="next-btn" class="btn btn-primary">
+                        Suivant →
+                    </button>
+
+                    <button id="submit-btn" class="btn btn-success" style="display: none;">
+                        ✓ Terminer le Quiz
+                    </button>
+                </div>
+
+                <!-- Keyboard Shortcuts Help -->
+                <div class="keyboard-shortcuts" id="shortcuts-help" style="display: none;">
+                    <h4>Raccourcis Clavier</h4>
+                    <ul>
+                        <li><kbd>1-4</kbd> Sélectionner options A-D</li>
+                        <li><kbd>V</kbd> / <kbd>F</kbd> Vrai / Faux</li>
+                        <li><kbd>Espace</kbd> Valider</li>
+                        <li><kbd>→</kbd> Question suivante</li>
+                        <li><kbd>←</kbd> Question précédente</li>
+                        <li><kbd>H</kbd> Afficher aide</li>
+                        <li><kbd>Échap</kbd> Pause</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Side Panel (optional - for statistics during quiz) -->
+            <aside class="quiz-side-panel">
+                <div class="panel-card">
+                    <h4>Progression</h4>
+                    <div class="mini-stats">
+                        <div class="mini-stat">
+                            <span class="mini-stat-label">Correctes</span>
+                            <span class="mini-stat-value" id="correct-count">0</span>
+                        </div>
+                        <div class="mini-stat">
+                            <span class="mini-stat-label">Incorrectes</span>
+                            <span class="mini-stat-value" id="incorrect-count">0</span>
+                        </div>
+                        <div class="mini-stat">
+                            <span class="mini-stat-label">Score</span>
+                            <span class="mini-stat-value" id="current-score">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="toggle-shortcuts" class="btn-secondary btn-small">
+                    ⌨️ Raccourcis (H)
+                </button>
+
+                <button id="toggle-sound" class="btn-secondary btn-small" onclick="
+                    if (typeof AudioSystem !== 'undefined') {
+                        const enabled = AudioSystem.toggle();
+                        this.querySelector('#sound-icon').textContent = enabled ? '🔊' : '🔇';
+                        AudioSystem.click();
+                    }
+                ">
+                    <span id="sound-icon">🔊</span> Son
+                </button>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Pause Modal -->
+    <div id="pause-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Quiz en Pause</h3>
+            <p>Que souhaitez-vous faire ?</p>
+            <div class="modal-actions">
+                <button id="resume-quiz" class="btn-primary">Reprendre</button>
+                <button id="quit-confirm" class="btn-danger">Quitter</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/question-renderer.js"></script>
+    <script src="js/quiz-engine.js"></script>
+</body>
+</html>

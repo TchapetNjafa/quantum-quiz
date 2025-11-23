@@ -1,0 +1,1990 @@
+{
+  "course_info": {
+    "title": "Introduction à la Mécanique Quantique",
+    "code": "PHY321",
+    "institution": "Université de Yaoundé I",
+    "year": "2025-2026",
+    "total_chapters": 6,
+    "total_questions": 80
+  },
+  "chapters": [
+    {
+      "chapter_id": 1,
+      "chapter_number": "1",
+      "chapter_title": "États Quantiques",
+      "chapter_description": "Découverte des phénomènes quantiques, amplitudes de probabilité, superposition d'états et qubits",
+      "section_reference": "Sections 1.1-1.4",
+      "key_concepts": [
+        "Dualité onde-corpuscule",
+        "Interférences quantiques",
+        "Amplitudes de probabilité",
+        "Superposition",
+        "Qubits",
+        "Espace de Hilbert",
+        "Sphère de Bloch",
+        "Décohérence"
+      ],
+      "questions": [
+        {
+          "id": "ch1-q001",
+          "type": "qcm",
+          "difficulty": "easy",
+          "question": "Dans l'expérience des fentes d'Young avec des photons individuels, que observe-t-on après avoir accumulé suffisamment d'impacts sur l'écran ?",
+          "options": [
+            "Deux taches distinctes correspondant aux deux fentes",
+            "Une figure d'interférence avec des franges alternées brillantes et sombres",
+            "Une distribution aléatoire sans structure particulière",
+            "Une seule tache centrale"
+          ],
+          "correct_answer": 1,
+          "explanation": "Même en envoyant les photons un par un, une figure d'interférence apparaît progressivement. Chaque photon arrive de manière localisée (comme une particule), mais leur accumulation révèle un comportement ondulatoire collectif avec des franges d'interférence. C'est la preuve stupéfiante qu'un quanton individuel peut interférer avec lui-même.",
+          "section_ref": "1.1.1",
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "tags": [
+            "Young",
+            "interférences",
+            "dualité"
+          ],
+          "time_estimate": 45,
+          "points": 1
+        },
+        {
+          "id": "ch1-q002",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "Quelle affirmation capture le mieux le principe de superposition quantique ?",
+          "options": [
+            "Une particule occupe plusieurs positions en même temps de manière concrète",
+            "Un système existe dans une combinaison linéaire d'états de base, représentant des potentialités coexistantes",
+            "La superposition est uniquement due à notre ignorance de l'état réel du système",
+            "Les particules se déplacent très rapidement entre différents états"
+          ],
+          "correct_answer": 1,
+          "explanation": "La superposition quantique n'est pas un mélange classique ou une ignorance, mais une véritable coexistence d'états potentiels représentée mathématiquement par $\\ket{\\psi} = \\alpha\\ket{0} + \\beta\\ket{1}$. Avant la mesure, le système n'a pas de valeur définie : il EST la superposition. C'est fondamentalement différent d'un système classique qui serait dans un état ou l'autre sans qu'on le sache.",
+          "section_ref": "1.2",
+          "formula": "$\\ket{\\psi} = \\alpha\\ket{0} + \\beta\\ket{1}$",
+          "image_url": null,
+          "image_alt": null,
+          "tags": [
+            "superposition",
+            "état quantique",
+            "principe"
+          ],
+          "time_estimate": 60,
+          "points": 1
+        },
+        {
+          "id": "ch1-q003",
+          "type": "vrai_faux",
+          "difficulty": "easy",
+          "question": "Dans l'interféromètre de Mach-Zehnder, si l'on bloque l'un des deux chemins possibles du photon, la figure d'interférence disparaît.",
+          "correct_answer": true,
+          "explanation": "VRAI. Lorsqu'on rend le chemin discernable (en bloquant une voie ou en marquant les photons d'une manière ou d'une autre), on détruit la cohérence quantique et donc les interférences. Le photon se comporte alors comme une particule classique. C'est une manifestation du principe de complémentarité de Bohr : on ne peut observer simultanément le comportement ondulatoire (interférences) et le comportement corpusculaire (chemin défini).",
+          "section_ref": "1.1.2",
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "tags": [
+            "Mach-Zehnder",
+            "interférences",
+            "complémentarité"
+          ],
+          "time_estimate": 45,
+          "points": 1
+        },
+        {
+          "id": "ch1-q004",
+          "type": "qcm",
+          "difficulty": "medium",
+          "context": "Un panneau solaire photovoltaïque installé à Yaoundé fonctionne grâce à l'effet photoélectrique, où les photons de la lumière solaire éjectent des électrons du matériau semi-conducteur.",
+          "question": "Quelle découverte fondamentale de la physique quantique est directement exploitée dans le fonctionnement des cellules solaires ?",
+          "options": [
+            "La nature ondulatoire de la lumière uniquement",
+            "La quantification de l'énergie lumineuse en photons",
+            "Le principe d'incertitude de Heisenberg",
+            "L'intrication quantique des électrons"
+          ],
+          "correct_answer": 1,
+          "explanation": "Les panneaux solaires exploitent l'effet photoélectrique : un photon d'énergie $E = h\\nu$ doit avoir une énergie supérieure au gap du semi-conducteur pour arracher un électron. C'est Einstein (1905) qui a expliqué ce phénomène en proposant que la lumière est constituée de quanta d'énergie (photons), ce qui a valu un Prix Nobel et a contribué à lancer la révolution quantique. Pour le silicium utilisé dans les panneaux au Cameroun, le seuil est d'environ 1.1 eV.",
+          "section_ref": "1.1",
+          "formula": "$E = h\\nu = \\frac{hc}{\\lambda}$",
+          "image_url": null,
+          "image_alt": null,
+          "tags": [
+            "photons",
+            "effet photoélectrique",
+            "contexte africain",
+            "énergie solaire"
+          ],
+          "time_estimate": 75,
+          "points": 1
+        },
+        {
+          "id": "ch1-q005",
+          "type": "qcm",
+          "difficulty": "hard",
+          "question": "Selon la règle de Born, si un état est $\\ket{\\psi} = \\frac{1}{\\sqrt{5}}\\ket{0} + \\frac{2}{\\sqrt{5}}\\ket{1}$, quelle est la probabilité de mesurer l'état $\\ket{1}$ ?",
+          "options": [
+            "$\\frac{1}{5}$",
+            "$\\frac{2}{5}$",
+            "$\\frac{4}{5}$",
+            "$\\frac{2}{\\sqrt{5}}$"
+          ],
+          "correct_answer": 2,
+          "explanation": "La règle de Born stipule que la probabilité est le carré du module de l'amplitude : $P(\\ket{1}) = |\\alpha_1|^2 = \\left|\\frac{2}{\\sqrt{5}}\\right|^2 = \\frac{4}{5}$. Attention au piège : ce n'est pas l'amplitude elle-même ($\\frac{2}{\\sqrt{5}}$) mais son carré qui donne la probabilité. Les amplitudes peuvent être complexes et interfèrent, mais les probabilités sont toujours réelles et positives.",
+          "section_ref": "1.2.2",
+          "formula": "$P(\\ket{n}) = |\\langle n|\\psi\\rangle|^2 = |\\alpha_n|^2$",
+          "image_url": null,
+          "image_alt": null,
+          "tags": [
+            "règle de Born",
+            "probabilité",
+            "amplitude"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch1-q006",
+          "type": "qcm",
+          "difficulty": "easy",
+          "question": "Qu'est-ce qu'un qubit ?",
+          "options": [
+            "Un bit classique qui peut valoir 0 ou 1",
+            "Un système quantique à deux niveaux pouvant être dans une superposition de $\\ket{0}$ et $\\ket{1}$",
+            "Une particule élémentaire découverte récemment",
+            "Un algorithme de calcul quantique"
+          ],
+          "correct_answer": 1,
+          "explanation": "Un qubit (quantum bit) est l'unité fondamentale d'information quantique. Contrairement au bit classique qui ne peut être que 0 OU 1, le qubit peut exister dans une superposition $\\ket{\\psi} = \\alpha\\ket{0} + \\beta\\ket{1}$ où $|\\alpha|^2 + |\\beta|^2 = 1$. C'est cette propriété de superposition qui donne leur puissance aux ordinateurs quantiques, permettant d'explorer simultanément de multiples possibilités.",
+          "section_ref": "1.3",
+          "formula": "$\\ket{\\psi} = \\alpha\\ket{0} + \\beta\\ket{1}$, $|\\alpha|^2 + |\\beta|^2 = 1$",
+          "image_url": null,
+          "image_alt": null,
+          "tags": [
+            "qubit",
+            "superposition",
+            "information quantique"
+          ],
+          "time_estimate": 45,
+          "points": 1
+        },
+        {
+          "id": "ch1-q007",
+          "type": "matching",
+          "difficulty": "medium",
+          "question": "Associez chaque expérience ou concept à son découvreur ou théoricien principal :",
+          "pairs": [
+            {
+              "left": "Fentes d'Young (interférences lumineuses)",
+              "right": "Thomas Young (1801)"
+            },
+            {
+              "left": "Dualité onde-corpuscule de la matière",
+              "right": "Louis de Broglie (1924)"
+            },
+            {
+              "left": "Principe de complémentarité",
+              "right": "Niels Bohr"
+            },
+            {
+              "left": "Chat dans une superposition mort/vivant",
+              "right": "Erwin Schrödinger (1935)"
+            }
+          ],
+          "distractors": [
+            "Albert Einstein",
+            "Werner Heisenberg",
+            "Max Planck"
+          ],
+          "explanation": "Ces quatre contributions ont façonné notre compréhension de la quantique : Young a démontré la nature ondulatoire de la lumière, de Broglie a étendu cette dualité à la matière, Bohr a formalisé la coexistence paradoxale des aspects onde/corpuscule, et Schrödinger a illustré l'étrangeté de la superposition avec son célèbre chat.",
+          "section_ref": "1.1-1.2",
+          "tags": [
+            "histoire",
+            "physiciens",
+            "expériences"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch1-q008",
+          "type": "vrai_faux",
+          "difficulty": "medium",
+          "question": "Un qubit dans l'état $\\ket{+} = \\frac{1}{\\sqrt{2}}(\\ket{0} + \\ket{1})$ a une probabilité de 100% d'être mesuré dans l'état $\\ket{0}$ ou $\\ket{1}$.",
+          "correct_answer": false,
+          "explanation": "FAUX. La question est trompeuse. Un qubit dans l'état $\\ket{+}$ a une probabilité de 50% d'être mesuré dans $\\ket{0}$ ET 50% dans $\\ket{1}$ (donc oui, au total 100% pour l'un OU l'autre). Mais l'énoncé suggère 100% pour chacun individuellement, ce qui est faux. Les probabilités sont $P(\\ket{0}) = |\\frac{1}{\\sqrt{2}}|^2 = \\frac{1}{2}$ et $P(\\ket{1}) = |\\frac{1}{\\sqrt{2}}|^2 = \\frac{1}{\\2}$. Attention à la formulation !",
+          "section_ref": "1.3.1",
+          "formula": "$\\ket{+} = \\frac{1}{\\sqrt{2}}(\\ket{0} + \\ket{1})$",
+          "image_url": null,
+          "image_alt": null,
+          "tags": [
+            "qubit",
+            "probabilité",
+            "état propre"
+          ],
+          "time_estimate": 75,
+          "points": 1
+        },
+        {
+          "id": "ch1-q009",
+          "type": "qcm",
+          "difficulty": "easy",
+          "question": "Qu'est-ce que la décohérence quantique ?",
+          "options": [
+            "Le processus par lequel un système quantique perd sa cohérence et se comporte de manière classique à cause de l'interaction avec l'environnement",
+            "La désintégration radioactive des particules quantiques",
+            "L'augmentation de l'énergie d'un système isolé",
+            "La transformation d'une onde en particule"
+          ],
+          "correct_answer": 0,
+          "explanation": "La décohérence est le mécanisme par lequel un système quantique en superposition perd ses propriétés quantiques (comme les interférences) en interagissant avec son environnement. Les informations de phase se dispersent dans l'environnement, et le système se comporte alors de manière classique. C'est le défi majeur pour les ordinateurs quantiques : maintenir la cohérence des qubits assez longtemps pour effectuer des calculs.",
+          "section_ref": "1.2.3",
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "tags": [
+            "décohérence",
+            "environnement",
+            "ordinateurs quantiques"
+          ],
+          "time_estimate": 60,
+          "points": 1
+        },
+        {
+          "id": "ch1-q010",
+          "type": "qcm",
+          "difficulty": "medium",
+          "context": "Les télécommunications au Cameroun (MTN, Orange) utilisent des fibres optiques qui transmettent l'information via des photons.",
+          "question": "Dans une fibre optique, les photons se propagent comme des ondes électromagnétiques, mais sont détectés individuellement aux terminaux. Ce comportement illustre quel principe fondamental ?",
+          "options": [
+            "Le principe d'exclusion de Pauli",
+            "La dualité onde-corpuscule",
+            "Le principe de moindre action",
+            "La conservation de l'énergie"
+          ],
+          "correct_answer": 1,
+          "explanation": "Les photons dans les fibres optiques manifestent la dualité onde-corpuscule : ils se propagent comme des ondes (obéissant aux lois de l'optique ondulatoire, réfraction, etc.) mais sont émis et absorbés comme des particules discrètes aux émetteurs et récepteurs. Cette dualité est au cœur de la mécanique quantique et s'applique aussi aux futures communications quantiques sécurisées par cryptographie quantique.",
+          "section_ref": "1.1",
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "tags": [
+            "dualité",
+            "photons",
+            "télécommunications",
+            "contexte africain"
+          ],
+          "time_estimate": 75,
+          "points": 1
+        },
+        {
+          "id": "ch1-q011",
+          "type": "qcm",
+          "difficulty": "hard",
+          "question": "Dans l'interféromètre de Mach-Zehnder, une lame de phase introduit un déphasage $\\phi$. Pour quel déphasage observe-t-on une interférence totalement destructive à la sortie 1 (aucun photon détecté) ?",
+          "options": [
+            "$\\phi = 0$",
+            "$\\phi = \\frac{\\pi}{2}$",
+            "$\\phi = \\pi$",
+            "$\\phi = 2\\pi$"
+          ],
+          "correct_answer": 2,
+          "explanation": "Pour une interférence destructive totale, les deux amplitudes qui se combinent doivent être en opposition de phase ($180°$ ou $\\pi$ radians). Si les deux chemins ont initialement la même amplitude $\\frac{1}{\\sqrt{2}}$, un déphasage de $\\pi$ sur l'un des chemins donne une amplitude totale $\\frac{1}{\\sqrt{2}}(1 + e^{i\\pi}) = \\frac{1}{\\sqrt{2}}(1 - 1) = 0$. C'est la signature de l'interférence quantique.",
+          "section_ref": "1.1.2",
+          "formula": "$A_{\\text{total}} = A_1 + A_2 e^{i\\phi}$",
+          "image_url": null,
+          "image_alt": null,
+          "tags": [
+            "Mach-Zehnder",
+            "interférence",
+            "déphasage"
+          ],
+          "time_estimate": 120,
+          "points": 1
+        },
+        {
+          "id": "ch1-q012",
+          "type": "qcm",
+          "difficulty": "easy",
+          "question": "Que représente l'amplitude de probabilité $\\alpha_n = \\langle n|\\psi\\rangle$ en mécanique quantique ?",
+          "options": [
+            "La probabilité directe de trouver le système dans l'état $\\ket{n}$",
+            "Un nombre complexe dont le carré du module donne la probabilité",
+            "L'énergie de l'état $\\ket{n}$",
+            "La position de la particule"
+          ],
+          "correct_answer": 1,
+          "explanation": "L'amplitude de probabilité $\\alpha_n$ est un nombre complexe qui contient à la fois une information d'intensité (son module $|\\alpha_n|$) et de phase (son argument $\\arg(\\alpha_n)$). C'est le carré du module, $|\\alpha_n|^2$, qui donne la probabilité. La phase est cruciale car elle permet les interférences quantiques. C'est la différence fondamentale entre probabilité classique (toujours positive) et amplitudes quantiques (complexes, peuvent interférer).",
+          "section_ref": "1.2.1",
+          "formula": "$P(n) = |\\langle n|\\psi\\rangle|^2 = |\\alpha_n|^2$",
+          "image_url": null,
+          "image_alt": null,
+          "tags": [
+            "amplitude",
+            "probabilité",
+            "nombres complexes"
+          ],
+          "time_estimate": 60,
+          "points": 1
+        },
+        {
+          "id": "ch1-q013",
+          "type": "vrai_faux",
+          "difficulty": "hard",
+          "question": "Le chat de Schrödinger est réellement dans une superposition d'états mort et vivant tant que la boîte n'est pas ouverte.",
+          "correct_answer": false,
+          "explanation": "FAUX (avec nuance). Le paradoxe du chat de Schrödinger visait à montrer l'absurdité apparente d'appliquer la superposition quantique à un objet macroscopique. En réalité, un système aussi macroscopique qu'un chat subit une décohérence quasi-instantanée due aux innombrables interactions avec son environnement. La superposition s'applique aux systèmes microscopiques isolés. Le chat est un outil pédagogique pour illustrer le problème de la mesure, non une description littérale de la réalité.",
+          "section_ref": "1.2.3",
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "tags": [
+            "Schrödinger",
+            "chat",
+            "superposition",
+            "décohérence"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch1-q014",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "Sur la sphère de Bloch, où est représenté l'état $\\ket{0}$ ?",
+          "options": [
+            "Au pôle nord de la sphère",
+            "Au pôle sud de la sphère",
+            "À l'équateur de la sphère",
+            "Au centre de la sphère"
+          ],
+          "correct_answer": 0,
+          "explanation": "Par convention, l'état $\\ket{0}$ est représenté au pôle nord de la sphère de Bloch, et $\\ket{1}$ au pôle sud. L'équateur contient les superpositions égales comme $\\ket{+} = \\frac{1}{\\sqrt{2}}(\\ket{0} + \\ket{1})$ et $\\ket{-} = \\frac{1}{\\sqrt{2}}(\\ket{0} - \\ket{1})$. Tout état pur d'un qubit correspond à un point sur la surface de la sphère, caractérisé par deux angles (theta et phi).",
+          "section_ref": "1.3.2",
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "tags": [
+            "sphère de Bloch",
+            "qubit",
+            "représentation"
+          ],
+          "time_estimate": 60,
+          "points": 1
+        },
+        {
+          "id": "ch1-q015",
+          "type": "numerical",
+          "difficulty": "medium",
+          "question": "Un qubit est dans l'état $\\ket{\\psi} = \\frac{3}{5}\\ket{0} + \\frac{4}{5}\\ket{1}$. Si on effectue une mesure dans la base computationnelle, quelle est la probabilité (en %) d'obtenir le résultat $\\ket{0}$ ?",
+          "correct_answer": 36,
+          "tolerance": 0.1,
+          "unit": "%",
+          "explanation": "La probabilité est le carré du module de l'amplitude : $P(\\ket{0}) = |\\frac{3}{5}|^2 = \\frac{9}{25} = 0.36 = 36\\%$. On vérifie la normalisation : $P(\\ket{0}) + P(\\ket{1}) = \\frac{9}{25} + \\frac{16}{25} = \\frac{25}{25} = 1$. ✓",
+          "section_ref": "1.2.2",
+          "formula": "$P(\\ket{0}) = |\\alpha_0|^2$",
+          "tags": [
+            "calcul",
+            "probabilité",
+            "normalisation"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch1-q016",
+          "type": "qcm",
+          "difficulty": "easy",
+          "question": "Quelle est la condition de normalisation pour un état quantique $\\ket{\\psi}$ ?",
+          "options": [
+            "$\\langle\\psi|\\psi\\rangle = 0$",
+            "$\\langle\\psi|\\psi\\rangle = 1$",
+            "$\\langle\\psi|\\psi\\rangle = \\infty$",
+            "$\\langle\\psi|\\psi\\rangle = \\hbar$"
+          ],
+          "correct_answer": 1,
+          "explanation": "La condition de normalisation $\\langle\\psi|\\psi\\rangle = 1$ assure que la somme de toutes les probabilités vaut 1 (certitude de trouver le système dans un état quelconque). Si $\\ket{\\psi} = \\sum_n \\alpha_n \\ket{n}$, alors $\\langle\\psi|\\psi\\rangle = \\sum_n |\\alpha_n|^2 = 1$. C'est une contrainte fondamentale : un état physique doit être normalisé.",
+          "section_ref": "1.3",
+          "formula": "$\\langle\\psi|\\psi\\rangle = \\sum_n |\\alpha_n|^2 = 1$",
+          "image_url": null,
+          "image_alt": null,
+          "tags": [
+            "normalisation",
+            "état quantique",
+            "probabilité"
+          ],
+          "time_estimate": 45,
+          "points": 1
+        },
+        {
+          "id": "ch1-q017",
+          "type": "interpretation",
+          "difficulty": "hard",
+          "question": "Analysez cette affirmation : \"Dans l'expérience des fentes d'Young, chaque photon passe par la fente 1 OU la fente 2, mais nous ne savons simplement pas laquelle.\" Cette interprétation est-elle correcte d'un point de vue quantique ? Justifiez.",
+          "sample_answer": "NON. Cette interprétation classique (variables cachées locales) a été réfutée. Si chaque photon passait réellement par UNE fente définie (même inconnue), on n'observerait pas d'interférences. L'observation d'interférences prouve que le photon explore les DEUX chemins simultanément en superposition avant la détection. C'est uniquement cette superposition cohérente des amplitudes des deux chemins qui produit les franges. Rendre le chemin observable (mesurer par quelle fente passe le photon) détruit la superposition et donc les interférences.",
+          "explanation": "Excellente question conceptuelle ! L'interprétation correcte exige d'abandonner l'intuition classique. Le photon n'a pas de trajectoire définie : il est décrit par une fonction d'onde qui se propage à travers les deux fentes. Les inégalités de Bell (1964) et les expériences d'Aspect (1982) ont confirmé expérimentalement qu'aucune théorie à variables cachées locales ne peut reproduire les prédictions quantiques. La superposition est réelle, pas une ignorance.",
+          "section_ref": "1.1.1",
+          "tags": [
+            "interprétation",
+            "fentes de Young",
+            "superposition",
+            "variables cachées"
+          ],
+          "time_estimate": 180,
+          "points": 2
+        },
+        {
+          "id": "ch1-q018",
+          "type": "qcm",
+          "difficulty": "easy",
+          "question": "Qu'est-ce qu'un espace de Hilbert en mécanique quantique ?",
+          "options": [
+            "Un laboratoire pour faire des expériences quantiques",
+            "Un espace vectoriel complexe muni d'un produit scalaire où vivent les états quantiques",
+            "Une région de l'espace-temps déformée par la gravité",
+            "Un type particulier d'ordinateur quantique"
+          ],
+          "correct_answer": 1,
+          "explanation": "L'espace de Hilbert $\\mathcal{H}$ est le cadre mathématique de la quantique : un espace vectoriel complexe de dimension finie ou infinie, muni d'un produit scalaire $\\langle\\cdot|\\cdot\\rangle$. Les états quantiques $\\ket{\\psi}$ sont des vecteurs dans cet espace, et les grandeurs physiques sont des opérateurs agissant sur ces vecteurs. Pour un qubit, $\\mathcal{H} = \\mathbb{C}^2$ (dimension 2).",
+          "section_ref": "1.3.3",
+          "formula": "$\\mathcal{H} = \\text{span}\\{\\ket{0}, \\ket{1}\\}$ pour un qubit",
+          "image_url": null,
+          "image_alt": null,
+          "tags": [
+            "Hilbert",
+            "espace vectoriel",
+            "mathématiques"
+          ],
+          "time_estimate": 60,
+          "points": 1
+        },
+        {
+          "id": "ch1-q019",
+          "type": "vrai_faux",
+          "difficulty": "medium",
+          "question": "Les amplitudes de probabilité peuvent être des nombres complexes avec une partie imaginaire non nulle.",
+          "correct_answer": true,
+          "explanation": "VRAI. Les amplitudes de probabilité $\\alpha_n = \\langle n|\\psi\\rangle$ sont des nombres complexes $\\alpha_n = a + ib \\in \\mathbb{C}$. C'est crucial car la phase complexe permet les interférences. Par exemple, $\\ket{\\psi} = \\frac{1}{\\sqrt{2}}\\ket{0} + \\frac{i}{\\sqrt{2}}\\ket{1}$ est un état physique valide. Seules les probabilités $P_n = |\\alpha_n|^2$ doivent être réelles et positives.",
+          "section_ref": "1.2.1",
+          "formula": "$\\alpha_n \\in \\mathbb{C}$, $P_n = |\\alpha_n|^2 \\in \\mathbb{R}^+$",
+          "image_url": null,
+          "image_alt": null,
+          "tags": [
+            "amplitudes",
+            "nombres complexes",
+            "phase"
+          ],
+          "time_estimate": 60,
+          "points": 1
+        },
+        {
+          "id": "ch1-q020",
+          "type": "matching",
+          "difficulty": "medium",
+          "question": "Associez chaque concept quantique à sa caractéristique principale :",
+          "pairs": [
+            {
+              "left": "Amplitude de probabilité",
+              "right": "Nombre complexe dont le carré du module donne la probabilité"
+            },
+            {
+              "left": "Qubit",
+              "right": "Système quantique à deux niveaux en superposition"
+            },
+            {
+              "left": "Décohérence",
+              "right": "Perte de cohérence quantique due à l'environnement"
+            },
+            {
+              "left": "Sphère de Bloch",
+              "right": "Représentation géométrique de l'état d'un qubit"
+            }
+          ],
+          "distractors": [
+            "Transformation unitaire",
+            "Principe d'exclusion",
+            "Spin-orbite"
+          ],
+          "explanation": "Ces quatre concepts sont les piliers de la description des systèmes quantiques simples (qubits). Les amplitudes sont les outils de calcul, les qubits sont les systèmes physiques, la décohérence est le défi pratique, et la sphère de Bloch est la visualisation géométrique.",
+          "section_ref": "1.2-1.3",
+          "tags": [
+            "concepts",
+            "qubit",
+            "visualisation"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        }
+      ]
+    },
+    {
+      "chapter_id": 2,
+      "chapter_number": "2",
+      "chapter_title": "Mesure et Opérateurs",
+      "chapter_description": "Expérience de Stern-Gerlach, quantification du spin, opérateurs hermitiens, valeurs propres et commutateurs",
+      "section_reference": "Sections 2.1-2.3",
+      "key_concepts": [
+        "Stern-Gerlach",
+        "Quantification du spin",
+        "Opérateurs hermitiens",
+        "Valeurs propres et vecteurs propres",
+        "Commutateurs",
+        "Matrices de Pauli",
+        "Principe d'incertitude généralisé",
+        "Mesures successives"
+      ],
+      "questions": [
+        {
+          "id": "ch2-q001",
+          "type": "qcm",
+          "difficulty": "easy",
+          "question": "Qu'a révélé l'expérience de Stern-Gerlach (1922) sur les atomes d'argent ?",
+          "options": [
+            "Les atomes ont une charge électrique négative",
+            "Le moment cinétique (spin) des atomes est quantifié et prend des valeurs discrètes",
+            "Les atomes se déplacent en ligne droite dans un champ magnétique",
+            "Les atomes sont tous identiques"
+          ],
+          "correct_answer": 1,
+          "explanation": "L'expérience de Stern-Gerlach a été une découverte révolutionnaire : en faisant passer un faisceau d'atomes d'argent dans un champ magnétique inhomogène, au lieu d'observer une déviation continue (attendue classiquement), ils ont observé deux taches discrètes. Cela a prouvé que le moment magnétique (lié au spin) est QUANTIFIÉ : il ne peut prendre que certaines valeurs discrètes (±ℏ/2 pour l'électron).",
+          "section_ref": "2.1",
+          "formula": "$S_z = \\pm\\frac{\\hbar}{2}$ pour un spin 1/2",
+          "tags": [
+            "Stern-Gerlach",
+            "quantification",
+            "spin",
+            "histoire"
+          ],
+          "time_estimate": 60,
+          "points": 1
+        },
+        {
+          "id": "ch2-q002",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "Si un électron est préparé dans l'état $\\ket{+}_z$ (spin up selon z) et qu'on mesure ensuite son spin selon l'axe x, quelles sont les probabilités des résultats possibles ?",
+          "options": [
+            "100% de probabilité d'obtenir $\\ket{+}_x$",
+            "50% $\\ket{+}_x$, 50% $\\ket{-}_x$",
+            "75% $\\ket{+}_x$, 25% $\\ket{-}_x$",
+            "Impossible de mesurer selon un axe différent"
+          ],
+          "correct_answer": 1,
+          "explanation": "L'état $\\ket{+}_z$ peut s'écrire dans la base $x$ comme $\\ket{+}_z = \\frac{1}{\\sqrt{2}}(\\ket{+}_x + \\ket{-}_x)$. Les probabilités sont donc $P(\\ket{+}_x) = |\\frac{1}{\\sqrt{2}}|^2 = 50\\%$ et $P(\\ket{-}_x) = 50\\%$. Cela illustre que des états qui sont certains dans une base peuvent être incertains dans une base non-commutante. C'est lié au principe d'incertitude de Heisenberg pour les composantes du spin.",
+          "section_ref": "2.1.2",
+          "formula": "$\\ket{+}_z = \\frac{1}{\\sqrt{2}}(\\ket{+}_x + \\ket{-}_x)$",
+          "tags": [
+            "spin",
+            "mesure",
+            "probabilité",
+            "changement de base"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch2-q003",
+          "type": "qcm",
+          "difficulty": "easy",
+          "question": "Qu'est-ce qu'un opérateur hermitien (ou auto-adjoint) ?",
+          "options": [
+            "Un opérateur dont toutes les valeurs propres sont nulles",
+            "Un opérateur égal à son adjoint : $\\hat{A}^\\dagger = \\hat{A}$",
+            "Un opérateur qui commute avec tous les autres opérateurs",
+            "Un opérateur qui n'a pas de valeurs propres"
+          ],
+          "correct_answer": 1,
+          "explanation": "Un opérateur hermitien (ou auto-adjoint) satisfait $\\hat{A}^\\dagger = \\hat{A}$. Ces opérateurs sont fondamentaux en mécanique quantique car ils représentent les observables physiques (position, impulsion, énergie, spin...). Leurs propriétés essentielles : (1) valeurs propres réelles, (2) vecteurs propres orthogonaux pour des valeurs propres distinctes, (3) base complète de vecteurs propres.",
+          "section_ref": "2.2.1",
+          "formula": "$\\hat{A}^\\dagger = \\hat{A}$",
+          "tags": [
+            "opérateur",
+            "hermitien",
+            "observable"
+          ],
+          "time_estimate": 45,
+          "points": 1
+        },
+        {
+          "id": "ch2-q004",
+          "type": "vrai_faux",
+          "difficulty": "medium",
+          "question": "Si deux opérateurs $\\hat{A}$ et $\\hat{B}$ commutent (i.e., $[\\hat{A},\\hat{B}]=0$), alors on peut mesurer simultanément les deux observables correspondantes avec une précision arbitraire.",
+          "correct_answer": true,
+          "explanation": "VRAI. Si $[\\hat{A},\\hat{B}] = \\hat{A}\\hat{B} - \\hat{B}\\hat{A} = 0$, les deux opérateurs partagent une base commune de vecteurs propres. On peut donc préparer le système dans un état propre commun, et mesurer A puis B (ou B puis A) sans perturber l'autre mesure. Exemple : $[\\hat{L}_z, \\hat{L}^2] = 0$ permet de connaître simultanément le moment angulaire total et sa composante z. À l'opposé, $[\\hat{x}, \\hat{p}] = i\\hbar \\neq 0$ implique le principe d'incertitude de Heisenberg.",
+          "section_ref": "2.3.2",
+          "formula": "$[\\hat{A},\\hat{B}] = 0 \\Rightarrow$ base commune de vecteurs propres",
+          "tags": [
+            "commutateur",
+            "mesure simultanée",
+            "incertitude"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch2-q005",
+          "type": "qcm",
+          "difficulty": "hard",
+          "question": "Quel est le commutateur $[\\hat{S}_x, \\hat{S}_y]$ pour le spin 1/2 ?",
+          "options": [
+            "$0$",
+            "$i\\hbar\\hat{S}_z$",
+            "$\\hbar\\hat{S}_z$",
+            "$-i\\hbar\\hat{S}_z$"
+          ],
+          "correct_answer": 1,
+          "explanation": "Les composantes du spin satisfont l'algèbre $[\\hat{S}_i, \\hat{S}_j] = i\\hbar\\epsilon_{ijk}\\hat{S}_k$ où $\\epsilon_{ijk}$ est le symbole de Levi-Civita. Pour $(i,j,k)=(x,y,z)$ : $[\\hat{S}_x, \\hat{S}_y] = i\\hbar\\hat{S}_z$. Cette relation de commutation cyclique est au cœur de la mécanique quantique du moment angulaire. Elle implique qu'on ne peut pas connaître simultanément toutes les composantes du spin, seulement une composante et le spin total $\\hat{S}^2$.",
+          "section_ref": "2.3.1",
+          "formula": "$[\\hat{S}_x, \\hat{S}_y] = i\\hbar\\hat{S}_z$ (et cycliquement)",
+          "tags": [
+            "commutateur",
+            "spin",
+            "algèbre de Lie"
+          ],
+          "time_estimate": 120,
+          "points": 1
+        },
+        {
+          "id": "ch2-q006",
+          "type": "qcm",
+          "difficulty": "medium",
+          "context": "Les techniques de Résonance Magnétique Nucléaire (RMN) utilisées dans certains hôpitaux africains modernes (comme le CHU de Yaoundé) exploitent les propriétés quantiques du spin des protons.",
+          "question": "En RMN, on mesure le retour à l'équilibre du spin des protons après une impulsion. Quelle propriété quantique est exploitée ?",
+          "options": [
+            "La quantification du spin nucléaire",
+            "L'effet tunnel",
+            "La radioactivité",
+            "L'effet photoélectrique"
+          ],
+          "correct_answer": 0,
+          "explanation": "La RMN (IRM médicale) exploite la quantification du spin des noyaux atomiques (protons de l'hydrogène dans l'eau du corps). Ces spins s'alignent dans un champ magnétique intense, puis une impulsion radio les fait basculer. En retournant à l'équilibre, ils émettent un signal radio caractéristique qui dépend de leur environnement chimique. C'est une application médicale directe de la mesure quantique du moment angulaire.",
+          "section_ref": "2.1",
+          "formula": "$\\mu = \\gamma \\vec{S}$ (moment magnétique)",
+          "tags": [
+            "spin",
+            "RMN",
+            "application médicale",
+            "contexte africain"
+          ],
+          "time_estimate": 75,
+          "points": 1
+        },
+        {
+          "id": "ch2-q007",
+          "type": "numerical",
+          "difficulty": "medium",
+          "question": "Les valeurs propres de l'opérateur $\\hat{S}_z$ pour un électron (spin 1/2) sont $\\pm\\frac{\\hbar}{2}$. En prenant $\\hbar = 1.055 \\times 10^{-34}$ J·s, calculez la valeur propre positive en unités de $10^{-35}$ J·s (arrondi à une décimale).",
+          "correct_answer": 5.3,
+          "tolerance": 0.1,
+          "unit": "×10⁻³⁵ J·s",
+          "explanation": "Valeur propre : $S_z = +\\frac{\\hbar}{2} = \\frac{1.055 \\times 10^{-34}}{2} = 5.275 \\times 10^{-35}$ J·s $\\approx 5.3 \\times 10^{-35}$ J·s. Cette valeur infinitésimale montre pourquoi les effets quantiques ne sont pas visibles à l'échelle macroscopique.",
+          "section_ref": "2.1.1",
+          "formula": "$S_z = \\pm\\frac{\\hbar}{2}$",
+          "tags": [
+            "spin",
+            "calcul",
+            "valeur propre"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch2-q008",
+          "type": "matching",
+          "difficulty": "medium",
+          "question": "Associez chaque matrice de Pauli à sa représentation correcte :",
+          "pairs": [
+            {
+              "left": "$\\hat{\\sigma}_x$",
+              "right": "$\\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$"
+            },
+            {
+              "left": "$\\hat{\\sigma}_y$",
+              "right": "$\\begin{pmatrix} 0 & -i \\\\ i & 0 \\end{pmatrix}$"
+            },
+            {
+              "left": "$\\hat{\\sigma}_z$",
+              "right": "$\\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}$"
+            },
+            {
+              "left": "Identité",
+              "right": "$\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$"
+            }
+          ],
+          "distractors": [
+            "$\\begin{pmatrix} 1 & 1 \\\\ 0 & 0 \\end{pmatrix}$",
+            "$\\begin{pmatrix} 0 & 0 \\\\ 0 & 0 \\end{pmatrix}$"
+          ],
+          "explanation": "Les matrices de Pauli ($\\sigma_x, \\sigma_y, \\sigma_z$) sont les opérateurs de spin pour un système à deux niveaux. Elles satisfont $\\hat{S}_i = \\frac{\\hbar}{2}\\hat{\\sigma}_i$ et forment, avec l'identité, une base pour toutes les matrices 2×2 hermitiennes. Propriétés : hermitiennes, traceless (sauf identité), $\\sigma_i^2 = I$, anticommutation $\\{\\sigma_i,\\sigma_j\\} = 2\\delta_{ij}I$.",
+          "section_ref": "2.2.2",
+          "tags": [
+            "Pauli",
+            "matrices",
+            "spin"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch2-q009",
+          "type": "vrai_faux",
+          "difficulty": "hard",
+          "question": "Les valeurs propres d'un opérateur hermitien peuvent être des nombres complexes avec partie imaginaire non nulle.",
+          "correct_answer": false,
+          "explanation": "FAUX. Un théorème fondamental stipule que les valeurs propres d'un opérateur hermitien sont TOUJOURS réelles. Preuve : Soit $\\hat{A}\\ket{\\psi} = \\lambda\\ket{\\psi}$. Alors $\\langle\\psi|\\hat{A}|\\psi\\rangle = \\lambda\\langle\\psi|\\psi\\rangle = \\lambda$. Comme $\\hat{A}=\\hat{A}^\\dagger$, on a aussi $\\langle\\psi|\\hat{A}|\\psi\\rangle = \\langle\\psi|\\hat{A}^\\dagger|\\psi\\rangle^* = \\langle\\psi|\\hat{A}|\\psi\\rangle^* = \\lambda^*$. Donc $\\lambda = \\lambda^* \\Rightarrow \\lambda \\in \\mathbb{R}$. C'est pourquoi les opérateurs hermitiens représentent les observables (qui doivent donner des valeurs mesurables réelles).",
+          "section_ref": "2.2.1",
+          "formula": "$\\hat{A} = \\hat{A}^\\dagger \\Rightarrow \\lambda_n \\in \\mathbb{R}$",
+          "tags": [
+            "hermitien",
+            "valeurs propres",
+            "théorème"
+          ],
+          "time_estimate": 120,
+          "points": 1
+        },
+        {
+          "id": "ch2-q010",
+          "type": "qcm",
+          "difficulty": "easy",
+          "question": "Que représente physiquement le carré du module du produit scalaire $|\\langle\\phi|\\psi\\rangle|^2$ entre deux états quantiques ?",
+          "options": [
+            "L'énergie de transition entre les états",
+            "La probabilité de transition ou la probabilité que le système dans l'état $\\ket{\\psi}$ soit trouvé dans l'état $\\ket{\\phi}$ lors d'une mesure",
+            "La distance entre les deux états",
+            "Le temps nécessaire pour passer d'un état à l'autre"
+          ],
+          "correct_answer": 1,
+          "explanation": "Le produit scalaire $\\langle\\phi|\\psi\\rangle$ est l'amplitude de probabilité de trouver le système dans l'état $\\ket{\\phi}$ s'il est préparé dans $\\ket{\\psi}$. Son carré du module $|\\langle\\phi|\\psi\\rangle|^2$ donne la probabilité de cette transition. Si $\\langle\\phi|\\psi\\rangle = 0$, les états sont orthogonaux (mutuellement exclusifs). Si $|\\langle\\phi|\\psi\\rangle| = 1$, les états sont identiques (à une phase près).",
+          "section_ref": "2.2",
+          "formula": "$P(\\phi|\\psi) = |\\langle\\phi|\\psi\\rangle|^2$",
+          "tags": [
+            "produit scalaire",
+            "probabilité",
+            "transition"
+          ],
+          "time_estimate": 60,
+          "points": 1
+        },
+        {
+          "id": "ch2-q011",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "Dans une séquence de mesures de Stern-Gerlach (SGz puis SGx puis SGz), si un atome sort $\\ket{+}_z$ de la première mesure et $\\ket{+}_x$ de la deuxième, quelle est la probabilité qu'il sorte $\\ket{+}_z$ de la troisième ?",
+          "options": [
+            "100% (il était déjà sorti $\\ket{+}_z$ au début)",
+            "50% (la deuxième mesure a 'effacé' l'information de la première)",
+            "0% (il doit sortir $\\ket{-}_z$)",
+            "25%"
+          ],
+          "correct_answer": 1,
+          "explanation": "La réponse correcte est 50%. Après la première mesure SGz, l'état est $\\ket{+}_z$. La deuxième mesure SGx projette sur $\\ket{+}_x$, qui peut s'écrire $\\ket{+}_x = \\frac{1}{\\sqrt{2}}(\\ket{+}_z + \\ket{-}_z)$. Cette mesure 'efface' complètement l'information sur $S_z$ : l'atome est maintenant en superposition égale de $\\ket{+}_z$ et $\\ket{-}_z$. La troisième mesure SGz donnera donc 50% de chance pour chaque résultat. C'est un exemple fascinant de l'effet perturbateur de la mesure quantique.",
+          "section_ref": "2.1.3",
+          "formula": "$\\ket{+}_x = \\frac{1}{\\sqrt{2}}(\\ket{+}_z + \\ket{-}_z)$",
+          "tags": [
+            "Stern-Gerlach",
+            "mesures successives",
+            "perturbation"
+          ],
+          "time_estimate": 120,
+          "points": 1
+        },
+        {
+          "id": "ch2-q012",
+          "type": "interpretation",
+          "difficulty": "hard",
+          "question": "Expliquez pourquoi il est impossible de construire un appareil qui mesure simultanément et avec précision arbitraire les trois composantes du spin ($S_x$, $S_y$, $S_z$) d'un électron.",
+          "sample_answer": "C'est impossible à cause des relations de commutation non-nulles : $[\\hat{S}_x, \\hat{S}_y] = i\\hbar\\hat{S}_z$ (et cycliquement). Ces opérateurs n'ont pas de base commune de vecteurs propres. Mesurer $S_z$ projette l'état sur $\\ket{+}_z$ ou $\\ket{-}_z$, mais ces états sont des superpositions dans la base de $S_x$ et $S_y$. Le principe d'incertitude de Heisenberg généralisé impose $\\Delta S_x \\Delta S_y \\geq \\frac{\\hbar}{2}|\\langle S_z\\rangle|$. On peut connaître précisément UNE composante (et le spin total $S^2$), mais pas les trois simultanément.",
+          "explanation": "Excellente réponse conceptuelle ! Cette impossibilité n'est pas une limitation technologique mais une propriété fondamentale de la nature quantique. Les relations de commutation reflètent l'incompatibilité intrinsèque de certaines mesures. C'est analogue au principe d'incertitude position-impulsion, mais ici pour les composantes du moment angulaire. La mécanique quantique impose des limites fondamentales à ce qu'on peut connaître simultanément.",
+          "section_ref": "2.3",
+          "tags": [
+            "principe d'incertitude",
+            "commutateur",
+            "mesure",
+            "spin"
+          ],
+          "time_estimate": 180,
+          "points": 2
+        }
+      ]
+    },
+    {
+      "chapter_id": 3,
+      "chapter_number": "3",
+      "chapter_title": "Postulats de la Mécanique Quantique",
+      "chapter_description": "Les six postulats fondamentaux, règle de Born, projection, évolution unitaire et équation de Schrödinger",
+      "section_reference": "Sections 3.1-3.3",
+      "key_concepts": [
+        "Six postulats",
+        "Espace de Hilbert",
+        "Règle de Born",
+        "Projection du vecteur d'état",
+        "Équation de Schrödinger",
+        "Évolution unitaire",
+        "États stationnaires",
+        "Constantes de mouvement",
+        "Oscillations de Rabi"
+      ],
+      "questions": [
+        {
+          "id": "ch3-q001",
+          "type": "qcm",
+          "difficulty": "easy",
+          "question": "Combien de postulats fondamentaux structurent la mécanique quantique selon le cours PHY321 ?",
+          "options": [
+            "3 postulats",
+            "4 postulats",
+            "6 postulats",
+            "10 postulats"
+          ],
+          "correct_answer": 2,
+          "explanation": "La mécanique quantique repose sur 6 postulats fondamentaux : (1) Espace de Hilbert pour les états, (2) Opérateurs hermitiens pour les observables, (3) Règle de Born pour les probabilités de mesure, (4) Projection de l'état après mesure, (5) Évolution unitaire (équation de Schrödinger), (6) Composition de systèmes (produit tensoriel). Ces postulats sont les axiomes qui permettent de tout déduire en mécanique quantique.",
+          "section_ref": "3.1",
+          "formula": null,
+          "tags": [
+            "postulats",
+            "fondements",
+            "axiomes"
+          ],
+          "time_estimate": 45,
+          "points": 1
+        },
+        {
+          "id": "ch3-q002",
+          "type": "vrai_faux",
+          "difficulty": "medium",
+          "question": "Selon le postulat de la mesure (règle de Born), la mesure d'une observable $\\hat{A}$ sur l'état $\\ket{\\psi}$ donne TOUJOURS une valeur propre de $\\hat{A}$.",
+          "correct_answer": true,
+          "explanation": "VRAI. C'est un postulat fondamental : toute mesure d'une observable (opérateur hermitien) donne nécessairement l'une de ses valeurs propres $a_n$, avec probabilité $P(a_n) = |\\langle a_n|\\psi\\rangle|^2$ où $\\ket{a_n}$ est le vecteur propre associé. Même si l'état initial $\\ket{\\psi}$ est une superposition complexe, le résultat de mesure sera toujours une valeur propre. C'est la 'réduction' ou 'collapse' du vecteur d'état.",
+          "section_ref": "3.1.3",
+          "formula": "$\\hat{A}\\ket{a_n} = a_n\\ket{a_n}$, mesure $\\rightarrow$ résultat $\\in \\{a_n\\}$",
+          "tags": [
+            "postulat",
+            "mesure",
+            "règle de Born",
+            "valeurs propres"
+          ],
+          "time_estimate": 75,
+          "points": 1
+        },
+        {
+          "id": "ch3-q003",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "Que devient l'état d'un système quantique immédiatement APRÈS une mesure qui donne le résultat $a_n$ ?",
+          "options": [
+            "L'état ne change pas, il reste $\\ket{\\psi}$",
+            "L'état devient le vecteur propre $\\ket{a_n}$ correspondant (état propre de l'observable mesurée)",
+            "L'état devient une superposition de tous les vecteurs propres",
+            "L'état est détruit et le système disparaît"
+          ],
+          "correct_answer": 1,
+          "explanation": "C'est le postulat de projection (ou collapse) : après une mesure donnant $a_n$, l'état du système est projeté sur le vecteur propre correspondant $\\ket{a_n}$. Si on répète immédiatement la même mesure, on obtiendra $a_n$ avec 100% de certitude. Mathématiquement : $\\ket{\\psi} \\xrightarrow{\\text{mesure } a_n} \\ket{a_n}$ (état normalisé). C'est l'aspect 'non-unitaire' de la mesure, qui contraste avec l'évolution unitaire continue.",
+          "section_ref": "3.1.4",
+          "formula": "$\\ket{\\psi} \\xrightarrow{\\text{mesure}} \\frac{\\hat{P}_n\\ket{\\psi}}{\\sqrt{\\langle\\psi|\\hat{P}_n|\\psi\\rangle}}$ où $\\hat{P}_n = \\ket{a_n}\\bra{a_n}$",
+          "tags": [
+            "postulat",
+            "projection",
+            "collapse",
+            "mesure"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch3-q004",
+          "type": "qcm",
+          "difficulty": "easy",
+          "question": "Quelle équation décrit l'évolution temporelle d'un état quantique en l'absence de mesure ?",
+          "options": [
+            "L'équation de Newton $F = ma$",
+            "L'équation de Maxwell $\\nabla \\times \\vec{E} = -\\frac{\\partial \\vec{B}}{\\partial t}$",
+            "L'équation de Schrödinger $i\\hbar\\frac{\\partial}{\\partial t}\\ket{\\psi(t)} = \\hat{H}\\ket{\\psi(t)}$",
+            "L'équation de Boltzmann"
+          ],
+          "correct_answer": 2,
+          "explanation": "L'équation de Schrödinger dépendante du temps est le postulat qui régit l'évolution continue d'un système quantique : $i\\hbar\\frac{\\partial}{\\partial t}\\ket{\\psi(t)} = \\hat{H}\\ket{\\psi(t)}$, où $\\hat{H}$ est l'hamiltonien (opérateur énergie). Cette évolution est déterministe, linéaire et unitaire (préserve la normalisation). Elle contraste avec la mesure qui est non-unitaire et probabiliste.",
+          "section_ref": "3.2",
+          "formula": "$i\\hbar\\frac{\\partial}{\\partial t}\\ket{\\psi(t)} = \\hat{H}\\ket{\\psi(t)}$",
+          "tags": [
+            "Schrödinger",
+            "évolution",
+            "hamiltonien"
+          ],
+          "time_estimate": 45,
+          "points": 1
+        },
+        {
+          "id": "ch3-q005",
+          "type": "vrai_faux",
+          "difficulty": "hard",
+          "question": "Si l'hamiltonien $\\hat{H}$ ne dépend pas explicitement du temps, alors la probabilité de trouver le système dans un état propre d'énergie est constante au cours du temps.",
+          "correct_answer": true,
+          "explanation": "VRAI. Si $\\ket{\\psi(0)} = \\ket{E_n}$ (état propre de $\\hat{H}$), alors $\\ket{\\psi(t)} = e^{-iE_nt/\\hbar}\\ket{E_n}$. Le facteur de phase $e^{-iE_nt/\\hbar}$ est global et n'affecte pas les probabilités : $|\\langle E_m|\\psi(t)\\rangle|^2 = |\\langle E_m|E_n\\rangle|^2 = \\delta_{mn}$ (constant). Les états stationnaires ont une probabilité constante, seule la phase évolue. C'est pourquoi on les appelle 'stationnaires'. Pour une superposition d'états d'énergie, les probabilités oscillent.",
+          "section_ref": "3.2.2",
+          "formula": "$\\ket{E_n(t)} = e^{-iE_nt/\\hbar}\\ket{E_n}$ (état stationnaire)",
+          "tags": [
+            "états stationnaires",
+            "hamiltonien",
+            "conservation"
+          ],
+          "time_estimate": 120,
+          "points": 1
+        },
+        {
+          "id": "ch3-q006",
+          "type": "numerical",
+          "difficulty": "medium",
+          "question": "Un système quantique à deux niveaux a des énergies $E_1 = 0$ eV et $E_2 = 2$ eV. Si le système est dans l'état $\\ket{\\psi} = \\frac{1}{\\sqrt{2}}(\\ket{E_1} + \\ket{E_2})$, quelle est la valeur moyenne de l'énergie $\\langle E\\rangle$ en eV ?",
+          "correct_answer": 1.0,
+          "tolerance": 0.01,
+          "unit": "eV",
+          "explanation": "La valeur moyenne est $\\langle E\\rangle = \\langle\\psi|\\hat{H}|\\psi\\rangle = |\\alpha_1|^2 E_1 + |\\alpha_2|^2 E_2 = \\frac{1}{2}(0) + \\frac{1}{2}(2) = 1$ eV. Bien que l'état soit une superposition, la valeur moyenne est entre les deux énergies propres, pondérée par les probabilités $|\\alpha_i|^2$. Une mesure donnera soit 0 eV (50%) soit 2 eV (50%), jamais 1 eV.",
+          "section_ref": "3.1.3",
+          "formula": "$\\langle \\hat{A}\\rangle = \\sum_n P(a_n) a_n = \\sum_n |\\langle a_n|\\psi\\rangle|^2 a_n$",
+          "tags": [
+            "valeur moyenne",
+            "énergie",
+            "calcul"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch3-q007",
+          "type": "qcm",
+          "difficulty": "medium",
+          "context": "Les horloges atomiques, utilisées notamment dans les systèmes de positionnement par satellite (GPS) et désormais en développement dans certaines infrastructures africaines, exploitent les transitions atomiques ultra-stables.",
+          "question": "Quel postulat de la mécanique quantique permet de comprendre la précision des horloges atomiques basées sur les transitions entre niveaux d'énergie ?",
+          "options": [
+            "La quantification exacte et reproductible des niveaux d'énergie (valeurs propres de l'hamiltonien)",
+            "Le principe d'exclusion de Pauli",
+            "L'effet tunnel",
+            "L'intrication quantique"
+          ],
+          "correct_answer": 0,
+          "explanation": "Les horloges atomiques exploitent le fait que les niveaux d'énergie atomiques sont quantifiés avec une précision extraordinaire : tous les atomes de césium-133, par exemple, ont EXACTEMENT la même fréquence de transition hyperfine (9 192 631 770 Hz par définition). Cette universalité des valeurs propres de l'hamiltonien (postulat 2) garantit la reproductibilité. Une horloge atomique mesure le nombre d'oscillations de cette transition, définissant ainsi la seconde avec 16 chiffres significatifs !",
+          "section_ref": "3.1.2",
+          "formula": "$\\nu = \\frac{E_2 - E_1}{h}$ (fréquence de transition)",
+          "tags": [
+            "application",
+            "horloges atomiques",
+            "quantification",
+            "contexte africain"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch3-q008",
+          "type": "matching",
+          "difficulty": "medium",
+          "question": "Associez chaque postulat à sa description :",
+          "pairs": [
+            {
+              "left": "Postulat 1",
+              "right": "Les états sont des vecteurs dans un espace de Hilbert"
+            },
+            {
+              "left": "Postulat 2",
+              "right": "Les observables sont des opérateurs hermitiens"
+            },
+            {
+              "left": "Postulat 3",
+              "right": "Les résultats de mesure sont les valeurs propres (règle de Born)"
+            },
+            {
+              "left": "Postulat 5",
+              "right": "L'évolution est régie par l'équation de Schrödinger"
+            }
+          ],
+          "distractors": [
+            "Les particules suivent des trajectoires",
+            "L'énergie est continue",
+            "Le temps est quantifié"
+          ],
+          "explanation": "Ces quatre postulats (1, 2, 3, 5 sur 6) forment le cœur mathématique de la théorie : l'espace des états (Hilbert), les grandeurs mesurables (opérateurs hermitiens), les prédictions statistiques (Born), et la dynamique (Schrödinger). Le postulat 4 (projection) et 6 (produit tensoriel) complètent l'édifice.",
+          "section_ref": "3.1",
+          "tags": [
+            "postulats",
+            "structure",
+            "théorie"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch3-q009",
+          "type": "qcm",
+          "difficulty": "hard",
+          "question": "Un système dans un état propre $\\ket{a_n}$ de l'observable $\\hat{A}$ évolue selon l'hamiltonien $\\hat{H}$. Après un temps $t$, quelle est la probabilité de mesurer encore $a_n$ si $[\\hat{A}, \\hat{H}] = 0$ ?",
+          "options": [
+            "Diminue exponentiellement avec le temps",
+            "Reste égale à 100% (constante de mouvement)",
+            "Oscille avec le temps",
+            "Devient nulle après un temps fini"
+          ],
+          "correct_answer": 1,
+          "explanation": "Si $[\\hat{A}, \\hat{H}] = 0$, l'observable $\\hat{A}$ est une CONSTANTE DE MOUVEMENT : sa valeur moyenne ne change pas au cours du temps. Plus précisément, si $\\ket{\\psi(0)} = \\ket{a_n}$ est un état propre commun de $\\hat{A}$ et $\\hat{H}$, alors $\\ket{\\psi(t)} = e^{-iEt/\\hbar}\\ket{a_n}$ reste un état propre de $\\hat{A}$ (à une phase près). La probabilité $|\\langle a_n|\\psi(t)\\rangle|^2 = 1$ reste 100%. C'est pourquoi on recherche les observables qui commutent avec $\\hat{H}$ : elles restent constantes (énergie, moment angulaire pour un potentiel central, etc.).",
+          "section_ref": "3.2.3",
+          "formula": "$[\\hat{A}, \\hat{H}] = 0 \\Rightarrow \\frac{d\\langle \\hat{A}\\rangle}{dt} = 0$",
+          "tags": [
+            "constante de mouvement",
+            "commutateur",
+            "évolution"
+          ],
+          "time_estimate": 120,
+          "points": 1
+        },
+        {
+          "id": "ch3-q010",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "Dans l'équation de Schrödinger dépendante du temps, le facteur $i$ (imaginaire) devant $\\hbar$ joue quel rôle crucial ?",
+          "options": [
+            "Il est là par convention historique et pourrait être omis",
+            "Il garantit que l'évolution est unitaire et préserve la normalisation",
+            "Il rend l'équation plus difficile à résoudre",
+            "Il représente une perte d'énergie"
+          ],
+          "correct_answer": 1,
+          "explanation": "Le facteur $i$ est ESSENTIEL, pas une convention ! Il garantit que l'opérateur d'évolution $\\hat{U}(t) = e^{-i\\hat{H}t/\\hbar}$ est unitaire ($\\hat{U}^\\dagger\\hat{U} = I$), ce qui préserve la normalisation : $\\langle\\psi(t)|\\psi(t)\\rangle = \\langle\\psi(0)|\\psi(0)\\rangle = 1$. Sans le $i$, on aurait une décroissance ou croissance exponentielle, violant la conservation de la probabilité. C'est une différence profonde avec l'équation de diffusion (réelle) qui décrit des processus dissipatifs.",
+          "section_ref": "3.2.1",
+          "formula": "$i\\hbar\\frac{\\partial\\ket{\\psi}}{\\partial t} = \\hat{H}\\ket{\\psi}$ $\\Rightarrow$ $\\hat{U}$ unitaire",
+          "tags": [
+            "Schrödinger",
+            "unitarité",
+            "conservation"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch3-q011",
+          "type": "vrai_faux",
+          "difficulty": "medium",
+          "question": "La formule d'oscillation de Rabi décrit l'évolution d'un système à deux niveaux couplé à un champ externe oscillant (comme un laser ou une onde radio).",
+          "correct_answer": true,
+          "explanation": "VRAI. Les oscillations de Rabi décrivent la transition périodique entre deux niveaux quantiques sous l'effet d'un couplage résonnant. La probabilité oscille comme $P(t) = \\sin^2(\\Omega_R t / 2)$ où $\\Omega_R$ est la fréquence de Rabi (proportionnelle à l'intensité du champ). C'est fondamental pour : (1) la RMN/IRM, (2) le contrôle des qubits dans les ordinateurs quantiques, (3) le refroidissement laser, (4) les horloges atomiques. Découvert par Isidor Rabi (Prix Nobel 1944).",
+          "section_ref": "3.3",
+          "formula": "$P_{1\\to 2}(t) = \\sin^2\\left(\\frac{\\Omega_R t}{2}\\right)$ (résonance)",
+          "tags": [
+            "Rabi",
+            "oscillations",
+            "transitions",
+            "couplage"
+          ],
+          "time_estimate": 75,
+          "points": 1
+        },
+        {
+          "id": "ch3-q012",
+          "type": "interpretation",
+          "difficulty": "hard",
+          "question": "Expliquez le 'problème de la mesure' en mécanique quantique : pourquoi la mesure semble-t-elle incompatible avec l'évolution unitaire de Schrödinger ?",
+          "sample_answer": "Le problème vient de deux types d'évolution incompatibles : (1) ENTRE les mesures : évolution unitaire continue, déterministe, réversible (Schrödinger) qui maintient les superpositions. (2) PENDANT la mesure : collapse non-unitaire, probabiliste, irréversible qui détruit les superpositions et projette sur un état propre. Ces deux processus sont mathématiquement incohérents. Si la mesure est aussi un processus physique, pourquoi n'obéit-elle pas à Schrödinger ? Où et quand se produit le collapse ? C'est le cœur des débats sur l'interprétation de la MQ (Copenhague, mondes multiples, etc.).",
+          "explanation": "Excellente analyse ! Ce problème, soulevé notamment par Schrödinger avec son chat et par von Neumann, reste débattu aujourd'hui. Les approches modernes (décohérence) montrent que l'interaction avec l'environnement peut simuler un collapse apparent, mais la question philosophique persiste : la mesure est-elle fondamentale ou émerge-t-elle de l'évolution unitaire d'un système plus large ?",
+          "section_ref": "3.1.4",
+          "tags": [
+            "problème de la mesure",
+            "collapse",
+            "interprétation",
+            "philosophie"
+          ],
+          "time_estimate": 180,
+          "points": 2
+        }
+      ]
+    },
+    {
+      "chapter_id": 4,
+      "chapter_number": "4",
+      "chapter_title": "Systèmes Multi-Qubits et Intrication",
+      "chapter_description": "Produit tensoriel, états intriqués, états de Bell, téléportation quantique et non-localité",
+      "section_reference": "Sections 4.1-4.3",
+      "key_concepts": [
+        "Produit tensoriel",
+        "Intrication quantique",
+        "États de Bell",
+        "Non-localité",
+        "Paradoxe EPR",
+        "Théorème de non-clonage",
+        "Téléportation quantique",
+        "Cryptographie quantique",
+        "Matrice densité",
+        "États mixtes"
+      ],
+      "questions": [
+        {
+          "id": "ch4-q001",
+          "type": "qcm",
+          "difficulty": "easy",
+          "question": "Comment combine-t-on mathématiquement deux systèmes quantiques indépendants (par exemple deux qubits) ?",
+          "options": [
+            "Par addition des vecteurs d'état",
+            "Par multiplication scalaire",
+            "Par produit tensoriel $\\otimes$ des espaces de Hilbert",
+            "Par produit scalaire"
+          ],
+          "correct_answer": 2,
+          "explanation": "Le postulat 6 de la mécanique quantique stipule que l'espace des états d'un système composé est le produit tensoriel des espaces individuels : $\\mathcal{H}_{AB} = \\mathcal{H}_A \\otimes \\mathcal{H}_B$. Si le qubit A est dans $\\ket{\\psi}_A$ et le qubit B dans $\\ket{\\phi}_B$, l'état combiné est $\\ket{\\psi}_A \\otimes \\ket{\\phi}_B$ (souvent noté $\\ket{\\psi}_A\\ket{\\phi}_B$ ou $\\ket{\\psi,\\phi}$). Pour deux qubits, $\\dim(\\mathcal{H}_{AB}) = 2 \\times 2 = 4$.",
+          "section_ref": "4.1",
+          "formula": "$\\mathcal{H}_{AB} = \\mathcal{H}_A \\otimes \\mathcal{H}_B$",
+          "tags": [
+            "produit tensoriel",
+            "systèmes composés",
+            "multi-qubits"
+          ],
+          "time_estimate": 60,
+          "points": 1
+        },
+        {
+          "id": "ch4-q002",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "Parmi les états suivants de deux qubits, lequel est un état intriqué (non séparable) ?",
+          "options": [
+            "$\\ket{00}$",
+            "$\\ket{0}_A \\otimes \\ket{+}_B = \\frac{1}{\\sqrt{2}}\\ket{0}_A(\\ket{0}_B + \\ket{1}_B)$",
+            "$\\ket{\\Phi^+} = \\frac{1}{\\sqrt{2}}(\\ket{00} + \\ket{11})$ (état de Bell)",
+            "$\\ket{++} = \\frac{1}{2}(\\ket{00} + \\ket{01} + \\ket{10} + \\ket{11})$"
+          ],
+          "correct_answer": 2,
+          "explanation": "L'état $\\ket{\\Phi^+} = \\frac{1}{\\sqrt{2}}(\\ket{00} + \\ket{11})$ est intriqué car il NE PEUT PAS s'écrire comme $\\ket{\\psi}_A \\otimes \\ket{\\phi}_B$. Les deux qubits sont corrélés de manière irréductible : si on mesure le premier et obtient 0, le second sera certainement 0 ; si on obtient 1, le second sera 1. Les options (a), (b) et (d) sont séparables (produit tensoriel de deux états individuels). L'intrication est la ressource clé pour la téléportation, la cryptographie et le calcul quantiques.",
+          "section_ref": "4.2.1",
+          "formula": "Intriqué $\\Leftrightarrow$ $\\ket{\\psi}_{AB} \\neq \\ket{\\psi}_A \\otimes \\ket{\\phi}_B$",
+          "tags": [
+            "intrication",
+            "états de Bell",
+            "non-séparable"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch4-q003",
+          "type": "matching",
+          "difficulty": "medium",
+          "question": "Associez chaque état de Bell à sa forme mathématique :",
+          "pairs": [
+            {
+              "left": "$\\ket{\\Phi^+}$",
+              "right": "$\\frac{1}{\\sqrt{2}}(\\ket{00} + \\ket{11})$"
+            },
+            {
+              "left": "$\\ket{\\Phi^-}$",
+              "right": "$\\frac{1}{\\sqrt{2}}(\\ket{00} - \\ket{11})$"
+            },
+            {
+              "left": "$\\ket{\\Psi^+}$",
+              "right": "$\\frac{1}{\\sqrt{2}}(\\ket{01} + \\ket{10})$"
+            },
+            {
+              "left": "$\\ket{\\Psi^-}$",
+              "right": "$\\frac{1}{\\sqrt{2}}(\\ket{01} - \\ket{10})$"
+            }
+          ],
+          "distractors": [
+            "$\\frac{1}{2}(\\ket{00} + \\ket{01} + \\ket{10} + \\ket{11})$",
+            "$\\ket{00}$"
+          ],
+          "explanation": "Les quatre états de Bell forment une base orthonormée maximalement intriquée pour deux qubits. Ils sont au cœur du protocole de téléportation quantique (Bennett et al., 1993) et de la cryptographie quantique. $\\ket{\\Phi^\\pm}$ sont symétriques/antisymétriques pour l'échange de bits, $\\ket{\\Psi^\\pm}$ sont les singulets/triplets de spin.",
+          "section_ref": "4.2.2",
+          "tags": [
+            "états de Bell",
+            "base",
+            "intrication maximale"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch4-q004",
+          "type": "vrai_faux",
+          "difficulty": "hard",
+          "question": "Dans un état intriqué, mesurer un qubit instantanément 'modifie' l'état de l'autre qubit, même s'ils sont séparés de plusieurs années-lumière, permettant une communication supraluminique.",
+          "correct_answer": false,
+          "explanation": "FAUX ! C'est une idée fausse courante. Bien que la mesure d'un qubit d'une paire intriquée projette instantanément l'état du second (non-localité quantique), cela NE permet PAS de transmettre de l'information plus vite que la lumière. Pourquoi ? Les résultats de mesure sont ALÉATOIRES : Alice ne peut pas contrôler ce qu'obtient Bob. Pour exploiter les corrélations quantiques, Alice et Bob doivent communiquer classiquement (à vitesse ≤ c) pour comparer leurs résultats. Le théorème de non-signalisation garantit la compatibilité avec la relativité.",
+          "section_ref": "4.2.3",
+          "formula": "Non-localité $\\neq$ Causalité supraluminique",
+          "tags": [
+            "intrication",
+            "non-localité",
+            "relativité",
+            "idée fausse"
+          ],
+          "time_estimate": 120,
+          "points": 1
+        },
+        {
+          "id": "ch4-q005",
+          "type": "qcm",
+          "difficulty": "easy",
+          "question": "Combien de paramètres complexes indépendants sont nécessaires pour décrire l'état pur le plus général de deux qubits ?",
+          "options": [
+            "2 paramètres (comme un seul qubit)",
+            "4 paramètres",
+            "6 paramètres",
+            "8 paramètres"
+          ],
+          "correct_answer": 2,
+          "explanation": "Un état de deux qubits vit dans $\\mathcal{H} = \\mathbb{C}^4$ : $\\ket{\\psi} = \\alpha_{00}\\ket{00} + \\alpha_{01}\\ket{01} + \\alpha_{10}\\ket{10} + \\alpha_{11}\\ket{11}$. Cela fait 4 amplitudes complexes = 8 paramètres réels. Avec la normalisation (1 contrainte) et la phase globale non-physique (1 degré de liberté), reste 8 - 2 = 6 paramètres indépendants. C'est plus que les 2 paramètres d'un qubit, reflétant la richesse de l'intrication.",
+          "section_ref": "4.1.2",
+          "formula": "$\\dim(\\mathcal{H}_2) = 2^2 = 4 \\Rightarrow 2(4-1) = 6$ paramètres réels",
+          "tags": [
+            "espace de Hilbert",
+            "dimension",
+            "paramètres"
+          ],
+          "time_estimate": 75,
+          "points": 1
+        },
+        {
+          "id": "ch4-q006",
+          "type": "qcm",
+          "difficulty": "medium",
+          "context": "Le Centre Africain de Recherche Quantique (hypothétique, mais des initiatives émergent) développerait des protocoles de communication quantique sécurisée entre Yaoundé et Dakar.",
+          "question": "Quelle propriété des états intriqués est exploitée dans les protocoles de distribution quantique de clés (QKD) pour garantir la sécurité ?",
+          "options": [
+            "L'impossibilité de cloner un état quantique (théorème de non-clonage)",
+            "La vitesse de la lumière",
+            "La radioactivité",
+            "Le principe d'exclusion de Pauli"
+          ],
+          "correct_answer": 0,
+          "explanation": "La QKD (BB84, E91) exploite deux principes quantiques : (1) Le théorème de non-clonage : il est IMPOSSIBLE de copier un état quantique inconnu sans le perturber. Donc un espion ne peut pas intercepter et copier les qubits sans être détecté. (2) La non-localité des états intriqués : toute mesure non-autorisée modifie les corrélations. Ces propriétés garantissent une sécurité prouvée par les lois de la physique (pas seulement la complexité algorithmique). Des tests ont déjà été faits entre villes africaines !",
+          "section_ref": "4.2.4",
+          "formula": "Non-clonage : $\\nexists$ opération unitaire $\\hat{U}$ telle que $\\hat{U}(\\ket{\\psi}\\ket{0}) = \\ket{\\psi}\\ket{\\psi}$ $\\forall\\ket{\\psi}$",
+          "tags": [
+            "cryptographie quantique",
+            "non-clonage",
+            "QKD",
+            "contexte africain"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch4-q007",
+          "type": "vrai_faux",
+          "difficulty": "medium",
+          "question": "Le paradoxe EPR (Einstein-Podolsky-Rosen, 1935) a été conçu pour prouver que la mécanique quantique était incomplète.",
+          "correct_answer": true,
+          "explanation": "VRAI. Einstein, Podolsky et Rosen ont publié un article argumentant que la mécanique quantique devait être incomplète car elle prédisait des corrélations 'fantomatiques' entre particules séparées (action à distance). Ils pensaient que des variables cachées locales devaient exister. MAIS les expériences (Aspect 1982, et des milliers depuis) ont montré qu'Einstein avait tort : la nature EST non-locale ! Les inégalités de Bell (1964) ont fourni le test expérimental, confirmant la mécanique quantique contre les théories à variables cachées locales.",
+          "section_ref": "4.2.3",
+          "tags": [
+            "EPR",
+            "histoire",
+            "non-localité",
+            "Bell"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch4-q008",
+          "type": "numerical",
+          "difficulty": "medium",
+          "question": "Deux qubits sont dans l'état de Bell $\\ket{\\Phi^+} = \\frac{1}{\\sqrt{2}}(\\ket{00} + \\ket{11})$. Si on mesure le premier qubit dans la base computationnelle et qu'on obtient 0, quelle est la probabilité (en %) que le second qubit soit également dans l'état $\\ket{0}$ ?",
+          "correct_answer": 100,
+          "tolerance": 0.1,
+          "unit": "%",
+          "explanation": "Après la mesure donnant 0 pour le premier qubit, l'état $\\ket{\\Phi^+}$ collapse sur la composante $\\ket{00}$ (puisque c'est la seule avec le premier bit = 0). Le second qubit est alors CERTAINEMENT dans $\\ket{0}$ : probabilité = 100%. C'est la corrélation parfaite de l'intrication. Si on avait mesuré 1, le second serait certainement 1. Ces corrélations violent les inégalités de Bell classiques.",
+          "section_ref": "4.2.1",
+          "formula": "$\\ket{\\Phi^+} \\xrightarrow{\\text{mesure 1er=0}} \\ket{00}$ (projection)",
+          "tags": [
+            "intrication",
+            "mesure",
+            "corrélation",
+            "calcul"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch4-q009",
+          "type": "qcm",
+          "difficulty": "hard",
+          "question": "Qu'est-ce que la matrice densité $\\hat{\\rho}$ et pourquoi est-elle nécessaire ?",
+          "options": [
+            "Elle décrit uniquement les états purs comme les kets",
+            "Elle généralise la description quantique pour inclure les mélanges statistiques (états mixtes)",
+            "Elle représente l'opérateur hamiltonien",
+            "Elle n'est utilisée qu'en relativité quantique"
+          ],
+          "correct_answer": 1,
+          "explanation": "La matrice densité $\\hat{\\rho}$ généralise le formalisme des kets pour décrire : (1) États purs : $\\hat{\\rho} = \\ket{\\psi}\\bra{\\psi}$ (idempotent, $\\mathrm{Tr}(\\hat{\\rho}^2)=1$), (2) États mixtes : mélanges statistiques $\\hat{\\rho} = \\sum_i p_i \\ket{\\psi_i}\\bra{\\psi_i}$ où $p_i$ sont des probabilités classiques ($\\mathrm{Tr}(\\hat{\\rho}^2)<1$). C'est essentiel pour décrire la décohérence, les systèmes ouverts, et les sous-systèmes d'états intriqués (trace partielle). L'entropie de von Neumann $S = -\\mathrm{Tr}(\\hat{\\rho}\\log\\hat{\\rho})$ quantifie l'intrication.",
+          "section_ref": "4.3",
+          "formula": "$\\hat{\\rho} = \\sum_i p_i \\ket{\\psi_i}\\bra{\\psi_i}$, $\\mathrm{Tr}(\\hat{\\rho})=1$",
+          "tags": [
+            "matrice densité",
+            "états mixtes",
+            "formalisme"
+          ],
+          "time_estimate": 120,
+          "points": 1
+        },
+        {
+          "id": "ch4-q010",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "Dans la téléportation quantique (protocole de Bennett), qu'est-ce qui est réellement 'téléporté' ?",
+          "options": [
+            "La matière physique du qubit",
+            "L'INFORMATION quantique (l'état) du qubit, pas la matière",
+            "L'énergie du qubit",
+            "Rien n'est téléporté, c'est de la science-fiction"
+          ],
+          "correct_answer": 1,
+          "explanation": "La téléportation quantique transfère l'ÉTAT quantique (l'information) d'un qubit à un autre, sans déplacer le qubit physique lui-même. Processus : Alice a un qubit dans un état inconnu $\\ket{\\psi}$ à téléporter à Bob. (1) Ils partagent une paire intriquée, (2) Alice fait une mesure de Bell sur son qubit et la moitié de la paire, (3) Elle envoie le résultat (2 bits classiques) à Bob, (4) Bob applique une opération unitaire et obtient exactement $\\ket{\\psi}$. L'état original d'Alice est détruit (non-clonage). Démontré expérimentalement en 1997 !",
+          "section_ref": "4.2.5",
+          "tags": [
+            "téléportation quantique",
+            "protocole",
+            "intrication"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch4-q011",
+          "type": "vrai_faux",
+          "difficulty": "easy",
+          "question": "Un ordinateur quantique à $n$ qubits peut représenter simultanément $2^n$ valeurs classiques grâce à la superposition.",
+          "correct_answer": true,
+          "explanation": "VRAI. Un système de $n$ qubits a un espace de Hilbert de dimension $2^n$, et l'état général est $\\ket{\\psi} = \\sum_{x=0}^{2^n-1} \\alpha_x \\ket{x}$, une superposition de toutes les $2^n$ configurations binaires. C'est la source de la puissance potentielle des ordinateurs quantiques : ils peuvent 'calculer' sur toutes ces valeurs en parallèle quantique. MAIS attention : lors de la mesure finale, on obtient UN SEUL résultat. L'art du calcul quantique est de concevoir des algorithmes qui amplifient l'amplitude de la bonne réponse.",
+          "section_ref": "4.1.3",
+          "formula": "$n$ qubits $\\Rightarrow$ $\\dim(\\mathcal{H}) = 2^n$",
+          "tags": [
+            "ordinateurs quantiques",
+            "superposition",
+            "parallélisme"
+          ],
+          "time_estimate": 75,
+          "points": 1
+        },
+        {
+          "id": "ch4-q012",
+          "type": "interpretation",
+          "difficulty": "hard",
+          "question": "Expliquez pourquoi l'intrication quantique est considérée comme une 'ressource' en théorie de l'information quantique, au même titre que l'énergie en thermodynamique.",
+          "sample_answer": "L'intrication est une ressource car : (1) Elle peut être CONSOMMÉE : La téléportation utilise une paire intriquée qui est détruite dans le processus. (2) Elle peut être CONCENTRÉE : Des protocoles (distillation) transforment plusieurs paires faiblement intriquées en quelques paires maximalement intriquées. (3) Elle est QUANTIFIABLE : L'entropie d'intrication mesure la 'quantité' d'intrication (en ebits). (4) Elle PERMET des tâches impossibles classiquement : téléportation, superdense coding (transmettre 2 bits avec 1 qubit + intrication), certains calculs quantiques. (5) Elle est NON-LOCALE et ne peut être créée que par interaction directe, puis distribuée. C'est une ressource 'non-classique' fondamentale.",
+          "explanation": "Excellente analyse ! Cette vision de l'intrication comme ressource a révolutionné le domaine dans les années 1990-2000 (Bennett, Wootters, etc.). Elle a mené à la théorie de l'information quantique, où on mesure les capacités des canaux quantiques, optimise l'utilisation de l'intrication, etc. L'entropie d'intrication joue un rôle analogue à l'entropie thermodynamique.",
+          "section_ref": "4.2-4.3",
+          "tags": [
+            "intrication",
+            "ressource",
+            "information quantique",
+            "théorie"
+          ],
+          "time_estimate": 180,
+          "points": 2
+        }
+      ]
+    },
+    {
+      "chapter_id": 5,
+      "chapter_number": "5",
+      "chapter_title": "Espace Continu et Fonctions d'Onde",
+      "chapter_description": "Fonction d'onde, relation de de Broglie, transformée de Fourier, paquets d'ondes et principe d'incertitude",
+      "section_reference": "Sections 5.1-5.3",
+      "key_concepts": [
+        "Fonction d'onde",
+        "Densité de probabilité",
+        "Relation de de Broglie",
+        "Transformée de Fourier",
+        "Représentation position/impulsion",
+        "Paquet d'ondes",
+        "Vitesse de groupe",
+        "Étalement du paquet d'ondes",
+        "Principe d'incertitude de Heisenberg"
+      ],
+      "questions": [
+        {
+          "id": "ch5-q001",
+          "type": "qcm",
+          "difficulty": "easy",
+          "question": "Que représente la fonction d'onde $\\psi(x)$ en mécanique quantique ?",
+          "options": [
+            "La probabilité de trouver la particule en $x$",
+            "L'amplitude de probabilité dont le carré du module donne la densité de probabilité",
+            "La vitesse de la particule en $x$",
+            "L'énergie de la particule"
+          ],
+          "correct_answer": 1,
+          "explanation": "La fonction d'onde $\\psi(x)$ est une amplitude de probabilité complexe. La densité de probabilité de trouver la particule dans un intervalle $[x, x+dx]$ est $P(x)dx = |\\psi(x)|^2 dx$. Attention : $\\psi(x)$ elle-même peut être complexe et même négative (si réelle) ; seul $|\\psi(x)|^2$ est une densité de probabilité. Normalisation : $\\int_{-\\infty}^{+\\infty} |\\psi(x)|^2 dx = 1$.",
+          "section_ref": "5.1",
+          "formula": "$P(x) = |\\psi(x)|^2$ (densité de probabilité)",
+          "tags": [
+            "fonction d'onde",
+            "probabilité",
+            "espace continu"
+          ],
+          "time_estimate": 60,
+          "points": 1
+        },
+        {
+          "id": "ch5-q002",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "Quelle est la relation de de Broglie entre la longueur d'onde $\\lambda$ et l'impulsion $p$ d'une particule ?",
+          "options": [
+            "$\\lambda = hp$",
+            "$\\lambda = \\frac{h}{p} = \\frac{2\\pi\\hbar}{p}$",
+            "$\\lambda = \\frac{p}{h}$",
+            "$\\lambda = E/p$"
+          ],
+          "correct_answer": 1,
+          "explanation": "La relation de de Broglie (1924) : $\\lambda = \\frac{h}{p}$ ou $p = \\hbar k$ avec $k = \\frac{2\\pi}{\\lambda}$ (nombre d'onde). Cette hypothèse révolutionnaire, confirmée par Davisson-Germer (1927), a étendu la dualité onde-corpuscule à la matière. Exemple : un électron de 1 eV a $\\lambda \\approx 1.2$ nm, comparable aux distances atomiques, d'où l'importance des effets quantiques à l'échelle nano.",
+          "section_ref": "5.2.1",
+          "formula": "$\\lambda = \\frac{h}{p}$, $p = \\hbar k$",
+          "tags": [
+            "de Broglie",
+            "longueur d'onde",
+            "impulsion"
+          ],
+          "time_estimate": 75,
+          "points": 1
+        },
+        {
+          "id": "ch5-q003",
+          "type": "vrai_faux",
+          "difficulty": "medium",
+          "question": "Un paquet d'ondes localisé dans l'espace se propage en s'étalant au cours du temps, même dans le vide et en l'absence de forces.",
+          "correct_answer": true,
+          "explanation": "VRAI. C'est l'ÉTALEMENT DU PAQUET D'ONDES, conséquence directe du principe d'incertitude de Heisenberg. Un paquet localisé en position ($\\Delta x$ petit) contient nécessairement une dispersion en impulsion ($\\Delta p$ grand), donc différentes composantes de vitesse. Au cours du temps, ces composantes se séparent, étalant le paquet. Mathématiquement, pour une particule libre : $\\Delta x(t) \\propto \\sqrt{1 + (t/\\tau)^2}$ où $\\tau = m(\\Delta x_0)^2/\\hbar$ est le temps caractéristique d'étalement. C'est un effet purement quantique.",
+          "section_ref": "5.3.2",
+          "formula": "$\\Delta x(t) \\sim \\Delta x_0 \\sqrt{1 + \\left(\\frac{\\hbar t}{2m(\\Delta x_0)^2}\\right)^2}$",
+          "tags": [
+            "paquet d'ondes",
+            "étalement",
+            "dispersion"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch5-q004",
+          "type": "qcm",
+          "difficulty": "easy",
+          "question": "Quelle est la transformée de Fourier reliant la fonction d'onde en position $\\psi(x)$ et en impulsion $\\tilde{\\psi}(p)$ ?",
+          "options": [
+            "$\\tilde{\\psi}(p) = \\int \\psi(x) e^{ipx/\\hbar} dx$",
+            "$\\tilde{\\psi}(p) = \\int \\psi(x) e^{-ipx/\\hbar} dx$",
+            "$\\tilde{\\psi}(p) = \\frac{d\\psi}{dx}$",
+            "$\\tilde{\\psi}(p) = \\psi(p)$"
+          ],
+          "correct_answer": 1,
+          "explanation": "La transformée de Fourier relie les représentations position et impulsion (à un facteur de normalisation près) : $\\tilde{\\psi}(p) = \\frac{1}{\\sqrt{2\\pi\\hbar}}\\int_{-\\infty}^{+\\infty} \\psi(x) e^{-ipx/\\hbar} dx$. Le signe dans l'exponentielle suit la convention de Fourier. Les deux représentations sont équivalentes et contiennent la même information physique. En impulsion, $|\\tilde{\\psi}(p)|^2$ donne la densité de probabilité en impulsion.",
+          "section_ref": "5.2.2",
+          "formula": "$\\tilde{\\psi}(p) = \\frac{1}{\\sqrt{2\\pi\\hbar}}\\int \\psi(x) e^{-ipx/\\hbar} dx$",
+          "tags": [
+            "Fourier",
+            "impulsion",
+            "représentation"
+          ],
+          "time_estimate": 60,
+          "points": 1
+        },
+        {
+          "id": "ch5-q005",
+          "type": "numerical",
+          "difficulty": "medium",
+          "question": "Un électron a une vitesse $v = 10^6$ m/s. Calculez sa longueur d'onde de de Broglie en nanomètres (nm). Données : $m_e = 9.1 \\times 10^{-31}$ kg, $h = 6.63 \\times 10^{-34}$ J·s. Arrondissez à deux décimales.",
+          "correct_answer": 0.73,
+          "tolerance": 0.02,
+          "unit": "nm",
+          "explanation": "Calcul : $\\lambda = \\frac{h}{mv} = \\frac{6.63 \\times 10^{-34}}{9.1 \\times 10^{-31} \\times 10^6} = \\frac{6.63}{9.1} \\times 10^{-9}$ m $\\approx 0.728 \\times 10^{-9}$ m $= 0.73$ nm. Cette longueur d'onde est comparable aux distances inter-atomiques, expliquant pourquoi les électrons dans les microscopes électroniques peuvent 'voir' des structures atomiques.",
+          "section_ref": "5.2.1",
+          "formula": "$\\lambda = \\frac{h}{mv}$",
+          "tags": [
+            "de Broglie",
+            "calcul",
+            "électron"
+          ],
+          "time_estimate": 120,
+          "points": 1
+        },
+        {
+          "id": "ch5-q006",
+          "type": "qcm",
+          "difficulty": "hard",
+          "question": "Pour une particule libre (potentiel nul), quelle est la solution générale de l'équation de Schrödinger dépendante du temps en une dimension ?",
+          "options": [
+            "$\\psi(x,t) = Ae^{i(kx-\\omega t)}$ (onde plane monochromatique)",
+            "$\\psi(x,t) = \\int A(k) e^{i(kx-\\omega(k) t)} dk$ (superposition d'ondes planes)",
+            "$\\psi(x,t) = \\psi(x)$ (stationnaire)",
+            "$\\psi(x,t) = \\delta(x-vt)$ (particule classique)"
+          ],
+          "correct_answer": 1,
+          "explanation": "Pour une particule libre, la solution la plus générale est un PAQUET D'ONDES : $\\psi(x,t) = \\int A(k) e^{i(kx-\\omega(k)t)} dk$ où $\\omega(k) = \\frac{\\hbar k^2}{2m}$ (relation de dispersion). Une onde plane unique (option a) n'est pas normalisable (énergie/impulsion parfaitement définies $\\Rightarrow$ position totalement indéfinie). Un paquet d'ondes réaliste combine des ondes planes avec une distribution $A(k)$ qui permet la localisation. La forme du paquet évolue selon la dispersion.",
+          "section_ref": "5.3.1",
+          "formula": "$\\omega(k) = \\frac{\\hbar k^2}{2m}$, $E = \\frac{p^2}{2m} = \\frac{\\hbar^2 k^2}{2m}$",
+          "tags": [
+            "paquet d'ondes",
+            "particule libre",
+            "Schrödinger"
+          ],
+          "time_estimate": 120,
+          "points": 1
+        },
+        {
+          "id": "ch5-q007",
+          "type": "qcm",
+          "difficulty": "medium",
+          "context": "Les microscopes électroniques modernes (disponibles dans certains centres de recherche africains comme iThemba LABS en Afrique du Sud) exploitent la courte longueur d'onde des électrons accélérés.",
+          "question": "Pourquoi les microscopes électroniques ont-ils une résolution bien meilleure que les microscopes optiques ?",
+          "options": [
+            "Les électrons sont plus petits que les photons",
+            "La longueur d'onde de de Broglie des électrons peut être beaucoup plus courte que celle de la lumière visible",
+            "Les électrons ne sont pas soumis à la diffraction",
+            "Les électrons voyagent plus vite que la lumière"
+          ],
+          "correct_answer": 1,
+          "explanation": "La résolution d'un microscope est limitée par la longueur d'onde (critère de Rayleigh : $d \\sim \\lambda$). Lumière visible : $\\lambda \\sim 400-700$ nm. Électrons de 100 keV : $\\lambda_{eV} \\approx 0.004$ nm (picomètres !), soit ~100 000 fois plus court. Cela permet d'atteindre la résolution atomique. C'est une application spectaculaire de la dualité onde-corpuscule de de Broglie. Les MET (Microscopes Électroniques à Transmission) modernes atteignent 0.05 nm de résolution.",
+          "section_ref": "5.2.1",
+          "formula": "$\\lambda_e = \\frac{h}{\\sqrt{2m_e E}}$ (électron non-relativiste)",
+          "tags": [
+            "de Broglie",
+            "microscope",
+            "application",
+            "contexte africain"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch5-q008",
+          "type": "matching",
+          "difficulty": "medium",
+          "question": "Associez chaque grandeur à sa représentation en mécanique quantique dans l'espace des positions :",
+          "pairs": [
+            {
+              "left": "Opérateur position",
+              "right": "$\\hat{x} = x$ (multiplication par $x$)"
+            },
+            {
+              "left": "Opérateur impulsion",
+              "right": "$\\hat{p} = -i\\hbar\\frac{\\partial}{\\partial x}$"
+            },
+            {
+              "left": "Opérateur énergie cinétique",
+              "right": "$\\hat{T} = -\\frac{\\hbar^2}{2m}\\frac{\\partial^2}{\\partial x^2}$"
+            },
+            {
+              "left": "Opérateur hamiltonien (particule libre)",
+              "right": "$\\hat{H} = -\\frac{\\hbar^2}{2m}\\nabla^2$"
+            }
+          ],
+          "distractors": [
+            "$\\hat{H} = mc^2$",
+            "$\\hat{p} = m\\frac{dx}{dt}$"
+          ],
+          "explanation": "En représentation position, la position est un opérateur de multiplication tandis que l'impulsion est un opérateur différentiel. Cette asymétrie vient du fait qu'on a choisi la représentation position ; dans la représentation impulsion, les rôles sont inversés. Le commutateur canonique $[\\hat{x}, \\hat{p}] = i\\hbar$ découle directement de ces formes.",
+          "section_ref": "5.1.2",
+          "tags": [
+            "opérateurs",
+            "représentation position",
+            "impulsion"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch5-q009",
+          "type": "vrai_faux",
+          "difficulty": "hard",
+          "question": "Le principe d'incertitude de Heisenberg $\\Delta x \\Delta p \\geq \\frac{\\hbar}{2}$ implique qu'il est impossible de mesurer simultanément la position et l'impulsion avec une précision arbitraire, même en théorie avec des appareils parfaits.",
+          "correct_answer": true,
+          "explanation": "VRAI. Ce n'est PAS une limitation technologique mais une propriété fondamentale de la nature quantique. Mathématiquement, il découle du commutateur $[\\hat{x}, \\hat{p}] = i\\hbar \\neq 0$ : position et impulsion n'ont pas de base commune de vecteurs propres. Physiquement, une particule localisée ($\\Delta x$ petit) est décrite par un paquet d'ondes qui contient nécessairement une large distribution d'impulsions ($\\Delta p$ grand), et vice versa. C'est intrinsèque à la structure ondulatoire de la matière.",
+          "section_ref": "5.2.3",
+          "formula": "$\\Delta x \\Delta p \\geq \\frac{\\hbar}{2}$",
+          "tags": [
+            "Heisenberg",
+            "incertitude",
+            "principe fondamental"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch5-q010",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "Qu'est-ce que la vitesse de groupe $v_g$ d'un paquet d'ondes et quelle est sa signification physique ?",
+          "options": [
+            "La vitesse de phase $v_{\\phi} = \\omega/k$",
+            "La vitesse d'étalement du paquet",
+            "La vitesse $v_g = \\frac{d\\omega}{dk}$ qui correspond à la vitesse de déplacement du paquet (vitesse de la particule)",
+            "La vitesse de la lumière"
+          ],
+          "correct_answer": 2,
+          "explanation": "La vitesse de groupe $v_g = \\frac{d\\omega}{dk}$ est la vitesse à laquelle l'enveloppe du paquet d'ondes se déplace, et correspond à la vitesse classique de la particule. Pour une particule libre non-relativiste : $\\omega = \\frac{\\hbar k^2}{2m}$ donc $v_g = \\frac{d\\omega}{dk} = \\frac{\\hbar k}{m} = \\frac{p}{m} = v$ (vitesse classique). À distinguer de la vitesse de phase $v_{\\phi} = \\omega/k = \\frac{v}{2}$ (qui n'a pas de signification physique directe pour une particule matérielle).",
+          "section_ref": "5.3.1",
+          "formula": "$v_g = \\frac{d\\omega}{dk} = \\frac{p}{m}$ (particule libre)",
+          "tags": [
+            "vitesse de groupe",
+            "paquet d'ondes",
+            "dynamique"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch5-q011",
+          "type": "qcm",
+          "difficulty": "easy",
+          "question": "Que signifie 'normaliser' une fonction d'onde $\\psi(x)$ ?",
+          "options": [
+            "La rendre réelle (partie imaginaire nulle)",
+            "Assurer que $\\int_{-\\infty}^{+\\infty} |\\psi(x)|^2 dx = 1$ (probabilité totale = 1)",
+            "La rendre constante",
+            "La dériver"
+          ],
+          "correct_answer": 1,
+          "explanation": "Normaliser une fonction d'onde signifie s'assurer que l'intégrale de la densité de probabilité sur tout l'espace vaut 1 : $\\int_{-\\infty}^{+\\infty} |\\psi(x)|^2 dx = 1$. C'est la condition pour que $|\\psi(x)|^2$ soit interprétable comme une densité de probabilité (la particule doit se trouver quelque part avec certitude 100%). Si $\\psi$ n'est pas normalisée initialement, on multiplie par une constante $N$ telle que $N^2 \\int |\\psi|^2 dx = 1$.",
+          "section_ref": "5.1.1",
+          "formula": "$\\langle \\psi|\\psi\\rangle = \\int |\\psi(x)|^2 dx = 1$",
+          "tags": [
+            "normalisation",
+            "probabilité",
+            "fonction d'onde"
+          ],
+          "time_estimate": 45,
+          "points": 1
+        },
+        {
+          "id": "ch5-q012",
+          "type": "interpretation",
+          "difficulty": "hard",
+          "question": "Expliquez le lien entre le principe d'incertitude de Heisenberg et l'étalement d'un paquet d'ondes au cours du temps.",
+          "sample_answer": "L'étalement du paquet d'ondes est une conséquence dynamique du principe d'incertitude. Initialement, un paquet localisé a un $\\Delta x$ petit, donc nécessairement un $\\Delta p$ grand (Heisenberg). Cette dispersion en impulsion signifie que le paquet contient des composantes avec différentes vitesses $v = p/m$. Au cours du temps, ces composantes se séparent spatialement : les composantes rapides (grand $p$) s'éloignent plus vite que les lentes. Résultat : $\\Delta x(t)$ augmente, le paquet s'étale. Plus on localise initialement (petit $\\Delta x_0$), plus grand est $\\Delta p$, et plus RAPIDE est l'étalement. C'est inévitable : un paquet localisé ne peut rester localisé.",
+          "explanation": "Excellente explication ! Ce phénomène a des implications profondes : il est impossible de confiner une particule quantique indéfiniment dans un espace restreint sans lui fournir une grande énergie cinétique (énergie de point zéro dans un puits de potentiel). C'est aussi pourquoi les états atomiques liés nécessitent un potentiel attractif pour contrer l'étalement. L'échelle de temps d'étalement $\\tau \\sim m(\\Delta x_0)^2/\\hbar$ montre que c'est plus rapide pour les particules légères (électrons) que lourdes.",
+          "section_ref": "5.3.2",
+          "tags": [
+            "Heisenberg",
+            "étalement",
+            "dynamique",
+            "paquet d'ondes"
+          ],
+          "time_estimate": 180,
+          "points": 2
+        }
+      ]
+    },
+    {
+      "chapter_id": 6,
+      "chapter_number": "6",
+      "chapter_title": "Oscillateur Harmonique Quantique",
+      "chapter_description": "Quantification de l'énergie, opérateurs création/annihilation, états de Fock et états cohérents",
+      "section_reference": "Sections 6.1-6.3",
+      "key_concepts": [
+        "Quantification de l'énergie",
+        "Énergie de point zéro",
+        "Opérateurs échelle",
+        "Opérateurs création/annihilation",
+        "États de Fock",
+        "États cohérents",
+        "États comprimés",
+        "Phonons",
+        "Photons",
+        "Effet Casimir"
+      ],
+      "questions": [
+        {
+          "id": "ch6-q001",
+          "type": "qcm",
+          "difficulty": "easy",
+          "question": "Quelle est l'expression des niveaux d'énergie de l'oscillateur harmonique quantique à une dimension ?",
+          "options": [
+            "$E_n = n\\hbar\\omega$ (n = 0, 1, 2, ...)",
+            "$E_n = \\hbar\\omega(n + \\frac{1}{2})$ (n = 0, 1, 2, ...)",
+            "$E_n = \\frac{1}{2}m\\omega^2 x_n^2$",
+            "$E_n = -\\frac{13.6}{n^2}$ eV"
+          ],
+          "correct_answer": 1,
+          "explanation": "Les niveaux d'énergie de l'oscillateur harmonique sont quantifiés : $E_n = \\hbar\\omega(n + \\frac{1}{2})$ où $n = 0, 1, 2, ...$ est le nombre quantique. Caractéristiques : (1) Équidistants : $\\Delta E = \\hbar\\omega$, (2) Énergie du vide (n=0) : $E_0 = \\frac{\\hbar\\omega}{2} \\neq 0$ (énergie de point zéro), conséquence du principe d'incertitude. C'est un modèle universel : phonons, photons, vibrations moléculaires.",
+          "section_ref": "6.1",
+          "formula": "$E_n = \\hbar\\omega\\left(n + \\frac{1}{2}\\right)$",
+          "tags": [
+            "oscillateur harmonique",
+            "quantification",
+            "énergie"
+          ],
+          "time_estimate": 60,
+          "points": 1
+        },
+        {
+          "id": "ch6-q002",
+          "type": "vrai_faux",
+          "difficulty": "medium",
+          "question": "L'énergie minimale d'un oscillateur harmonique quantique peut être nulle (état de repos complet).",
+          "correct_answer": false,
+          "explanation": "FAUX. L'énergie minimale (état fondamental n=0) est $E_0 = \\frac{\\hbar\\omega}{2}$, appelée énergie de point zéro. C'est une conséquence directe du principe d'incertitude de Heisenberg : si la particule était au repos au fond du puits ($x=0, p=0$), on connaîtrait simultanément position et impulsion avec précision infinie, violant $\\Delta x \\Delta p \\geq \\hbar/2$. L'énergie de point zéro est le 'coût quantique' de la localisation. Effets observables : vibrations moléculaires à T=0 K, effet Casimir.",
+          "section_ref": "6.1.1",
+          "formula": "$E_0 = \\frac{\\hbar\\omega}{2}$ (énergie de point zéro)",
+          "tags": [
+            "énergie de point zéro",
+            "Heisenberg",
+            "état fondamental"
+          ],
+          "time_estimate": 75,
+          "points": 1
+        },
+        {
+          "id": "ch6-q003",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "Que représentent les opérateurs $\\hat{a}$ (annihilation) et $\\hat{a}^\\dagger$ (création) dans le contexte de l'oscillateur harmonique ?",
+          "options": [
+            "Ils créent et détruisent des particules",
+            "Ils abaissent ou élèvent le niveau d'énergie de l'oscillateur d'un quantum $\\hbar\\omega$",
+            "Ils mesurent la position et l'impulsion",
+            "Ils n'ont aucune signification physique"
+          ],
+          "correct_answer": 1,
+          "explanation": "Les opérateurs échelle $\\hat{a}$ et $\\hat{a}^\\dagger$ ont une action simple sur les états de Fock $\\ket{n}$ : $\\hat{a}\\ket{n} = \\sqrt{n}\\ket{n-1}$ (abaisse d'un niveau, 'détruit un quantum') et $\\hat{a}^\\dagger\\ket{n} = \\sqrt{n+1}\\ket{n+1}$ (élève d'un niveau, 'crée un quantum'). Ils permettent de : (1) construire tous les états à partir du fondamental, (2) exprimer simplement $\\hat{H} = \\hbar\\omega(\\hat{a}^\\dagger\\hat{a} + \\frac{1}{2})$, (3) calculer valeurs moyennes et dynamique. En théorie des champs, ils créent/annihilent littéralement des particules (photons, phonons).",
+          "section_ref": "6.2",
+          "formula": "$\\hat{a}\\ket{n} = \\sqrt{n}\\ket{n-1}$, $\\hat{a}^\\dagger\\ket{n} = \\sqrt{n+1}\\ket{n+1}$",
+          "tags": [
+            "opérateurs échelle",
+            "création",
+            "annihilation"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch6-q004",
+          "type": "numerical",
+          "difficulty": "medium",
+          "question": "Un oscillateur harmonique a une fréquence $\\omega = 10^{14}$ rad/s. Calculez l'espacement énergétique entre deux niveaux consécutifs en eV. Donnée : $\\hbar = 1.055 \\times 10^{-34}$ J·s, $1$ eV $= 1.6 \\times 10^{-19}$ J. Arrondissez à deux décimales.",
+          "correct_answer": 0.07,
+          "tolerance": 0.01,
+          "unit": "eV",
+          "explanation": "Calcul : $\\Delta E = \\hbar\\omega = 1.055 \\times 10^{-34} \\times 10^{14} = 1.055 \\times 10^{-20}$ J. Conversion : $\\Delta E = \\frac{1.055 \\times 10^{-20}}{1.6 \\times 10^{-19}}$ eV $\\approx 0.066$ eV $\\approx 0.07$ eV. Cette énergie correspond au domaine infrarouge pour les vibrations moléculaires.",
+          "section_ref": "6.1.2",
+          "formula": "$\\Delta E = E_{n+1} - E_n = \\hbar\\omega$",
+          "tags": [
+            "calcul",
+            "énergie",
+            "espacement"
+          ],
+          "time_estimate": 120,
+          "points": 1
+        },
+        {
+          "id": "ch6-q005",
+          "type": "qcm",
+          "difficulty": "easy",
+          "question": "Quelle est la relation de commutation fondamentale entre les opérateurs $\\hat{a}$ et $\\hat{a}^\\dagger$ ?",
+          "options": [
+            "$[\\hat{a}, \\hat{a}^\\dagger] = 0$",
+            "$[\\hat{a}, \\hat{a}^\\dagger] = 1$",
+            "$[\\hat{a}, \\hat{a}^\\dagger] = i$",
+            "$[\\hat{a}, \\hat{a}^\\dagger] = \\hbar\\omega$"
+          ],
+          "correct_answer": 1,
+          "explanation": "La relation de commutation canonique est $[\\hat{a}, \\hat{a}^\\dagger] = \\hat{a}\\hat{a}^\\dagger - \\hat{a}^\\dagger\\hat{a} = 1$ (opérateur identité). C'est l'algèbre de Heisenberg pour l'oscillateur harmonique, équivalente à $[\\hat{x}, \\hat{p}] = i\\hbar$. Cette relation encode toute la structure de l'oscillateur et permet de dériver les spectres, états, etc. C'est aussi l'algèbre fondamentale en théorie quantique des champs (pour les modes de champs).",
+          "section_ref": "6.2.1",
+          "formula": "$[\\hat{a}, \\hat{a}^\\dagger] = 1$",
+          "tags": [
+            "commutateur",
+            "algèbre",
+            "opérateurs échelle"
+          ],
+          "time_estimate": 60,
+          "points": 1
+        },
+        {
+          "id": "ch6-q006",
+          "type": "matching",
+          "difficulty": "medium",
+          "question": "Associez chaque type d'état de l'oscillateur harmonique à sa caractéristique principale :",
+          "pairs": [
+            {
+              "left": "États de Fock $\\ket{n}$",
+              "right": "Énergie définie : $E_n = \\hbar\\omega(n+1/2)$"
+            },
+            {
+              "left": "États cohérents $\\ket{\\alpha}$",
+              "right": "État quasi-classique, valeurs moyennes oscillent classiquement"
+            },
+            {
+              "left": "États comprimés (squeezed)",
+              "right": "Incertitude réduite dans une quadrature (en dessous de $\\Delta x \\Delta p = \\hbar/2$)"
+            },
+            {
+              "left": "État fondamental $\\ket{0}$",
+              "right": "Énergie minimale $E_0 = \\hbar\\omega/2$, état du vide"
+            }
+          ],
+          "distractors": [
+            "Énergie nulle",
+            "Intrication maximale"
+          ],
+          "explanation": "Ces états ont des propriétés quantiques différentes : les états de Fock ont une énergie (nombre de quanta) définie mais une phase indéfinie ; les états cohérents (découverts par Glauber, Nobel 2005) sont les plus 'classiques', avec des incertitudes minimales égales sur $x$ et $p$ ; les états comprimés violent classiquement la distribution des incertitudes en 'comprimant' une quadrature au détriment de l'autre.",
+          "section_ref": "6.2-6.3",
+          "tags": [
+            "états",
+            "Fock",
+            "cohérents",
+            "squeezed"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch6-q007",
+          "type": "qcm",
+          "difficulty": "hard",
+          "question": "Un état cohérent $\\ket{\\alpha}$ de l'oscillateur harmonique est défini comme un état propre de l'opérateur d'annihilation : $\\hat{a}\\ket{\\alpha} = \\alpha\\ket{\\alpha}$. Quelle est une propriété remarquable de ces états ?",
+          "options": [
+            "Ils ont une énergie parfaitement définie",
+            "Ce sont des paquets d'ondes gaussiens qui oscillent sans se déformer (comportement classique)",
+            "Ils sont orthogonaux entre eux",
+            "Ils n'existent pas physiquement"
+          ],
+          "correct_answer": 1,
+          "explanation": "Les états cohérents sont les états quantiques les plus 'classiques' : (1) Paquets gaussiens en position/impulsion, (2) Oscillent sinusoïdalement avec $\\langle \\hat{x}(t)\\rangle = x_0 \\cos(\\omega t)$ et $\\langle \\hat{p}(t)\\rangle = p_0 \\sin(\\omega t)$, exactement comme une particule classique, (3) Incertitudes minimales : $\\Delta x \\Delta p = \\hbar/2$, constantes dans le temps, (4) Non-orthogonaux : $\\langle\\alpha|\\beta\\rangle \\neq 0$ en général. Ils décrivent les champs laser cohérents. Glauber : Nobel 2005.",
+          "section_ref": "6.3",
+          "formula": "$\\hat{a}\\ket{\\alpha} = \\alpha\\ket{\\alpha}$, $\\ket{\\alpha} = e^{-|\\alpha|^2/2}\\sum_n \\frac{\\alpha^n}{\\sqrt{n!}}\\ket{n}$",
+          "tags": [
+            "états cohérents",
+            "Glauber",
+            "quasi-classique"
+          ],
+          "time_estimate": 120,
+          "points": 1
+        },
+        {
+          "id": "ch6-q008",
+          "type": "vrai_faux",
+          "difficulty": "medium",
+          "context": "Les phonons (quanta de vibration dans un cristal) jouent un rôle crucial dans les propriétés thermiques et électriques des matériaux semi-conducteurs utilisés en électronique.",
+          "question": "Les phonons dans un cristal sont des excitations quantiques qui peuvent être décrites comme des oscillateurs harmoniques quantiques.",
+          "correct_answer": true,
+          "explanation": "VRAI. Dans un cristal, les atomes vibrent autour de leurs positions d'équilibre. En approximation harmonique (petites oscillations), le cristal est équivalent à une collection d'oscillateurs harmoniques indépendants (modes normaux). La quantification donne des excitations élémentaires appelées PHONONS, de dispersion $E = \\hbar\\omega(\\vec{k})$. Propriétés : (1) Nombre de phonons suit Bose-Einstein, (2) Responsables de la chaleur spécifique, (3) Diffusent les électrons (résistance électrique), (4) Peuvent se coupler (anharmonicités). C'est un modèle de base en physique du solide.",
+          "section_ref": "6.1.3",
+          "formula": "Phonon : $E = \\hbar\\omega_k$, boson (spin 0)",
+          "tags": [
+            "phonons",
+            "cristaux",
+            "application"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch6-q009",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "Qu'est-ce que l'effet Casimir et comment est-il lié à l'énergie de point zéro ?",
+          "options": [
+            "Une force attractive entre deux plaques métalliques dans le vide, due aux fluctuations quantiques du champ électromagnétique",
+            "L'émission spontanée de photons par un atome excité",
+            "La diffraction des électrons",
+            "L'effet tunnel à travers une barrière de potentiel"
+          ],
+          "correct_answer": 0,
+          "explanation": "L'effet Casimir (prédit 1948, observé 1997) est une force attractive macroscopique entre deux plaques conductrices dans le vide. Origine : le vide quantique n'est pas 'vide' mais contient des fluctuations (oscillateurs harmoniques du champ EM dans tous les modes). Entre les plaques, seules certaines longueurs d'onde (modes) sont permises, réduisant l'énergie de point zéro entre les plaques par rapport à l'extérieur. Cela crée une pression : $F/A \\propto \\hbar c / d^4$. Preuve spectaculaire de la réalité physique de l'énergie du vide !",
+          "section_ref": "6.1.4",
+          "formula": "$F_{Casimir} \\approx -\\frac{\\pi^2 \\hbar c}{240 d^4} A$ (force attractive)",
+          "tags": [
+            "Casimir",
+            "énergie du vide",
+            "fluctuations quantiques"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch6-q010",
+          "type": "qcm",
+          "difficulty": "hard",
+          "question": "Comment exprime-t-on l'hamiltonien $\\hat{H}$ de l'oscillateur harmonique en fonction des opérateurs $\\hat{a}$ et $\\hat{a}^\\dagger$ ?",
+          "options": [
+            "$\\hat{H} = \\hbar\\omega\\hat{a}^\\dagger\\hat{a}$",
+            "$\\hat{H} = \\hbar\\omega(\\hat{a}^\\dagger\\hat{a} + \\frac{1}{2})$",
+            "$\\hat{H} = \\hbar\\omega(\\hat{a} + \\hat{a}^\\dagger)$",
+            "$\\hat{H} = \\frac{1}{2}(\\hat{a}^2 + (\\hat{a}^\\dagger)^2)$"
+          ],
+          "correct_answer": 1,
+          "explanation": "L'hamiltonien s'écrit $\\hat{H} = \\hbar\\omega(\\hat{a}^\\dagger\\hat{a} + \\frac{1}{2}) = \\hbar\\omega(\\hat{n} + \\frac{1}{2})$ où $\\hat{n} = \\hat{a}^\\dagger\\hat{a}$ est l'opérateur nombre. Cette forme élégante montre que : (1) Les états de Fock $\\ket{n}$ sont des états propres de $\\hat{H}$ avec $E_n = \\hbar\\omega(n+1/2)$, (2) Le terme $\\frac{1}{2}$ est l'énergie de point zéro, (3) $\\hat{n}$ compte le nombre de quanta d'excitation. C'est la base du formalisme de seconde quantification.",
+          "section_ref": "6.2.2",
+          "formula": "$\\hat{H} = \\hbar\\omega\\left(\\hat{a}^\\dagger\\hat{a} + \\frac{1}{2}\\right)$",
+          "tags": [
+            "hamiltonien",
+            "opérateurs échelle",
+            "nombre"
+          ],
+          "time_estimate": 90,
+          "points": 1
+        },
+        {
+          "id": "ch6-q011",
+          "type": "vrai_faux",
+          "difficulty": "easy",
+          "question": "Les photons dans un mode du champ électromagnétique se comportent comme des oscillateurs harmoniques quantiques.",
+          "correct_answer": true,
+          "explanation": "VRAI. Un mode du champ EM (caractérisé par $\\vec{k}$, polarisation) satisfait l'équation d'un oscillateur harmonique. La quantification donne des photons : excitations élémentaires d'énergie $E = \\hbar\\omega = \\hbar c k$. Un état avec $n$ photons dans le mode correspond à l'état de Fock $\\ket{n}$ de l'oscillateur. Les opérateurs $\\hat{a}$ et $\\hat{a}^\\dagger$ créent/annihilent littéralement des photons. Un laser cohérent est dans un état cohérent $\\ket{\\alpha}$. C'est le fondement de l'électrodynamique quantique (QED).",
+          "section_ref": "6.2.3",
+          "formula": "Photon : $E = \\hbar\\omega$, boson (spin 1)",
+          "tags": [
+            "photons",
+            "champ EM",
+            "QED"
+          ],
+          "time_estimate": 60,
+          "points": 1
+        },
+        {
+          "id": "ch6-q012",
+          "type": "interpretation",
+          "difficulty": "hard",
+          "question": "Expliquez pourquoi l'oscillateur harmonique quantique est considéré comme 'le' modèle central de la physique quantique, avec des exemples d'applications variées.",
+          "sample_answer": "L'oscillateur harmonique est universel car : (1) APPROXIMATION LOCALE : Tout potentiel $V(x)$ au voisinage d'un minimum (position d'équilibre stable) peut être approximé par $V(x) \\approx \\frac{1}{2}k(x-x_0)^2$ (Taylor au 2e ordre). Donc presque tout système près de l'équilibre est un OH. (2) APPLICATIONS : Vibrations moléculaires (spectroscopie IR), phonons dans les cristaux (propriétés thermiques), photons du champ EM (QED, lasers), oscillations de circuits LC quantiques (qubits supraconducteurs), modes du champ de Higgs, etc. (3) FORMALISME : Les opérateurs échelle $\\hat{a}, \\hat{a}^\\dagger$ sont la base de la théorie quantique des champs (seconde quantification). (4) SOLUBLE EXACTEMENT : Un des rares problèmes quantiques avec solution analytique complète. C'est le 'hydrogen atom' de la MQ : fondamental et omniprésent.",
+          "explanation": "Excellente synthèse ! On peut ajouter que l'OH est aussi crucial en théorie de l'information quantique (états gaussiens, calcul quantique continu avec variables continues), en cosmologie (fluctuations quantiques de l'inflaton), et qu'il illustre parfaitement la transition classique-quantique (états cohérents vs Fock). C'est vraiment LE modèle à maîtriser.",
+          "section_ref": "6.1-6.3",
+          "tags": [
+            "oscillateur harmonique",
+            "universalité",
+            "applications",
+            "théorie"
+          ],
+          "time_estimate": 180,
+          "points": 2
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "1.1.0",
+    "generated_date": "2025-11-23",
+    "last_updated": "2025-11-23 10:22:39",
+    "total_questions": 80,
+    "questions_by_chapter": {
+      "chapter_1": 20,
+      "chapter_2": 12,
+      "chapter_3": 12,
+      "chapter_4": 12,
+      "chapter_5": 12,
+      "chapter_6": 12
+    },
+    "difficulty_distribution": {
+      "easy": 21,
+      "medium": 40,
+      "hard": 19
+    },
+    "question_types": {
+      "qcm": 44,
+      "vrai_faux": 17,
+      "matching": 7,
+      "numerical": 6,
+      "interpretation": 6
+    }
+  }
+}
