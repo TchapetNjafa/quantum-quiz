@@ -88,36 +88,55 @@ const QuizEngine = {
                 );
             }
 
-            // Mélange les questions
-            allQuestions = shuffleArray(allQuestions);
-
-            // Élimine les doublons basés sur l'ID (au cas où)
+            // Élimine les doublons AVANT le mélange (plus efficace)
             const uniqueQuestions = [];
             const seenIds = new Set();
+            const seenQuestions = new Set(); // Double vérification avec le contenu
 
             for (const q of allQuestions) {
-                if (!seenIds.has(q.id)) {
-                    seenIds.add(q.id);
+                // Crée une clé unique basée sur l'ID ou le contenu de la question
+                const questionKey = q.id || `${q.type}_${q.question}_${JSON.stringify(q.correct_answer || q.correct_hotspot || q.correct_matches)}`;
+
+                // Vérifie si cette question a déjà été vue
+                if (!seenIds.has(q.id) && !seenQuestions.has(questionKey)) {
+                    if (q.id) seenIds.add(q.id);
+                    seenQuestions.add(questionKey);
                     uniqueQuestions.push(q);
                 }
             }
 
-            console.log(`Questions disponibles après filtres et dédoublonnage : ${uniqueQuestions.length}`);
+            if (typeof logger !== 'undefined') {
+                logger.info(`Questions uniques après dédoublonnage : ${uniqueQuestions.length}/${allQuestions.length}`);
+            }
+
+            // Mélange APRÈS dédoublonnage
+            const shuffledQuestions = shuffleArray(uniqueQuestions);
 
             // Limite au nombre demandé
-            const requestedCount = Math.min(this.config.questionCount, uniqueQuestions.length);
-            this.questions = uniqueQuestions.slice(0, requestedCount);
+            const requestedCount = Math.min(this.config.questionCount, shuffledQuestions.length);
+            this.questions = shuffledQuestions.slice(0, requestedCount);
+
+            // Vérification finale : aucun doublon dans les questions sélectionnées
+            const finalIds = new Set();
+            const finalQuestions = [];
+            for (const q of this.questions) {
+                const key = q.id || q.question;
+                if (!finalIds.has(key)) {
+                    finalIds.add(key);
+                    finalQuestions.push(q);
+                }
+            }
+            this.questions = finalQuestions;
+
+            if (typeof logger !== 'undefined') {
+                logger.info(`Quiz final : ${this.questions.length} questions uniques`);
+            }
 
             if (this.questions.length === 0) {
                 throw new Error('Aucune question trouvée avec ces critères');
             }
 
-            // Vérification finale des doublons (debug)
-            const finalIds = this.questions.map(q => q.id);
-            const duplicates = finalIds.filter((id, index) => finalIds.indexOf(id) !== index);
-            if (duplicates.length > 0) {
-                console.warn('⚠️ Questions dupliquées détectées:', duplicates);
-            } else {
+            if (typeof logger !== 'undefined') {
                 console.log('✅ Aucun doublon détecté dans les questions sélectionnées');
             }
 
