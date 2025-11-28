@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interférences de Young - Animations Quantum Quiz</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <script src="js/mathjax-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body class="animation-page">
+
+    <div class="animation-container">
+        <div class="navigation-buttons">
+            <a href="index.html" class="btn btn-back" data-i18n="animations.backToHome">← Accueil</a>
+            <a href="animations-gallery.html" class="btn btn-gallery" data-i18n="animations.gallery">🎨 Galerie d'Animations</a>
+        </div>
+
+        <h1>💫 Interférences de Young</h1>
+        <p class="subtitle">Franges d'interférence et dualité onde-corpuscule</p>
+
+        <div class="animation-section">
+            <h2 data-i18n="animations.interactive">Animation Interactive</h2>
+            <p>
+                Visualisation des franges d'interférence résultant de la diffraction à travers deux fentes.
+                Cette expérience démontre la nature ondulatoire de la matière et le principe de superposition quantique.
+            </p>
+
+            <canvas id="canvas-young" class="animation-canvas" width="800" height="400"></canvas>
+
+            <div class="controls">
+                <button class="btn-primary" onclick="young.start()">▶ Démarrer</button>
+                <button class="btn-secondary" onclick="young.stop()">⏸ Pause</button>
+
+                <div class="slider-group">
+                    <label>Séparation fentes:</label>
+                    <input type="range" min="30" max="120" value="60" id="slit-slider"
+                           oninput="young.setSlitSeparation(parseInt(this.value)); updateSlitDisplay()">
+                    <span id="slit-display" style="color: #2dd4bf; font-weight: 700;">60 px</span>
+                </div>
+
+                <div class="slider-group">
+                    <label>Longueur d'onde:</label>
+                    <input type="range" min="15" max="50" value="30" id="wavelength-slider"
+                           oninput="young.setWavelength(parseInt(this.value)); updateWavelengthDisplay()">
+                    <span id="wavelength-display" style="color: #2dd4bf; font-weight: 700;">30 px</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📚 Concepts Physiques (Chapitre 5)</h3>
+            <p>
+                <strong>Expérience fondamentale :</strong> L'expérience des fentes de Young (1801) a d'abord démontré
+                la nature ondulatoire de la lumière. En mécanique quantique, elle révèle que même des particules
+                individuelles (électrons, photons) produisent des interférences.
+            </p>
+            <p>
+                <strong>Condition d'interférences constructives :</strong> $d \sin\theta = n\lambda$ où $d$ est la
+                séparation des fentes, $\lambda$ la longueur d'onde de De Broglie, et $n$ un entier.
+            </p>
+            <p>
+                <strong>Superposition quantique :</strong> Un photon/électron passe simultanément par les deux fentes
+                et interfère avec lui-même. La fonction d'onde totale est $\psi_{total} = \psi_1 + \psi_2$.
+            </p>
+            <p>
+                <strong>Principe de complémentarité :</strong> Si on cherche à déterminer par quelle fente passe la particule,
+                les franges d'interférence disparaissent. On ne peut observer simultanément le comportement ondulatoire
+                et corpusculaire.
+            </p>
+        </div>
+    </div>
+
+    <script src="js/quantum-animations.js"></script>
+    <script>
+        let young;
+
+        window.addEventListener('load', () => {
+            young = QuantumAnimations.createYoungInterference('canvas-young', {
+                animated: true
+            });
+
+            updateSlitDisplay();
+            updateWavelengthDisplay();
+        });
+
+        function updateSlitDisplay() {
+            const value = document.getElementById('slit-slider').value;
+            document.getElementById('slit-display').textContent = `${value} px`;
+        }
+
+        function updateWavelengthDisplay() {
+            const value = document.getElementById('wavelength-slider').value;
+            document.getElementById('wavelength-display').textContent = `${value} px`;
+        }
+    </script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

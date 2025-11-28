@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vidéos Explicatives - Quantum Quiz PHY321</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/mobile-enhanced.css">
+    <script src="js/mathjax-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <style>
+        .videos-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .videos-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .videos-header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--quantum-cyan), var(--quantum-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .videos-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .chapter-videos {
+            margin-bottom: 3rem;
+        }
+
+        .chapter-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-primary);
+        }
+
+        .chapter-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--quantum-purple), var(--quantum-cyan));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .chapter-title h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .video-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-primary);
+            transition: all 0.3s;
+        }
+
+        .video-card:hover {
+            border-color: var(--quantum-purple);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(124, 58, 237, 0.2);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 */
+            background: var(--bg-secondary);
+        }
+
+        .video-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-thumbnail .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .video-card:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .play-btn {
+            width: 70px;
+            height: 70px;
+            background: var(--quantum-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.5);
+        }
+
+        .video-info {
+            padding: 1.25rem;
+        }
+
+        .video-info h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .video-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .video-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .video-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .video-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .video-tag {
+            background: rgba(124, 58, 237, 0.15);
+            color: var(--quantum-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .video-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .source-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .source-badge.youtube {
+            background: #ff0000;
+        }
+
+        .source-badge.mit {
+            background: #8b0000;
+        }
+
+        .external-resources {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .external-resources h3 {
+            margin: 0 0 1.5rem 0;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+        }
+
+        .resources-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .resource-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .resource-item:hover {
+            background: var(--bg-tertiary);
+            transform: translateX(5px);
+        }
+
+        .resource-icon {
+            font-size: 2rem;
+        }
+
+        .resource-info h4 {
+            margin: 0 0 0.25rem 0;
+            font-size: 1rem;
+        }
+
+        .resource-info p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .videos-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="videos-container">
+        <div class="videos-header">
+            <h1>🎬 Vidéos Explicatives</h1>
+            <p>Une sélection de vidéos pédagogiques pour approfondir votre compréhension de la mécanique quantique. Cours universitaires, animations et explications visuelles.</p>
+        </div>
+
+        <!-- Chapitre 1: États Quantiques -->
+        <section class="chapter-videos">
+            <div class="chapter-title">
+                <div class="chapter-number">1</div>
+                <h2>États Quantiques et Superposition</h2>
+            </div>
+            <div class="videos-grid">
+                <a href="https://www.youtube.com/watch?v=Usu9xZfabPM" target="_blank" class="video-link">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/Usu9xZfabPM/mqdefault.jpg" alt="Dualité onde-corpuscule">
+                            <span class="source-badge youtube">YouTube</span>
+                            <div class="play-overlay">
+                                <div class="play-btn">▶</div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h3>Dualité onde-corpuscule expliquée</h3>
+                            <div class="video-meta">
+                                <span>📺 Science Étonnante</span>
+                                <span>⏱️ 15 min</span>
+                            </div>
+                            <p class="video-description">Une explication claire de la dualité onde-corpuscule et de l'expérience des fentes d'Young.</p>
+                            <div class="video-tags">
+                                <span class="video-tag">Dualité</span>
+                                <span class="video-tag">Young</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=7u_UQG1La1o" target="_blank" class="video-link">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/7u_UQG1La1o/mqdefault.jpg" alt="Chat de Schrödinger">
+                            <span class="source-badge youtube">YouTube</span>
+                            <div class="play-overlay">
+                                <div class="play-btn">▶</div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h3>Le Chat de Schrödinger - Paradoxe expliqué</h3>
+                            <div class="video-meta">
+                                <span>📺 MinutePhysics</span>
+                                <span>⏱️ 5 min</span>
+                            </div>
+                            <p class="video-description">Comprendre le célèbre paradoxe du chat de Schrödinger et la superposition quantique.</p>
+                            <div class="video-tags">
+                                <span class="video-tag">Superposition</span>
+                                <span class="video-tag">Paradoxe</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=QuR969uMICM" target="_blank" class="video-link">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/QuR969uMICM/mqdefault.jpg" alt="Sphère de Bloch">
+                            <span class="source-badge youtube">YouTube</span>
+                            <div class="play-overlay">
+                                <div class="play-btn">▶</div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h3>La Sphère de Bloch et les Qubits</h3>
+                            <div class="video-meta">
+                                <span>📺 Looking Glass Universe</span>
+                                <span>⏱️ 12 min</span>
+                            </div>
+                            <p class="video-description">Visualiser les états quantiques avec la sphère de Bloch et comprendre les qubits.</p>
+                            <div class="video-tags">
+                                <span class="video-tag">Bloch</span>
+                                <span class="video-tag">Qubit</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Chapitre 2: Mesure et Opérateurs -->
+        <section class="chapter-videos">
+            <div class="chapter-title">
+                <div class="chapter-number">2</div>
+                <h2>Mesure et Opérateurs</h2>
+            </div>
+            <div class="videos-grid">
+                <a href="https://www.youtube.com/watch?v=ZuvK-od647c" target="_blank" class="video-link">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/ZuvK-od647c/mqdefault.jpg" alt="Expérience Stern-Gerlach">
+                            <span class="source-badge youtube">YouTube</span>
+                            <div class="play-overlay">
+                                <div class="play-btn">▶</div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h3>L'expérience de Stern-Gerlach</h3>
+                            <div class="video-meta">
+                                <span>📺 Veritasium</span>
+                                <span>⏱️ 18 min</span>
+                            </div>
+                            <p class="video-description">Découvrez comment l'expérience de Stern-Gerlach a révélé la quantification du spin.</p>
+                            <div class="video-tags">
+                                <span class="video-tag">Spin</span>
+                                <span class="video-tag">Mesure</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=TQKELOE9eY4" target="_blank" class="video-link">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/TQKELOE9eY4/mqdefault.jpg" alt="Principe d'incertitude">
+                            <span class="source-badge youtube">YouTube</span>
+                            <div class="play-overlay">
+                                <div class="play-btn">▶</div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h3>Principe d'incertitude de Heisenberg</h3>
+                            <div class="video-meta">
+                                <span>📺 3Blue1Brown</span>
+                                <span>⏱️ 20 min</span>
+                            </div>
+                            <p class="video-description">Une explication mathématique et intuitive du principe d'incertitude.</p>
+                            <div class="video-tags">
+                                <span class="video-tag">Heisenberg</span>
+                                <span class="video-tag">Incertitude</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=VwWL1VhwjJc" target="_blank" class="video-link">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/VwWL1VhwjJc/mqdefault.jpg" alt="Matrices de Pauli">
+                            <span class="source-badge youtube">YouTube</span>
+                            <div class="play-overlay">
+                                <div class="play-btn">▶</div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h3>Les Matrices de Pauli expliquées</h3>
+                            <div class="video-meta">
+                                <span>📺 Physics with Elliot</span>
+                                <span>⏱️ 25 min</span>
+                            </div>
+                            <p class="video-description">Comprendre les matrices de Pauli et leur rôle en mécanique quantique.</p>
+                            <div class="video-tags">
+                                <span class="video-tag">Pauli</span>
+                                <span class="video-tag">Opérateurs</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Chapitre 3: Dynamique Quantique -->
+        <section class="chapter-videos">
+            <div class="chapter-title">
+                <div class="chapter-number">3</div>
+                <h2>Dynamique Quantique - Les Postulats</h2>
+            </div>
+            <div class="videos-grid">
+                <a href="https://www.youtube.com/watch?v=QeUMFo8sODk" target="_blank" class="video-link">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/QeUMFo8sODk/mqdefault.jpg" alt="Équation de Schrödinger">
+                            <span class="source-badge youtube">YouTube</span>
+                            <div class="play-overlay">
+                                <div class="play-btn">▶</div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h3>L'équation de Schrödinger expliquée</h3>
+                            <div class="video-meta">
+                                <span>📺 Physics Explained</span>
+                                <span>⏱️ 30 min</span>
+                            </div>
+                            <p class="video-description">Dérivation et interprétation de l'équation fondamentale de la mécanique quantique.</p>
+                            <div class="video-tags">
+                                <span class="video-tag">Schrödinger</span>
+                                <span class="video-tag">Dynamique</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=lZ3bPUKo5zc" target="_blank" class="video-link">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/lZ3bPUKo5zc/mqdefault.jpg" alt="Postulats MQ">
+                            <span class="source-badge youtube">YouTube</span>
+                            <div class="play-overlay">
+                                <div class="play-btn">▶</div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h3>Les Postulats de la Mécanique Quantique</h3>
+                            <div class="video-meta">
+                                <span>📺 MIT OpenCourseWare</span>
+                                <span>⏱️ 45 min</span>
+                            </div>
+                            <p class="video-description">Cours complet sur les postulats fondamentaux par le MIT.</p>
+                            <div class="video-tags">
+                                <span class="video-tag">Postulats</span>
+                                <span class="video-tag">MIT</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Chapitre 4: Intrication -->
+        <section class="chapter-videos">
+            <div class="chapter-title">
+                <div class="chapter-number">4</div>
+                <h2>Intrication et Systèmes Multi-Qubits</h2>
+            </div>
+            <div class="videos-grid">
+                <a href="https://www.youtube.com/watch?v=ZoT82NDpcvQ" target="_blank" class="video-link">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/ZoT82NDpcvQ/mqdefault.jpg" alt="Intrication quantique">
+                            <span class="source-badge youtube">YouTube</span>
+                            <div class="play-overlay">
+                                <div class="play-btn">▶</div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h3>L'intrication quantique démystifiée</h3>
+                            <div class="video-meta">
+                                <span>📺 Veritasium</span>
+                                <span>⏱️ 22 min</span>
+                            </div>
+                            <p class="video-description">Comprendre l'intrication quantique et ses implications pour la physique.</p>
+                            <div class="video-tags">
+                                <span class="video-tag">Intrication</span>
+                                <span class="video-tag">EPR</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=4C5pq7W5yRM" target="_blank" class="video-link">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/4C5pq7W5yRM/mqdefault.jpg" alt="Téléportation quantique">
+                            <span class="source-badge youtube">YouTube</span>
+                            <div class="play-overlay">
+                                <div class="play-btn">▶</div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h3>La Téléportation Quantique</h3>
+                            <div class="video-meta">
+                                <span>📺 Science Étonnante</span>
+                                <span>⏱️ 20 min</span>
+                            </div>
+                            <p class="video-description">Comment fonctionne le protocole de téléportation quantique.</p>
+                            <div class="video-tags">
+                                <span class="video-tag">Téléportation</span>
+                                <span class="video-tag">Bell</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=zcqZHYo7ONs" target="_blank" class="video-link">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/zcqZHYo7ONs/mqdefault.jpg" alt="Inégalités de Bell">
+                            <span class="source-badge youtube">YouTube</span>
+                            <div class="play-overlay">
+                                <div class="play-btn">▶</div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h3>Les Inégalités de Bell (Nobel 2022)</h3>
+                            <div class="video-meta">
+                                <span>📺 Looking Glass Universe</span>
+                                <span>⏱️ 15 min</span>
+                            </div>
+                            <p class="video-description">Comprendre les inégalités de Bell et le test de la non-localité.</p>
+                            <div class="video-tags">
+                                <span class="video-tag">Bell</span>
+                                <span class="video-tag">Non-localité</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Chapitre 5: Fonction d'état -->
+        <section class="chapter-videos">
+            <div class="chapter-title">
+                <div class="chapter-number">5</div>
+                <h2>Fonction d'État et Espace Continu</h2>
+            </div>
+            <div class="videos-grid">
+                <a href="https://www.youtube.com/watch?v=Epu0tW6XdG0" target="_blank" class="video-link">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/Epu0tW6XdG0/mqdefault.jpg" alt="Fonction d'onde">
+                            <span class="source-badge youtube">YouTube</span>
+                            <div class="play-overlay">
+                                <div class="play-btn">▶</div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h3>La Fonction d'Onde expliquée</h3>
+                            <div class="video-meta">
+                                <span>📺 3Blue1Brown</span>
+                                <span>⏱️ 25 min</span>
+                            </div>
+                            <p class="video-description">Visualisation et interprétation de la fonction d'onde quantique.</p>
+                            <div class="video-tags">
+                                <span class="video-tag">Fonction d'onde</span>
+                                <span class="video-tag">Probabilité</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=spUNpyF58BY" target="_blank" class="video-link">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/spUNpyF58BY/mqdefault.jpg" alt="Transformée de Fourier">
+                            <span class="source-badge youtube">YouTube</span>
+                            <div class="play-overlay">
+                                <div class="play-btn">▶</div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h3>La Transformée de Fourier en Quantique</h3>
+                            <div class="video-meta">
+                                <span>📺 3Blue1Brown</span>
+                                <span>⏱️ 20 min</span>
+                            </div>
+                            <p class="video-description">La transformée de Fourier et son rôle en mécanique quantique.</p>
+                            <div class="video-tags">
+                                <span class="video-tag">Fourier</span>
+                                <span class="video-tag">Impulsion</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Chapitre 6: Oscillateur Harmonique -->
+        <section class="chapter-videos">
+            <div class="chapter-title">
+                <div class="chapter-number">6</div>
+                <h2>Oscillateur Harmonique Quantique</h2>
+            </div>
+            <div class="videos-grid">
+                <a href="https://www.youtube.com/watch?v=bpMfEjl7FoM" target="_blank" class="video-link">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/bpMfEjl7FoM/mqdefault.jpg" alt="Oscillateur harmonique">
+                            <span class="source-badge youtube">YouTube</span>
+                            <div class="play-overlay">
+                                <div class="play-btn">▶</div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h3>L'Oscillateur Harmonique Quantique</h3>
+                            <div class="video-meta">
+                                <span>📺 Physics with Elliot</span>
+                                <span>⏱️ 35 min</span>
+                            </div>
+                            <p class="video-description">Solution complète de l'oscillateur harmonique quantique.</p>
+                            <div class="video-tags">
+                                <span class="video-tag">OH</span>
+                                <span class="video-tag">Hermite</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=FgrGxbeO2uI" target="_blank" class="video-link">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/FgrGxbeO2uI/mqdefault.jpg" alt="États cohérents">
+                            <span class="source-badge youtube">YouTube</span>
+                            <div class="play-overlay">
+                                <div class="play-btn">▶</div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h3>États Cohérents et Optique Quantique</h3>
+                            <div class="video-meta">
+                                <span>📺 Looking Glass Universe</span>
+                                <span>⏱️ 18 min</span>
+                            </div>
+                            <p class="video-description">Les états cohérents et le lien avec la physique classique.</p>
+                            <div class="video-tags">
+                                <span class="video-tag">Cohérents</span>
+                                <span class="video-tag">Photons</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Ressources externes -->
+        <section class="external-resources">
+            <h3>📚 Ressources Complémentaires</h3>
+            <div class="resources-list">
+                <a href="https://ocw.mit.edu/courses/8-04-quantum-physics-i-spring-2016/" target="_blank" class="resource-item">
+                    <span class="resource-icon">🎓</span>
+                    <div class="resource-info">
+                        <h4>MIT OpenCourseWare</h4>
+                        <p>Cours complet de physique quantique du MIT</p>
+                    </div>
+                </a>
+
+                <a href="https://www.feynmanlectures.caltech.edu/III_toc.html" target="_blank" class="resource-item">
+                    <span class="resource-icon">📖</span>
+                    <div class="resource-info">
+                        <h4>Feynman Lectures Vol. III</h4>
+                        <p>Les célèbres cours de Feynman sur la MQ</p>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/playlist?list=PL65jRfGL0e4f1a0kNtMYWINF2gxBfVxyQ" target="_blank" class="resource-item">
+                    <span class="resource-icon">📺</span>
+                    <div class="resource-info">
+                        <h4>Stanford Quantum Computing</h4>
+                        <p>Série de cours sur le calcul quantique</p>
+                    </div>
+                </a>
+
+                <a href="https://qiskit.org/learn/" target="_blank" class="resource-item">
+                    <span class="resource-icon">💻</span>
+                    <div class="resource-info">
+                        <h4>Qiskit Textbook</h4>
+                        <p>Apprentissage pratique du quantique avec IBM</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

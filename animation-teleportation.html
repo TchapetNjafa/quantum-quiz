@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Téléportation Quantique - Animations Quantum Quiz</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <script src="js/mathjax-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body class="animation-page">
+
+    <div class="animation-container">
+        <div class="navigation-buttons">
+            <a href="index.html" class="btn btn-back" data-i18n="animations.backToHome">← Accueil</a>
+            <a href="animations-gallery.html" class="btn btn-gallery" data-i18n="animations.gallery">🎨 Galerie d'Animations</a>
+        </div>
+
+        <h1>🚀 Téléportation Quantique</h1>
+        <p class="subtitle">Transfert d'état quantique via intrication et communication classique</p>
+
+        <div class="animation-section">
+            <h2 data-i18n="animations.interactive">Animation Interactive</h2>
+            <p>Suivez les étapes du protocole de téléportation quantique : Alice et Bob partagent une paire EPR, Alice effectue une mesure de Bell sur son qubit et l'état à téléporter, puis envoie 2 bits classiques à Bob qui reconstitue l'état.</p>
+
+            <canvas id="canvas-teleportation" class="animation-canvas" width="800" height="400"></canvas>
+
+            <div class="controls">
+                <button class="btn-primary" onclick="animation.start()">▶ Démarrer</button><button class="btn-secondary" onclick="animation.nextPhase()">➡️ Phase Suivante</button><button class="btn-secondary" onclick="animation.reset()">🔄 Réinitialiser</button>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📚 Concepts Physiques (Chapitre 4)</h3>
+            <p><strong>Protocole :</strong> 1) Partage d'une paire EPR, 2) Mesure de Bell chez Alice, 3) Communication classique (2 bits), 4) Opération unitaire chez Bob.</p><p><strong>Non-clonage :</strong> La téléportation ne viole pas le théorème de non-clonage car l'état original est détruit lors de la mesure.</p><p><strong>Applications :</strong> Communication quantique sécurisée, réseaux quantiques, calcul quantique distribué.</p>
+        </div>
+    </div>
+
+    <script src="js/quantum-animations.js"></script>
+    <script src="js/quantum-animations-extended.js"></script>
+    <script>
+        let animation;
+        window.addEventListener('load', () => {
+            animation = QuantumAnimations.createTeleportation('canvas-teleportation', { animated: true });
+        });
+    </script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

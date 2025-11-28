@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie d'Animations Quantiques - Quantum Quiz PHY321</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        .gallery-body {
+            min-height: 100vh;
+            padding: 2rem;
+            padding-top: 0;
+        }
+
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            margin-top: 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--quantum-cyan) 0%, var(--quantum-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-bottom: 2rem;
+            margin-top: 1rem;
+        }
+
+        .back-btn:hover {
+            background: var(--bg-tertiary);
+            transform: translateX(-5px);
+        }
+
+        .animations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .animation-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .animation-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(45, 212, 191, 0.3);
+            border-color: var(--quantum-cyan);
+        }
+
+        .animation-icon {
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .animation-card h3 {
+            font-size: 1.3rem;
+            color: var(--quantum-cyan);
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+
+        .animation-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .animation-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(124, 58, 237, 0.3);
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: var(--quantum-purple-light, #c4b5fd);
+            margin-top: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--quantum-cyan);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-divider {
+            margin: 3rem 0;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .gallery-footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .gallery-footer p {
+            color: var(--text-secondary);
+        }
+
+        .gallery-footer p:last-child {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .animations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="gallery-body">
+
+    <div class="gallery-container">
+        <a href="index.html" class="back-btn" data-i18n="animations.backToHome">← Retour à l'accueil</a>
+
+        <div class="page-header">
+            <h1 data-i18n="animations.galleryTitle">🎨 Galerie d'Animations Quantiques</h1>
+            <p>Visualisations interactives des concepts de mécanique quantique du cours PHY321</p>
+        </div>
+
+        <!-- Section 1: États et Mesures (Chapitres 1-2) -->
+        <h2 class="section-title">📊 États et Mesures Quantiques</h2>
+        <div class="animations-grid">
+            <a href="animation-bloch-sphere.html" class="animation-card">
+                <div class="animation-icon">⚛️</div>
+                <h3>Sphère de Bloch</h3>
+                <p>Représentation géométrique d'un qubit sur la sphère de Bloch. Visualisez les rotations et les états de superposition.</p>
+                <span class="animation-badge">Chapitre 1</span>
+            </a>
+
+            <a href="animation-stern-gerlach.html" class="animation-card">
+                <div class="animation-icon">🧲</div>
+                <h3>Expérience de Stern-Gerlach</h3>
+                <p>Séparation d'un faisceau d'atomes selon leur spin dans un champ magnétique inhomogène.</p>
+                <span class="animation-badge">Chapitre 2</span>
+            </a>
+
+            <a href="animation-measurement.html" class="animation-card">
+                <div class="animation-icon">📏</div>
+                <h3>Processus de Mesure</h3>
+                <p>Visualisation du collapse de la fonction d'onde lors d'une mesure quantique.</p>
+                <span class="animation-badge">Chapitre 2</span>
+            </a>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Section 2: Dynamique Quantique (Chapitre 3) -->
+        <h2 class="section-title">🔄 Dynamique et Évolution Temporelle</h2>
+        <div class="animations-grid">
+            <a href="animation-rabi-oscillations.html" class="animation-card">
+                <div class="animation-icon">📡</div>
+                <h3>Oscillations de Rabi</h3>
+                <p>Évolution d'un système à deux niveaux sous l'effet d'un champ électromagnétique résonant.</p>
+                <span class="animation-badge">Chapitre 3</span>
+            </a>
+
+            <a href="animation-time-evolution.html" class="animation-card">
+                <div class="animation-icon">⏰</div>
+                <h3>Évolution Temporelle</h3>
+                <p>Animation de l'évolution d'une fonction d'onde selon l'équation de Schrödinger dépendante du temps.</p>
+                <span class="animation-badge">Chapitre 3</span>
+            </a>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Section 3: Intrication et Multi-Qubits (Chapitre 4) -->
+        <h2 class="section-title">🔗 Intrication et Systèmes Multi-Qubits</h2>
+        <div class="animations-grid">
+            <a href="animation-entanglement.html" class="animation-card">
+                <div class="animation-icon">🌀</div>
+                <h3>États Intriqués (Bell States)</h3>
+                <p>Visualisation des corrélations quantiques entre deux qubits intriqués.</p>
+                <span class="animation-badge">Chapitre 4</span>
+            </a>
+
+            <a href="animation-teleportation.html" class="animation-card">
+                <div class="animation-icon">🚀</div>
+                <h3>Téléportation Quantique</h3>
+                <p>Protocole de téléportation d'un état quantique via intrication et communication classique.</p>
+                <span class="animation-badge">Chapitre 4</span>
+            </a>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Section 4: Ondes et Interférences (Chapitre 5) -->
+        <h2 class="section-title">🌊 Fonctions d'Onde et Interférences</h2>
+        <div class="animations-grid">
+            <a href="animation-young-interference.html" class="animation-card">
+                <div class="animation-icon">💫</div>
+                <h3>Interférences de Young</h3>
+                <p>Franges d'interférence résultant de la diffraction à travers deux fentes. Nature ondulatoire de la matière.</p>
+                <span class="animation-badge">Chapitre 5</span>
+            </a>
+
+            <a href="animation-wave-packet.html" class="animation-card">
+                <div class="animation-icon">📦</div>
+                <h3>Paquet d'Ondes et Étalement</h3>
+                <p>Démonstration de l'étalement d'un paquet d'ondes gaussien au cours du temps (Δx ∝ √t).</p>
+                <span class="animation-badge">Chapitre 5</span>
+            </a>
+
+            <a href="animation-fourier-transform.html" class="animation-card">
+                <div class="animation-icon">📊</div>
+                <h3>Transformée de Fourier</h3>
+                <p>Passage entre espace position et espace des impulsions. Principe d'indétermination de Heisenberg.</p>
+                <span class="animation-badge">Chapitre 5</span>
+            </a>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Section 5: Oscillateur Harmonique et Potentiels (Chapitre 6) -->
+        <h2 class="section-title">🎵 Oscillateur Harmonique et Potentiels</h2>
+        <div class="animations-grid">
+            <a href="animation-harmonic-oscillator.html" class="animation-card">
+                <div class="animation-icon">🎸</div>
+                <h3>Oscillateur Harmonique Quantique</h3>
+                <p>Fonctions d'onde ψₙ(x) et densités de probabilité |ψₙ(x)|² pour différents niveaux quantiques n.</p>
+                <span class="animation-badge">Chapitre 6</span>
+            </a>
+
+            <a href="animation-potential-well.html" class="animation-card">
+                <div class="animation-icon">📦</div>
+                <h3>Puits de Potentiel Infini</h3>
+                <p>États stationnaires d'une particule dans un puits de potentiel carré infini.</p>
+                <span class="animation-badge">Chapitre 6</span>
+            </a>
+
+            <a href="animation-tunneling.html" class="animation-card">
+                <div class="animation-icon">🚇</div>
+                <h3>Effet Tunnel</h3>
+                <p>Pénétration d'une particule à travers une barrière de potentiel classiquement interdite.</p>
+                <span class="animation-badge">Chapitre 6</span>
+            </a>
+        </div>
+
+        <footer class="gallery-footer">
+            <p>Quantum Quiz - PHY321 | Université de Yaoundé I</p>
+            <p>13 animations interactives pour maîtriser les concepts quantiques</p>
+        </footer>
+    </div>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

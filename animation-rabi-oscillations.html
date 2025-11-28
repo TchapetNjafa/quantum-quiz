@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oscillations de Rabi - Animations Quantum Quiz</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <script src="js/mathjax-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body class="animation-page">
+
+    <div class="animation-container">
+        <div class="navigation-buttons">
+            <a href="index.html" class="btn btn-back" data-i18n="animations.backToHome">← Accueil</a>
+            <a href="animations-gallery.html" class="btn btn-gallery" data-i18n="animations.gallery">🎨 Galerie d'Animations</a>
+        </div>
+
+        <h1>📡 Oscillations de Rabi</h1>
+        <p class="subtitle">Oscillations cohérentes dans un système quantique à deux niveaux</p>
+
+        <div class="animation-section">
+            <h2 data-i18n="animations.interactive">Animation Interactive</h2>
+            <p>Visualisez les oscillations de Rabi dans un système quantique à deux niveaux excité par un champ électromagnétique résonant. Les probabilités d'occupation des états |0⟩ et |1⟩ oscillent de manière sinusoïdale.</p>
+
+            <canvas id="canvas-rabi" class="animation-canvas" width="800" height="400"></canvas>
+
+            <div class="controls">
+                <button class="btn-primary" onclick="animation.start()">▶ Démarrer</button><button class="btn-secondary" onclick="animation.stop()">⏸ Pause</button><button class="btn-secondary" onclick="animation.reset()">🔄 Réinitialiser</button>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📚 Concepts Physiques (Chapitre 3)</h3>
+            <p><strong>Fréquence de Rabi :</strong> Ω = (μ·E)/ℏ où μ est le moment dipolaire et E le champ électrique.</p><p><strong>Probabilités :</strong> P₁(t) = sin²(Ωt/2) et P₀(t) = cos²(Ωt/2)</p><p><strong>Applications :</strong> Contrôle cohérent de qubits en informatique quantique, horloges atomiques, RMN.</p>
+        </div>
+    </div>
+
+    <script src="js/quantum-animations.js"></script>
+    <script src="js/quantum-animations-extended.js"></script>
+    <script>
+        let animation;
+        window.addEventListener('load', () => {
+            animation = QuantumAnimations.createRabiOscillations('canvas-rabi', { animated: true });
+        });
+    </script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

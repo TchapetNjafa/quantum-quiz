@@ -4,30 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>À propos du cours - PHY321</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/mobile-enhanced.css">
 </head>
 <body class="about-page">
     <canvas id="particle-canvas" class="particle-background"></canvas>
-
-    <!-- Header -->
-    <header class="main-header">
-        <div class="container">
-            <a href="index.html" class="btn-secondary">← Retour à l'accueil</a>
-        </div>
-    </header>
 
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
             <div class="about-hero">
-                <h1>PHY321 - Introduction à la Mécanique Quantique</h1>
-                <p class="subtitle">Université de Yaoundé I - Année Académique 2025-2026</p>
+                <h1 data-i18n="about.courseTitle">PHY321 - Introduction à la Mécanique Quantique</h1>
+                <p class="subtitle" data-i18n="about.university">Université de Yaoundé I - Année Académique 2025-2026</p>
             </div>
 
             <!-- Course Description -->
             <section class="about-section">
-                <h2>📚 Description du Cours</h2>
+                <h2 data-i18n="about.courseDescription">📚 Description du Cours</h2>
                 <p>
                     Le cours PHY321 offre une introduction complète aux concepts fondamentaux de la mécanique quantique,
                     science qui décrit le comportement de la matière et de l'énergie à l'échelle atomique et subatomique.
@@ -54,7 +55,12 @@
 
                 <div class="chapter-details">
                     <div class="chapter-card">
-                        <h3>Chapitre 1 : États Quantiques</h3>
+                        <div class="chapter-header">
+                            <h3>Chapitre 1 : États Quantiques</h3>
+                            <button class="audio-btn" data-chapter-audio="1" onclick="ChapterAudio.toggle(1)" title="Écouter le résumé du chapitre">
+                                <span class="audio-icon">🔊</span>
+                            </button>
+                        </div>
                         <p><strong>Sections :</strong> 1.1 - 1.4</p>
                         <p>Découverte des phénomènes quantiques, dualité onde-corpuscule, interférences quantiques,
                         amplitudes de probabilité, superposition d'états, qubits, espace de Hilbert, sphère de Bloch,
@@ -65,7 +71,12 @@
                     </div>
 
                     <div class="chapter-card">
-                        <h3>Chapitre 2 : Mesure et Opérateurs</h3>
+                        <div class="chapter-header">
+                            <h3>Chapitre 2 : Mesure et Opérateurs</h3>
+                            <button class="audio-btn" data-chapter-audio="2" onclick="ChapterAudio.toggle(2)" title="Écouter le résumé du chapitre">
+                                <span class="audio-icon">🔊</span>
+                            </button>
+                        </div>
                         <p><strong>Sections :</strong> 2.1 - 2.5</p>
                         <p>Processus de mesure quantique, opérateurs hermitiens, observables physiques, valeurs propres
                         et vecteurs propres, matrices de Pauli, commutateurs, et principe d'incertitude de Heisenberg.</p>
@@ -75,7 +86,12 @@
                     </div>
 
                     <div class="chapter-card">
-                        <h3>Chapitre 3 : Dynamique Quantique - Les Postulats</h3>
+                        <div class="chapter-header">
+                            <h3>Chapitre 3 : Dynamique Quantique - Les Postulats</h3>
+                            <button class="audio-btn" data-chapter-audio="3" onclick="ChapterAudio.toggle(3)" title="Écouter le résumé du chapitre">
+                                <span class="audio-icon">🔊</span>
+                            </button>
+                        </div>
                         <p><strong>Sections :</strong> 3.1 - 3.5</p>
                         <p>Les cinq postulats de la mécanique quantique, équation de Schrödinger (dépendante et
                         indépendante du temps), hamiltonien, évolution temporelle, conservation de la probabilité,
@@ -86,7 +102,12 @@
                     </div>
 
                     <div class="chapter-card">
-                        <h3>Chapitre 4 : Systèmes Multi-Qubits et Intrication</h3>
+                        <div class="chapter-header">
+                            <h3>Chapitre 4 : Systèmes Multi-Qubits et Intrication</h3>
+                            <button class="audio-btn" data-chapter-audio="4" onclick="ChapterAudio.toggle(4)" title="Écouter le résumé du chapitre">
+                                <span class="audio-icon">🔊</span>
+                            </button>
+                        </div>
                         <p><strong>Sections :</strong> 4.1 - 4.4</p>
                         <p>Produit tensoriel, états séparables et intriqués, états de Bell, paradoxe EPR,
                         inégalités de Bell, téléportation quantique, cryptographie quantique, et calcul quantique.</p>
@@ -96,7 +117,12 @@
                     </div>
 
                     <div class="chapter-card">
-                        <h3>Chapitre 5 : Fonction d'État et Espace Continu</h3>
+                        <div class="chapter-header">
+                            <h3>Chapitre 5 : Fonction d'État et Espace Continu</h3>
+                            <button class="audio-btn" data-chapter-audio="5" onclick="ChapterAudio.toggle(5)" title="Écouter le résumé du chapitre">
+                                <span class="audio-icon">🔊</span>
+                            </button>
+                        </div>
                         <p><strong>Sections :</strong> 5.1 - 5.4</p>
                         <p>Transition vers l'espace continu, fonctions d'onde, équation de Schrödinger en représentation
                         position, paquet d'ondes, particule libre, relation de dispersion, et limite classique.</p>
@@ -106,7 +132,12 @@
                     </div>
 
                     <div class="chapter-card">
-                        <h3>Chapitre 6 : Oscillateur Harmonique Quantique</h3>
+                        <div class="chapter-header">
+                            <h3>Chapitre 6 : Oscillateur Harmonique Quantique</h3>
+                            <button class="audio-btn" data-chapter-audio="6" onclick="ChapterAudio.toggle(6)" title="Écouter le résumé du chapitre">
+                                <span class="audio-icon">🔊</span>
+                            </button>
+                        </div>
                         <p><strong>Sections :</strong> 6.1 - 6.4</p>
                         <p>Système paradigmatique de la physique quantique, opérateurs de création et d'annihilation,
                         états propres d'énergie, fonctions d'onde de Hermite, états cohérents, et applications physiques
@@ -139,13 +170,8 @@
                         <p>Quiz hebdomadaires et devoirs</p>
                     </div>
                     <div class="eval-card">
-                        <h4>Examen Partiel</h4>
-                        <p class="percentage">30%</p>
-                        <p>Mi-semestre</p>
-                    </div>
-                    <div class="eval-card">
                         <h4>Examen Final</h4>
-                        <p class="percentage">40%</p>
+                        <p class="percentage">70%</p>
                         <p>Fin de semestre</p>
                     </div>
                 </div>
@@ -205,13 +231,13 @@
                 <p>
                     Cette plateforme de quiz interactive a été développée pour accompagner le cours PHY321.
                     Elle permet aux étudiants de tester leurs connaissances, identifier leurs lacunes,
-                    et progresser à leur rythme à travers 509 questions soigneusement élaborées.
+                    et progresser à leur rythme à travers 762 questions soigneusement élaborées.
                 </p>
 
                 <h3>Fonctionnalités</h3>
                 <ul class="features-list">
-                    <li>✅ 509 questions réparties sur 6 chapitres</li>
-                    <li>✅ 5 types de questions (QCM, Vrai/Faux, Correspondances, Numériques, Interprétation)</li>
+                    <li>✅ 762 questions réparties sur 6 chapitres</li>
+                    <li>✅ 9 types de questions (QCM, Vrai/Faux, Correspondances, Numériques, Interprétation, Hotspot, Drag & Drop, Flashcard, Animation)</li>
                     <li>✅ 3 niveaux de difficulté (Facile, Moyen, Difficile)</li>
                     <li>✅ 2 modes d'entraînement (Apprentissage, Examen)</li>
                     <li>✅ Statistiques détaillées de progression</li>
@@ -246,6 +272,85 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="js/navigation.js"></script>
     <script src="js/particles.js"></script>
+    <script src="js/chapter-audio.js"></script>
+
+    <!-- Styles pour les boutons audio -->
+    <style>
+        .chapter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .chapter-header h3 {
+            margin: 0;
+        }
+
+        .audio-btn {
+            background: linear-gradient(135deg, var(--quantum-purple, #7c3aed), var(--quantum-pink, #ec4899));
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+            flex-shrink: 0;
+        }
+
+        .audio-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+        }
+
+        .audio-btn:active {
+            transform: scale(0.95);
+        }
+
+        .audio-btn.playing {
+            animation: pulse-audio 1.5s ease-in-out infinite;
+            background: linear-gradient(135deg, var(--quantum-cyan, #06b6d4), var(--quantum-purple, #7c3aed));
+        }
+
+        .audio-icon {
+            font-size: 1.3rem;
+            line-height: 1;
+        }
+
+        @keyframes pulse-audio {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 25px rgba(6, 182, 212, 0.6);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .chapter-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .audio-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+            .audio-icon {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
 </body>
 </html>

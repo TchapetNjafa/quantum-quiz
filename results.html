@@ -4,13 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Résultats - Quantum Quiz PHY321</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
 
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/mobile-enhanced.css">
     <link rel="stylesheet" href="css/modal.css">
 
     <!-- Chart.js for statistics -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- jsPDF for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <!-- MathJax -->
     <script src="js/mathjax-config.js"></script>
@@ -18,13 +30,6 @@
 </head>
 <body class="results-page">
     <canvas id="particle-canvas" class="particle-background"></canvas>
-
-    <!-- Header -->
-    <header class="main-header">
-        <div class="container">
-            <a href="index.html" class="btn-secondary">← Retour à l'accueil</a>
-        </div>
-    </header>
 
     <!-- Results Hero -->
     <section class="results-hero">
@@ -55,13 +60,13 @@
     <!-- Detailed Statistics -->
     <section class="detailed-stats">
         <div class="container">
-            <h2 class="section-title">Statistiques Détaillées</h2>
+            <h2 class="section-title" data-i18n="results.detailedStats">Statistiques Détaillées</h2>
 
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-icon">🎯</div>
                     <div class="stat-content">
-                        <div class="stat-label">Score par Difficulté</div>
+                        <div class="stat-label" data-i18n="results.scoreByDifficulty">Score par Difficulté</div>
                         <div class="difficulty-scores">
                             <div class="difficulty-score">
                                 <span>🟢 Facile:</span>
@@ -82,16 +87,16 @@
                 <div class="stat-card">
                     <div class="stat-icon">⏱️</div>
                     <div class="stat-content">
-                        <div class="stat-label">Temps</div>
+                        <div class="stat-label" data-i18n="results.time">Temps</div>
                         <div class="stat-value" id="total-time">0 min</div>
-                        <div class="stat-sublabel">Temps moyen/question: <span id="avg-time">0s</span></div>
+                        <div class="stat-sublabel"><span data-i18n="results.avgTime">Temps moyen/question:</span> <span id="avg-time">0s</span></div>
                     </div>
                 </div>
 
                 <div class="stat-card">
                     <div class="stat-icon">📊</div>
                     <div class="stat-content">
-                        <div class="stat-label">Types de Questions</div>
+                        <div class="stat-label" data-i18n="results.questionTypes">Types de Questions</div>
                         <div id="question-types-summary"></div>
                     </div>
                 </div>
@@ -99,7 +104,7 @@
 
             <!-- Performance Radar Chart -->
             <div class="chart-container">
-                <h3 class="subsection-title">Performance par Concept</h3>
+                <h3 class="subsection-title" data-i18n="results.performanceByConcept">Performance par Concept</h3>
                 <canvas id="performance-radar"></canvas>
             </div>
         </div>
@@ -108,12 +113,12 @@
     <!-- Question Review -->
     <section class="question-review">
         <div class="container">
-            <h2 class="section-title">Révision des Questions</h2>
+            <h2 class="section-title" data-i18n="results.questionReview">Révision des Questions</h2>
 
             <div class="review-filters">
-                <button class="filter-btn active" data-filter="all">Toutes</button>
-                <button class="filter-btn" data-filter="correct">✓ Correctes</button>
-                <button class="filter-btn" data-filter="incorrect">✗ Incorrectes</button>
+                <button class="filter-btn active" data-filter="all" data-i18n="results.all">Toutes</button>
+                <button class="filter-btn" data-filter="correct" data-i18n="results.correctOnly">✓ Correctes</button>
+                <button class="filter-btn" data-filter="incorrect" data-i18n="results.incorrectOnly">✗ Incorrectes</button>
             </div>
 
             <div id="questions-review-list" class="review-list">
@@ -125,37 +130,37 @@
     <!-- Actions -->
     <section class="results-actions">
         <div class="container">
-            <h2 class="section-title">Et Maintenant ?</h2>
+            <h2 class="section-title" data-i18n="results.whatNow">Et Maintenant ?</h2>
 
             <div class="actions-grid">
                 <button id="retry-quiz" class="action-card">
                     <span class="action-icon">🔄</span>
-                    <strong>Refaire ce Quiz</strong>
-                    <small>Même configuration</small>
+                    <strong data-i18n="results.retryQuiz">Refaire ce Quiz</strong>
+                    <small data-i18n="results.sameConfig">Même configuration</small>
                 </button>
 
                 <button id="retry-errors" class="action-card">
                     <span class="action-icon">🎯</span>
-                    <strong>Reprendre les Erreurs</strong>
-                    <small>Uniquement les questions ratées</small>
+                    <strong data-i18n="results.retryErrors">Reprendre les Erreurs</strong>
+                    <small data-i18n="results.onlyMissed">Uniquement les questions ratées</small>
                 </button>
 
                 <a href="index.html" class="action-card">
                     <span class="action-icon">📚</span>
-                    <strong>Nouveau Chapitre</strong>
-                    <small>Choisir un autre sujet</small>
+                    <strong data-i18n="results.newChapter">Nouveau Chapitre</strong>
+                    <small data-i18n="results.chooseAnother">Choisir un autre sujet</small>
                 </a>
 
                 <button id="export-pdf" class="action-card">
                     <span class="action-icon">📥</span>
-                    <strong>Exporter en PDF</strong>
-                    <small>Sauvegarder vos résultats</small>
+                    <strong data-i18n="results.exportPDF">Exporter en PDF</strong>
+                    <small data-i18n="results.saveResults">Sauvegarder vos résultats</small>
                 </button>
 
                 <button id="share-results" class="action-card">
                     <span class="action-icon">🔗</span>
-                    <strong>Partager</strong>
-                    <small>Générer un lien</small>
+                    <strong data-i18n="results.share">Partager</strong>
+                    <small data-i18n="results.generateLink">Générer un lien</small>
                 </button>
             </div>
         </div>
@@ -164,7 +169,7 @@
     <!-- Progress History -->
     <section class="progress-history">
         <div class="container">
-            <h2 class="section-title">Historique de Progression</h2>
+            <h2 class="section-title" data-i18n="results.progressHistory">Historique de Progression</h2>
             <canvas id="progress-chart"></canvas>
         </div>
     </section>
@@ -182,6 +187,15 @@
     <script src="js/particles.js"></script>
     <script src="js/audio.js"></script>
     <script src="js/statistics.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/adaptive-difficulty.js"></script>
+    <script src="js/lms-integration.js"></script>
+    <script src="js/favorites.js"></script>
+    <script src="js/pdf-export.js"></script>
+    <script src="js/targeted-review.js"></script>
+    <script src="js/animation-linker.js"></script>
     <script src="js/results.js"></script>
+    <script src="js/navigation.js"></script>
 </body>
 </html>

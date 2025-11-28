@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puits de Potentiel Infini - Animations Quantum Quiz</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <script src="js/mathjax-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body class="animation-page">
+
+    <div class="animation-container">
+        <div class="navigation-buttons">
+            <a href="index.html" class="btn btn-back" data-i18n="animations.backToHome">← Accueil</a>
+            <a href="animations-gallery.html" class="btn btn-gallery" data-i18n="animations.gallery">🎨 Galerie d'Animations</a>
+        </div>
+
+        <h1>📦 Puits de Potentiel Infini</h1>
+        <p class="subtitle">États quantifiés dans une boîte à parois infinies</p>
+
+        <div class="animation-section">
+            <h2 data-i18n="animations.interactive">Animation Interactive</h2>
+            <p>Visualisez les fonctions d'onde stationnaires d'une particule dans un puits de potentiel carré infini. Les états propres ont des nœuds caractéristiques : l'état n a exactement (n-1) nœuds.</p>
+
+            <canvas id="canvas-potential-well" class="animation-canvas" width="800" height="400"></canvas>
+
+            <div class="controls">
+                <button class="btn-primary" onclick="animation.start()">▶ Démarrer</button><button class="btn-secondary" onclick="animation.stop()">⏸ Pause</button><div class="slider-group"><label>Niveau n:</label><input type="range" min="1" max="5" value="1" id="level-slider" oninput="animation.setLevel(parseInt(this.value)); document.getElementById('level-display').textContent = 'n = ' + this.value"><span id="level-display" style="color: #2dd4bf; font-weight: 700;">n = 1</span></div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📚 Concepts Physiques (Chapitre 6)</h3>
+            <p><strong>Énergies quantifiées :</strong> E_n = (n²π²ℏ²)/(2mL²) avec n = 1, 2, 3, ...</p><p><strong>Fonctions propres :</strong> ψ_n(x) = √(2/L) sin(nπx/L) pour 0 ≤ x ≤ L</p><p><strong>Quantification :</strong> Le confinement spatial entraîne une quantification des énergies.</p><p><strong>Nœuds :</strong> Le nombre de nœuds augmente avec l'énergie, illustrant la relation entre structure spatiale et énergie.</p>
+        </div>
+    </div>
+
+    <script src="js/quantum-animations.js"></script>
+    <script src="js/quantum-animations-extended.js"></script>
+    <script>
+        let animation;
+        window.addEventListener('load', () => {
+            animation = QuantumAnimations.createPotentialWell('canvas-potential-well', { animated: true });
+        });
+    </script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

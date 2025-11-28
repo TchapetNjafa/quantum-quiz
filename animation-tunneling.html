@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effet Tunnel - Animations Quantum Quiz</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <script src="js/mathjax-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body class="animation-page">
+
+    <div class="animation-container">
+        <div class="navigation-buttons">
+            <a href="index.html" class="btn btn-back" data-i18n="animations.backToHome">← Accueil</a>
+            <a href="animations-gallery.html" class="btn btn-gallery" data-i18n="animations.gallery">🎨 Galerie d'Animations</a>
+        </div>
+
+        <h1>🚇 Effet Tunnel</h1>
+        <p class="subtitle">Visualisation quantique de la transmission à travers une barrière</p>
+
+        <div class="animation-section">
+            <h2 data-i18n="animations.interactive">Animation Interactive</h2>
+            <p>Observez l'effet tunnel : des particules avec une énergie E < V₀ peuvent traverser une barrière de potentiel, un phénomène purement quantique impossible en physique classique. La probabilité de transmission dépend de l'énergie de la particule et de la largeur de la barrière.</p>
+
+            <canvas id="canvas-tunneling" class="animation-canvas" width="800" height="400"></canvas>
+
+            <div class="controls">
+                <button class="btn-primary" onclick="animation.start()">▶ Démarrer</button>
+                <button class="btn-secondary" onclick="animation.stop()">⏸ Pause</button>
+                <button class="btn-secondary" onclick="animation.toggleClassical()">🔄 Comparaison Classique</button>
+            </div>
+
+            <div class="controls">
+                <div class="slider-group">
+                    <label>Largeur barrière (a):</label>
+                    <input type="range" min="50" max="200" value="80" id="width-slider"
+                           oninput="animation.setBarrierWidth(parseInt(this.value)); document.getElementById('width-display').textContent = this.value + ' px'">
+                    <span id="width-display" style="color: #2dd4bf; font-weight: 700; min-width: 60px;">80 px</span>
+                </div>
+
+                <div class="slider-group">
+                    <label>Énergie (E):</label>
+                    <input type="range" min="0.1" max="1.0" step="0.05" value="0.5" id="energy-slider"
+                           oninput="animation.setEnergy(parseFloat(this.value)); document.getElementById('energy-display').textContent = this.value">
+                    <span id="energy-display" style="color: #2dd4bf; font-weight: 700; min-width: 60px;">0.5</span>
+                </div>
+
+                <div class="slider-group">
+                    <label>Hauteur barrière (V₀):</label>
+                    <input type="range" min="0.1" max="1.0" step="0.05" value="0.7" id="height-slider"
+                           oninput="animation.setBarrierHeight(parseFloat(this.value)); document.getElementById('height-display').textContent = this.value">
+                    <span id="height-display" style="color: #2dd4bf; font-weight: 700; min-width: 60px;">0.7</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📚 Concepts Physiques (Chapitre 6)</h3>
+            <p><strong>Coefficient de transmission :</strong> T ≈ e^(-2κa) où κ = √(2m(V₀-E))/ℏ et a est la largeur de la barrière.</p><p><strong>Applications :</strong> Désintégration alpha, microscope à effet tunnel (STM), diodes tunnel, fusion nucléaire dans les étoiles.</p><p><strong>Nature quantique :</strong> La fonction d'onde pénètre exponentiellement dans la barrière même si E < V₀.</p><p><strong>Probabilité :</strong> Plus la barrière est fine ou l'énergie proche de V₀, plus la probabilité de tunnel est élevée.</p>
+        </div>
+    </div>
+
+    <script src="js/quantum-animations.js"></script>
+    <script>
+        let animation;
+        window.addEventListener('load', () => {
+            animation = QuantumAnimations.createTunneling('canvas-tunneling', { animated: true });
+        });
+    </script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

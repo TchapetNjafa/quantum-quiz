@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paquet d'Ondes et Étalement - Animations Quantum Quiz</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <script src="js/mathjax-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body class="animation-page">
+
+    <div class="animation-container">
+        <div class="navigation-buttons">
+            <a href="index.html" class="btn btn-back" data-i18n="animations.backToHome">← Accueil</a>
+            <a href="animations-gallery.html" class="btn btn-gallery" data-i18n="animations.gallery">🎨 Galerie d'Animations</a>
+        </div>
+
+        <h1>📦 Paquet d'Ondes et Étalement Quantique</h1>
+        <p class="subtitle">Démonstration de l'étalement d'un paquet d'ondes gaussien au cours du temps</p>
+
+        <div class="animation-section">
+            <h2 data-i18n="animations.interactive">Animation Interactive</h2>
+            <p>
+                Visualisation de l'évolution temporelle d'un paquet d'ondes gaussien.
+                Observez comment la largeur $\Delta x$ augmente proportionnellement à $\sqrt{t}$ en raison du
+                principe d'indétermination de Heisenberg.
+            </p>
+
+            <canvas id="canvas-wavepacket" class="animation-canvas" width="800" height="400"></canvas>
+
+            <div class="controls">
+                <button class="btn-primary" onclick="wavePacket.start()">▶ Démarrer</button>
+                <button class="btn-secondary" onclick="wavePacket.stop()">⏸ Pause</button>
+                <button class="btn-secondary" onclick="wavePacket.reset()">🔄 Réinitialiser</button>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📚 Concepts Physiques (Chapitre 5)</h3>
+            <p>
+                <strong>Paquet d'ondes :</strong> Une particule quantique localisée est représentée par une superposition
+                d'ondes planes de différentes fréquences. Un paquet d'ondes gaussien est typiquement de la forme :
+                $\psi(x,0) = A e^{-x^2/4\sigma^2} e^{ik_0 x}$
+            </p>
+            <p>
+                <strong>Étalement temporel :</strong> L'évolution est gouvernée par l'équation de Schrödinger.
+                La largeur du paquet évolue selon : $\Delta x(t) = \Delta x(0) \sqrt{1 + \left(\frac{\hbar t}{2m\sigma^2}\right)^2}$
+            </p>
+            <p>
+                <strong>Principe d'indétermination :</strong> $\Delta x \cdot \Delta p \geq \frac{\hbar}{2}$.
+                À $t=0$, si $\Delta x$ est petit, alors $\Delta p$ doit être grand. Les composantes de grande impulsion
+                se propagent plus vite, étalant le paquet.
+            </p>
+            <p>
+                <strong>Vitesse de groupe :</strong> Le centre du paquet se déplace à la vitesse $v_g = \frac{\hbar k_0}{m}$,
+                tandis que l'étalement se produit autour de ce centre mobile.
+            </p>
+            <p>
+                <strong>Conséquence :</strong> Cette délocalisation temporelle est une signature fondamentale de la mécanique
+                quantique. Un paquet localisé ne peut rester localisé indéfiniment (sauf pour l'oscillateur harmonique).
+            </p>
+        </div>
+    </div>
+
+    <script src="js/quantum-animations.js"></script>
+    <script>
+        let wavePacket;
+
+        window.addEventListener('load', () => {
+            wavePacket = QuantumAnimations.createWavePacket('canvas-wavepacket', {
+                animated: true
+            });
+        });
+    </script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

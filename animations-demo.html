@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animations Quantiques - Démonstration</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body class="animation-page">
+    <div class="animation-container">
+        <h1>🎨 Animations Quantiques Interactives</h1>
+        <p class="subtitle">Visualisations dynamiques des concepts de mécanique quantique</p>
+
+        <!-- 1. Oscillateur Harmonique -->
+        <div class="animation-section">
+            <h2>1. Oscillateur Harmonique Quantique</h2>
+            <p>Visualisez les fonctions d'onde $\psi_n(x)$ et les densités de probabilité $|\psi_n(x)|^2$ pour différents niveaux quantiques n.</p>
+            <canvas id="canvas-oscillator" class="animation-canvas" width="800" height="300"></canvas>
+            <div class="controls">
+                <button class="btn-primary" onclick="oscillator.start()">▶ Play</button>
+                <button class="btn-secondary" onclick="oscillator.stop()">⏸ Pause</button>
+                <div class="slider-group">
+                    <label>Niveau n:</label>
+                    <input type="range" min="0" max="5" value="0" id="level-slider" oninput="oscillator.setLevel(parseInt(this.value))">
+                    <span id="level-display">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Stern-Gerlach -->
+        <div class="animation-section">
+            <h2>2. Expérience de Stern-Gerlach</h2>
+            <p>Simulation de la séparation d'un faisceau d'atomes selon leur spin dans un champ magnétique inhomogène. Les particules spin up (cyan) sont déviées vers le haut, spin down (rose) vers le bas.</p>
+            <canvas id="canvas-stern-gerlach" class="animation-canvas" width="800" height="300"></canvas>
+            <div class="controls">
+                <button class="btn-primary" onclick="sternGerlach.start()">▶ Play</button>
+                <button class="btn-secondary" onclick="sternGerlach.stop()">⏸ Pause</button>
+            </div>
+        </div>
+
+        <!-- 3. Interférences de Young -->
+        <div class="animation-section">
+            <h2>3. Interférences de Young</h2>
+            <p>Franges d'interférence résultant de la diffraction à travers deux fentes. Ajustez la séparation des fentes pour modifier le motif d'interférence.</p>
+            <canvas id="canvas-young" class="animation-canvas" width="800" height="300"></canvas>
+            <div class="controls">
+                <button class="btn-primary" onclick="young.start()">▶ Play</button>
+                <button class="btn-secondary" onclick="young.stop()">⏸ Pause</button>
+                <div class="slider-group">
+                    <label>Séparation fentes:</label>
+                    <input type="range" min="30" max="120" value="60" id="slit-slider" oninput="young.setSlitSeparation(parseInt(this.value))">
+                    <span id="slit-display">60 px</span>
+                </div>
+                <div class="slider-group">
+                    <label>Longueur d'onde:</label>
+                    <input type="range" min="15" max="50" value="30" id="wavelength-slider" oninput="young.setWavelength(parseInt(this.value))">
+                    <span id="wavelength-display">30 px</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Paquet d'Ondes -->
+        <div class="animation-section">
+            <h2>4. Paquet d'Ondes et Étalement Quantique</h2>
+            <p>Démonstration de l'étalement d'un paquet d'ondes gaussien au cours du temps ($\Delta x \propto \sqrt{t}$). Conséquence du principe d'indétermination de Heisenberg.</p>
+            <canvas id="canvas-wavepacket" class="animation-canvas" width="800" height="300"></canvas>
+            <div class="controls">
+                <button class="btn-primary" onclick="wavePacket.start()">▶ Play</button>
+                <button class="btn-secondary" onclick="wavePacket.stop()">⏸ Pause</button>
+                <button class="btn-secondary" onclick="wavePacket.reset()">🔄 Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/quantum-animations.js"></script>
+    <script>
+        // Initialiser les animations
+        let oscillator, sternGerlach, young, wavePacket;
+
+        window.addEventListener('load', () => {
+            oscillator = QuantumAnimations.createHarmonicOscillator('canvas-oscillator', {
+                animated: true,
+                level: 0
+            });
+
+            sternGerlach = QuantumAnimations.createSternGerlach('canvas-stern-gerlach', {
+                animated: true
+            });
+
+            young = QuantumAnimations.createYoungInterference('canvas-young', {
+                animated: true
+            });
+
+            wavePacket = QuantumAnimations.createWavePacket('canvas-wavepacket', {
+                animated: true
+            });
+
+            // Mettre à jour les affichages
+            document.getElementById('level-slider').addEventListener('input', (e) => {
+                document.getElementById('level-display').textContent = e.target.value;
+            });
+
+            document.getElementById('slit-slider').addEventListener('input', (e) => {
+                document.getElementById('slit-display').textContent = e.target.value + ' px';
+            });
+
+            document.getElementById('wavelength-slider').addEventListener('input', (e) => {
+                document.getElementById('wavelength-display').textContent = e.target.value + ' px';
+            });
+        });
+    </script>
+
+    <!-- MathJax pour les formules -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

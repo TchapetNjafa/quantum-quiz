@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sphère de Bloch - Animations Quantum Quiz</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <script src="js/mathjax-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body class="animation-page">
+
+    <div class="animation-container">
+        <div class="navigation-buttons">
+            <a href="index.html" class="btn btn-back" data-i18n="animations.backToHome">← Accueil</a>
+            <a href="animations-gallery.html" class="btn btn-gallery" data-i18n="animations.gallery">🎨 Galerie d'Animations</a>
+        </div>
+
+        <h1>⚛️ Sphère de Bloch</h1>
+        <p class="subtitle">Représentation géométrique d'un qubit sur la sphère de Bloch</p>
+
+        <div class="animation-section">
+            <h2 data-i18n="animations.interactive">Animation Interactive</h2>
+            <p>Visualisez la représentation géométrique d'un qubit sur la sphère de Bloch. L'état d'un qubit peut être représenté par un point sur une sphère unitaire dans l'espace 3D.</p>
+
+            <canvas id="canvas-bloch" class="animation-canvas" width="800" height="400"></canvas>
+
+            <div class="controls">
+                <button class="btn-primary" onclick="animation.start()">▶ Démarrer</button><button class="btn-secondary" onclick="animation.stop()">⏸ Pause</button>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📚 Concepts Physiques (Chapitre 1)</h3>
+            <p><strong>Équation :</strong> |ψ⟩ = cos(θ/2)|0⟩ + e^(iφ) sin(θ/2)|1⟩</p><p><strong>Angles :</strong> θ (angle polaire) et φ (angle azimuthal) déterminent complètement l'état du qubit.</p><p><strong>Pôles :</strong> |0⟩ au pôle nord, |1⟩ au pôle sud. L'équateur représente les superpositions égales comme |+⟩ et |-⟩.</p>
+        </div>
+    </div>
+
+    <script src="js/quantum-animations.js"></script>
+    
+    <script>
+        let animation;
+        window.addEventListener('load', () => {
+            animation = QuantumAnimations.createBlochSphere('canvas-bloch', { animated: true });
+        });
+    </script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classement - Quantum Quiz PHY321</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+    <meta name="description" content="Classement et leaderboard du Quantum Quiz">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        .leaderboard-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .leaderboard-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .leaderboard-header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--quantum-cyan) 0%, var(--quantum-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .leaderboard-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .filter-group select:hover {
+            border-color: var(--quantum-cyan);
+        }
+
+        /* Leaderboard Table */
+        .leaderboard-table {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .table-header {
+            display: grid;
+            grid-template-columns: 80px 1fr 120px 150px 150px 120px;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, var(--quantum-purple) 0%, var(--quantum-cyan) 100%);
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .leaderboard-entry {
+            display: grid;
+            grid-template-columns: 80px 1fr 120px 150px 150px 120px;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .leaderboard-entry:hover {
+            background: var(--bg-hover);
+        }
+
+        .leaderboard-entry:last-child {
+            border-bottom: none;
+        }
+
+        .rank {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .rank.gold {
+            color: #FFD700;
+        }
+
+        .rank.silver {
+            color: #C0C0C0;
+        }
+
+        .rank.bronze {
+            color: #CD7F32;
+        }
+
+        .username {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .score {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--quantum-cyan);
+        }
+
+        .chapter-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(45, 212, 191, 0.2);
+            border: 1px solid var(--quantum-cyan);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--quantum-cyan);
+        }
+
+        .date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .mode-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .mode-badge.exam {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid #ef4444;
+        }
+
+        .mode-badge.learning {
+            background: rgba(124, 58, 237, 0.2);
+            color: var(--quantum-purple);
+            border: 1px solid var(--quantum-purple);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-bottom: 2rem;
+        }
+
+        .back-btn:hover {
+            background: var(--bg-hover);
+            border-color: var(--quantum-cyan);
+            transform: translateX(-5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .table-header,
+            .leaderboard-entry {
+                grid-template-columns: 60px 1fr 80px;
+                font-size: 0.85rem;
+            }
+
+            .table-header .hide-mobile,
+            .leaderboard-entry .hide-mobile {
+                display: none;
+            }
+
+            .leaderboard-header h1 {
+                font-size: 2rem;
+            }
+
+            .filters {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="leaderboard-container">
+        <a href="index.html" class="back-btn">
+            ← Retour à l'accueil
+        </a>
+
+        <div class="leaderboard-header">
+            <h1>🏆 Classement</h1>
+            <p class="leaderboard-subtitle">Les meilleurs scores de Quantum Quiz</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+            <div class="filter-group">
+                <label for="filter-chapter">Chapitre</label>
+                <select id="filter-chapter">
+                    <option value="">Tous les chapitres</option>
+                    <option value="1">Chapitre 1 : États Quantiques</option>
+                    <option value="2">Chapitre 2 : Mesures et Opérateurs</option>
+                    <option value="3">Chapitre 3 : Postulats</option>
+                    <option value="4">Chapitre 4 : Multi-qubits</option>
+                    <option value="5">Chapitre 5 : Fonctions d'État</option>
+                    <option value="6">Chapitre 6 : Oscillateur Harmonique</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="filter-mode">Mode</label>
+                <select id="filter-mode">
+                    <option value="">Tous les modes</option>
+                    <option value="learning">Entraînement</option>
+                    <option value="exam">Examen</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="filter-limit">Afficher</label>
+                <select id="filter-limit">
+                    <option value="10">Top 10</option>
+                    <option value="25">Top 25</option>
+                    <option value="50">Top 50</option>
+                    <option value="100">Top 100</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Leaderboard Table -->
+        <div class="leaderboard-table">
+            <div class="table-header">
+                <div>Rang</div>
+                <div>Joueur</div>
+                <div>Score</div>
+                <div class="hide-mobile">Chapitre</div>
+                <div class="hide-mobile">Date</div>
+                <div class="hide-mobile">Mode</div>
+            </div>
+            <div id="leaderboard-entries">
+                <!-- Entries will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/navigation.js"></script>
+    <script src="js/profile-guard.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/multiplayer.js"></script>
+    <script>
+        // Render leaderboard
+        function renderLeaderboard() {
+            const chapter = document.getElementById('filter-chapter').value;
+            const mode = document.getElementById('filter-mode').value;
+            const limit = parseInt(document.getElementById('filter-limit').value);
+
+            const filters = {};
+            if (chapter) filters.chapter = parseInt(chapter);
+            if (mode) filters.mode = mode;
+
+            const entries = MultiplayerSystem.getTopScores(limit, filters);
+            const container = document.getElementById('leaderboard-entries');
+
+            if (entries.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🏆</div>
+                        <p>Aucun score enregistré pour ces critères.</p>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Complétez un quiz pour apparaître dans le classement !</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = entries.map((entry, index) => {
+                const rank = index + 1;
+                let rankClass = '';
+                let rankEmoji = '';
+
+                if (rank === 1) {
+                    rankClass = 'gold';
+                    rankEmoji = '🥇';
+                } else if (rank === 2) {
+                    rankClass = 'silver';
+                    rankEmoji = '🥈';
+                } else if (rank === 3) {
+                    rankClass = 'bronze';
+                    rankEmoji = '🥉';
+                }
+
+                const date = new Date(entry.date);
+                const dateStr = date.toLocaleDateString('fr-FR', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                });
+
+                return `
+                    <div class="leaderboard-entry">
+                        <div class="rank ${rankClass}">
+                            ${rankEmoji || rank}
+                        </div>
+                        <div class="username">${entry.username}</div>
+                        <div class="score">${entry.score}%</div>
+                        <div class="hide-mobile">
+                            <span class="chapter-badge">Ch. ${entry.chapter}</span>
+                        </div>
+                        <div class="date hide-mobile">${dateStr}</div>
+                        <div class="hide-mobile">
+                            <span class="mode-badge ${entry.mode}">${entry.mode === 'exam' ? 'Examen' : 'Entraînement'}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Event listeners for filters
+        document.getElementById('filter-chapter').addEventListener('change', renderLeaderboard);
+        document.getElementById('filter-mode').addEventListener('change', renderLeaderboard);
+        document.getElementById('filter-limit').addEventListener('change', renderLeaderboard);
+
+        // Initial render
+        renderLeaderboard();
+    </script>
+</body>
+</html>

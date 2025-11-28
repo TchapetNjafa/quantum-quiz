@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformée de Fourier - Animations Quantum Quiz</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <script src="js/mathjax-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body class="animation-page">
+
+    <div class="animation-container">
+        <div class="navigation-buttons">
+            <a href="index.html" class="btn btn-back" data-i18n="animations.backToHome">← Accueil</a>
+            <a href="animations-gallery.html" class="btn btn-gallery" data-i18n="animations.gallery">🎨 Galerie d'Animations</a>
+        </div>
+
+        <h1>📊 Transformée de Fourier</h1>
+        <p class="subtitle">Dualité position-impulsion et principe d'incertitude</p>
+
+        <div class="animation-section">
+            <h2 data-i18n="animations.interactive">Animation Interactive</h2>
+            <p>Visualisez la relation entre la représentation en position ψ(x) et en impulsion φ(p) d'une fonction d'onde. Un paquet étroit en position (petit Δx) donne une distribution large en impulsion (grand Δp), illustrant le principe d'indétermination de Heisenberg.</p>
+
+            <canvas id="canvas-fourier" class="animation-canvas" width="800" height="400"></canvas>
+
+            <div class="controls">
+                <button class="btn-primary" onclick="animation.start()">▶ Démarrer</button><button class="btn-secondary" onclick="animation.stop()">⏸ Pause</button>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📚 Concepts Physiques (Chapitre 5)</h3>
+            <p><strong>Transformée de Fourier :</strong> φ(p) = (1/√2πℏ) ∫ ψ(x) e^(-ipx/ℏ) dx</p><p><strong>Principe d'indétermination :</strong> Δx · Δp ≥ ℏ/2</p><p><strong>Gaussienne :</strong> Une gaussienne en position reste une gaussienne en impulsion (cas optimal Δx·Δp = ℏ/2).</p><p><strong>Interprétation :</strong> Une localisation précise en position implique une grande incertitude en impulsion.</p>
+        </div>
+    </div>
+
+    <script src="js/quantum-animations.js"></script>
+    <script src="js/quantum-animations-extended.js"></script>
+    <script>
+        let animation;
+        window.addEventListener('load', () => {
+            animation = QuantumAnimations.createFourierTransform('canvas-fourier', { animated: true });
+        });
+    </script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

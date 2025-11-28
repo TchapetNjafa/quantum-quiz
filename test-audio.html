@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Audio - Quantum Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: white;
+        }
+        h1 { text-align: center; }
+        .btn-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        button {
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #2dd4bf 0%, #0891b2 100%);
+            color: white;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(45, 212, 191, 0.4);
+        }
+        #status {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .status-line {
+            padding: 5px 0;
+            font-family: monospace;
+        }
+        .ok { color: #2dd4bf; }
+        .error { color: #ef4444; }
+    </style>
+</head>
+<body>
+    <h1>🔊 Test du Système Audio</h1>
+
+    <div class="btn-group">
+        <button onclick="testCorrect()">✓ Son Correct</button>
+        <button onclick="testIncorrect()">✗ Son Incorrect</button>
+        <button onclick="testClick()">👆 Son Click</button>
+        <button onclick="testNavigate()">➡️ Son Navigation</button>
+        <button onclick="testStart()">▶️ Son Start</button>
+        <button onclick="testSuccess()">🎉 Son Success</button>
+        <button onclick="testWarning()">⚠️ Son Warning</button>
+        <button onclick="testNotify()">🔔 Son Notification</button>
+    </div>
+
+    <button onclick="toggleAudio()" style="width: 100%; background: rgba(255, 255, 255, 0.2);">
+        🔄 Toggle Audio (ON/OFF)
+    </button>
+
+    <div id="status"></div>
+
+    <script src="js/audio.js"></script>
+    <script>
+        function updateStatus() {
+            const statusDiv = document.getElementById('status');
+            const enabled = AudioSystem.enabled;
+            const hasContext = AudioSystem.context !== null;
+            const contextState = AudioSystem.context ? AudioSystem.context.state : 'N/A';
+            const localStorageValue = localStorage.getItem('audio_enabled');
+
+            statusDiv.innerHTML = `
+                <div class="status-line"><strong>📊 Status du Système Audio:</strong></div>
+                <div class="status-line ${enabled ? 'ok' : 'error'}">• Enabled: ${enabled}</div>
+                <div class="status-line ${hasContext ? 'ok' : 'error'}">• Context: ${hasContext ? 'Initialisé' : 'NULL'}</div>
+                <div class="status-line ${contextState === 'running' ? 'ok' : 'error'}">• Context State: ${contextState}</div>
+                <div class="status-line">• LocalStorage: ${localStorageValue}</div>
+            `;
+        }
+
+        function testCorrect() {
+            console.log('Testing correct sound...');
+            AudioSystem.correct();
+            updateStatus();
+        }
+
+        function testIncorrect() {
+            console.log('Testing incorrect sound...');
+            AudioSystem.incorrect();
+            updateStatus();
+        }
+
+        function testClick() {
+            console.log('Testing click sound...');
+            AudioSystem.click();
+            updateStatus();
+        }
+
+        function testNavigate() {
+            console.log('Testing navigate sound...');
+            AudioSystem.navigate();
+            updateStatus();
+        }
+
+        function testStart() {
+            console.log('Testing start sound...');
+            AudioSystem.start();
+            updateStatus();
+        }
+
+        function testSuccess() {
+            console.log('Testing success sound...');
+            AudioSystem.success();
+            updateStatus();
+        }
+
+        function testWarning() {
+            console.log('Testing warning sound...');
+            AudioSystem.warning();
+            updateStatus();
+        }
+
+        function testNotify() {
+            console.log('Testing notify sound...');
+            AudioSystem.notify();
+            updateStatus();
+        }
+
+        function toggleAudio() {
+            const newState = AudioSystem.toggle();
+            console.log('Audio toggled to:', newState);
+            alert('Audio est maintenant: ' + (newState ? 'ACTIVÉ ✓' : 'DÉSACTIVÉ ✗'));
+            updateStatus();
+        }
+
+        // Initialiser l'affichage au chargement
+        window.addEventListener('load', () => {
+            setTimeout(updateStatus, 500);
+        });
+    </script>
+</body>
+</html>

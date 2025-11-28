@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>États Intriqués (Bell States) - Animations Quantum Quiz</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <script src="js/mathjax-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body class="animation-page">
+
+    <div class="animation-container">
+        <div class="navigation-buttons">
+            <a href="index.html" class="btn btn-back" data-i18n="animations.backToHome">← Accueil</a>
+            <a href="animations-gallery.html" class="btn btn-gallery" data-i18n="animations.gallery">🎨 Galerie d'Animations</a>
+        </div>
+
+        <h1>🌀 États Intriqués (Bell States)</h1>
+        <p class="subtitle">Corrélations quantiques non-locales entre qubits intriqués</p>
+
+        <div class="animation-section">
+            <h2 data-i18n="animations.interactive">Animation Interactive</h2>
+            <p>Visualisez les corrélations quantiques parfaites entre deux qubits dans un état de Bell. Lorsqu'une particule est mesurée spin up (cyan), l'autre est instantanément spin down (rose), et vice versa, quelle que soit la distance.</p>
+
+            <canvas id="canvas-entanglement" class="animation-canvas" width="800" height="400"></canvas>
+
+            <div class="controls">
+                <button class="btn-primary" onclick="animation.start()">▶ Démarrer</button><button class="btn-secondary" onclick="animation.stop()">⏸ Pause</button>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📚 Concepts Physiques (Chapitre 4)</h3>
+            <p><strong>États de Bell :<\/strong> |Φ⁺⟩ = (|00⟩ + |11⟩)\/√2, |Φ⁻⟩ = (|00⟩ - |11⟩)\/√2<\/p><p><strong>Non-séparabilité :<\/strong> L'état ne peut pas s'écrire comme un produit tensoriel |ψ_A⟩ ⊗ |ψ_B⟩<\/p><p><strong>Corrélations :<\/strong> Les mesures sont parfaitement corrélées (ou anti-corrélées) sans communication classique.<\/p><p><strong>Inégalités de Bell :<\/strong> Ces corrélations violent les inégalités de Bell, prouvant la non-localité quantique.<\/p>
+        </div>
+    </div>
+
+    <script src="js/quantum-animations.js"></script>
+    <script src="js/quantum-animations.js"></script>
+    <script>
+        let animation;
+        window.addEventListener('load', () => {
+            animation = QuantumAnimations.createEntanglement('canvas-entanglement', { animated: true });
+        });
+    </script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

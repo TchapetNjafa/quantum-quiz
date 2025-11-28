@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oscillateur Harmonique Quantique - Animations Quantum Quiz</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- MathJax pour les formules -->
+    <script src="js/mathjax-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body class="animation-page">
+
+    <div class="animation-container">
+        <div class="navigation-buttons">
+            <a href="index.html" class="btn btn-back" data-i18n="animations.backToHome">← Accueil</a>
+            <a href="animations-gallery.html" class="btn btn-gallery" data-i18n="animations.gallery">🎨 Galerie d'Animations</a>
+        </div>
+
+        <h1>🎸 Oscillateur Harmonique Quantique</h1>
+        <p class="subtitle">Visualisation des fonctions d'onde et densités de probabilité pour différents niveaux quantiques</p>
+
+        <div class="animation-section">
+            <h2 data-i18n="animations.interactive">Animation Interactive</h2>
+            <p>
+                Visualisez les fonctions d'onde $\psi_n(x)$ et les densités de probabilité $|\psi_n(x)|^2$
+                pour différents niveaux quantiques $n = 0, 1, 2, 3, 4, 5$ de l'oscillateur harmonique quantique.
+            </p>
+
+            <canvas id="canvas-oscillator" class="animation-canvas" width="800" height="400"></canvas>
+
+            <div class="controls">
+                <button class="btn-primary" onclick="oscillator.start()">▶ Démarrer</button>
+                <button class="btn-secondary" onclick="oscillator.stop()">⏸ Pause</button>
+
+                <div class="slider-group">
+                    <label>Niveau quantique n:</label>
+                    <input type="range" min="0" max="5" value="0" id="level-slider"
+                           oninput="oscillator.setLevel(parseInt(this.value)); updateLevelDisplay()">
+                    <span id="level-display" style="color: #2dd4bf; font-weight: 700; font-size: 1.2rem;">n = 0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📚 Concepts Physiques (Chapitre 6)</h3>
+            <p>
+                <strong>Hamiltonien :</strong> $\hat{H} = \frac{\hat{p}^2}{2m} + \frac{1}{2}m\omega^2\hat{x}^2$
+            </p>
+            <p>
+                <strong>Énergies propres :</strong> $E_n = \hbar\omega(n + \frac{1}{2})$, avec $n = 0, 1, 2, 3, ...$
+            </p>
+            <p>
+                <strong>Fonctions d'onde :</strong> Les états propres sont donnés par des polynômes de Hermite multipliés
+                par une gaussienne. L'état fondamental ($n=0$) est purement gaussien, les états excités présentent
+                des oscillations caractéristiques.
+            </p>
+            <p>
+                <strong>Observation :</strong> Le nombre de nœuds dans la fonction d'onde est égal à $n$.
+            </p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/quantum-animations.js"></script>
+    <script>
+        // Initialiser l'animation
+        let oscillator;
+
+        window.addEventListener('load', () => {
+            oscillator = QuantumAnimations.createHarmonicOscillator('canvas-oscillator', {
+                animated: true,
+                level: 0
+            });
+
+            // Mettre à jour l'affichage du niveau
+            updateLevelDisplay();
+        });
+
+        function updateLevelDisplay() {
+            const level = document.getElementById('level-slider').value;
+            document.getElementById('level-display').textContent = `n = ${level}`;
+        }
+    </script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

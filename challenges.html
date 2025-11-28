@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Défis - Quantum Quiz PHY321</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+    <meta name="description" content="Créez et relevez des défis entre étudiants">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        .challenges-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .challenges-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .challenges-header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--quantum-purple) 0%, var(--quantum-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .challenges-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Action Bar */
+        .action-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--quantum-purple) 0%, var(--quantum-pink) 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-hover);
+            border-color: var(--quantum-cyan);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-bottom: 2rem;
+        }
+
+        .back-btn:hover {
+            background: var(--bg-hover);
+            border-color: var(--quantum-cyan);
+            transform: translateX(-5px);
+        }
+
+        /* Challenges Grid */
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .challenge-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .challenge-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            border-color: var(--quantum-purple);
+        }
+
+        .challenge-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .challenge-creator {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--quantum-purple);
+        }
+
+        .challenge-score {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--quantum-cyan);
+        }
+
+        .challenge-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .info-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        .challenge-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .participants-count {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-badge.open {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            border: 1px solid #22c55e;
+        }
+
+        .status-badge.completed {
+            background: rgba(148, 163, 184, 0.2);
+            color: #94a3b8;
+            border: 1px solid #94a3b8;
+        }
+
+        .accept-btn {
+            padding: 0.5rem 1.25rem;
+            background: linear-gradient(135deg, var(--quantum-cyan) 0%, var(--quantum-purple) 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .accept-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(45, 212, 191, 0.4);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* Modal for Creating Challenge */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h2 {
+            font-size: 1.75rem;
+            color: var(--quantum-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--quantum-cyan);
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .modal-footer button {
+            flex: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .challenges-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .challenges-header h1 {
+                font-size: 2rem;
+            }
+
+            .action-bar {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="challenges-container">
+        <a href="index.html" class="back-btn">
+            ← Retour à l'accueil
+        </a>
+
+        <div class="challenges-header">
+            <h1>🎲 Défis</h1>
+            <p class="challenges-subtitle">Créez des défis et défiez vos camarades !</p>
+        </div>
+
+        <!-- Action Bar -->
+        <div class="action-bar">
+            <button class="btn btn-primary" onclick="openCreateChallengeModal()">
+                ✨ Créer un défi
+            </button>
+            <button class="btn btn-secondary" onclick="refreshChallenges()">
+                🔄 Actualiser
+            </button>
+        </div>
+
+        <!-- Challenges Grid -->
+        <div class="challenges-grid" id="challenges-grid">
+            <!-- Challenges will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Create Challenge Modal -->
+    <div class="modal-overlay" id="create-challenge-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>✨ Créer un défi</h2>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                    Configurez votre quiz et défiez vos camarades de classe !
+                </p>
+            </div>
+
+            <form id="create-challenge-form">
+                <div class="form-group">
+                    <label for="challenge-chapter">Chapitre</label>
+                    <select id="challenge-chapter" required>
+                        <option value="">-- Choisir un chapitre --</option>
+                        <option value="1">Chapitre 1 : États Quantiques</option>
+                        <option value="2">Chapitre 2 : Mesures et Opérateurs</option>
+                        <option value="3">Chapitre 3 : Postulats de la MQ</option>
+                        <option value="4">Chapitre 4 : Multi-qubits et Intrication</option>
+                        <option value="5">Chapitre 5 : Fonctions d'État</option>
+                        <option value="6">Chapitre 6 : Oscillateur Harmonique</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="challenge-count">Nombre de questions</label>
+                    <input type="number" id="challenge-count" min="5" max="30" value="10" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="challenge-difficulty">Difficulté</label>
+                    <select id="challenge-difficulty" required>
+                        <option value="mixed">Mixte (tous niveaux)</option>
+                        <option value="easy">Facile</option>
+                        <option value="medium">Moyen</option>
+                        <option value="hard">Difficile</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="challenge-mode">Mode</label>
+                    <select id="challenge-mode" required>
+                        <option value="exam">Examen (chronométré)</option>
+                        <option value="learning">Entraînement (avec aide)</option>
+                    </select>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeCreateChallengeModal()">
+                        Annuler
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        🚀 Créer le défi
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/navigation.js"></script>
+    <script src="js/profile-guard.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/multiplayer.js"></script>
+    <script>
+        // Render challenges
+        function renderChallenges() {
+            const challenges = MultiplayerSystem.getChallenges();
+            const container = document.getElementById('challenges-grid');
+
+            if (challenges.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🎲</div>
+                        <p>Aucun défi actif pour le moment.</p>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                            Soyez le premier à créer un défi !
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = challenges.map(challenge => {
+                const createdDate = new Date(challenge.createdAt);
+                const expiresDate = new Date(challenge.expiresAt);
+                const daysLeft = Math.ceil((expiresDate - new Date()) / (1000 * 60 * 60 * 24));
+
+                return `
+                    <div class="challenge-card">
+                        <div class="challenge-header">
+                            <div>
+                                <div class="challenge-creator">${challenge.creatorUsername}</div>
+                                <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">
+                                    Créé le ${createdDate.toLocaleDateString('fr-FR')}
+                                </div>
+                            </div>
+                            <div class="challenge-score">${challenge.creatorScore || 0}%</div>
+                        </div>
+
+                        <div class="challenge-info">
+                            <div class="info-row">
+                                <span class="info-icon">📚</span>
+                                <span>Chapitre ${challenge.chapter}</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-icon">❓</span>
+                                <span>${challenge.questionCount} questions</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-icon">⚡</span>
+                                <span>Difficulté : ${challenge.difficulty}</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-icon">🎯</span>
+                                <span>Mode : ${challenge.mode === 'exam' ? 'Examen' : 'Entraînement'}</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-icon">⏰</span>
+                                <span>Expire dans ${daysLeft} jour${daysLeft > 1 ? 's' : ''}</span>
+                            </div>
+                        </div>
+
+                        <div class="challenge-footer">
+                            <div class="participants-count">
+                                👥 ${challenge.participants.length} participant${challenge.participants.length > 1 ? 's' : ''}
+                            </div>
+                            <button class="accept-btn" onclick="acceptChallenge('${challenge.id}')">
+                                Relever le défi
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Open/Close modal
+        function openCreateChallengeModal() {
+            document.getElementById('create-challenge-modal').classList.add('active');
+        }
+
+        function closeCreateChallengeModal() {
+            document.getElementById('create-challenge-modal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('create-challenge-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'create-challenge-modal') {
+                closeCreateChallengeModal();
+            }
+        });
+
+        // Create challenge
+        document.getElementById('create-challenge-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const profile = MultiplayerSystem.getUserProfile();
+            const config = {
+                creatorUsername: profile.username,
+                creatorScore: 0,
+                chapter: parseInt(document.getElementById('challenge-chapter').value),
+                questionCount: parseInt(document.getElementById('challenge-count').value),
+                difficulty: document.getElementById('challenge-difficulty').value,
+                mode: document.getElementById('challenge-mode').value
+            };
+
+            // Start the quiz to get the creator's score first
+            const quizConfig = {
+                chapter: config.chapter,
+                questionCount: config.questionCount,
+                difficulty: config.difficulty === 'mixed' ? ['easy', 'medium', 'hard'] : [config.difficulty],
+                mode: config.mode,
+                isChallenge: true,
+                pendingChallengeConfig: config
+            };
+
+            sessionStorage.setItem('quiz_config', JSON.stringify(quizConfig));
+            alert('Vous allez d\'abord passer le quiz. Votre score servira de référence pour le défi !');
+            window.location.href = 'quiz.html';
+        });
+
+        // Accept challenge
+        function acceptChallenge(challengeId) {
+            try {
+                const challenge = MultiplayerSystem.acceptChallenge(challengeId, MultiplayerSystem.getUserProfile().username);
+                alert(`Défi accepté ! Chapitre ${challenge.chapter}, ${challenge.questionCount} questions.`);
+                window.location.href = 'quiz.html';
+            } catch (error) {
+                alert('Erreur : ' + error.message);
+            }
+        }
+
+        // Refresh challenges
+        function refreshChallenges() {
+            renderChallenges();
+        }
+
+        // Initial render
+        renderChallenges();
+    </script>
+</body>
+</html>

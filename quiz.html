@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz en Cours - Quantum Quiz PHY321</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
 
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/quiz.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/mobile-enhanced.css">
 
     <!-- MathJax -->
     <script src="js/mathjax-config.js"></script>
@@ -21,13 +29,13 @@
     <header class="quiz-header">
         <div class="container">
             <div class="quiz-header-content">
-                <button id="quit-quiz" class="btn-secondary btn-icon-only" title="Quitter le quiz">
-                    ← Quitter
+                <button id="quit-quiz" class="btn-secondary btn-icon-only" title="Quitter le quiz" data-i18n-title="quiz.abandon">
+                    <span data-i18n="quiz.quit">← Quitter</span>
                 </button>
 
                 <div class="quiz-info">
                     <h2 id="quiz-chapter-title">Chapitre 1 : États Quantiques</h2>
-                    <div class="quiz-mode-badge" id="quiz-mode-badge">Mode Apprentissage</div>
+                    <div class="quiz-mode-badge" id="quiz-mode-badge" data-i18n="quiz.learningMode">Mode Apprentissage</div>
                 </div>
 
                 <div id="timer-display" class="timer" style="display: none;">
@@ -81,17 +89,17 @@
                 <!-- Action Buttons -->
                 <div class="quiz-actions">
                     <button id="prev-btn" class="btn btn-secondary">
-                        ← Précédent
+                        <span data-i18n="quiz.previous">← Précédent</span>
                     </button>
 
                     <div class="spacer"></div>
 
                     <button id="next-btn" class="btn btn-primary">
-                        Suivant →
+                        <span data-i18n="quiz.next">Suivant →</span>
                     </button>
 
                     <button id="submit-btn" class="btn btn-success" style="display: none;">
-                        ✓ Terminer le Quiz
+                        <span data-i18n="quiz.finish">✓ Terminer le Quiz</span>
                     </button>
                 </div>
 
@@ -113,25 +121,21 @@
             <!-- Side Panel (optional - for statistics during quiz) -->
             <aside class="quiz-side-panel">
                 <div class="panel-card">
-                    <h4>Progression</h4>
+                    <h4 data-i18n="quiz.progress">Progression</h4>
                     <div class="mini-stats">
                         <div class="mini-stat">
-                            <span class="mini-stat-label">Correctes</span>
-                            <span class="mini-stat-value" id="correct-count">0</span>
+                            <span class="mini-stat-label" data-i18n="quiz.answeredQuestions">Questions répondues</span>
+                            <span class="mini-stat-value" id="answered-count">0/20</span>
                         </div>
                         <div class="mini-stat">
-                            <span class="mini-stat-label">Incorrectes</span>
-                            <span class="mini-stat-value" id="incorrect-count">0</span>
-                        </div>
-                        <div class="mini-stat">
-                            <span class="mini-stat-label">Score</span>
-                            <span class="mini-stat-value" id="current-score">0%</span>
+                            <span class="mini-stat-label" data-i18n="quiz.progress">Progression</span>
+                            <span class="mini-stat-value" id="completion-percentage">0%</span>
                         </div>
                     </div>
                 </div>
 
                 <button id="toggle-shortcuts" class="btn-secondary btn-small">
-                    ⌨️ Raccourcis (H)
+                    ⌨️ <span data-i18n="quiz.shortcuts">Raccourcis (H)</span>
                 </button>
 
                 <button id="toggle-sound" class="btn-secondary btn-small" onclick="
@@ -141,7 +145,7 @@
                         AudioSystem.click();
                     }
                 ">
-                    <span id="sound-icon">🔊</span> Son
+                    <span id="sound-icon">🔊</span> <span data-i18n="quiz.sound">Son</span>
                 </button>
             </aside>
         </div>
@@ -150,22 +154,32 @@
     <!-- Pause Modal -->
     <div id="pause-modal" class="modal" style="display: none;">
         <div class="modal-content">
-            <h3>Quiz en Pause</h3>
-            <p>Que souhaitez-vous faire ?</p>
+            <h3 data-i18n="quiz.paused">Quiz en Pause</h3>
+            <p data-i18n="quiz.whatToDo">Que souhaitez-vous faire ?</p>
             <div class="modal-actions">
-                <button id="resume-quiz" class="btn-primary">Reprendre</button>
-                <button id="quit-confirm" class="btn-danger">Quitter</button>
+                <button id="resume-quiz" class="btn-primary" data-i18n="quiz.resume">Reprendre</button>
+                <button id="quit-confirm" class="btn-danger" data-i18n="quiz.quit">Quitter</button>
             </div>
         </div>
     </div>
 
     <!-- Scripts -->
+    <script src="js/profile-guard.js"></script>
     <script src="js/config.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/particles.js"></script>
     <script src="js/audio.js"></script>
+    <script src="js/quantum-animations.js"></script>
+    <script src="js/favorites.js"></script>
+    <script src="js/targeted-review.js"></script>
     <script src="js/question-renderer.js"></script>
+    <script src="js/touch-interactions.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/adaptive-difficulty.js"></script>
+    <script src="js/lms-integration.js"></script>
     <script src="js/quiz-engine.js"></script>
+    <script src="js/navigation.js"></script>
 </body>
 </html>

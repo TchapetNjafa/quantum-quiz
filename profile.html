@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - Quantum Quiz PHY321</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+    <meta name="description" content="Votre profil et statistiques de progression">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        .profile-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .profile-header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--quantum-cyan) 0%, var(--quantum-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-bottom: 2rem;
+        }
+
+        .back-btn:hover {
+            background: var(--bg-hover);
+            border-color: var(--quantum-cyan);
+            transform: translateX(-5px);
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .profile-avatar {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-username {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-level {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, var(--quantum-purple) 0%, var(--quantum-cyan) 100%);
+            border-radius: 20px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .xp-bar-container {
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+
+        .xp-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .xp-bar {
+            height: 20px;
+            background: var(--bg-primary);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .xp-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--quantum-cyan) 0%, var(--quantum-purple) 100%);
+            transition: width 0.5s ease;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--quantum-cyan);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--quantum-cyan);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Achievements Section */
+        .achievements-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .achievements-section h2 {
+            font-size: 1.75rem;
+            color: var(--quantum-purple);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .achievement-card {
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .achievement-card.unlocked {
+            border-color: var(--quantum-cyan);
+            background: linear-gradient(135deg, rgba(45, 212, 191, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+        }
+
+        .achievement-card.locked {
+            opacity: 0.5;
+            filter: grayscale(100%);
+        }
+
+        .achievement-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-name {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .achievement-description {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .unlocked-badge {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: var(--quantum-cyan);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        /* Actions */
+        .actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--quantum-cyan) 0%, var(--quantum-purple) 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(45, 212, 191, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-hover);
+            border-color: var(--quantum-cyan);
+        }
+
+        .btn-danger {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid #ef4444;
+            color: #ef4444;
+        }
+
+        .btn-danger:hover {
+            background: rgba(239, 68, 68, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .profile-header h1 {
+                font-size: 2rem;
+            }
+
+            .profile-username {
+                font-size: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .achievements-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <button onclick="goToHome()" class="back-btn" id="back-btn" style="border: none; cursor: pointer; text-decoration: none;">
+            ← Retour à l'accueil
+        </button>
+
+        <div class="profile-header">
+            <h1>👤 Mon Profil</h1>
+        </div>
+
+        <!-- Profile Card -->
+        <div class="profile-card">
+            <div class="profile-avatar" id="profile-avatar">👤</div>
+            <div class="profile-username" id="profile-username">Étudiant</div>
+            <div class="profile-level" id="profile-level">
+                ⚡ Niveau 1
+            </div>
+
+            <div class="xp-bar-container">
+                <div class="xp-label">
+                    <span id="xp-current">0 XP</span>
+                    <span id="xp-next">100 XP</span>
+                </div>
+                <div class="xp-bar">
+                    <div class="xp-fill" id="xp-fill" style="width: 0%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-value" id="stat-total-score">0</div>
+                <div class="stat-label">Score Total</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-value" id="stat-quizzes">0</div>
+                <div class="stat-label">Quiz Complétés</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">📈</div>
+                <div class="stat-value" id="stat-average">0%</div>
+                <div class="stat-label">Moyenne</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-value" id="stat-best">0%</div>
+                <div class="stat-label">Meilleur Score</div>
+            </div>
+        </div>
+
+        <!-- Level & XP Widget (Gamification) -->
+        <div class="achievements-section" style="margin-bottom: 2rem;">
+            <h2>✨ Progression</h2>
+            <div id="level-widget-container">
+                <!-- Level widget will be populated by Gamification -->
+            </div>
+        </div>
+
+        <!-- Daily Challenge -->
+        <div class="achievements-section" style="margin-bottom: 2rem;">
+            <h2>🎯 Défi du Jour</h2>
+            <div id="daily-challenge-container">
+                <!-- Daily challenge will be populated by Gamification -->
+            </div>
+        </div>
+
+        <!-- Badges Grid (Gamification) -->
+        <div class="achievements-section">
+            <h2>🏅 Badges</h2>
+            <div id="badges-grid-container">
+                <!-- Badges will be populated by Gamification -->
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+            <button class="btn btn-primary" onclick="editUsername()">
+                ✏️ Modifier le nom
+            </button>
+            <button class="btn btn-secondary" onclick="exportData()">
+                💾 Exporter les données
+            </button>
+            <button class="btn btn-danger" onclick="resetProfile()">
+                🗑️ Réinitialiser le profil
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/gamification.js"></script>
+    <script src="js/multiplayer.js"></script>
+    <script>
+        // Load and display profile
+        function loadProfile() {
+            const profile = MultiplayerSystem.getUserProfile();
+
+            // Profile info
+            document.getElementById('profile-avatar').textContent = profile.avatar || '👤';
+            document.getElementById('profile-username').textContent = profile.username;
+            document.getElementById('profile-level').textContent = `⚡ Niveau ${profile.level}`;
+
+            // XP Bar
+            const currentXP = profile.xp;
+            const currentLevel = profile.level;
+            const xpForCurrentLevel = Math.pow(currentLevel - 1, 2) * 100;
+            const xpForNextLevel = Math.pow(currentLevel, 2) * 100;
+            const xpInLevel = currentXP - xpForCurrentLevel;
+            const xpNeededForLevel = xpForNextLevel - xpForCurrentLevel;
+            const xpProgress = (xpInLevel / xpNeededForLevel) * 100;
+
+            document.getElementById('xp-current').textContent = `${currentXP} XP`;
+            document.getElementById('xp-next').textContent = `${xpForNextLevel} XP`;
+            document.getElementById('xp-fill').style.width = `${xpProgress}%`;
+
+            // Stats
+            document.getElementById('stat-total-score').textContent = profile.totalScore;
+            document.getElementById('stat-quizzes').textContent = profile.quizzesCompleted;
+            document.getElementById('stat-average').textContent = `${profile.averageScore}%`;
+            document.getElementById('stat-best').textContent = `${profile.bestScore}%`;
+
+            // Gamification widgets
+            if (typeof Gamification !== 'undefined') {
+                Gamification.renderLevelWidget('level-widget-container');
+                Gamification.renderBadgesGrid('badges-grid-container');
+                Gamification.renderDailyChallenge('daily-challenge-container');
+            }
+        }
+
+        // Go to home page (with profile verification)
+        function goToHome() {
+            // Vérifier que le profil est bien sauvegardé dans localStorage
+            const profileData = localStorage.getItem('quantum_quiz_user_profile');
+
+            if (!profileData) {
+                alert('Veuillez d\'abord créer votre profil en entrant un nom d\'utilisateur.');
+                return;
+            }
+
+            try {
+                const profile = JSON.parse(profileData);
+                if (!profile.username || profile.username.trim().length === 0) {
+                    alert('Veuillez entrer un nom d\'utilisateur valide.');
+                    return;
+                }
+
+                // Profil valide : rediriger vers l'accueil
+                console.log('✅ Profil validé, redirection vers l\'accueil...');
+                window.location.href = 'index.html';
+            } catch (error) {
+                console.error('Erreur lors de la vérification du profil:', error);
+                alert('Erreur : profil corrompu. Veuillez réessayer.');
+            }
+        }
+
+        // Edit username
+        function editUsername() {
+            const profile = MultiplayerSystem.getUserProfile();
+            const newUsername = prompt('Entrez votre nouveau nom d\'utilisateur :', profile.username);
+
+            if (newUsername && newUsername.trim()) {
+                profile.username = newUsername.trim();
+                MultiplayerSystem.saveUserProfile(profile);
+                loadProfile();
+                alert('Nom d\'utilisateur mis à jour !');
+            }
+        }
+
+        // Export data
+        function exportData() {
+            const data = MultiplayerSystem.exportData();
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `quantum-quiz-data-${Date.now()}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            alert('Données exportées avec succès !');
+        }
+
+        // Reset profile
+        function resetProfile() {
+            if (confirm('⚠️ Êtes-vous sûr de vouloir réinitialiser votre profil ? Cette action est irréversible !')) {
+                if (confirm('Dernière confirmation : toutes vos données (scores, succès, défis) seront perdues. Continuer ?')) {
+                    MultiplayerSystem.clearAllData();
+                    alert('Profil réinitialisé avec succès.');
+                    loadProfile();
+                }
+            }
+        }
+
+        // Initialize page
+        function initPage() {
+            const profileData = localStorage.getItem('quantum_quiz_user_profile');
+
+            if (!profileData) {
+                // Pas de profil : cacher le bouton retour et afficher un message
+                console.log('⚠️ Aucun profil détecté');
+                const backBtn = document.getElementById('back-btn');
+                if (backBtn) {
+                    backBtn.style.display = 'none';
+                }
+
+                // Créer automatiquement un profil par défaut
+                // MultiplayerSystem.getUserProfile() devrait le faire
+                loadProfile();
+
+                // Après chargement, afficher le bouton retour
+                setTimeout(() => {
+                    if (backBtn) {
+                        backBtn.style.display = 'inline-block';
+                    }
+                }, 500);
+            } else {
+                // Profil existe : tout afficher normalement
+                console.log('✅ Profil existant détecté');
+                loadProfile();
+            }
+        }
+
+        // Initial load
+        initPage();
+    </script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

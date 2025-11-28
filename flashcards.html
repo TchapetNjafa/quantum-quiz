@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards - Quantum Quiz PHY321</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/mobile-enhanced.css">
+    <script src="js/mathjax-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <style>
+        .flashcards-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .flashcards-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .flashcards-header h1 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--quantum-cyan), var(--quantum-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid var(--border-primary);
+        }
+
+        .stat-card.highlight {
+            border-color: var(--quantum-purple);
+            background: rgba(124, 58, 237, 0.1);
+        }
+
+        .stat-card .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .leitner-boxes {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .leitner-boxes h4 {
+            margin: 0 0 1rem 0;
+            color: var(--text-primary);
+        }
+
+        .boxes-row {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .leitner-box {
+            flex: 1;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .leitner-box.box-1 { background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; }
+        .leitner-box.box-2 { background: rgba(249, 115, 22, 0.2); border: 1px solid #f97316; }
+        .leitner-box.box-3 { background: rgba(245, 158, 11, 0.2); border: 1px solid #f59e0b; }
+        .leitner-box.box-4 { background: rgba(34, 197, 94, 0.2); border: 1px solid #22c55e; }
+        .leitner-box.box-5 { background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; }
+
+        .box-count {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .box-name {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        #flashcard-container {
+            min-height: 400px;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 350px;
+            perspective: 1000px;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+        }
+
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flashcard.flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-front,
+        .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .flashcard-front {
+            background: linear-gradient(135deg, var(--quantum-purple), var(--quantum-blue));
+            color: white;
+        }
+
+        .flashcard-back {
+            background: var(--bg-card);
+            border: 2px solid var(--quantum-cyan);
+            transform: rotateY(180deg);
+            overflow-y: auto;
+        }
+
+        .flashcard-chapter {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .flashcard-content {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .flashcard-formula {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .flashcard-hint {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .flashcard-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .flashcard-buttons .btn {
+            flex: 1;
+            max-width: 200px;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-incorrect {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 2px solid #ef4444 !important;
+        }
+
+        .btn-incorrect:hover {
+            background: rgba(239, 68, 68, 0.3);
+        }
+
+        .btn-correct {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 2px solid #10b981 !important;
+        }
+
+        .btn-correct:hover {
+            background: rgba(16, 185, 129, 0.3);
+        }
+
+        .flashcard-progress {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .no-cards-message,
+        .session-complete {
+            text-align: center;
+            padding: 3rem;
+            background: var(--bg-card);
+            border-radius: 16px;
+        }
+
+        .no-cards-icon,
+        .session-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .session-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .session-stats .stat-item {
+            text-align: center;
+        }
+
+        .session-stats .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .session-stats .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .start-button {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        #start-flashcards {
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, var(--quantum-purple), var(--quantum-cyan));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #start-flashcards:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .keyboard-hints {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .keyboard-hints kbd {
+            background: var(--bg-tertiary);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-family: monospace;
+            margin-right: 0.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .stats-overview {
+                grid-template-columns: 1fr;
+            }
+
+            .boxes-row {
+                flex-wrap: wrap;
+            }
+
+            .leitner-box {
+                min-width: calc(33% - 0.5rem);
+            }
+
+            .flashcard {
+                height: 300px;
+            }
+
+            .flashcard-buttons {
+                flex-direction: column;
+            }
+
+            .flashcard-buttons .btn {
+                max-width: 100%;
+            }
+
+            .keyboard-hints {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="flashcards-container">
+        <div class="flashcards-header">
+            <h1>📚 Mode Flashcards</h1>
+            <p>Apprenez efficacement avec la répétition espacée (Système Leitner)</p>
+        </div>
+
+        <div id="flashcard-stats">
+            <!-- Stats générées par JavaScript -->
+        </div>
+
+        <div class="start-button">
+            <button id="start-flashcards" class="btn btn-primary">
+                Commencer la révision
+            </button>
+        </div>
+
+        <div id="flashcard-container">
+            <div id="flashcard-display">
+                <!-- Carte affichée ici -->
+            </div>
+        </div>
+
+        <div class="keyboard-hints">
+            <span><kbd>Espace</kbd> Retourner</span>
+            <span><kbd>←</kbd> À revoir</span>
+            <span><kbd>→</kbd> Connue</span>
+        </div>
+    </main>
+
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/gamification.js"></script>
+    <script src="js/flashcards.js"></script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

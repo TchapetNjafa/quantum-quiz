@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossaire - Quantum Quiz PHY321</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/mathjax-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <style>
+        .glossary-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .glossary-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .glossary-header h1 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--quantum-cyan), var(--quantum-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        #glossary-search {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            border: 2px solid var(--border-primary);
+            border-radius: 12px;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        #glossary-search:focus {
+            outline: none;
+            border-color: var(--quantum-purple);
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.2);
+        }
+
+        .alphabet-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .alphabet-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border-primary);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .alphabet-btn:hover, .alphabet-btn.active {
+            background: var(--quantum-purple);
+            border-color: var(--quantum-purple);
+            color: white;
+        }
+
+        .alphabet-btn.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .chapter-filter {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .chapter-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-primary);
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .chapter-btn:hover, .chapter-btn.active {
+            background: var(--quantum-cyan);
+            border-color: var(--quantum-cyan);
+            color: white;
+        }
+
+        .glossary-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .glossary-term {
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-primary);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .glossary-term:hover {
+            border-color: var(--quantum-purple);
+        }
+
+        .term-header {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .term-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .term-chapter {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            background: var(--quantum-purple);
+            color: white;
+            border-radius: 4px;
+        }
+
+        .term-toggle {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            transition: transform 0.3s;
+        }
+
+        .glossary-term.expanded .term-toggle {
+            transform: rotate(180deg);
+        }
+
+        .term-content {
+            display: none;
+            padding: 0 1.5rem 1.5rem;
+            border-top: 1px solid var(--border-primary);
+        }
+
+        .glossary-term.expanded .term-content {
+            display: block;
+        }
+
+        .term-definition {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .term-formula {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
+            font-size: 1.1rem;
+            border-left: 3px solid var(--quantum-purple);
+        }
+
+        .term-related {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .related-tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--quantum-cyan);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .related-tag:hover {
+            background: var(--quantum-cyan);
+            color: white;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .no-results-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+        }
+
+        .stats-bar .stat {
+            text-align: center;
+        }
+
+        .stats-bar .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--quantum-cyan);
+        }
+
+        .stats-bar .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .alphabet-nav {
+                gap: 0.25rem;
+            }
+
+            .alphabet-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="glossary-container">
+        <div class="glossary-header">
+            <h1>📖 Glossaire Quantique</h1>
+            <p>Tous les termes essentiels de la mécanique quantique</p>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="glossary-search" placeholder="🔍 Rechercher un terme..." autocomplete="off">
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-value" id="total-terms">0</div>
+                <div class="stat-label">Termes</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">6</div>
+                <div class="stat-label">Chapitres</div>
+            </div>
+        </div>
+
+        <div class="alphabet-nav" id="alphabet-nav">
+            <!-- Généré par JS -->
+        </div>
+
+        <div class="chapter-filter" id="chapter-filter">
+            <button class="chapter-btn active" data-chapter="all">Tous</button>
+            <button class="chapter-btn" data-chapter="1">Ch.1 États</button>
+            <button class="chapter-btn" data-chapter="2">Ch.2 Mesure</button>
+            <button class="chapter-btn" data-chapter="3">Ch.3 Postulats</button>
+            <button class="chapter-btn" data-chapter="4">Ch.4 Intrication</button>
+            <button class="chapter-btn" data-chapter="5">Ch.5 Fonction</button>
+            <button class="chapter-btn" data-chapter="6">Ch.6 Oscillateur</button>
+        </div>
+
+        <div class="glossary-list" id="glossary-list">
+            <!-- Termes générés par JS -->
+        </div>
+    </main>
+
+    <script>
+        // Données du glossaire
+        const glossaryData = [
+            // Chapitre 1 - États Quantiques
+            {
+                term: "Amplitude de probabilité",
+                definition: "Nombre complexe dont le module carré donne la probabilité de trouver le système dans un état donné. Fondamentale en mécanique quantique car les amplitudes (et non les probabilités) s'additionnent.",
+                formula: "$P = |\\psi|^2 = |\\alpha|^2 + |\\beta|^2$",
+                chapter: 1,
+                related: ["Fonction d'onde", "Probabilité", "Superposition"]
+            },
+            {
+                term: "Bra-Ket (Notation de Dirac)",
+                definition: "Notation élégante introduite par Dirac. Un ket |ψ⟩ représente un vecteur d'état, un bra ⟨φ| son dual. Le produit scalaire s'écrit ⟨φ|ψ⟩.",
+                formula: "$\\langle \\phi | \\psi \\rangle = \\sum_i \\phi_i^* \\psi_i$",
+                chapter: 1,
+                related: ["Espace de Hilbert", "Vecteur d'état"]
+            },
+            {
+                term: "Décohérence",
+                definition: "Processus par lequel un système quantique perd ses propriétés quantiques (superposition, intrication) par interaction avec son environnement. Explique la transition quantique-classique.",
+                chapter: 1,
+                related: ["Superposition", "Chat de Schrödinger", "Mesure"]
+            },
+            {
+                term: "Dualité onde-corpuscule",
+                definition: "Principe fondamental selon lequel toute entité quantique possède à la fois des propriétés ondulatoires et corpusculaires. Illustrée par l'expérience des fentes d'Young avec des électrons.",
+                formula: "$\\lambda = \\frac{h}{p}$ (De Broglie)",
+                chapter: 1,
+                related: ["Longueur d'onde de Broglie", "Fonction d'onde"]
+            },
+            {
+                term: "Espace de Hilbert",
+                definition: "Espace vectoriel complexe complet muni d'un produit scalaire. Les états quantiques sont des vecteurs de cet espace. Pour un qubit, c'est ℂ².",
+                chapter: 1,
+                related: ["Vecteur d'état", "Base orthonormée"]
+            },
+            {
+                term: "Qubit",
+                definition: "Unité fondamentale d'information quantique. Contrairement au bit classique (0 ou 1), un qubit peut être dans une superposition |ψ⟩ = α|0⟩ + β|1⟩.",
+                formula: "$|\\psi\\rangle = \\alpha|0\\rangle + \\beta|1\\rangle$, $|\\alpha|^2 + |\\beta|^2 = 1$",
+                chapter: 1,
+                related: ["Sphère de Bloch", "Superposition", "Informatique quantique"]
+            },
+            {
+                term: "Sphère de Bloch",
+                definition: "Représentation géométrique de l'état d'un qubit. Chaque point sur la sphère unitaire correspond à un état pur. Le pôle nord est |0⟩, le pôle sud |1⟩.",
+                formula: "$|\\psi\\rangle = \\cos(\\theta/2)|0\\rangle + e^{i\\phi}\\sin(\\theta/2)|1\\rangle$",
+                chapter: 1,
+                related: ["Qubit", "État pur", "Angles de Bloch"]
+            },
+            {
+                term: "Superposition",
+                definition: "Principe selon lequel un système quantique peut exister simultanément dans plusieurs états. La superposition est linéaire et permet les interférences quantiques.",
+                formula: "$|\\psi\\rangle = \\sum_i c_i |\\phi_i\\rangle$",
+                chapter: 1,
+                related: ["Amplitude de probabilité", "Interférences", "Mesure"]
+            },
+
+            // Chapitre 2 - Mesure et Opérateurs
+            {
+                term: "Commutateur",
+                definition: "Mesure de la non-commutativité de deux opérateurs. [A,B] = AB - BA. Des opérateurs qui ne commutent pas ne peuvent pas être mesurés simultanément avec précision arbitraire.",
+                formula: "$[\\hat{A}, \\hat{B}] = \\hat{A}\\hat{B} - \\hat{B}\\hat{A}$",
+                chapter: 2,
+                related: ["Principe d'incertitude", "Observable"]
+            },
+            {
+                term: "Matrices de Pauli",
+                definition: "Ensemble de trois matrices 2×2 (σx, σy, σz) hermitiens et unitaires. Forment une base pour les opérateurs agissant sur un qubit avec l'identité.",
+                formula: "$\\sigma_x = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$, $\\sigma_y = \\begin{pmatrix} 0 & -i \\\\ i & 0 \\end{pmatrix}$, $\\sigma_z = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}$",
+                chapter: 2,
+                related: ["Spin", "Opérateur hermitien", "Qubit"]
+            },
+            {
+                term: "Observable",
+                definition: "Grandeur physique mesurable représentée par un opérateur hermitien. Ses valeurs propres sont les résultats possibles de la mesure.",
+                chapter: 2,
+                related: ["Opérateur hermitien", "Valeur propre", "Mesure"]
+            },
+            {
+                term: "Opérateur hermitien",
+                definition: "Opérateur égal à son adjoint (A = A†). Propriété essentielle: valeurs propres réelles et vecteurs propres orthogonaux. Représente les observables.",
+                formula: "$\\langle \\phi | \\hat{A} | \\psi \\rangle = \\langle \\hat{A}\\phi | \\psi \\rangle$",
+                chapter: 2,
+                related: ["Observable", "Valeur propre", "Adjoint"]
+            },
+            {
+                term: "Principe d'incertitude de Heisenberg",
+                definition: "Limite fondamentale sur la précision simultanée de mesures de deux observables incompatibles. Pour position et impulsion: ΔxΔp ≥ ℏ/2.",
+                formula: "$\\Delta A \\cdot \\Delta B \\geq \\frac{1}{2}|\\langle[\\hat{A}, \\hat{B}]\\rangle|$",
+                chapter: 2,
+                related: ["Commutateur", "Position", "Impulsion"]
+            },
+            {
+                term: "Spin",
+                definition: "Moment angulaire intrinsèque d'une particule, sans équivalent classique. Pour l'électron: spin 1/2, deux états propres |↑⟩ et |↓⟩.",
+                formula: "$\\hat{S}^2|s,m_s\\rangle = \\hbar^2 s(s+1)|s,m_s\\rangle$",
+                chapter: 2,
+                related: ["Stern-Gerlach", "Matrices de Pauli", "Moment magnétique"]
+            },
+
+            // Chapitre 3 - Dynamique Quantique
+            {
+                term: "Équation de Schrödinger",
+                definition: "Équation fondamentale décrivant l'évolution temporelle d'un système quantique. Forme dépendante du temps pour l'évolution, indépendante pour les états stationnaires.",
+                formula: "$i\\hbar\\frac{\\partial}{\\partial t}|\\psi(t)\\rangle = \\hat{H}|\\psi(t)\\rangle$",
+                chapter: 3,
+                related: ["Hamiltonien", "Opérateur d'évolution", "États stationnaires"]
+            },
+            {
+                term: "Hamiltonien",
+                definition: "Opérateur représentant l'énergie totale du système. Génère l'évolution temporelle. Pour un système conservatif, ses états propres sont les états stationnaires.",
+                formula: "$\\hat{H} = \\frac{\\hat{p}^2}{2m} + V(\\hat{x})$",
+                chapter: 3,
+                related: ["Équation de Schrödinger", "Énergie", "États stationnaires"]
+            },
+            {
+                term: "Postulats de la mécanique quantique",
+                definition: "Ensemble de principes fondamentaux définissant le formalisme: (1) État=vecteur de Hilbert, (2) Observable=opérateur hermitien, (3) Mesure→valeur propre, (4) Probabilité=|⟨a|ψ⟩|², (5) Évolution par Schrödinger.",
+                chapter: 3,
+                related: ["Espace de Hilbert", "Observable", "Règle de Born"]
+            },
+            {
+                term: "Règle de Born",
+                definition: "Règle donnant la probabilité d'obtenir une valeur propre aₙ lors de la mesure: P(aₙ) = |⟨aₙ|ψ⟩|². Interprétation probabiliste de la fonction d'onde.",
+                formula: "$P(a_n) = |\\langle a_n | \\psi \\rangle|^2$",
+                chapter: 3,
+                related: ["Probabilité", "Mesure", "Amplitude"]
+            },
+
+            // Chapitre 4 - Intrication
+            {
+                term: "États de Bell",
+                definition: "Quatre états maximalement intriqués de deux qubits. Base pour la téléportation quantique et les protocoles de cryptographie quantique.",
+                formula: "$|\\Phi^\\pm\\rangle = \\frac{1}{\\sqrt{2}}(|00\\rangle \\pm |11\\rangle)$, $|\\Psi^\\pm\\rangle = \\frac{1}{\\sqrt{2}}(|01\\rangle \\pm |10\\rangle)$",
+                chapter: 4,
+                related: ["Intrication", "Téléportation", "Inégalités de Bell"]
+            },
+            {
+                term: "Inégalités de Bell",
+                definition: "Inégalités satisfaites par toute théorie à variables cachées locales mais violées par la mécanique quantique. Leur violation expérimentale prouve la non-localité quantique (Nobel 2022).",
+                formula: "$|S| \\leq 2$ (CHSH), violation QM: $2\\sqrt{2}$",
+                chapter: 4,
+                related: ["Non-localité", "Paradoxe EPR", "États de Bell"]
+            },
+            {
+                term: "Intrication quantique",
+                definition: "Corrélation quantique entre particules telle que l'état global ne peut pas s'écrire comme produit d'états individuels. Ressource fondamentale pour l'informatique quantique.",
+                chapter: 4,
+                related: ["États de Bell", "Non-localité", "Téléportation"]
+            },
+            {
+                term: "Produit tensoriel",
+                definition: "Opération combinant les espaces d'états de systèmes individuels pour former l'espace composite. Pour deux qubits: ℂ² ⊗ ℂ² = ℂ⁴.",
+                formula: "$|\\psi\\rangle \\otimes |\\phi\\rangle = |\\psi\\phi\\rangle$",
+                chapter: 4,
+                related: ["États séparables", "Intrication", "Espace composite"]
+            },
+            {
+                term: "Téléportation quantique",
+                definition: "Protocole transférant l'état quantique d'un qubit à un autre distant en utilisant l'intrication et la communication classique. Ne transmet pas de matière ni d'information supraluminique.",
+                chapter: 4,
+                related: ["États de Bell", "Intrication", "Canal classique"]
+            },
+
+            // Chapitre 5 - Fonction d'état
+            {
+                term: "Fonction d'onde",
+                definition: "Représentation de l'état quantique en représentation position: ψ(x) = ⟨x|ψ⟩. |ψ(x)|² donne la densité de probabilité de trouver la particule en x.",
+                formula: "$\\psi(x,t) = \\langle x | \\psi(t) \\rangle$",
+                chapter: 5,
+                related: ["Densité de probabilité", "Normalisation", "Représentation position"]
+            },
+            {
+                term: "Paquet d'ondes",
+                definition: "Superposition d'ondes planes formant une distribution localisée en position. Satisfait le principe d'incertitude: plus il est localisé, plus son spectre en impulsion est large.",
+                formula: "$\\psi(x,t) = \\int \\tilde{\\psi}(k) e^{i(kx-\\omega t)} dk$",
+                chapter: 5,
+                related: ["Transformée de Fourier", "Dispersion", "Principe d'incertitude"]
+            },
+            {
+                term: "Transformée de Fourier",
+                definition: "Outil mathématique reliant les représentations position et impulsion. La fonction d'onde en impulsion est la TF de la fonction d'onde en position.",
+                formula: "$\\tilde{\\psi}(p) = \\frac{1}{\\sqrt{2\\pi\\hbar}}\\int \\psi(x) e^{-ipx/\\hbar} dx$",
+                chapter: 5,
+                related: ["Représentation impulsion", "Paquet d'ondes", "Principe d'incertitude"]
+            },
+
+            // Chapitre 6 - Oscillateur Harmonique
+            {
+                term: "États cohérents",
+                definition: "États propres de l'opérateur d'annihilation. Minimisent le principe d'incertitude et évoluent comme des oscillateurs classiques. États du champ électromagnétique d'un laser.",
+                formula: "$\\hat{a}|\\alpha\\rangle = \\alpha|\\alpha\\rangle$",
+                chapter: 6,
+                related: ["Opérateur d'annihilation", "Oscillateur harmonique", "Optique quantique"]
+            },
+            {
+                term: "Opérateurs création/annihilation",
+                definition: "Opérateurs échelle permettant de passer d'un niveau d'énergie à un autre. â abaisse (annihile un quantum), â† élève (crée un quantum).",
+                formula: "$\\hat{a} = \\sqrt{\\frac{m\\omega}{2\\hbar}}(\\hat{x} + \\frac{i\\hat{p}}{m\\omega})$",
+                chapter: 6,
+                related: ["Oscillateur harmonique", "Niveaux d'énergie", "États de Fock"]
+            },
+            {
+                term: "Oscillateur harmonique quantique",
+                definition: "Système fondamental en physique quantique. Niveaux d'énergie équidistants Eₙ = ℏω(n+1/2). Modèle pour vibrations moléculaires, phonons, photons.",
+                formula: "$E_n = \\hbar\\omega(n + \\frac{1}{2})$, $n = 0, 1, 2, ...$",
+                chapter: 6,
+                related: ["Polynômes de Hermite", "Énergie de point zéro", "Opérateurs échelle"]
+            },
+            {
+                term: "Polynômes de Hermite",
+                definition: "Fonctions spéciales apparaissant dans les fonctions d'onde de l'oscillateur harmonique. Hₙ(ξ) où ξ = √(mω/ℏ)x.",
+                formula: "$\\psi_n(x) = N_n H_n(\\xi) e^{-\\xi^2/2}$",
+                chapter: 6,
+                related: ["Oscillateur harmonique", "Fonctions propres", "Niveaux d'énergie"]
+            }
+        ];
+
+        // Variables globales
+        let filteredTerms = [...glossaryData];
+        let currentLetter = null;
+        let currentChapter = 'all';
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('total-terms').textContent = glossaryData.length;
+            renderAlphabetNav();
+            renderTerms(glossaryData);
+            setupEventListeners();
+        });
+
+        // Génère la navigation alphabétique
+        function renderAlphabetNav() {
+            const nav = document.getElementById('alphabet-nav');
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+            const usedLetters = new Set(glossaryData.map(t => t.term[0].toUpperCase()));
+
+            nav.innerHTML = alphabet.map(letter => {
+                const hasTerms = usedLetters.has(letter);
+                return `<button class="alphabet-btn ${hasTerms ? '' : 'disabled'}"
+                        data-letter="${letter}" ${hasTerms ? '' : 'disabled'}>${letter}</button>`;
+            }).join('');
+        }
+
+        // Affiche les termes
+        function renderTerms(terms) {
+            const list = document.getElementById('glossary-list');
+
+            if (terms.length === 0) {
+                list.innerHTML = `
+                    <div class="no-results">
+                        <div class="no-results-icon">🔍</div>
+                        <h3>Aucun résultat</h3>
+                        <p>Essayez une autre recherche ou un autre filtre</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Trier par ordre alphabétique
+            terms.sort((a, b) => a.term.localeCompare(b.term, 'fr'));
+
+            list.innerHTML = terms.map(term => `
+                <div class="glossary-term" data-term="${term.term.toLowerCase()}">
+                    <div class="term-header" onclick="toggleTerm(this)">
+                        <div class="term-title">
+                            ${term.term}
+                            <span class="term-chapter">Ch.${term.chapter}</span>
+                        </div>
+                        <span class="term-toggle">▼</span>
+                    </div>
+                    <div class="term-content">
+                        <p class="term-definition">${term.definition}</p>
+                        ${term.formula ? `<div class="term-formula">${term.formula}</div>` : ''}
+                        ${term.related ? `
+                            <div class="term-related">
+                                <strong>Voir aussi:</strong>
+                                ${term.related.map(r => `<span class="related-tag" onclick="searchTerm('${r}')">${r}</span>`).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+
+            // Rendre les formules LaTeX
+            if (window.MathJax) {
+                MathJax.typesetPromise([list]).catch(err => console.error(err));
+            }
+        }
+
+        // Toggle expansion d'un terme
+        function toggleTerm(header) {
+            const term = header.closest('.glossary-term');
+            term.classList.toggle('expanded');
+        }
+
+        // Recherche un terme
+        function searchTerm(query) {
+            document.getElementById('glossary-search').value = query;
+            filterTerms();
+        }
+
+        // Configure les événements
+        function setupEventListeners() {
+            // Recherche
+            document.getElementById('glossary-search').addEventListener('input', (e) => {
+                filterTerms();
+            });
+
+            // Navigation alphabétique
+            document.getElementById('alphabet-nav').addEventListener('click', (e) => {
+                if (e.target.classList.contains('alphabet-btn') && !e.target.disabled) {
+                    const letter = e.target.dataset.letter;
+
+                    if (currentLetter === letter) {
+                        currentLetter = null;
+                        e.target.classList.remove('active');
+                    } else {
+                        document.querySelectorAll('.alphabet-btn').forEach(btn => btn.classList.remove('active'));
+                        e.target.classList.add('active');
+                        currentLetter = letter;
+                    }
+
+                    filterTerms();
+                }
+            });
+
+            // Filtre par chapitre
+            document.getElementById('chapter-filter').addEventListener('click', (e) => {
+                if (e.target.classList.contains('chapter-btn')) {
+                    document.querySelectorAll('.chapter-btn').forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                    currentChapter = e.target.dataset.chapter;
+                    filterTerms();
+                }
+            });
+        }
+
+        // Filtre les termes
+        function filterTerms() {
+            const search = document.getElementById('glossary-search').value.toLowerCase();
+
+            let filtered = glossaryData.filter(term => {
+                // Filtre recherche
+                if (search && !term.term.toLowerCase().includes(search) &&
+                    !term.definition.toLowerCase().includes(search)) {
+                    return false;
+                }
+
+                // Filtre lettre
+                if (currentLetter && term.term[0].toUpperCase() !== currentLetter) {
+                    return false;
+                }
+
+                // Filtre chapitre
+                if (currentChapter !== 'all' && term.chapter !== parseInt(currentChapter)) {
+                    return false;
+                }
+
+                return true;
+            });
+
+            renderTerms(filtered);
+        }
+    </script>
+
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+{
+  "name": "quantum-quiz",
+  "version": "2.2.0",
+  "description": "Application de quiz interactive pour le cours PHY321 - Mécanique Quantique (Université de Yaoundé I)",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:verbose": "jest --verbose",
+    "lint": "eslint js/ server/ --ext .js",
+    "lint:fix": "eslint js/ server/ --ext .js --fix",
+    "validate": "node -e \"JSON.parse(require('fs').readFileSync('data/questions.json'))\" && echo '✅ JSON valide'",
+    "build": "echo 'Static site - no build needed'",
+    "serve": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "quantum-mechanics",
+    "quiz",
+    "education",
+    "physics",
+    "websocket",
+    "multiplayer"
+  ],
+  "author": "Université de Yaoundé I",
+  "license": "CC-BY-NC-SA-4.0",
+  "dependencies": {
+    "better-sqlite3": "^12.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-rate-limit": "^8.2.1",
+    "express-validator": "^7.3.1",
+    "helmet": "^8.1.0",
+    "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "nodemon": "^3.0.1"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "roots": [
+      "<rootDir>/tests"
+    ],
+    "testMatch": [
+      "**/*.test.js"
+    ],
+    "collectCoverageFrom": [
+      "js/**/*.js",
+      "!js/particles.js",
+      "!js/mathjax-config.js"
+    ],
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/setup.js"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/js/$1"
+    }
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uy1/quantum-quiz"
+  }
+}

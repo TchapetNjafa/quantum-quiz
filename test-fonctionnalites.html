@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test des Fonctionnalités - Quantum Quiz</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        body {
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .test-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .test-container h2 {
+            color: var(--quantum-cyan);
+            margin-top: 0;
+        }
+
+        .test-section {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: var(--bg-primary);
+            border-radius: 8px;
+        }
+
+        .test-button {
+            background: var(--quantum-purple);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            transition: all 0.3s;
+        }
+
+        .test-button:hover {
+            background: var(--quantum-pink);
+            transform: translateY(-2px);
+        }
+
+        .test-button.danger {
+            background: #ef4444;
+        }
+
+        .test-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .test-result.success {
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid #22c55e;
+            color: #4ade80;
+        }
+
+        .test-result.error {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid #ef4444;
+            color: #f87171;
+        }
+
+        .test-result.info {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid #3b82f6;
+            color: #60a5fa;
+        }
+
+        .code-block {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-badge.success {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+        }
+
+        .status-badge.error {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+
+        .nav-preview {
+            background: var(--bg-primary);
+            border: 2px dashed var(--quantum-cyan);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        h1 {
+            background: linear-gradient(135deg, var(--quantum-cyan) 0%, var(--quantum-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .links-section {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .links-section a {
+            flex: 1;
+            min-width: 200px;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-primary);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .links-section a:hover {
+            background: var(--quantum-purple);
+            color: white;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test des Nouvelles Fonctionnalités</h1>
+
+    <!-- Test 1: Navigation -->
+    <div class="test-container">
+        <h2>✅ Test 1 : Navigation</h2>
+        <p>La navigation devrait apparaître automatiquement sur cette page.</p>
+
+        <div class="nav-preview">
+            <p><strong>☝️ Regardez en haut de la page !</strong></p>
+            <p>Vous devriez voir une barre de navigation avec :</p>
+            <p>🏠 Accueil | 👤 Profil | 🏆 Classement | ⚔️ Défis | 🎬 Animations | ℹ️ À propos</p>
+        </div>
+
+        <div class="test-section">
+            <h3>Vérifications :</h3>
+            <button class="test-button" onclick="checkNavigation()">Vérifier la Navigation</button>
+            <div id="nav-result"></div>
+        </div>
+    </div>
+
+    <!-- Test 2: Profile Guard -->
+    <div class="test-container">
+        <h2>🔒 Test 2 : Profil Obligatoire</h2>
+        <p>Testez le système de vérification de profil.</p>
+
+        <div class="test-section">
+            <h3>État Actuel du Profil :</h3>
+            <div id="profile-status"></div>
+
+            <h3>Actions :</h3>
+            <button class="test-button" onclick="checkProfile()">Vérifier le Profil</button>
+            <button class="test-button danger" onclick="deleteProfile()">Supprimer le Profil</button>
+            <button class="test-button" onclick="createTestProfile()">Créer un Profil de Test</button>
+
+            <div id="profile-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>Test de Redirection :</h3>
+            <p>Si vous supprimez votre profil et essayez d'accéder à une page protégée, vous serez redirigé vers la création de profil.</p>
+            <button class="test-button" onclick="testRedirection()">Tester la Redirection</button>
+            <div id="redirect-result"></div>
+        </div>
+    </div>
+
+    <!-- Test 3: Toutes les Pages -->
+    <div class="test-container">
+        <h2>🔗 Test 3 : Accessibilité des Pages</h2>
+        <p>Testez tous les liens de navigation.</p>
+
+        <div class="links-section">
+            <a href="index.html" target="_blank">🏠 Accueil</a>
+            <a href="profile.html" target="_blank">👤 Profil</a>
+            <a href="leaderboard.html" target="_blank">🏆 Classement</a>
+            <a href="challenges.html" target="_blank">⚔️ Défis</a>
+            <a href="animations-demo.html" target="_blank">🎬 Animations</a>
+            <a href="about.html" target="_blank">ℹ️ À propos</a>
+        </div>
+    </div>
+
+    <!-- Détails Techniques -->
+    <div class="test-container">
+        <h2>🔧 Détails Techniques</h2>
+
+        <div class="test-section">
+            <h3>Modules Chargés :</h3>
+            <div id="modules-status"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>localStorage Actuel :</h3>
+            <button class="test-button" onclick="showLocalStorage()">Voir le localStorage</button>
+            <div id="storage-result"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/navigation.js"></script>
+    <script src="js/profile-guard.js"></script>
+
+    <script>
+        // Désactiver le profile guard pour cette page de test
+        if (window.ProfileGuard) {
+            window.ProfileGuard.checkProfile = () => {
+                console.log('✅ Profile guard désactivé pour la page de test');
+            };
+        }
+
+        // Test 1: Vérifier la navigation
+        function checkNavigation() {
+            const result = document.getElementById('nav-result');
+            const header = document.querySelector('.main-header');
+            const navLinks = document.querySelectorAll('.main-nav a');
+
+            let html = '<div class="test-result">';
+
+            if (header) {
+                html += '<div class="test-result success">✅ Header trouvé</div>';
+            } else {
+                html += '<div class="test-result error">❌ Header non trouvé</div>';
+            }
+
+            if (navLinks.length > 0) {
+                html += '<div class="test-result success">✅ ' + navLinks.length + ' liens de navigation trouvés</div>';
+                html += '<div class="test-result info">Liens : ';
+                navLinks.forEach(link => {
+                    html += link.textContent + ' | ';
+                });
+                html += '</div>';
+            } else {
+                html += '<div class="test-result error">❌ Aucun lien de navigation</div>';
+            }
+
+            html += '</div>';
+            result.innerHTML = html;
+        }
+
+        // Test 2: Vérifier le profil
+        function checkProfile() {
+            const result = document.getElementById('profile-result');
+            const profileData = localStorage.getItem('quantum-quiz-user-profile');
+
+            if (profileData) {
+                const profile = JSON.parse(profileData);
+                result.innerHTML = `
+                    <div class="test-result success">
+                        ✅ Profil trouvé<br>
+                        👤 Nom : ${profile.username}<br>
+                        🏅 Niveau : ${profile.level}<br>
+                        ⭐ XP : ${profile.xp}<br>
+                        📊 Quiz complétés : ${profile.stats.quizzesCompleted}
+                    </div>
+                `;
+            } else {
+                result.innerHTML = '<div class="test-result error">❌ Aucun profil trouvé</div>';
+            }
+        }
+
+        // Supprimer le profil
+        function deleteProfile() {
+            localStorage.removeItem('quantum-quiz-user-profile');
+            document.getElementById('profile-result').innerHTML =
+                '<div class="test-result info">🗑️ Profil supprimé</div>';
+            updateProfileStatus();
+        }
+
+        // Créer un profil de test
+        function createTestProfile() {
+            const testProfile = {
+                username: 'Testeur_' + Math.floor(Math.random() * 1000),
+                userId: 'test_' + Date.now(),
+                level: 1,
+                xp: 0,
+                stats: {
+                    quizzesCompleted: 0,
+                    totalQuestions: 0,
+                    correctAnswers: 0,
+                    accuracy: 0
+                },
+                achievements: [],
+                createdAt: new Date().toISOString()
+            };
+
+            localStorage.setItem('quantum-quiz-user-profile', JSON.stringify(testProfile));
+            document.getElementById('profile-result').innerHTML =
+                `<div class="test-result success">✅ Profil de test créé : ${testProfile.username}</div>`;
+            updateProfileStatus();
+        }
+
+        // Tester la redirection
+        function testRedirection() {
+            const result = document.getElementById('redirect-result');
+            const hasProfile = localStorage.getItem('quantum-quiz-user-profile');
+
+            if (hasProfile) {
+                result.innerHTML = `
+                    <div class="test-result info">
+                        ℹ️ Vous avez un profil. Supprimez-le d'abord pour tester la redirection.<br><br>
+                        Ensuite, essayez d'ouvrir : <a href="index.html" target="_blank">index.html</a>
+                    </div>
+                `;
+            } else {
+                result.innerHTML = `
+                    <div class="test-result success">
+                        ✅ Pas de profil détecté.<br><br>
+                        Cliquez sur ce lien pour tester : <a href="index.html">Accueil</a><br>
+                        → Vous devriez être redirigé vers profile.html
+                    </div>
+                `;
+            }
+        }
+
+        // Mettre à jour le statut du profil
+        function updateProfileStatus() {
+            const statusDiv = document.getElementById('profile-status');
+            const profileData = localStorage.getItem('quantum-quiz-user-profile');
+
+            if (profileData) {
+                const profile = JSON.parse(profileData);
+                statusDiv.innerHTML = `
+                    <span class="status-badge success">✅ Profil actif</span>
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <strong>Username:</strong> ${profile.username}<br>
+                        <strong>Niveau:</strong> ${profile.level}<br>
+                        <strong>XP:</strong> ${profile.xp}
+                    </div>
+                `;
+            } else {
+                statusDiv.innerHTML = '<span class="status-badge error">❌ Aucun profil</span>';
+            }
+        }
+
+        // Afficher localStorage
+        function showLocalStorage() {
+            const result = document.getElementById('storage-result');
+            const keys = Object.keys(localStorage).filter(k => k.startsWith('quantum-quiz'));
+
+            if (keys.length === 0) {
+                result.innerHTML = '<div class="test-result info">ℹ️ Aucune donnée Quantum Quiz dans localStorage</div>';
+                return;
+            }
+
+            let html = '<div class="test-result info">';
+            keys.forEach(key => {
+                const value = localStorage.getItem(key);
+                let displayValue = value;
+
+                if (value.length > 100) {
+                    displayValue = value.substring(0, 100) + '...';
+                }
+
+                html += `<div style="margin: 0.5rem 0;"><strong>${key}:</strong><br><code>${displayValue}</code></div>`;
+            });
+            html += '</div>';
+
+            result.innerHTML = html;
+        }
+
+        // Vérifier les modules
+        function checkModules() {
+            const statusDiv = document.getElementById('modules-status');
+            let html = '<div class="code-block">';
+
+            if (window.Navigation) {
+                html += '✅ navigation.js chargé<br>';
+            } else {
+                html += '❌ navigation.js non chargé<br>';
+            }
+
+            if (window.ProfileGuard) {
+                html += '✅ profile-guard.js chargé<br>';
+            } else {
+                html += '❌ profile-guard.js non chargé<br>';
+            }
+
+            html += '</div>';
+            statusDiv.innerHTML = html;
+        }
+
+        // Initialisation
+        window.addEventListener('DOMContentLoaded', () => {
+            updateProfileStatus();
+            checkModules();
+            console.log('🧪 Page de test chargée');
+            console.log('📦 Modules disponibles:', {
+                Navigation: !!window.Navigation,
+                ProfileGuard: !!window.ProfileGuard
+            });
+        });
+    </script>
+</body>
+</html>

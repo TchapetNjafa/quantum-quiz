@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mode Examen - Quantum Quiz PHY321</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/mobile-enhanced.css">
+    <script src="js/mathjax-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <style>
+        .exam-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .exam-header {
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .exam-header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2rem;
+        }
+
+        .exam-timer {
+            font-size: 3rem;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            padding: 1rem 2rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .exam-timer.warning {
+            animation: pulse-warning 1s infinite;
+            color: #fbbf24;
+        }
+
+        .exam-timer.critical {
+            animation: pulse-critical 0.5s infinite;
+            color: #ef4444;
+        }
+
+        @keyframes pulse-warning {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes pulse-critical {
+            0%, 100% { transform: scale(1); background: rgba(239,68,68,0.3); }
+            50% { transform: scale(1.1); background: rgba(239,68,68,0.5); }
+        }
+
+        .exam-progress {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .exam-stat {
+            text-align: center;
+        }
+
+        .exam-stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .exam-stat-label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .exam-setup {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .exam-setup h2 {
+            margin-top: 0;
+            color: var(--quantum-purple);
+        }
+
+        .exam-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .exam-option {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .exam-option:hover {
+            border-color: var(--quantum-purple);
+            transform: translateY(-2px);
+        }
+
+        .exam-option.selected {
+            border-color: var(--quantum-purple);
+            background: rgba(124, 58, 237, 0.1);
+        }
+
+        .exam-option h3 {
+            margin: 0 0 0.5rem 0;
+            color: var(--text-primary);
+        }
+
+        .exam-option p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .exam-rules {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .exam-rules h3 {
+            color: #ef4444;
+            margin-top: 0;
+        }
+
+        .exam-rules ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+
+        .exam-rules li {
+            margin: 0.5rem 0;
+            color: var(--text-secondary);
+        }
+
+        .btn-start-exam {
+            width: 100%;
+            padding: 1.5rem;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn-start-exam:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
+        }
+
+        .exam-question-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            justify-content: center;
+        }
+
+        .q-nav-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .q-nav-btn:hover {
+            border-color: var(--quantum-purple);
+        }
+
+        .q-nav-btn.answered {
+            background: var(--quantum-purple);
+            border-color: var(--quantum-purple);
+            color: white;
+        }
+
+        .q-nav-btn.current {
+            border-color: var(--quantum-cyan);
+            box-shadow: 0 0 10px var(--quantum-cyan);
+        }
+
+        .q-nav-btn.flagged {
+            background: #fbbf24;
+            border-color: #fbbf24;
+            color: black;
+        }
+
+        .exam-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-flag {
+            background: #fbbf24;
+            color: black;
+        }
+
+        .btn-submit-exam {
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            flex: 1;
+        }
+
+        .exam-warning-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+
+        .exam-warning-content {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .exam-warning-content h2 {
+            color: #ef4444;
+        }
+
+        .time-up-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(220, 38, 38, 0.95);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+            color: white;
+        }
+
+        .time-up-overlay h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="exam-page">
+
+    <main class="exam-container">
+        <!-- Setup Screen -->
+        <section id="exam-setup" class="exam-setup">
+            <h2>🎓 Mode Examen Blanc</h2>
+            <p>Simulez les conditions réelles d'un examen avec chronométrage strict et sans retour en arrière possible.</p>
+
+            <h3>Choisissez votre examen :</h3>
+            <div class="exam-options">
+                <div class="exam-option" data-duration="30" data-questions="20">
+                    <h3>📝 Mini-Examen</h3>
+                    <p>20 questions • 30 minutes</p>
+                    <p>Idéal pour une révision rapide</p>
+                </div>
+                <div class="exam-option selected" data-duration="60" data-questions="40">
+                    <h3>📋 Examen Standard</h3>
+                    <p>40 questions • 1 heure</p>
+                    <p>Format classique d'évaluation</p>
+                </div>
+                <div class="exam-option" data-duration="120" data-questions="60">
+                    <h3>📚 Examen Complet</h3>
+                    <p>60 questions • 2 heures</p>
+                    <p>Simulation d'examen final</p>
+                </div>
+            </div>
+
+            <h3>Chapitres à inclure :</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0;">
+                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox" id="ch-all" checked> <strong>Tous les chapitres</strong>
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox" class="ch-select" data-chapter="1" checked> Ch.1 États
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox" class="ch-select" data-chapter="2" checked> Ch.2 Mesure
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox" class="ch-select" data-chapter="3" checked> Ch.3 Postulats
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox" class="ch-select" data-chapter="4" checked> Ch.4 Intrication
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox" class="ch-select" data-chapter="5" checked> Ch.5 Fonction d'état
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox" class="ch-select" data-chapter="6" checked> Ch.6 Oscillateur
+                </label>
+            </div>
+
+            <h3>Niveaux de difficulté :</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0;">
+                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox" id="diff-all" checked> <strong>Tous les niveaux</strong>
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox" class="diff-select" data-difficulty="easy" checked> 🟢 Facile
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox" class="diff-select" data-difficulty="medium" checked> 🟡 Moyen
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox" class="diff-select" data-difficulty="hard" checked> 🔴 Difficile
+                </label>
+            </div>
+
+            <div class="exam-rules">
+                <h3>⚠️ Règles de l'examen</h3>
+                <ul>
+                    <li>Le chronomètre démarre immédiatement et ne peut pas être mis en pause</li>
+                    <li>Vous pouvez naviguer entre les questions et marquer celles à revoir</li>
+                    <li>Les réponses ne sont pas révélées avant la fin</li>
+                    <li>À la fin du temps, l'examen est automatiquement soumis</li>
+                    <li>Pas de retour possible après soumission</li>
+                </ul>
+            </div>
+
+            <button class="btn-start-exam" onclick="ExamMode.start()">
+                🚀 Commencer l'Examen
+            </button>
+        </section>
+
+        <!-- Exam Screen -->
+        <section id="exam-content" class="hidden">
+            <div class="exam-header">
+                <h1>📝 Examen en cours</h1>
+                <div class="exam-timer" id="exam-timer">01:00:00</div>
+                <div class="exam-progress">
+                    <div class="exam-stat">
+                        <div class="exam-stat-value" id="answered-count">0</div>
+                        <div class="exam-stat-label">Répondues</div>
+                    </div>
+                    <div class="exam-stat">
+                        <div class="exam-stat-value" id="flagged-count">0</div>
+                        <div class="exam-stat-label">À revoir</div>
+                    </div>
+                    <div class="exam-stat">
+                        <div class="exam-stat-value" id="remaining-count">40</div>
+                        <div class="exam-stat-label">Restantes</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exam-question-nav" id="question-nav">
+                <!-- Question navigation buttons -->
+            </div>
+
+            <div id="question-container" class="question-card">
+                <!-- Question content -->
+            </div>
+
+            <div class="exam-actions">
+                <button class="btn btn-secondary" onclick="ExamMode.previousQuestion()">← Précédent</button>
+                <button class="btn btn-flag" onclick="ExamMode.toggleFlag()">🚩 Marquer</button>
+                <button class="btn btn-primary" onclick="ExamMode.nextQuestion()">Suivant →</button>
+            </div>
+
+            <button class="btn btn-submit-exam" onclick="ExamMode.confirmSubmit()" style="width: 100%; margin-top: 1rem;">
+                ✅ Terminer et Soumettre l'Examen
+            </button>
+        </section>
+    </main>
+
+    <!-- Time Up Overlay -->
+    <div id="time-up-overlay" class="time-up-overlay hidden">
+        <h1>⏰ TEMPS ÉCOULÉ !</h1>
+        <p style="font-size: 1.5rem;">Votre examen a été automatiquement soumis.</p>
+        <button class="btn btn-primary" onclick="ExamMode.showResults()" style="margin-top: 2rem; padding: 1rem 3rem; font-size: 1.2rem;">
+            Voir les Résultats
+        </button>
+    </div>
+
+    <!-- Confirm Submit Modal -->
+    <div id="confirm-modal" class="exam-warning-modal hidden">
+        <div class="exam-warning-content">
+            <h2>⚠️ Confirmer la soumission</h2>
+            <p id="confirm-message">Vous avez encore des questions non répondues. Êtes-vous sûr de vouloir terminer ?</p>
+            <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                <button class="btn btn-secondary" onclick="ExamMode.closeConfirm()" style="flex: 1;">Continuer l'examen</button>
+                <button class="btn btn-primary" onclick="ExamMode.submitExam()" style="flex: 1; background: #dc2626;">Soumettre</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/exam-mode.js"></script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

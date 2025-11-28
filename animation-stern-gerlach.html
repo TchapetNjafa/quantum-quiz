@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expérience de Stern-Gerlach - Animations Quantum Quiz</title>
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <script src="js/mathjax-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body class="animation-page">
+
+    <div class="animation-container">
+        <div class="navigation-buttons">
+            <a href="index.html" class="btn btn-back" data-i18n="animations.backToHome">← Accueil</a>
+            <a href="animations-gallery.html" class="btn btn-gallery" data-i18n="animations.gallery">🎨 Galerie d'Animations</a>
+        </div>
+
+        <h1>🧲 Expérience de Stern-Gerlach</h1>
+        <p class="subtitle">Séparation spatiale d'un faisceau d'atomes selon leur spin</p>
+
+        <div class="animation-section">
+            <h2 data-i18n="animations.interactive">Animation Interactive</h2>
+            <p>
+                Simulation de la séparation d'un faisceau d'atomes d'argent selon leur spin dans un champ magnétique inhomogène.
+                Les particules avec <strong>spin up</strong> (cyan) sont déviées vers le haut, celles avec <strong>spin down</strong> (rose) vers le bas.
+            </p>
+
+            <canvas id="canvas-stern-gerlach" class="animation-canvas" width="800" height="400"></canvas>
+
+            <div class="controls">
+                <button class="btn-primary" onclick="sternGerlach.start()">▶ Démarrer</button>
+                <button class="btn-secondary" onclick="sternGerlach.stop()">⏸ Pause</button>
+                <button class="btn-secondary" onclick="sternGerlach.reset && sternGerlach.reset()">🔄 Réinitialiser</button>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📚 Concepts Physiques (Chapitre 2)</h3>
+            <p>
+                <strong>Expérience historique (1922) :</strong> Otto Stern et Walther Gerlach ont démontré la quantification
+                du moment angulaire en observant qu'un faisceau d'atomes d'argent se sépare en deux composantes distinctes
+                dans un champ magnétique inhomogène.
+            </p>
+            <p>
+                <strong>Spin 1/2 :</strong> Les atomes d'argent ont un spin $S = \frac{1}{2}$, donnant deux états possibles :
+                $|+\rangle$ (spin up) et $|-\rangle$ (spin down).
+            </p>
+            <p>
+                <strong>Mesure quantique :</strong> Cette expérience démontre le caractère discret de la mesure quantique.
+                Un atome préparé dans une superposition $|\psi\rangle = \alpha|+\rangle + \beta|-\rangle$ sera projeté
+                soit dans $|+\rangle$ soit dans $|-\rangle$ lors du passage dans le champ.
+            </p>
+            <p>
+                <strong>Force magnétique :</strong> $\vec{F} = \nabla(\vec{\mu} \cdot \vec{B})$ où $\vec{\mu}$ est le moment magnétique de spin.
+            </p>
+        </div>
+    </div>
+
+    <script src="js/quantum-animations.js"></script>
+    <script>
+        let sternGerlach;
+
+        window.addEventListener('load', () => {
+            sternGerlach = QuantumAnimations.createSternGerlach('canvas-stern-gerlach', {
+                animated: true
+            });
+        });
+    </script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

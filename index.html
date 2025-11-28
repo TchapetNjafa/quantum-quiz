@@ -15,57 +15,38 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/mobile-enhanced.css">
 
     <!-- MathJax for LaTeX rendering -->
     <script src="js/mathjax-config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
 
-    <!-- Web App Manifest -->
+    <!-- PWA Configuration -->
     <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
     <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
 </head>
 <body>
     <!-- Particle Background Canvas -->
     <canvas id="particle-canvas" class="particle-background"></canvas>
 
-    <!-- Header -->
-    <header class="main-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-section">
-                    <img src="assets/icons/UY1_Logo.png" alt="Logo Université de Yaoundé I" class="logo">
-                    <div class="title-group">
-                        <h1 class="site-title">Quantum Quiz</h1>
-                        <p class="course-code">PHY321 - Introduction à la Mécanique Quantique</p>
-                    </div>
-                </div>
-
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="index.html" class="active">Accueil</a></li>
-                        <li><a href="about.html">À propos</a></li>
-                        <li><a href="#statistics">Statistiques</a></li>
-                    </ul>
-                    <button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">
-                        <span class="icon">🌙</span>
-                    </button>
-                </nav>
-            </div>
-        </div>
-    </header>
+    <!-- Header injecté automatiquement par navigation.js -->
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h2 class="hero-title">Maîtrisez les Mystères du Monde Quantique</h2>
-                <p class="hero-subtitle">
+                <h2 class="hero-title" data-i18n="home.heroTitle">Maîtrisez les Mystères du Monde Quantique</h2>
+                <p class="hero-subtitle" data-i18n="home.heroSubtitle">
                     Une application interactive pour réviser le cours PHY321 de l'Université de Yaoundé I.
-                    Plus de 600 questions originales basées sur le contenu réel du cours.
+                    Plus de 762 questions originales basées sur le contenu réel du cours.
                 </p>
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <div class="stat-number" id="total-questions">600+</div>
+                        <div class="stat-number" id="total-questions">762</div>
                         <div class="stat-label">Questions</div>
                     </div>
                     <div class="stat-item">
@@ -81,17 +62,26 @@
         </div>
     </section>
 
+    <!-- Daily Question Widget -->
+    <section class="daily-question-section">
+        <div class="container">
+            <div id="daily-question-widget">
+                <!-- Contenu généré dynamiquement par daily-question.js -->
+            </div>
+        </div>
+    </section>
+
     <!-- Quiz Configuration -->
     <section class="quiz-config">
         <div class="container">
             <div class="config-card">
-                <h3 class="config-title">Configurez Votre Session de Révision</h3>
+                <h3 class="config-title" data-i18n="home.configTitle">Configurez Votre Session de Révision</h3>
 
                 <!-- Chapter Selection -->
                 <div class="config-section">
                     <label for="chapter-select" class="config-label">
                         <span class="label-icon">📚</span>
-                        Sélection du Chapitre
+                        <span data-i18n="home.chapterSelection">Sélection du Chapitre</span>
                     </label>
                     <select id="chapter-select" class="config-select">
                         <option value="all">Mode Révision Globale (Tous les chapitres)</option>
@@ -111,7 +101,7 @@
                 <div class="config-section">
                     <label for="question-count" class="config-label">
                         <span class="label-icon">🎯</span>
-                        Nombre de Questions
+                        <span data-i18n="home.questionCount">Nombre de Questions</span>
                     </label>
                     <div class="slider-container">
                         <input type="range" id="question-count" class="config-slider"
@@ -133,23 +123,23 @@
                 <div class="config-section">
                     <label class="config-label">
                         <span class="label-icon">⚡</span>
-                        Niveau de Difficulté
+                        <span data-i18n="home.difficulty">Niveau de Difficulté</span>
                     </label>
                     <div class="checkbox-group">
                         <label class="checkbox-label">
                             <input type="checkbox" name="difficulty" value="easy" checked>
                             <span class="checkbox-custom"></span>
-                            🟢 Facile
+                            🟢 <span data-i18n="home.easy">Facile</span>
                         </label>
                         <label class="checkbox-label">
                             <input type="checkbox" name="difficulty" value="medium" checked>
                             <span class="checkbox-custom"></span>
-                            🟡 Moyen
+                            🟡 <span data-i18n="home.medium">Moyen</span>
                         </label>
                         <label class="checkbox-label">
                             <input type="checkbox" name="difficulty" value="hard" checked>
                             <span class="checkbox-custom"></span>
-                            🔴 Difficile
+                            🔴 <span data-i18n="home.hard">Difficile</span>
                         </label>
                     </div>
                 </div>
@@ -158,7 +148,7 @@
                 <div class="config-section">
                     <label class="config-label">
                         <span class="label-icon">📝</span>
-                        Types de Questions
+                        <span data-i18n="home.questionTypes">Types de Questions</span>
                     </label>
                     <div class="checkbox-group">
                         <label class="checkbox-label">
@@ -211,23 +201,23 @@
                 <div class="config-section">
                     <label class="config-label">
                         <span class="label-icon">🎮</span>
-                        Mode de Quiz
+                        <span data-i18n="home.mode">Mode de Quiz</span>
                     </label>
                     <div class="radio-group">
                         <label class="radio-label">
                             <input type="radio" name="mode" value="learning" checked>
                             <span class="radio-custom"></span>
                             <div class="radio-content">
-                                <strong>Apprentissage</strong>
-                                <small>Feedback immédiat, pas de chronomètre, retour possible</small>
+                                <strong data-i18n="home.learning">Apprentissage</strong>
+                                <small data-i18n="home.learningDesc">Feedback immédiat, pas de chronomètre, retour possible</small>
                             </div>
                         </label>
                         <label class="radio-label">
                             <input type="radio" name="mode" value="exam">
                             <span class="radio-custom"></span>
                             <div class="radio-content">
-                                <strong>Examen</strong>
-                                <small>Simulation réelle, chronomètre actif, pas de retour</small>
+                                <strong data-i18n="home.exam">Examen</strong>
+                                <small data-i18n="home.examDesc">Simulation réelle, chronomètre actif, pas de retour</small>
                             </div>
                         </label>
                     </div>
@@ -236,7 +226,7 @@
                 <!-- Start Button -->
                 <button id="start-quiz-btn" class="btn-primary btn-large">
                     <span class="btn-icon">🚀</span>
-                    Commencer le Quiz
+                    <span data-i18n="home.startButton">Commencer le Quiz</span>
                     <span class="btn-arrow">→</span>
                 </button>
             </div>
@@ -246,14 +236,14 @@
     <!-- Statistics Section -->
     <section id="statistics" class="statistics">
         <div class="container">
-            <h3 class="section-title">Vos Statistiques</h3>
+            <h3 class="section-title" data-i18n="stats.title">Vos Statistiques</h3>
 
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-icon">📊</div>
                     <div class="stat-content">
                         <div class="stat-value" id="total-answered">0</div>
-                        <div class="stat-name">Questions Répondues</div>
+                        <div class="stat-name" data-i18n="stats.questionsAnswered">Questions Répondues</div>
                     </div>
                 </div>
 
@@ -261,7 +251,7 @@
                     <div class="stat-icon">✅</div>
                     <div class="stat-content">
                         <div class="stat-value" id="correct-answers">0</div>
-                        <div class="stat-name">Réponses Correctes</div>
+                        <div class="stat-name" data-i18n="stats.correctAnswers">Réponses Correctes</div>
                     </div>
                 </div>
 
@@ -269,7 +259,7 @@
                     <div class="stat-icon">🎯</div>
                     <div class="stat-content">
                         <div class="stat-value" id="average-score">0%</div>
-                        <div class="stat-name">Score Moyen</div>
+                        <div class="stat-name" data-i18n="stats.averageScore">Score Moyen</div>
                     </div>
                 </div>
 
@@ -277,16 +267,16 @@
                     <div class="stat-icon">🔥</div>
                     <div class="stat-content">
                         <div class="stat-value" id="streak">0</div>
-                        <div class="stat-name">Série Actuelle</div>
+                        <div class="stat-name" data-i18n="stats.currentStreak">Série Actuelle</div>
                     </div>
                 </div>
             </div>
 
             <!-- Last Quiz Results -->
             <div class="recent-quizzes">
-                <h4 class="subsection-title">Dernières Tentatives</h4>
+                <h4 class="subsection-title" data-i18n="stats.recentQuizzes">Dernières Tentatives</h4>
                 <div id="recent-quiz-list" class="quiz-history">
-                    <p class="empty-state">Aucun quiz complété pour le moment. Lancez votre première session !</p>
+                    <p class="empty-state" data-i18n="stats.noQuizzes">Aucun quiz complété pour le moment. Lancez votre première session !</p>
                 </div>
             </div>
         </div>
@@ -335,11 +325,24 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="js/profile-guard.js"></script>
     <script src="js/config.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/storage.js"></script>
+    <script src="js/favorites.js"></script>
+    <script src="js/pdf-export.js"></script>
+    <script src="js/targeted-review.js"></script>
+    <script src="js/navigation.js"></script>
     <script src="js/particles.js"></script>
     <script src="js/audio.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/adaptive-difficulty.js"></script>
+    <script src="js/lms-integration.js"></script>
+    <script src="js/daily-question.js"></script>
+    <script src="js/gamification.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script src="js/pomodoro.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
