@@ -1,0 +1,62 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "script"
+  },
+  "globals": {
+    "io": "readonly",
+    "MathJax": "readonly",
+    "Chart": "readonly",
+    "jspdf": "readonly",
+    "html2canvas": "readonly",
+    "JSZip": "readonly",
+    "AppState": "writable",
+    "QuizEngine": "writable",
+    "QuestionRenderer": "writable",
+    "StorageManager": "writable",
+    "AudioSystem": "writable",
+    "AudioManager": "writable",
+    "StatisticsManager": "writable",
+    "QuantumAnimations": "writable",
+    "MultiplayerSystem": "writable",
+    "AdaptiveDifficulty": "writable",
+    "LMSIntegration": "writable",
+    "I18n": "writable",
+    "renderMath": "readonly",
+    "getQuestionType": "readonly",
+    "shuffleArray": "readonly",
+    "isMathJaxReady": "readonly",
+    "waitForMathJax": "readonly",
+    "showToast": "readonly",
+    "formatTime": "readonly",
+    "debounce": "readonly",
+    "logger": "writable",
+    "MathJaxCache": "writable",
+    "storage": "writable",
+    "generateId": "readonly",
+    "ResultsPage": "writable",
+    "escapeHtml": "readonly",
+    "formatDate": "readonly",
+    "calculatePercentage": "readonly"
+  },
+  "rules": {
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "no-console": "off",
+    "semi": ["warn", "always"],
+    "quotes": ["warn", "single", { "avoidEscape": true }],
+    "indent": ["warn", 4, { "SwitchCase": 1 }],
+    "no-undef": "error",
+    "no-extra-semi": "warn",
+    "eqeqeq": ["warn", "smart"],
+    "curly": ["warn", "multi-line"],
+    "no-var": "warn",
+    "prefer-const": "warn"
+  }
+}
