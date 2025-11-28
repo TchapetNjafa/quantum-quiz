@@ -65,22 +65,43 @@ function isMathJaxReady() {
     return typeof MathJax !== 'undefined' && MathJax.typesetPromise;
 }
 
+// Attend que MathJax soit prêt avec timeout
+async function waitForMathJax(timeout = 5000) {
+    const startTime = Date.now();
+    while (!isMathJaxReady()) {
+        if (Date.now() - startTime > timeout) {
+            console.warn('MathJax timeout - non chargé après', timeout, 'ms');
+            return false;
+        }
+        await new Promise(resolve => setTimeout(resolve, 100));
+    }
+    return true;
+}
+
 // Rend les formules LaTeX avec MathJax (avec cache pour performance)
 async function renderMath(element) {
-    if (isMathJaxReady()) {
-        try {
-            // Utiliser le cache MathJax si disponible
-            if (typeof MathJaxCache !== 'undefined') {
-                await MathJaxCache.typeset(element);
-            } else {
-                await MathJax.typesetPromise([element]);
-            }
-        } catch (err) {
-            if (typeof logger !== 'undefined') {
-                logger.error('Erreur MathJax:', err);
-            } else {
-                console.error('Erreur MathJax:', err);
-            }
+    // Attend que MathJax soit prêt
+    const ready = await waitForMathJax();
+    if (!ready) {
+        console.warn('Impossible de rendre les formules LaTeX - MathJax non disponible');
+        return;
+    }
+
+    try {
+        // Petit délai pour s'assurer que le DOM est stable
+        await new Promise(resolve => setTimeout(resolve, 10));
+
+        // Utiliser le cache MathJax si disponible
+        if (typeof MathJaxCache !== 'undefined') {
+            await MathJaxCache.typeset(element);
+        } else {
+            await MathJax.typesetPromise([element]);
+        }
+    } catch (err) {
+        if (typeof logger !== 'undefined') {
+            logger.error('Erreur MathJax:', err);
+        } else {
+            console.error('Erreur MathJax:', err);
         }
     }
 }
@@ -109,6 +130,30 @@ function showToast(message, type = 'info', duration = 3000) {
         toast.style.animation = 'slideOut 0.3s ease-in';
         setTimeout(() => toast.remove(), 300);
     }, duration);
+}
+
+// Détecte le type de question (avec ou sans champ 'type')
+function getQuestionType(question) {
+    // Si le champ 'type' existe, on l'utilise
+    if (question.type) {
+        return question.type;
+    }
+
+    // Sinon, on détecte le type par la structure ou l'ID
+    if (question.hotspots || (question.id && question.id.includes('-h'))) {
+        return 'hotspot';
+    }
+
+    if (question.draggables || (question.id && question.id.includes('-d'))) {
+        return 'drag_drop';
+    }
+
+    if (question.front && question.back) {
+        return 'flashcard';
+    }
+
+    // Type par défaut
+    return 'unknown';
 }
 
 // Stockage local avec fallback

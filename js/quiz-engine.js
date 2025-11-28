@@ -56,6 +56,24 @@ const QuizEngine = {
             const data = await response.json();
             console.log('Données chargées:', data);
 
+            // Mode révision ciblée : sélectionner par IDs spécifiques
+            if (this.config.questionIds && this.config.questionIds.length > 0) {
+                console.log('🎯 Mode révision ciblée:', this.config.questionIds.length, 'questions');
+                const allQuestions = [];
+                data.chapters.forEach(ch => {
+                    ch.questions.forEach(q => {
+                        if (this.config.questionIds.includes(q.id)) {
+                            allQuestions.push({ ...q, chapter_id: ch.chapter_id });
+                        }
+                    });
+                });
+
+                // Mélange les questions
+                this.questions = this.shuffleArray(allQuestions).slice(0, this.config.count || 20);
+                console.log('Questions sélectionnées:', this.questions.length);
+                return;
+            }
+
             // Sélectionne les questions selon la configuration
             let allQuestions = [];
 
@@ -83,61 +101,58 @@ const QuizEngine = {
 
             // Filtre par type de question
             if (this.config.questionTypes && this.config.questionTypes.length > 0) {
-                allQuestions = allQuestions.filter(q =>
-                    this.config.questionTypes.includes(q.type)
-                );
+                allQuestions = allQuestions.filter(q => {
+                    const questionType = getQuestionType(q);
+                    return this.config.questionTypes.includes(questionType);
+                });
             }
 
-            // Élimine les doublons AVANT le mélange (plus efficace)
+            // Élimine les doublons (utiliser l'ID comme clé unique)
             const uniqueQuestions = [];
             const seenIds = new Set();
-            const seenQuestions = new Set(); // Double vérification avec le contenu
 
             for (const q of allQuestions) {
-                // Crée une clé unique basée sur l'ID ou le contenu de la question
-                const questionKey = q.id || `${q.type}_${q.question}_${JSON.stringify(q.correct_answer || q.correct_hotspot || q.correct_matches)}`;
-
-                // Vérifie si cette question a déjà été vue
-                if (!seenIds.has(q.id) && !seenQuestions.has(questionKey)) {
-                    if (q.id) seenIds.add(q.id);
-                    seenQuestions.add(questionKey);
+                if (q.id && !seenIds.has(q.id)) {
+                    seenIds.add(q.id);
+                    uniqueQuestions.push(q);
+                } else if (!q.id) {
+                    // Si pas d'ID, on garde quand même la question (rare)
+                    console.warn('Question sans ID détectée:', q.question?.substring(0, 50));
                     uniqueQuestions.push(q);
                 }
             }
 
-            if (typeof logger !== 'undefined') {
-                logger.info(`Questions uniques après dédoublonnage : ${uniqueQuestions.length}/${allQuestions.length}`);
-            }
+            console.log(`📊 Questions après déduplication: ${uniqueQuestions.length}/${allQuestions.length}`);
 
-            // Mélange APRÈS dédoublonnage
-            const shuffledQuestions = shuffleArray(uniqueQuestions);
-
-            // Limite au nombre demandé
-            const requestedCount = Math.min(this.config.questionCount, shuffledQuestions.length);
-            this.questions = shuffledQuestions.slice(0, requestedCount);
-
-            // Vérification finale : aucun doublon dans les questions sélectionnées
-            const finalIds = new Set();
-            const finalQuestions = [];
-            for (const q of this.questions) {
-                const key = q.id || q.question;
-                if (!finalIds.has(key)) {
-                    finalIds.add(key);
-                    finalQuestions.push(q);
-                }
-            }
-            this.questions = finalQuestions;
-
-            if (typeof logger !== 'undefined') {
-                logger.info(`Quiz final : ${this.questions.length} questions uniques`);
-            }
-
-            if (this.questions.length === 0) {
+            if (uniqueQuestions.length === 0) {
                 throw new Error('Aucune question trouvée avec ces critères');
             }
 
-            if (typeof logger !== 'undefined') {
-                console.log('✅ Aucun doublon détecté dans les questions sélectionnées');
+            // Récupère les questions récemment utilisées pour les éviter
+            const recentQuestions = this.getRecentQuestions();
+
+            // Sépare les questions en "fraîches" et "récentes"
+            const freshQuestions = uniqueQuestions.filter(q => !recentQuestions.includes(q.id));
+            const recentOnes = uniqueQuestions.filter(q => recentQuestions.includes(q.id));
+
+            // Priorité aux questions fraîches, puis mélange des récentes
+            const shuffledFresh = shuffleArray(freshQuestions);
+            const shuffledRecent = shuffleArray(recentOnes);
+
+            // Combine: d'abord les fraîches, puis les récentes si besoin
+            const orderedQuestions = [...shuffledFresh, ...shuffledRecent];
+
+            // Limite au nombre demandé
+            const requestedCount = Math.min(this.config.questionCount, orderedQuestions.length);
+            this.questions = orderedQuestions.slice(0, requestedCount);
+
+            // Sauvegarde les IDs des questions utilisées
+            this.saveUsedQuestions(this.questions.map(q => q.id));
+
+            console.log(`✅ Quiz final: ${this.questions.length} questions (${shuffledFresh.length} fraîches, ${Math.min(requestedCount - shuffledFresh.length, shuffledRecent.length)} récentes)`);
+
+            if (this.questions.length === 0) {
+                throw new Error('Aucune question trouvée avec ces critères');
             }
 
         } catch (error) {
@@ -305,13 +320,36 @@ const QuizEngine = {
         const question = this.questions[this.currentIndex];
         const answer = QuestionRenderer.getUserAnswer(container, question);
 
+        // Vérifier si c'est une nouvelle réponse (pas déjà répondue)
+        const isNewAnswer = this.answers[this.currentIndex] === undefined ||
+                            this.answers[this.currentIndex] === null;
+
         this.answers[this.currentIndex] = answer;
         if (typeof logger !== 'undefined') {
             logger.debug(`Réponse sauvegardée pour Q${this.currentIndex + 1}:`, answer);
         }
 
+        // En mode apprentissage, jouer un son de feedback lors de la première réponse
+        if (isNewAnswer && answer !== undefined && answer !== null && answer !== '') {
+            if (this.config.mode === 'learning') {
+                const check = QuestionRenderer.checkAnswer(answer, question);
+                this.showFeedbackSound(check.correct);
+            }
+        }
+
         // Mettre à jour les statistiques en temps réel
         this.updateLiveStats();
+    },
+
+    // Joue le son de feedback approprié
+    showFeedbackSound(isCorrect) {
+        if (typeof AudioSystem !== 'undefined') {
+            if (isCorrect) {
+                AudioSystem.correct();
+            } else {
+                AudioSystem.incorrect();
+            }
+        }
     },
 
     // Met à jour les statistiques en temps réel (correct/incorrect/score) - OPTIMISÉ
@@ -460,18 +498,38 @@ const QuizEngine = {
 
     // Met à jour la barre de progression
     updateProgress() {
-        const progressBar = document.getElementById('progress-bar');
+        const progressBar = document.getElementById('progress-fill');
         const progressText = document.getElementById('progress-text');
+        const progressPercentage = document.getElementById('progress-percentage');
+        const answeredCountEl = document.getElementById('answered-count');
+        const completionPercentageEl = document.getElementById('completion-percentage');
 
         const answeredCount = this.answers.filter(a => a !== null && a !== undefined).length;
-        const percentage = (answeredCount / this.questions.length) * 100;
+        const percentage = Math.round((answeredCount / this.questions.length) * 100);
 
+        // Barre de progression principale
         if (progressBar) {
             progressBar.style.width = `${percentage}%`;
         }
 
+        // Texte de progression (Question X/Y)
         if (progressText) {
-            progressText.textContent = `${answeredCount} / ${this.questions.length} répondues`;
+            progressText.textContent = `Question ${this.currentIndex + 1}/${this.questions.length}`;
+        }
+
+        // Pourcentage de progression
+        if (progressPercentage) {
+            progressPercentage.textContent = `${percentage}%`;
+        }
+
+        // Panneau latéral - nombre de questions répondues
+        if (answeredCountEl) {
+            answeredCountEl.textContent = `${answeredCount}/${this.questions.length}`;
+        }
+
+        // Panneau latéral - pourcentage de complétion
+        if (completionPercentageEl) {
+            completionPercentageEl.textContent = `${percentage}%`;
         }
     },
 
@@ -549,6 +607,15 @@ const QuizEngine = {
 
             if (check.correct) {
                 correctCount++;
+                // Enregistrer le succès pour la révision ciblée
+                if (window.TargetedReview && question.id) {
+                    TargetedReview.recordSuccess(question.id);
+                }
+            } else {
+                // Enregistrer l'erreur pour la révision ciblée
+                if (window.TargetedReview && question.id) {
+                    TargetedReview.recordError(question.id, question);
+                }
             }
 
             details.push({
@@ -574,6 +641,37 @@ const QuizEngine = {
             details: details,
             timestamp: new Date().toISOString()
         };
+    },
+
+    // Récupère les IDs des questions récemment utilisées (derniers 3 quiz)
+    getRecentQuestions() {
+        const key = 'quantum_quiz_recent_questions';
+        const stored = localStorage.getItem(key);
+        if (!stored) return [];
+
+        try {
+            const data = JSON.parse(stored);
+            // Garde seulement les 3 derniers quiz (environ 60 questions max)
+            return data.slice(0, 60);
+        } catch (e) {
+            console.error('Erreur lecture questions récentes:', e);
+            return [];
+        }
+    },
+
+    // Sauvegarde les IDs des questions utilisées dans ce quiz
+    saveUsedQuestions(questionIds) {
+        const key = 'quantum_quiz_recent_questions';
+        const recent = this.getRecentQuestions();
+
+        // Ajoute les nouvelles questions au début
+        const updated = [...questionIds, ...recent];
+
+        // Garde seulement les 100 plus récentes (environ 5 quiz)
+        const trimmed = updated.slice(0, 100);
+
+        localStorage.setItem(key, JSON.stringify(trimmed));
+        console.log(`💾 Sauvegardé ${questionIds.length} questions utilisées (${trimmed.length} en mémoire)`);
     }
 };
 

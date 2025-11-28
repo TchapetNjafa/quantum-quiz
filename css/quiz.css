@@ -58,8 +58,26 @@
 .MathJax,
 mjx-container {
     display: inline-block !important;
+    vertical-align: middle;
     overflow-x: auto;
     max-width: 100%;
+}
+
+/* Inline math should not wrap */
+mjx-container[jax="CHTML"][display="true"],
+mjx-container[jax="SVG"][display="true"] {
+    display: block !important;
+    margin: var(--space-md) 0;
+    overflow-x: auto;
+    text-align: center;
+}
+
+/* Inline math - stay on line with text */
+mjx-container[jax="CHTML"]:not([display="true"]),
+mjx-container[jax="SVG"]:not([display="true"]) {
+    display: inline-block !important;
+    vertical-align: middle;
+    white-space: nowrap;
 }
 
 /* Fix for long equations */
@@ -70,6 +88,32 @@ mjx-container {
     white-space: nowrap;
     overflow-x: auto;
     max-width: 100%;
+    vertical-align: middle;
+}
+
+/* Scrollable container for very long equations */
+.question-text,
+.option-item label,
+.question-formula {
+    overflow-wrap: break-word;
+}
+
+/* Ensure equations in options don't break the layout */
+.option-item {
+    overflow-x: auto;
+}
+
+.option-item label {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: var(--space-sm);
+}
+
+/* Better display for display-mode equations */
+.question-formula mjx-container {
+    display: block !important;
+    margin: 0 auto;
 }
 
 .question-meta {
@@ -77,6 +121,21 @@ mjx-container {
     flex-wrap: wrap;
     gap: var(--space-sm);
     margin-top: var(--space-lg);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.meta-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    align-items: center;
+}
+
+.question-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
 }
 
 .difficulty-badge {
@@ -600,5 +659,142 @@ mjx-container {
 
     .question-image {
         margin: var(--space-lg) auto;
+    }
+}
+
+/* ============================================================================
+   ANIMATION QUESTIONS
+   ============================================================================ */
+
+.animation-container {
+    width: 100%;
+    margin: 2rem 0;
+}
+
+.animation-description {
+    background: rgba(45, 212, 191, 0.1);
+    border-left: 3px solid var(--quantum-cyan);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.animation-canvas {
+    width: 100%;
+    height: 300px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.animation-controls {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+.btn-animation {
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-animation:hover {
+    background: var(--bg-hover);
+    border-color: var(--quantum-cyan);
+}
+
+.btn-play {
+    background: linear-gradient(135deg, var(--quantum-cyan) 0%, var(--quantum-purple) 100%);
+    color: white;
+    border: none;
+}
+
+.btn-play:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(45, 212, 191, 0.4);
+}
+
+.param-control {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+    min-width: 200px;
+}
+
+.param-control label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.param-control input[type="range"] {
+    flex: 1;
+    min-width: 100px;
+}
+
+.param-value {
+    font-size: 0.9rem;
+    color: var(--quantum-cyan);
+    font-weight: 700;
+    min-width: 60px;
+    text-align: right;
+}
+
+.animation-question-prompt {
+    margin: 2rem 0 1rem 0;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-left: 3px solid var(--quantum-purple);
+    border-radius: 8px;
+}
+
+.animation-question-prompt p {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .animation-canvas {
+        height: 250px;
+    }
+
+    .animation-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .param-control {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+
+    .param-control label {
+        text-align: left;
+    }
+
+    .param-value {
+        text-align: left;
     }
 }

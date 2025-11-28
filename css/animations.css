@@ -1,0 +1,228 @@
+/**
+ * ANIMATIONS PAGES STYLESHEET
+ * Styles communs pour toutes les pages d'animation
+ * Supporte le mode clair et sombre via les variables CSS
+ */
+
+/* Container principal */
+.animation-page {
+    min-height: 100vh;
+    padding: 2rem;
+    padding-top: 0;
+}
+
+.animation-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Navigation */
+.navigation-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: 1px solid;
+}
+
+.btn-back {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.btn-back:hover {
+    background: var(--bg-tertiary);
+    transform: translateX(-5px);
+}
+
+.btn-gallery {
+    background: linear-gradient(135deg, var(--quantum-cyan) 0%, #0891b2 100%);
+    border-color: var(--quantum-cyan);
+    color: white;
+}
+
+.btn-gallery:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(45, 212, 191, 0.4);
+}
+
+/* Titres */
+.animation-page h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--quantum-cyan) 0%, var(--quantum-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+/* Section d'animation */
+.animation-section {
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+.animation-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--quantum-cyan);
+}
+
+.animation-section p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+/* Canvas d'animation */
+.animation-canvas {
+    width: 100%;
+    height: 400px;
+    border-radius: 8px;
+    background: var(--bg-primary);
+    margin-bottom: 1rem;
+    border: 2px solid rgba(45, 212, 191, 0.3);
+}
+
+/* Contrôles */
+.controls {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.btn-primary {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: linear-gradient(135deg, var(--quantum-cyan) 0%, #0891b2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(45, 212, 191, 0.4);
+}
+
+.btn-secondary {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+    background: var(--bg-tertiary);
+}
+
+/* Sliders */
+.slider-group {
+    margin-top: 1rem;
+}
+
+.slider-label {
+    display: block;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.slider-control {
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Boîte d'information */
+.info-box {
+    background: rgba(124, 58, 237, 0.15);
+    border-left: 4px solid var(--quantum-purple);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.info-box h3 {
+    color: var(--quantum-purple-light, #c4b5fd);
+    margin-bottom: 0.75rem;
+}
+
+.info-box p {
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+}
+
+.info-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* Valeurs affichées */
+.value-display {
+    background: var(--bg-secondary);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    font-family: 'Fira Code', monospace;
+}
+
+.value-display span {
+    color: var(--quantum-cyan);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .animation-page h1 {
+        font-size: 2rem;
+    }
+
+    .animation-canvas {
+        height: 300px;
+    }
+
+    .navigation-buttons {
+        flex-direction: column;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+}

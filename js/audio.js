@@ -27,24 +27,43 @@ const AudioSystem = {
         return this.enabled;
     },
 
+    // Reprend le contexte audio si suspendu (autoplay policy)
+    async resumeContext() {
+        if (this.context && this.context.state === 'suspended') {
+            try {
+                await this.context.resume();
+                console.log('✅ Contexte audio repris');
+            } catch (error) {
+                console.warn('Erreur lors de la reprise du contexte audio:', error);
+            }
+        }
+    },
+
     // Joue un son (fréquence, durée, type)
-    play(frequency, duration, type = 'sine', volume = 0.3) {
+    async play(frequency, duration, type = 'sine', volume = 0.3) {
         if (!this.enabled || !this.context) return;
 
-        const oscillator = this.context.createOscillator();
-        const gainNode = this.context.createGain();
+        // Reprendre le contexte si nécessaire (autoplay policy)
+        await this.resumeContext();
 
-        oscillator.connect(gainNode);
-        gainNode.connect(this.context.destination);
+        try {
+            const oscillator = this.context.createOscillator();
+            const gainNode = this.context.createGain();
 
-        oscillator.type = type;
-        oscillator.frequency.value = frequency;
+            oscillator.connect(gainNode);
+            gainNode.connect(this.context.destination);
 
-        gainNode.gain.setValueAtTime(volume, this.context.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, this.context.currentTime + duration);
+            oscillator.type = type;
+            oscillator.frequency.value = frequency;
 
-        oscillator.start(this.context.currentTime);
-        oscillator.stop(this.context.currentTime + duration);
+            gainNode.gain.setValueAtTime(volume, this.context.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, this.context.currentTime + duration);
+
+            oscillator.start(this.context.currentTime);
+            oscillator.stop(this.context.currentTime + duration);
+        } catch (error) {
+            console.warn('Erreur lors de la lecture du son:', error);
+        }
     },
 
     // Son de réponse correcte
@@ -129,9 +148,42 @@ const AudioSystem = {
 
 // Initialise au chargement
 if (typeof window !== 'undefined') {
-    window.addEventListener('DOMContentLoaded', () => {
-        AudioSystem.init();
-    });
+    // Initialiser immédiatement si DOM déjà prêt, sinon attendre
+    const initAudio = () => {
+        if (!AudioSystem.context) {
+            AudioSystem.init();
+        }
+    };
+
+    if (document.readyState === 'loading') {
+        window.addEventListener('DOMContentLoaded', initAudio);
+    } else {
+        initAudio();
+    }
+
+    // Reprendre le contexte audio lors de la première interaction utilisateur
+    const resumeOnInteraction = async () => {
+        // S'assurer que le contexte est initialisé
+        if (!AudioSystem.context) {
+            AudioSystem.init();
+        }
+
+        await AudioSystem.resumeContext();
+
+        // Un petit son de test silencieux pour "débloquer" l'audio
+        if (AudioSystem.context && AudioSystem.context.state === 'running') {
+            console.log('✅ Audio débloqué par interaction utilisateur');
+        }
+
+        // Retirer les listeners après la première interaction réussie
+        document.removeEventListener('click', resumeOnInteraction);
+        document.removeEventListener('touchstart', resumeOnInteraction);
+        document.removeEventListener('keydown', resumeOnInteraction);
+    };
+
+    document.addEventListener('click', resumeOnInteraction);
+    document.addEventListener('touchstart', resumeOnInteraction);
+    document.addEventListener('keydown', resumeOnInteraction);
 }
 
 console.log('✅ audio.js chargé');

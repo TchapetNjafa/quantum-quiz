@@ -69,22 +69,42 @@ const AppState = {
     },
 
     loadTheme() {
-        const theme = this.userStats?.preferences?.theme || 'dark';
-        this.setTheme(theme);
+        // Check if user has a saved preference
+        const savedTheme = this.userStats?.preferences?.theme;
+
+        if (savedTheme) {
+            this.setTheme(savedTheme);
+        } else {
+            // Auto-detect system preference
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            this.setTheme(prefersDark ? 'dark' : 'light');
+        }
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            // Only auto-switch if user hasn't manually set a preference
+            if (!this.userStats?.preferences?.themeManuallySet) {
+                this.setTheme(e.matches ? 'dark' : 'light', false);
+                updateThemeIcon();
+            }
+        });
     },
 
-    setTheme(theme) {
+    setTheme(theme, manuallySet = true) {
         this.theme = theme;
         document.documentElement.setAttribute('data-theme', theme);
         if (this.userStats) {
             this.userStats.preferences.theme = theme;
+            if (manuallySet) {
+                this.userStats.preferences.themeManuallySet = true;
+            }
             this.saveUserStats();
         }
     },
 
     toggleTheme() {
         const newTheme = this.theme === 'dark' ? 'light' : 'dark';
-        this.setTheme(newTheme);
+        this.setTheme(newTheme, true);
         updateThemeIcon();
     }
 };
@@ -107,6 +127,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize UI
     initializeUI();
+
+    // Rafraîchir les stats quand la page devient visible (revenir de results.html)
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+            console.log('Page visible, rafraîchissement des stats...');
+            updateStatistics();
+        }
+    });
+
+    // Aussi au focus de la fenêtre
+    window.addEventListener('focus', () => {
+        console.log('Fenêtre focusée, rafraîchissement des stats...');
+        updateStatistics();
+    });
 
     console.log('✅ Quantum Quiz Ready!');
 });
@@ -199,9 +233,10 @@ function initializeUI() {
 }
 
 function updateStatistics() {
-    const stats = AppState.userStats;
+    // Utiliser StorageManager pour obtenir les stats à jour
+    const stats = StorageManager.getUserStats();
 
-    // Update stat displays (utiliser les bons noms de propriétés de storage.js)
+    // Update stat displays
     updateStatDisplay('total-answered', stats.totalQuestions || 0);
     updateStatDisplay('correct-answers', stats.correctAnswers || 0);
     updateStatDisplay('average-score', `${Math.round(stats.averageScore || 0)}%`);
@@ -408,9 +443,44 @@ function closeModals() {
 // ============================================================================
 
 function showError(message) {
-    // Simple error display
-    alert(message);
-    // TODO: Implement better error UI
+    // Affiche une notification d'erreur élégante
+    if (typeof showToast === 'function') {
+        showToast(message, 'error', 5000);
+    } else {
+        // Fallback si showToast n'est pas disponible
+        console.error('Erreur:', message);
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-notification';
+        errorDiv.innerHTML = `
+            <span class="error-icon">⚠️</span>
+            <span class="error-message">${message}</span>
+            <button class="error-close" onclick="this.parentElement.remove()">×</button>
+        `;
+        errorDiv.style.cssText = `
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(255, 107, 107, 0.4);
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideDown 0.3s ease-out;
+            max-width: 90%;
+        `;
+        document.body.appendChild(errorDiv);
+        setTimeout(() => {
+            errorDiv.style.opacity = '0';
+            errorDiv.style.transform = 'translateX(-50%) translateY(-20px)';
+            errorDiv.style.transition = 'all 0.3s ease-in';
+            setTimeout(() => errorDiv.remove(), 300);
+        }, 5000);
+    }
 }
 
 function formatDate(dateString) {
@@ -441,6 +511,35 @@ function getScoreClass(score) {
     if (score >= 60) return 'good';
     if (score >= 40) return 'average';
     return 'needs-improvement';
+}
+
+// ============================================================================
+// SERVICE WORKER REGISTRATION
+// ============================================================================
+
+// Enregistrer le Service Worker pour améliorer les performances et mode offline
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        // Utiliser un chemin relatif pour fonctionner dans différents contextes
+        const swPath = 'service-worker.js';
+        navigator.serviceWorker.register(swPath)
+            .then((registration) => {
+                console.log('✅ Service Worker enregistré:', registration.scope);
+
+                // Vérifier les mises à jour
+                registration.addEventListener('updatefound', () => {
+                    const newWorker = registration.installing;
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            console.log('🔄 Nouvelle version disponible');
+                        }
+                    });
+                });
+            })
+            .catch((err) => {
+                console.warn('⚠️ Erreur Service Worker:', err);
+            });
+    });
 }
 
 // ============================================================================

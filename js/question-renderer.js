@@ -46,6 +46,7 @@ const QuestionRenderer = {
             img.src = question.image_url;
             img.alt = question.image_alt || 'Image de la question';
             img.className = 'question-image';
+            img.loading = 'lazy'; // Lazy loading natif pour meilleures performances
             header.appendChild(img);
         }
 
@@ -57,16 +58,36 @@ const QuestionRenderer = {
             header.appendChild(formulaDiv);
         }
 
-        // Métadonnées
+        // Métadonnées et actions
         const meta = document.createElement('div');
         meta.className = 'question-meta';
-        meta.innerHTML = `
+
+        const badges = document.createElement('div');
+        badges.className = 'meta-badges';
+        badges.innerHTML = `
             <span class="difficulty-badge difficulty-${question.difficulty}">
                 ${question.difficulty === 'easy' ? 'Facile' : question.difficulty === 'medium' ? 'Moyen' : 'Difficile'}
             </span>
             <span class="points-badge">${question.points || 1} point${question.points > 1 ? 's' : ''}</span>
             ${question.time_estimate ? `<span class="time-badge">⏱ ${question.time_estimate}s</span>` : ''}
         `;
+        meta.appendChild(badges);
+
+        // Boutons Favoris et Notes
+        if (window.Favorites && question.id) {
+            const actions = document.createElement('div');
+            actions.className = 'question-actions';
+
+            const favBtn = Favorites.createFavoriteButton(question.id, question);
+            actions.appendChild(favBtn);
+
+            const noteBtn = Favorites.createNoteButton(question.id);
+            noteBtn.setAttribute('data-question-id', question.id);
+            actions.appendChild(noteBtn);
+
+            meta.appendChild(actions);
+        }
+
         header.appendChild(meta);
 
         return header;
@@ -76,9 +97,10 @@ const QuestionRenderer = {
     createAnswerArea(question, mode) {
         const area = document.createElement('div');
         area.className = 'answer-area';
-        area.dataset.type = question.type;
+        const questionType = getQuestionType(question);
+        area.dataset.type = questionType;
 
-        switch (question.type) {
+        switch (questionType) {
             case 'qcm':
                 this.renderQCM(question, area, mode);
                 break;
@@ -103,8 +125,11 @@ const QuestionRenderer = {
             case 'flashcard':
                 this.renderFlashcard(question, area, mode);
                 break;
+            case 'animation':
+                this.renderAnimation(question, area, mode);
+                break;
             default:
-                area.innerHTML = `<p class="error">Type de question non supporté: ${question.type}</p>`;
+                area.innerHTML = `<p class="error">Type de question non supporté: ${questionType}</p>`;
         }
 
         return area;
@@ -115,23 +140,45 @@ const QuestionRenderer = {
         const form = document.createElement('div');
         form.className = 'qcm-options';
 
-        question.options.forEach((option, index) => {
+        // Crée un tableau d'objets avec option et index original
+        const optionsWithIndex = question.options.map((option, index) => ({
+            text: option,
+            originalIndex: index
+        }));
+
+        // Mélange les options (sauf en mode review pour cohérence avec l'explication)
+        const displayedOptions = mode === 'review' ? optionsWithIndex : shuffleArray([...optionsWithIndex]);
+
+        displayedOptions.forEach((optionData, displayIndex) => {
             const optionDiv = document.createElement('div');
             optionDiv.className = 'option-item';
 
             const input = document.createElement('input');
             input.type = 'radio';
             input.name = 'answer';
-            input.value = index;
-            input.id = `option-${index}`;
+            // Stocke l'index ORIGINAL dans la value pour la vérification
+            input.value = optionData.originalIndex;
+            input.id = `option-${displayIndex}`;
+            // Attribut data pour debugging
+            input.dataset.originalIndex = optionData.originalIndex;
+
+            // Son lors de la sélection
+            if (mode !== 'review') {
+                input.addEventListener('change', () => {
+                    if (typeof AudioSystem !== 'undefined') {
+                        AudioSystem.click();
+                    }
+                });
+            }
 
             const label = document.createElement('label');
-            label.htmlFor = `option-${index}`;
-            label.innerHTML = `<span class="option-letter">${String.fromCharCode(65 + index)}</span>${option}`;
+            label.htmlFor = `option-${displayIndex}`;
+            // Utilise displayIndex pour les lettres A, B, C, D
+            label.innerHTML = `<span class="option-letter">${String.fromCharCode(65 + displayIndex)}</span>${optionData.text}`;
 
             if (mode === 'review') {
                 input.disabled = true;
-                if (index === question.correct_answer) {
+                if (optionData.originalIndex === question.correct_answer) {
                     optionDiv.classList.add('correct');
                 }
             }
@@ -158,6 +205,15 @@ const QuestionRenderer = {
             input.name = 'answer';
             input.value = index === 0 ? 'true' : 'false';
             input.id = `vf-${index}`;
+
+            // Son lors de la sélection
+            if (mode !== 'review') {
+                input.addEventListener('change', () => {
+                    if (typeof AudioSystem !== 'undefined') {
+                        AudioSystem.click();
+                    }
+                });
+            }
 
             const label = document.createElement('label');
             label.htmlFor = `vf-${index}`;
@@ -259,6 +315,10 @@ const QuestionRenderer = {
                 select.value = pair.right;
                 select.disabled = true;
                 preview.innerHTML = pair.right;
+                // Rend la formule en mode review
+                if (isMathJaxReady()) {
+                    MathJax.typesetPromise([preview]).catch(err => console.warn('MathJax error:', err));
+                }
                 if (select.value === pair.right) {
                     row.classList.add('correct');
                 }
@@ -380,6 +440,7 @@ const QuestionRenderer = {
         img.alt = question.image_alt || 'Image hotspot';
         img.style.width = '100%';
         img.style.display = 'block';
+        img.loading = 'lazy'; // Lazy loading natif
 
         const canvas = document.createElement('canvas');
         canvas.className = 'hotspot-canvas';
@@ -391,71 +452,109 @@ const QuestionRenderer = {
 
         // Attendre que l'image soit chargée pour initialiser le canvas
         img.onload = () => {
-            canvas.width = img.offsetWidth;
-            canvas.height = img.offsetHeight;
-            canvas.style.width = img.offsetWidth + 'px';
-            canvas.style.height = img.offsetHeight + 'px';
+            // Petit délai pour s'assurer que le layout CSS est terminé
+            setTimeout(() => {
+                const displayWidth = img.clientWidth || img.offsetWidth;
+                const displayHeight = img.clientHeight || img.offsetHeight;
 
-            const ctx = canvas.getContext('2d');
-            const scaleX = img.offsetWidth / img.naturalWidth;
-            const scaleY = img.offsetHeight / img.naturalHeight;
+                canvas.width = displayWidth;
+                canvas.height = displayHeight;
+                canvas.style.width = displayWidth + 'px';
+                canvas.style.height = displayHeight + 'px';
 
-            // Dessiner les zones de hotspot
-            const drawHotspots = (highlight = null) => {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const ctx = canvas.getContext('2d');
 
-                question.hotspots.forEach(hotspot => {
-                    const x = hotspot.x * scaleX;
-                    const y = hotspot.y * scaleY;
-                    const radius = hotspot.radius * Math.min(scaleX, scaleY);
+                // Pour les SVG, naturalWidth/Height peut être 0 ou incorrect
+                // Utiliser les dimensions définies dans l'image ou estimer à partir des hotspots
+                let naturalWidth = img.naturalWidth;
+                let naturalHeight = img.naturalHeight;
 
-                    ctx.beginPath();
-                    ctx.arc(x, y, radius, 0, 2 * Math.PI);
-
-                    if (mode === 'review' && hotspot.id === question.correct_hotspot) {
-                        ctx.fillStyle = 'rgba(0, 255, 0, 0.3)';
-                        ctx.strokeStyle = '#00ff00';
-                        ctx.lineWidth = 3;
-                    } else if (highlight === hotspot.id) {
-                        ctx.fillStyle = 'rgba(0, 217, 255, 0.3)';
-                        ctx.strokeStyle = '#00d9ff';
-                        ctx.lineWidth = 2;
+                // Si les dimensions naturelles ne sont pas disponibles (SVG), essayer d'autres méthodes
+                if (!naturalWidth || !naturalHeight || naturalWidth === 0 || naturalHeight === 0) {
+                    // Pour les SVG, utiliser les dimensions connues basées sur le nom du fichier
+                    // ou estimer à partir des coordonnées hotspot
+                    if (question.image_dimensions) {
+                        // Dimensions explicites fournies dans la question
+                        naturalWidth = question.image_dimensions.width;
+                        naturalHeight = question.image_dimensions.height;
                     } else {
-                        ctx.fillStyle = 'rgba(124, 58, 237, 0.1)';
-                        ctx.strokeStyle = '#7c3aed';
-                        ctx.lineWidth = 1;
+                        // Trouver les coordonnées max dans les hotspots pour estimer les dimensions
+                        const maxX = Math.max(...question.hotspots.map(h => h.x + h.radius));
+                        const maxY = Math.max(...question.hotspots.map(h => h.y + h.radius));
+                        // Ajouter une marge de 15% et arrondir
+                        naturalWidth = Math.max(600, Math.ceil(maxX * 1.15));
+                        naturalHeight = Math.max(400, Math.ceil(maxY * 1.15));
                     }
+                    console.log(`Hotspot: dimensions estimées à ${naturalWidth}x${naturalHeight}`);
+                }
 
-                    ctx.fill();
-                    ctx.stroke();
-                });
-            };
+                // S'assurer que les dimensions sont cohérentes
+                if (naturalWidth < 100) naturalWidth = 600;
+                if (naturalHeight < 100) naturalHeight = 400;
 
-            drawHotspots();
+                const scaleX = displayWidth / naturalWidth;
+                const scaleY = displayHeight / naturalHeight;
 
-            if (mode !== 'review') {
-                canvas.addEventListener('click', (e) => {
-                    const rect = canvas.getBoundingClientRect();
-                    const clickX = (e.clientX - rect.left) * (canvas.width / rect.width);
-                    const clickY = (e.clientY - rect.top) * (canvas.height / rect.height);
+                console.log(`Hotspot debug - Image: ${naturalWidth}x${naturalHeight}, Display: ${displayWidth}x${displayHeight}, Scale: ${scaleX.toFixed(3)}x${scaleY.toFixed(3)}`);
 
-                    // Vérifier quel hotspot a été cliqué
-                    for (const hotspot of question.hotspots) {
+                // Dessiner les zones de hotspot
+                const drawHotspots = (highlight = null) => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    question.hotspots.forEach(hotspot => {
                         const x = hotspot.x * scaleX;
                         const y = hotspot.y * scaleY;
                         const radius = hotspot.radius * Math.min(scaleX, scaleY);
 
-                        const distance = Math.sqrt((clickX - x) ** 2 + (clickY - y) ** 2);
+                        ctx.beginPath();
+                        ctx.arc(x, y, radius, 0, 2 * Math.PI);
 
-                        if (distance <= radius) {
-                            canvas.dataset.selectedHotspot = hotspot.id;
-                            drawHotspots(hotspot.id);
-                            AudioSystem.click();
-                            break;
+                        if (mode === 'review' && hotspot.id === question.correct_hotspot) {
+                            ctx.fillStyle = 'rgba(0, 255, 0, 0.3)';
+                            ctx.strokeStyle = '#00ff00';
+                            ctx.lineWidth = 3;
+                        } else if (highlight === hotspot.id) {
+                            ctx.fillStyle = 'rgba(0, 217, 255, 0.3)';
+                            ctx.strokeStyle = '#00d9ff';
+                            ctx.lineWidth = 2;
+                        } else {
+                            ctx.fillStyle = 'rgba(124, 58, 237, 0.1)';
+                            ctx.strokeStyle = '#7c3aed';
+                            ctx.lineWidth = 1;
                         }
-                    }
-                });
-            }
+
+                        ctx.fill();
+                        ctx.stroke();
+                    });
+                };
+
+                drawHotspots();
+
+                if (mode !== 'review') {
+                    canvas.addEventListener('click', (e) => {
+                        const rect = canvas.getBoundingClientRect();
+                        // Convertir les coordonnées du clic en coordonnées canvas
+                        const clickX = (e.clientX - rect.left) * (canvas.width / rect.width);
+                        const clickY = (e.clientY - rect.top) * (canvas.height / rect.height);
+
+                        // Vérifier quel hotspot a été cliqué
+                        for (const hotspot of question.hotspots) {
+                            const x = hotspot.x * scaleX;
+                            const y = hotspot.y * scaleY;
+                            const radius = hotspot.radius * Math.min(scaleX, scaleY);
+
+                            const distance = Math.sqrt((clickX - x) ** 2 + (clickY - y) ** 2);
+
+                            if (distance <= radius) {
+                                canvas.dataset.selectedHotspot = hotspot.id;
+                                drawHotspots(hotspot.id);
+                                if (typeof AudioSystem !== 'undefined') AudioSystem.click();
+                                break;
+                            }
+                        }
+                    });
+                }
+            }, 50); // Délai de 50ms pour le layout CSS
         };
 
         svgContainer.appendChild(img);
@@ -712,6 +811,187 @@ const QuestionRenderer = {
         container.appendChild(flashcardContainer);
     },
 
+    // Animation (visualisation interactive)
+    renderAnimation(question, container, mode) {
+        const animationContainer = document.createElement('div');
+        animationContainer.className = 'animation-container';
+
+        // Create canvas for animation
+        const canvas = document.createElement('canvas');
+        canvas.id = `animation-canvas-${Date.now()}`;
+        canvas.width = 800;
+        canvas.height = 300;
+        canvas.className = 'animation-canvas';
+
+        // Animation description
+        if (question.animation_description) {
+            const description = document.createElement('div');
+            description.className = 'animation-description';
+            description.innerHTML = question.animation_description;
+            animationContainer.appendChild(description);
+        }
+
+        animationContainer.appendChild(canvas);
+
+        // Controls
+        const controls = document.createElement('div');
+        controls.className = 'animation-controls';
+
+        const playBtn = document.createElement('button');
+        playBtn.className = 'btn-animation btn-play';
+        playBtn.innerHTML = '▶ Play';
+        playBtn.dataset.state = 'paused';
+
+        const resetBtn = document.createElement('button');
+        resetBtn.className = 'btn-animation btn-reset';
+        resetBtn.innerHTML = '🔄 Reset';
+
+        controls.appendChild(playBtn);
+        controls.appendChild(resetBtn);
+
+        // Add parameter controls if specified
+        if (question.animation_params) {
+            Object.entries(question.animation_params).forEach(([param, config]) => {
+                const paramControl = document.createElement('div');
+                paramControl.className = 'param-control';
+
+                const label = document.createElement('label');
+                label.textContent = config.label;
+
+                const slider = document.createElement('input');
+                slider.type = 'range';
+                slider.min = config.min;
+                slider.max = config.max;
+                slider.value = config.default;
+                slider.step = config.step || 1;
+                slider.dataset.param = param;
+
+                const valueSpan = document.createElement('span');
+                valueSpan.className = 'param-value';
+                valueSpan.textContent = config.default + (config.unit || '');
+
+                slider.addEventListener('input', (e) => {
+                    valueSpan.textContent = e.target.value + (config.unit || '');
+                    if (canvas.animationInstance && canvas.animationInstance.setParameter) {
+                        canvas.animationInstance.setParameter(param, parseFloat(e.target.value));
+                    }
+                });
+
+                paramControl.appendChild(label);
+                paramControl.appendChild(slider);
+                paramControl.appendChild(valueSpan);
+                controls.appendChild(paramControl);
+            });
+        }
+
+        animationContainer.appendChild(controls);
+
+        // Initialize animation after canvas is added to DOM
+        setTimeout(() => {
+            if (window.QuantumAnimations && question.animation_type) {
+                let animationInstance = null;
+
+                // Create animation based on type
+                switch (question.animation_type) {
+                    case 'harmonic_oscillator':
+                        animationInstance = QuantumAnimations.createHarmonicOscillator(canvas.id, {
+                            animated: false,
+                            level: question.animation_config?.level || 0
+                        });
+                        break;
+                    case 'stern_gerlach':
+                        animationInstance = QuantumAnimations.createSternGerlach(canvas.id, {
+                            animated: false
+                        });
+                        break;
+                    case 'young_interference':
+                        animationInstance = QuantumAnimations.createYoungInterference(canvas.id, {
+                            animated: false
+                        });
+                        break;
+                    case 'wave_packet':
+                        animationInstance = QuantumAnimations.createWavePacket(canvas.id, {
+                            animated: false
+                        });
+                        break;
+                    default:
+                        console.warn('Unknown animation type:', question.animation_type);
+                }
+
+                // Store instance for controls
+                canvas.animationInstance = animationInstance;
+
+                // Play/Pause button
+                playBtn.addEventListener('click', () => {
+                    if (!animationInstance) return;
+
+                    if (playBtn.dataset.state === 'paused') {
+                        animationInstance.start();
+                        playBtn.innerHTML = '⏸ Pause';
+                        playBtn.dataset.state = 'playing';
+                    } else {
+                        animationInstance.stop();
+                        playBtn.innerHTML = '▶ Play';
+                        playBtn.dataset.state = 'paused';
+                    }
+                    AudioSystem.click();
+                });
+
+                // Reset button
+                resetBtn.addEventListener('click', () => {
+                    if (!animationInstance) return;
+                    if (animationInstance.reset) {
+                        animationInstance.reset();
+                    }
+                    playBtn.innerHTML = '▶ Play';
+                    playBtn.dataset.state = 'paused';
+                    AudioSystem.click();
+                });
+            }
+        }, 100);
+
+        // Add question options below animation (QCM format)
+        if (question.options) {
+            const questionPrompt = document.createElement('div');
+            questionPrompt.className = 'animation-question-prompt';
+            questionPrompt.innerHTML = '<p><strong>Basé sur l\'animation ci-dessus, répondez :</strong></p>';
+            animationContainer.appendChild(questionPrompt);
+
+            const optionsForm = document.createElement('div');
+            optionsForm.className = 'qcm-options';
+
+            question.options.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'option-item';
+
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.name = 'answer';
+                input.value = index;
+                input.id = `anim-option-${index}`;
+
+                const label = document.createElement('label');
+                label.htmlFor = `anim-option-${index}`;
+                label.innerHTML = `<span class="option-letter">${String.fromCharCode(65 + index)}</span>${option}`;
+
+                if (mode === 'review') {
+                    input.disabled = true;
+                    if (index === question.correct_answer) {
+                        optionDiv.classList.add('correct');
+                    }
+                }
+
+                optionDiv.appendChild(input);
+                optionDiv.appendChild(label);
+                optionsForm.appendChild(optionDiv);
+            });
+
+            animationContainer.appendChild(optionsForm);
+        }
+
+        container.appendChild(animationContainer);
+    },
+
     // Récupère la réponse de l'utilisateur
     getUserAnswer(container, question) {
         const type = container.dataset.type;
@@ -770,6 +1050,11 @@ const QuestionRenderer = {
                 return card ? card.dataset.userAnswer === 'true' : null;
             }
 
+            case 'animation': {
+                const selected = container.querySelector('input[name="answer"]:checked');
+                return selected ? parseInt(selected.value) : null;
+            }
+
             default:
                 return null;
         }
@@ -781,7 +1066,8 @@ const QuestionRenderer = {
             return { correct: false, message: 'Aucune réponse fournie' };
         }
 
-        switch (question.type) {
+        const questionType = getQuestionType(question);
+        switch (questionType) {
             case 'qcm':
                 return {
                     correct: userAnswer === question.correct_answer,
@@ -805,7 +1091,7 @@ const QuestionRenderer = {
                 return {
                     correct: isCorrect,
                     message: isCorrect ? 'Toutes les correspondances sont correctes !' :
-                            `${correctCount}/${question.pairs.length} correspondances correctes`
+                        `${correctCount}/${question.pairs.length} correspondances correctes`
                 };
             }
 
@@ -816,7 +1102,7 @@ const QuestionRenderer = {
                 return {
                     correct: isCorrect,
                     message: isCorrect ? 'Réponse correcte !' :
-                            `Réponse attendue : ${question.correct_answer} ${question.unit || ''}`
+                        `Réponse attendue : ${question.correct_answer} ${question.unit || ''}`
                 };
             }
 
@@ -841,7 +1127,7 @@ const QuestionRenderer = {
 
             case 'drag_drop': {
                 let correctCount = 0;
-                let totalItems = Object.keys(question.correct_matches).length;
+                const totalItems = Object.keys(question.correct_matches).length;
 
                 Object.entries(question.correct_matches).forEach(([itemId, correctZoneId]) => {
                     if (userAnswer[itemId] === correctZoneId) {
@@ -869,10 +1155,20 @@ const QuestionRenderer = {
                 };
             }
 
+            case 'animation': {
+                // For animation questions, check like QCM
+                return {
+                    correct: userAnswer === question.correct_answer,
+                    message: userAnswer === question.correct_answer ?
+                        'Bonne réponse ! Vous avez bien observé l\'animation.' :
+                        'Mauvaise réponse. Relancez l\'animation et observez attentivement.'
+                };
+            }
+
             default:
                 return { correct: false, message: 'Type de question non supporté' };
         }
     }
 };
 
-console.log('✅ question-renderer.js chargé avec support hotspot, drag_drop et flashcard');
+console.log('✅ question-renderer.js chargé avec support hotspot, drag_drop, flashcard et animation');

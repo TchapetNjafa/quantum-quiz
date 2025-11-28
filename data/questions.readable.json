@@ -5,7 +5,7 @@
     "institution": "Université de Yaoundé I",
     "year": "2025-2026",
     "total_chapters": 6,
-    "total_questions": 762
+    "total_questions": 684
   },
   "chapters": [
     {
@@ -2356,11 +2356,7 @@
             "hotspot"
           ],
           "time_estimate": 45,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 300
-          }
+          "points": 1
         },
         {
           "id": "ch1-h002",
@@ -2400,11 +2396,7 @@
             "hotspot"
           ],
           "time_estimate": 60,
-          "points": 2,
-          "image_dimensions": {
-            "width": 400,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch1-h003",
@@ -2444,11 +2436,7 @@
             "hotspot"
           ],
           "time_estimate": 60,
-          "points": 2,
-          "image_dimensions": {
-            "width": 400,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch1-h004",
@@ -2488,11 +2476,7 @@
             "hotspot"
           ],
           "time_estimate": 60,
-          "points": 2,
-          "image_dimensions": {
-            "width": 400,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch1-h005",
@@ -2532,11 +2516,7 @@
             "hotspot"
           ],
           "time_estimate": 45,
-          "points": 2,
-          "image_dimensions": {
-            "width": 400,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch1-h006",
@@ -2576,11 +2556,7 @@
             "hotspot"
           ],
           "time_estimate": 45,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 300
-          }
+          "points": 1
         },
         {
           "id": "ch1-h007",
@@ -2620,11 +2596,7 @@
             "hotspot"
           ],
           "time_estimate": 60,
-          "points": 2,
-          "image_dimensions": {
-            "width": 600,
-            "height": 300
-          }
+          "points": 2
         },
         {
           "id": "ch1-h008",
@@ -2664,11 +2636,7 @@
             "hotspot"
           ],
           "time_estimate": 75,
-          "points": 2,
-          "image_dimensions": {
-            "width": 400,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch1-h009",
@@ -2708,11 +2676,7 @@
             "hotspot"
           ],
           "time_estimate": 90,
-          "points": 3,
-          "image_dimensions": {
-            "width": 400,
-            "height": 400
-          }
+          "points": 3
         },
         {
           "id": "ch1-h010",
@@ -2752,11 +2716,7 @@
             "hotspot"
           ],
           "time_estimate": 45,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 300
-          }
+          "points": 1
         },
         {
           "id": "ch1-h011",
@@ -2796,11 +2756,7 @@
             "hotspot"
           ],
           "time_estimate": 60,
-          "points": 2,
-          "image_dimensions": {
-            "width": 400,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch1-dd001",
@@ -3271,11 +3227,7 @@
             "lame séparatrice"
           ],
           "time_estimate": 50,
-          "points": 1,
-          "image_dimensions": {
-            "width": 638,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch1-h035",
@@ -3323,11 +3275,7 @@
             "hotspot"
           ],
           "time_estimate": 40,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 429
-          }
+          "points": 1
         },
         {
           "id": "ch1-h036",
@@ -3374,11 +3322,7 @@
             "hotspot"
           ],
           "time_estimate": 50,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 423
-          }
+          "points": 1
         },
         {
           "id": "ch1-q124",
@@ -3456,178 +3400,6 @@
           ],
           "time_estimate": 75,
           "points": 2
-        },
-        {
-          "id": "ch1-h010",
-          "difficulty": "medium",
-          "question": "Sur cette sphère de Bloch, identifiez la position de l'état $\\ket{-}_y$ (spin down selon l'axe y).",
-          "hotspots": [
-            {
-              "id": "plus_z",
-              "x": 200,
-              "y": 60,
-              "radius": 30,
-              "label": "Pôle Nord (+z)"
-            },
-            {
-              "id": "minus_z",
-              "x": 200,
-              "y": 240,
-              "radius": 30,
-              "label": "Pôle Sud (-z)"
-            },
-            {
-              "id": "plus_x",
-              "x": 280,
-              "y": 150,
-              "radius": 30,
-              "label": "Équateur +x"
-            },
-            {
-              "id": "minus_y",
-              "x": 200,
-              "y": 180,
-              "radius": 30,
-              "label": "Équateur -y (sortant)"
-            },
-            {
-              "id": "plus_y",
-              "x": 200,
-              "y": 120,
-              "radius": 30,
-              "label": "Équateur +y (entrant)"
-            }
-          ],
-          "correct_hotspot": "minus_y",
-          "explanation": "Sur la sphère de Bloch, l'axe z vertical représente la base $\\{\\ket{+}_z, \\ket{-}_z\\}$ (pôles Nord/Sud). L'équateur représente les superpositions équilibrées. L'état $\\ket{-}_y$ se trouve sur l'équateur, sur l'axe y, du côté négatif. C'est la superposition $\\ket{-}_y = \\frac{1}{\\sqrt{2}}(\\ket{+}_z - i\\ket{-}_z)$ avec une phase $-i$ qui le distingue de $\\ket{+}_y$. Chaque point de la sphère représente un état pur unique de spin 1/2.",
-          "section_ref": "1.4",
-          "formula": "$\\ket{-}_y = \\frac{1}{\\sqrt{2}}(\\ket{+}_z - i\\ket{-}_z)$",
-          "image_url": "assets/images/BlochSph.png",
-          "image_alt": "Sphère de Bloch avec axes x, y, z",
-          "tags": [
-            "Bloch",
-            "spin",
-            "superposition",
-            "hotspot"
-          ],
-          "time_estimate": 75,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
-        },
-        {
-          "id": "ch1-h011",
-          "difficulty": "hard",
-          "question": "Dans cet interféromètre de Mach-Zehnder, identifiez le miroir semi-réfléchissant (beam splitter) qui crée la superposition quantique.",
-          "hotspots": [
-            {
-              "id": "bs_entree",
-              "x": 100,
-              "y": 150,
-              "radius": 35,
-              "label": "Beam splitter d'entrée (création superposition)"
-            },
-            {
-              "id": "bs_sortie",
-              "x": 300,
-              "y": 150,
-              "radius": 35,
-              "label": "Beam splitter de sortie (recombinaison)"
-            },
-            {
-              "id": "miroir_haut",
-              "x": 200,
-              "y": 80,
-              "radius": 30,
-              "label": "Miroir du chemin supérieur"
-            },
-            {
-              "id": "miroir_bas",
-              "x": 200,
-              "y": 220,
-              "radius": 30,
-              "label": "Miroir du chemin inférieur"
-            },
-            {
-              "id": "detecteur_1",
-              "x": 350,
-              "y": 100,
-              "radius": 25,
-              "label": "Détecteur 1"
-            },
-            {
-              "id": "detecteur_2",
-              "x": 350,
-              "y": 200,
-              "radius": 25,
-              "label": "Détecteur 2"
-            }
-          ],
-          "correct_hotspot": "bs_entree",
-          "explanation": "Le PREMIER miroir semi-réfléchissant (beam splitter d'entrée) est crucial : il transforme un photon entrant $\\ket{\\text{in}}$ en superposition $\\frac{1}{\\sqrt{2}}(\\ket{\\text{haut}} + \\ket{\\text{bas}})$. Le photon est alors dans les DEUX chemins simultanément (superposition quantique). Le second beam splitter recom bine les amplitudes pour créer des interférences. C'est une manifestation spectaculaire du principe de superposition : un photon UNIQUE emprunte les deux chemins à la fois !",
-          "section_ref": "1.1",
-          "formula": "$\\ket{\\psi} = \\frac{1}{\\sqrt{2}}(\\ket{\\uparrow} + e^{i\\phi}\\ket{\\downarrow})$",
-          "image_url": "assets/images/FiguresInterfMZ.png",
-          "image_alt": "Schéma de l'interféromètre de Mach-Zehnder",
-          "tags": [
-            "Mach-Zehnder",
-            "interférences",
-            "superposition",
-            "hotspot"
-          ],
-          "time_estimate": 90,
-          "points": 2,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
-        },
-        {
-          "id": "ch1-anim001",
-          "type": "animation",
-          "difficulty": "medium",
-          "question": "Observez les franges d'interférence de Young. Qu'arrive-t-il si vous AUGMENTEZ la séparation entre les deux fentes ?",
-          "animation_type": "young_interference",
-          "animation_description": "Interférence lumineuse à travers deux fentes. Ajustez la séparation des fentes avec le curseur et observez le motif d'interférence.",
-          "animation_params": {
-            "slit_separation": {
-              "label": "Séparation (d) :",
-              "min": 30,
-              "max": 120,
-              "default": 60,
-              "step": 10,
-              "unit": " px"
-            },
-            "wavelength": {
-              "label": "Longueur d'onde (λ) :",
-              "min": 15,
-              "max": 50,
-              "default": 30,
-              "step": 5,
-              "unit": " px"
-            }
-          },
-          "options": [
-            "Les franges deviennent plus SERRÉES (interfrange diminue)",
-            "Les franges deviennent plus ESPACÉES (interfrange augmente)",
-            "Le nombre de franges diminue mais leur largeur reste constante",
-            "Les franges disparaissent complètement"
-          ],
-          "correct_answer": 0,
-          "explanation": "Quand la séparation $d$ entre les fentes AUGMENTE, l'interfrange $i = \\frac{\\lambda D}{d}$ DIMINUE (les franges se resserrent). Raison : pour deux rayons issus des fentes séparées de $d$, la différence de marche est $\\delta = d \\sin\\theta \\approx d\\theta$. Les franges brillantes apparaissent quand $\\delta = k\\lambda$ (k entier), donc $\\theta_k = k\\lambda/d$. Si $d$ augmente, $\\theta_k$ diminue : les franges sont plus proches de l'axe central. Inversement, si $\\lambda$ augmente (lumière plus rouge), les franges s'espacent. C'est valable aussi pour les photons uniques !",
-          "section_ref": "1.1",
-          "formula": "$i = \\frac{\\lambda D}{d}$ (interfrange)",
-          "tags": [
-            "interférences",
-            "Young",
-            "dualité",
-            "photon",
-            "animation"
-          ],
-          "time_estimate": 120,
-          "points": 1
         }
       ]
     },
@@ -5774,11 +5546,7 @@
             "hotspot"
           ],
           "time_estimate": 60,
-          "points": 2,
-          "image_dimensions": {
-            "width": 800,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch2-h002",
@@ -5818,11 +5586,7 @@
             "hotspot"
           ],
           "time_estimate": 45,
-          "points": 1,
-          "image_dimensions": {
-            "width": 800,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch2-h003",
@@ -5862,11 +5626,7 @@
             "hotspot"
           ],
           "time_estimate": 45,
-          "points": 1,
-          "image_dimensions": {
-            "width": 800,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch2-h004",
@@ -5906,11 +5666,7 @@
             "hotspot"
           ],
           "time_estimate": 60,
-          "points": 2,
-          "image_dimensions": {
-            "width": 800,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch2-h005",
@@ -5950,11 +5706,7 @@
             "hotspot"
           ],
           "time_estimate": 75,
-          "points": 2,
-          "image_dimensions": {
-            "width": 800,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch2-h006",
@@ -5994,11 +5746,7 @@
             "hotspot"
           ],
           "time_estimate": 75,
-          "points": 2,
-          "image_dimensions": {
-            "width": 800,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch2-h007",
@@ -6038,11 +5786,7 @@
             "hotspot"
           ],
           "time_estimate": 60,
-          "points": 2,
-          "image_dimensions": {
-            "width": 800,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch2-h008",
@@ -6082,11 +5826,7 @@
             "hotspot"
           ],
           "time_estimate": 45,
-          "points": 1,
-          "image_dimensions": {
-            "width": 800,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch2-h009",
@@ -6126,11 +5866,7 @@
             "hotspot"
           ],
           "time_estimate": 90,
-          "points": 3,
-          "image_dimensions": {
-            "width": 800,
-            "height": 400
-          }
+          "points": 3
         },
         {
           "id": "ch2-h010",
@@ -6170,11 +5906,7 @@
             "hotspot"
           ],
           "time_estimate": 60,
-          "points": 2,
-          "image_dimensions": {
-            "width": 800,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch2-h011",
@@ -6214,11 +5946,7 @@
             "hotspot"
           ],
           "time_estimate": 60,
-          "points": 2,
-          "image_dimensions": {
-            "width": 800,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch2-dd001",
@@ -6666,11 +6394,7 @@
             "dispositif"
           ],
           "time_estimate": 55,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch2-h035",
@@ -6717,11 +6441,7 @@
             "hotspot"
           ],
           "time_estimate": 40,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch2-h036",
@@ -6769,11 +6489,7 @@
             "préparation"
           ],
           "time_estimate": 60,
-          "points": 2,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch2-h037",
@@ -6821,11 +6537,7 @@
             "incompatibilité"
           ],
           "time_estimate": 55,
-          "points": 1,
-          "image_dimensions": {
-            "width": 638,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch2-h038",
@@ -6873,11 +6585,7 @@
             "effondrement"
           ],
           "time_estimate": 70,
-          "points": 2,
-          "image_dimensions": {
-            "width": 654,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch2-q116",
@@ -7154,842 +6862,6 @@
           ],
           "time_estimate": 120,
           "points": 3
-        },
-        {
-          "id": "ch2-q120",
-          "type": "qcm",
-          "difficulty": "medium",
-          "question": "Le principe d'indétermination de Heisenberg $\\Delta x \\Delta p \\geq \\frac{\\hbar}{2}$ signifie que :",
-          "options": [
-            "On ne peut pas mesurer la position et l'impulsion en même temps par manque d'instruments précis",
-            "Il existe une limite fondamentale à la précision simultanée de la position et de l'impulsion",
-            "L'électron se déplace trop vite pour être mesuré avec précision",
-            "La mesure perturbe toujours l'objet mesuré de manière imprévisible"
-          ],
-          "correct_answer": 1,
-          "explanation": "Le principe d'incertitude de Heisenberg n'est PAS une limitation technologique de nos instruments, mais une propriété FONDAMENTALE de la nature quantique. Même avec des instruments parfaits, on ne peut pas connaître simultanément avec une précision arbitraire la position et l'impulsion d'une particule. C'est une conséquence directe du fait que les opérateurs $\\hat{X}$ et $\\hat{P}$ ne commutent pas : $[\\hat{X},\\hat{P}] = i\\hbar$.",
-          "section_ref": "2.5",
-          "formula": "$\\Delta A \\Delta B \\geq \\frac{1}{2}|\\langle[\\hat{A},\\hat{B}]\\rangle|$",
-          "tags": [
-            "Heisenberg",
-            "incertitude",
-            "commutateur"
-          ],
-          "time_estimate": 60,
-          "points": 1
-        },
-        {
-          "id": "ch2-q121",
-          "type": "numerical",
-          "difficulty": "hard",
-          "question": "Un électron est localisé dans une boîte de largeur $\\Delta x = 1 \\text{ nm}$. Quelle est l'incertitude MINIMALE sur son impulsion (en unités de $10^{-25}$ kg·m/s) ? Utilisez $\\hbar = 1.05 \\times 10^{-34}$ J·s.",
-          "correct_answer": 5.25,
-          "tolerance": 0.5,
-          "unit": "$\\times 10^{-25}$ kg·m/s",
-          "explanation": "D'après le principe d'incertitude : $\\Delta p \\geq \\frac{\\hbar}{2\\Delta x}$. Avec $\\Delta x = 1 \\times 10^{-9}$ m et $\\hbar = 1.05 \\times 10^{-34}$ J·s, on trouve : $\\Delta p \\geq \\frac{1.05 \\times 10^{-34}}{2 \\times 10^{-9}} = 5.25 \\times 10^{-26}$ kg·m/s. En unités de $10^{-25}$ : $\\Delta p \\geq 0.525 \\times 10^{-25}$ kg·m/s. Cette incertitude est INÉVITABLE : plus on confine spatialement une particule, plus son impulsion devient indéterminée.",
-          "section_ref": "2.5",
-          "formula": "$\\Delta p \\geq \\frac{\\hbar}{2\\Delta x}$",
-          "tags": [
-            "Heisenberg",
-            "calcul",
-            "incertitude"
-          ],
-          "time_estimate": 120,
-          "points": 2
-        },
-        {
-          "id": "ch2-q122",
-          "type": "vrai_faux",
-          "difficulty": "easy",
-          "question": "Deux observables A et B sont compatibles (peuvent être mesurées simultanément avec précision) si et seulement si leurs opérateurs commutent : $[\\hat{A}, \\hat{B}] = 0$.",
-          "correct_answer": true,
-          "explanation": "VRAI. C'est un résultat fondamental de la mécanique quantique. Si $[\\hat{A}, \\hat{B}] = \\hat{A}\\hat{B} - \\hat{B}\\hat{A} = 0$, les deux opérateurs partagent une base commune de vecteurs propres, et on peut mesurer A et B simultanément sans perturbation mutuelle. Exemple : $S_x$ et $S_y$ pour le spin ne commutent PAS, donc incompatibles. Mais deux opérateurs qui agissent sur des sous-systèmes différents commutent toujours.",
-          "section_ref": "2.4",
-          "formula": "$[\\hat{A},\\hat{B}] = 0 \\Leftrightarrow$ A et B compatibles",
-          "tags": [
-            "commutateur",
-            "compatibilité",
-            "mesure"
-          ],
-          "time_estimate": 45,
-          "points": 1
-        },
-        {
-          "id": "ch2-q123",
-          "type": "qcm",
-          "difficulty": "medium",
-          "question": "Un électron est préparé dans l'état $\\ket{+}_z$ (spin up selon z). On mesure d'abord $S_z$ (résultat : $+\\hbar/2$), puis immédiatement $S_x$, puis à nouveau $S_z$. Quel est le résultat de la troisième mesure ?",
-          "options": [
-            "Toujours $+\\hbar/2$ (identique à la première mesure)",
-            "$+\\hbar/2$ ou $-\\hbar/2$ avec probabilités 50/50",
-            "Toujours $-\\hbar/2$ (opposé à la première mesure)",
-            "Impossible à prédire, dépend de l'appareil de mesure"
-          ],
-          "correct_answer": 1,
-          "explanation": "Après la première mesure ($S_z = +\\hbar/2$), l'électron est dans $\\ket{+}_z$. La mesure de $S_x$ le projette sur $\\ket{+}_x$ ou $\\ket{-}_x$ (50/50). Ces états sont des superpositions de $\\ket{+}_z$ et $\\ket{-}_z$ : $\\ket{+}_x = \\frac{1}{\\sqrt{2}}(\\ket{+}_z + \\ket{-}_z)$. Donc la troisième mesure de $S_z$ donnera $+\\hbar/2$ ou $-\\hbar/2$ avec probabilité 50/50. La mesure de $S_x$ a DÉTRUIT l'information sur $S_z$ (mesures incompatibles) !",
-          "section_ref": "2.4",
-          "formula": "$\\ket{\\pm}_x = \\frac{1}{\\sqrt{2}}(\\ket{+}_z \\pm \\ket{-}_z)$",
-          "tags": [
-            "mesures successives",
-            "spin",
-            "incompatibilité"
-          ],
-          "time_estimate": 90,
-          "points": 2
-        },
-        {
-          "id": "ch2-q124",
-          "type": "qcm",
-          "difficulty": "hard",
-          "question": "Les matrices de Pauli $\\sigma_x$, $\\sigma_y$, $\\sigma_z$ ont les propriétés suivantes (plusieurs réponses possibles, mais une est FAUSSE) :",
-          "options": [
-            "$\\sigma_x^2 = \\sigma_y^2 = \\sigma_z^2 = \\mathbb{I}$ (identité)",
-            "$[\\sigma_x, \\sigma_y] = 2i\\sigma_z$ (commutateur cyclique)",
-            "$\\{\\sigma_x, \\sigma_y\\} = \\sigma_x\\sigma_y + \\sigma_y\\sigma_x = 0$ (anticommutateur nul)",
-            "$\\text{det}(\\sigma_x) = \\text{det}(\\sigma_y) = \\text{det}(\\sigma_z) = 1$ (déterminant 1)"
-          ],
-          "correct_answer": 3,
-          "explanation": "La réponse FAUSSE est D. Les matrices de Pauli ont $\\det(\\sigma_i) = -1$, PAS +1. Les autres sont vraies : (A) $\\sigma_i^2 = \\mathbb{I}$ (propriété fondamentale), (B) $[\\sigma_i, \\sigma_j] = 2i\\epsilon_{ijk}\\sigma_k$ (relation de commutation), (C) $\\{\\sigma_i, \\sigma_j\\} = 2\\delta_{ij}\\mathbb{I}$ donc $\\{\\sigma_x,\\sigma_y\\} = 0$. Ces matrices représentent les opérateurs de spin : $\\hat{S}_i = \\frac{\\hbar}{2}\\sigma_i$.",
-          "section_ref": "2.3",
-          "formula": "$\\sigma_x = \\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}, \\sigma_y = \\begin{pmatrix}0&-i\\\\i&0\\end{pmatrix}, \\sigma_z = \\begin{pmatrix}1&0\\\\0&-1\\end{pmatrix}$",
-          "tags": [
-            "Pauli",
-            "matrices",
-            "algèbre"
-          ],
-          "time_estimate": 120,
-          "points": 2
-        },
-        {
-          "id": "ch2-q125",
-          "type": "vrai_faux",
-          "difficulty": "medium",
-          "question": "Un opérateur hermitien $\\hat{A}$ a toujours des valeurs propres réelles et des vecteurs propres orthogonaux (si les valeurs propres sont distinctes).",
-          "correct_answer": true,
-          "explanation": "VRAI. C'est le théorème fondamental des opérateurs hermitiens (autoadjoints). Les grandeurs physiques mesurables sont représentées par des opérateurs hermitiens précisément parce que : (1) valeurs propres réelles = résultats de mesure réels, (2) vecteurs propres orthogonaux = probabilités sommant à 1. Si $\\hat{A} = \\hat{A}^\\dagger$, alors $\\hat{A}\\ket{\\varphi_n} = a_n\\ket{\\varphi_n}$ avec $a_n \\in \\mathbb{R}$ et $\\langle\\varphi_m|\\varphi_n\\rangle = \\delta_{mn}$.",
-          "section_ref": "2.2",
-          "formula": "$\\hat{A}^\\dagger = \\hat{A} \\Rightarrow a_n \\in \\mathbb{R}$",
-          "tags": [
-            "hermitien",
-            "valeurs propres",
-            "orthogonalité"
-          ],
-          "time_estimate": 60,
-          "points": 1
-        },
-        {
-          "id": "ch2-q126",
-          "type": "qcm",
-          "difficulty": "medium",
-          "question": "Dans un hôpital universitaire du CHU de Yaoundé, un appareil IRM (Imagerie par Résonance Magnétique) utilise la mesure du spin des protons dans un champ magnétique. Quelle est la propriété quantique exploitée ?",
-          "options": [
-            "La quantification du spin : les protons ont spin ±ℏ/2",
-            "L'effet Doppler relativiste des protons en mouvement",
-            "La diffraction des protons à travers les tissus",
-            "L'intrication entre les protons et les électrons"
-          ],
-          "correct_answer": 0,
-          "explanation": "Les IRM exploitent la quantification du spin des protons (noyaux d'hydrogène, abondants dans l'eau du corps humain). Sous un champ magnétique intense, les spins s'alignent (up/down) avec des énergies différentes. Une impulsion radio induit des transitions entre ces niveaux (oscillations de Rabi). Le signal de relaxation permet de cartographier les tissus. C'est une application directe de la mesure quantique du spin découverte par Stern & Gerlach !",
-          "section_ref": "2.1",
-          "formula": "$\\mu = \\pm \\frac{\\hbar}{2}$ (moment magnétique du proton)",
-          "tags": [
-            "spin",
-            "application",
-            "IRM",
-            "Cameroun"
-          ],
-          "time_estimate": 75,
-          "points": 1
-        },
-        {
-          "id": "ch2-q127",
-          "type": "numerical",
-          "difficulty": "hard",
-          "question": "Soit l'opérateur $\\hat{A} = \\begin{pmatrix}3&1\\\\1&3\\end{pmatrix}$. Quelle est sa plus GRANDE valeur propre ?",
-          "correct_answer": 4,
-          "tolerance": 0.1,
-          "unit": "",
-          "explanation": "Pour trouver les valeurs propres, on résout $\\det(\\hat{A} - \\lambda\\mathbb{I}) = 0$ : $\\det\\begin{pmatrix}3-\\lambda&1\\\\1&3-\\lambda\\end{pmatrix} = (3-\\lambda)^2 - 1 = 0$. Donc $(3-\\lambda)^2 = 1$, soit $3-\\lambda = \\pm 1$. Les valeurs propres sont $\\lambda_1 = 4$ et $\\lambda_2 = 2$. La plus grande est $\\lambda = 4$. Cet opérateur est hermitien ($A_{ij} = A_{ji}^*$), donc ses valeurs propres sont réelles.",
-          "section_ref": "2.2",
-          "formula": "$\\det(\\hat{A} - \\lambda\\mathbb{I}) = 0$",
-          "tags": [
-            "valeurs propres",
-            "calcul",
-            "algèbre linéaire"
-          ],
-          "time_estimate": 120,
-          "points": 2
-        },
-        {
-          "id": "ch2-q128",
-          "type": "qcm",
-          "difficulty": "easy",
-          "question": "Lors d'une mesure quantique, que se passe-t-il avec le vecteur d'état $\\ket{\\psi}$ après la mesure d'une observable $\\hat{A}$ donnant le résultat $a_n$ ?",
-          "options": [
-            "Il reste inchangé : $\\ket{\\psi}$",
-            "Il est projeté sur le vecteur propre correspondant : $\\ket{\\psi} \\to \\ket{\\varphi_n}$",
-            "Il est détruit et le système disparaît",
-            "Il se transforme en un état mixte statistique"
-          ],
-          "correct_answer": 1,
-          "explanation": "C'est le postulat de la réduction du paquet d'ondes (Postulat 5 du cours). Après une mesure de $\\hat{A}$ donnant $a_n$, l'état $\\ket{\\psi}$ se projette instantanément sur le vecteur propre $\\ket{\\varphi_n}$ correspondant. Une mesure IMMÉDIATE suivante de $\\hat{A}$ donnerait à coup sûr $a_n$ (probabilité 100%). La mesure perturbe fondamentalement le système quantique.",
-          "section_ref": "2.1",
-          "formula": "$\\ket{\\psi} \\xrightarrow{\\text{mesure } a_n} \\ket{\\varphi_n}$",
-          "tags": [
-            "mesure",
-            "projection",
-            "postulat"
-          ],
-          "time_estimate": 45,
-          "points": 1
-        },
-        {
-          "id": "ch2-q129",
-          "type": "vrai_faux",
-          "difficulty": "medium",
-          "question": "Si un opérateur $\\hat{U}$ est unitaire ($\\hat{U}^\\dagger\\hat{U} = \\mathbb{I}$), alors il conserve la norme des vecteurs d'état : $\\| \\hat{U}\\ket{\\psi} \\| = \\| \\ket{\\psi} \\|$.",
-          "correct_answer": true,
-          "explanation": "VRAI. Les opérateurs unitaires préservent le produit scalaire et donc la norme : $\\langle \\hat{U}\\psi|\\hat{U}\\psi \\rangle = \\langle \\psi|\\hat{U}^\\dagger\\hat{U}|\\psi \\rangle = \\langle \\psi|\\psi \\rangle$. C'est pourquoi l'évolution temporelle en mécanique quantique est unitaire : $\\ket{\\psi(t)} = \\hat{U}(t)\\ket{\\psi(0)}$ avec $\\hat{U}(t) = e^{-i\\hat{H}t/\\hbar}$. La probabilité totale est conservée au cours du temps.",
-          "section_ref": "2.3",
-          "formula": "$\\hat{U}^\\dagger\\hat{U} = \\hat{U}\\hat{U}^\\dagger = \\mathbb{I}$",
-          "tags": [
-            "unitaire",
-            "norme",
-            "évolution"
-          ],
-          "time_estimate": 60,
-          "points": 1
-        },
-        {
-          "id": "ch2-q130",
-          "type": "qcm",
-          "difficulty": "hard",
-          "question": "Combien de paramètres réels indépendants sont nécessaires pour spécifier complètement un opérateur hermitien $2 \\times 2$ (comme un opérateur de spin) ?",
-          "options": [
-            "2 paramètres (un complexe)",
-            "3 paramètres (comme la sphère de Bloch)",
-            "4 paramètres (matrice réelle $2 \\times 2$)",
-            "8 paramètres (matrice complexe $2 \\times 2$)"
-          ],
-          "correct_answer": 2,
-          "explanation": "Une matrice hermitienne $2 \\times 2$ a 4 paramètres réels : diagonale (2 réels) + hors-diagonale (1 complexe = 2 réels). Mais si on impose $\\text{Tr}(\\hat{A}) = \\text{constante}$, il reste 3 paramètres. Pour un opérateur de spin, on peut écrire $\\hat{\\vec{S}} = \\frac{\\hbar}{2}(n_x\\sigma_x + n_y\\sigma_y + n_z\\sigma_z)$ avec $\\vec{n}$ unitaire ($n_x^2+n_y^2+n_z^2=1$) → 3 paramètres (= sphère de Bloch).",
-          "section_ref": "2.3",
-          "formula": "$\\hat{A} = a_0\\mathbb{I} + a_1\\sigma_x + a_2\\sigma_y + a_3\\sigma_z$",
-          "tags": [
-            "hermitien",
-            "paramètres",
-            "Pauli"
-          ],
-          "time_estimate": 90,
-          "points": 2
-        },
-        {
-          "id": "ch2-q131",
-          "type": "qcm",
-          "difficulty": "medium",
-          "question": "Pourquoi les horloges atomiques (comme celles utilisées par le GPS ou les réseaux cellulaires MTN/Orange Cameroun) sont-elles si précises ?",
-          "options": [
-            "Elles utilisent des cristaux de quartz très purs",
-            "Elles exploitent la fréquence de transition entre deux niveaux d'énergie quantifiés d'un atome",
-            "Elles sont synchronisées par satellite",
-            "Elles utilisent des lasers ultra-stables"
-          ],
-          "correct_answer": 1,
-          "explanation": "Les horloges atomiques exploitent la quantification des niveaux d'énergie atomiques. Pour le césium 133 (standard international), la fréquence de transition hyperfine entre deux sous-niveaux du spin du noyau est $\\nu = 9\\,192\\,631\\,770$ Hz (définition de la seconde). Cette fréquence est IDENTIQUE pour tous les atomes de césium 133 dans l'univers (propriété quantique fondamentale), d'où la précision extraordinaire (~1 seconde d'erreur en 100 millions d'années).",
-          "section_ref": "2.1",
-          "formula": "$E_n = \\hbar\\omega_n$ (quantification de l'énergie)",
-          "tags": [
-            "application",
-            "horloges atomiques",
-            "quantification",
-            "Cameroun"
-          ],
-          "time_estimate": 75,
-          "points": 1
-        },
-        {
-          "id": "ch2-q132",
-          "type": "vrai_faux",
-          "difficulty": "easy",
-          "question": "Le commutateur de deux opérateurs $\\hat{A}$ et $\\hat{B}$ est toujours un opérateur hermitien.",
-          "correct_answer": false,
-          "explanation": "FAUX. Le commutateur $[\\hat{A},\\hat{B}] = \\hat{A}\\hat{B} - \\hat{B}\\hat{A}$ est ANTIHERMITIEN (ou imaginaire pur pour des opérateurs hermitiens). En effet, si $\\hat{A}$ et $\\hat{B}$ sont hermitiens, alors $[\\hat{A},\\hat{B}]^\\dagger = [\\hat{B},\\hat{A}] = -[\\hat{A},\\hat{B}]$. Exemple : $[\\hat{X},\\hat{P}] = i\\hbar$ (imaginaire pur). Pour que le commutateur soit hermitien, il faut diviser par $i$ : $\\frac{1}{i}[\\hat{A},\\hat{B}]$ est hermitien.",
-          "section_ref": "2.4",
-          "formula": "$[\\hat{A},\\hat{B}]^\\dagger = -[\\hat{A},\\hat{B}]$ si $\\hat{A}$, $\\hat{B}$ hermitiens",
-          "tags": [
-            "commutateur",
-            "hermitien",
-            "algèbre"
-          ],
-          "time_estimate": 60,
-          "points": 1
-        },
-        {
-          "id": "ch2-q133",
-          "type": "numerical",
-          "difficulty": "medium",
-          "question": "Un état quantique est $\\ket{\\psi} = \\frac{1}{\\sqrt{2}}\\ket{+}_z + \\frac{1}{\\sqrt{2}}\\ket{-}_z$. Quelle est la valeur moyenne $\\langle S_z \\rangle$ du spin selon z (en unités de $\\hbar$) ?",
-          "correct_answer": 0,
-          "tolerance": 0.1,
-          "unit": "$\\hbar$",
-          "explanation": "La valeur moyenne est $\\langle S_z \\rangle = \\langle \\psi | \\hat{S}_z | \\psi \\rangle$. On sait que $\\hat{S}_z\\ket{\\pm}_z = \\pm\\frac{\\hbar}{2}\\ket{\\pm}_z$. Donc : $\\langle S_z \\rangle = \\frac{1}{2}\\left(\\frac{\\hbar}{2}\\right) + \\frac{1}{2}\\left(-\\frac{\\hbar}{2}\\right) = 0$. L'état $\\ket{\\psi}$ est une superposition équilibrée de spin up et down, donc la valeur moyenne du spin est NULLE (mais ce n'est PAS un état de spin nul !). En unités de $\\hbar$ : $\\langle S_z \\rangle / \\hbar = 0$.",
-          "section_ref": "2.2",
-          "formula": "$\\langle A \\rangle = \\langle \\psi | \\hat{A} | \\psi \\rangle$",
-          "tags": [
-            "valeur moyenne",
-            "spin",
-            "calcul"
-          ],
-          "time_estimate": 90,
-          "points": 2
-        },
-        {
-          "id": "ch2-q134",
-          "type": "qcm",
-          "difficulty": "hard",
-          "question": "Laquelle de ces paires d'observables est COMPATIBLE (peut être mesurée simultanément avec précision) ?",
-          "options": [
-            "$S_x$ et $S_y$ (composantes du spin selon x et y)",
-            "$\\hat{X}$ et $\\hat{P}$ (position et impulsion)",
-            "$\\hat{H}$ et $\\hat{P}$ (énergie et impulsion pour une particule libre)",
-            "$\\hat{L}_z$ et $\\hat{L}_x$ (moment angulaire selon z et x)"
-          ],
-          "correct_answer": 2,
-          "explanation": "Seule la paire C est compatible. Pour une particule libre, $\\hat{H} = \\hat{P}^2/(2m)$, donc $[\\hat{H},\\hat{P}] = 0$ (l'énergie ne dépend que de l'impulsion). Les autres ne commutent PAS : (A) $[S_x,S_y] = i\\hbar S_z \\neq 0$, (B) $[\\hat{X},\\hat{P}] = i\\hbar \\neq 0$ (Heisenberg !), (D) $[\\hat{L}_z,\\hat{L}_x] = i\\hbar\\hat{L}_y \\neq 0$. La compatibilité est équivalente à la commutation.",
-          "section_ref": "2.4",
-          "formula": "$[\\hat{A},\\hat{B}] = 0 \\Leftrightarrow$ compatibles",
-          "tags": [
-            "compatibilité",
-            "commutateur",
-            "observables"
-          ],
-          "time_estimate": 120,
-          "points": 2
-        },
-        {
-          "id": "ch2-q135",
-          "type": "vrai_faux",
-          "difficulty": "medium",
-          "question": "Dans l'analogie africaine de la divination par jets de cauris, le devin (mesure quantique) révèle un état qui existait déjà avant la consultation.",
-          "correct_answer": false,
-          "explanation": "FAUX ! C'est précisément ce que la mécanique quantique réfute. Contrairement à l'interprétation classique de la divination (révéler une réalité préexistante), la mesure quantique CRÉE le résultat. Avant la mesure, l'état est en SUPERPOSITION (tous les résultats potentiels coexistent). La mesure projette l'état sur un résultat particulier. Ce n'est pas une révélation, c'est une création de réalité ! (Débat Einstein-Bohr sur les variables cachées).",
-          "section_ref": "2.1",
-          "formula": "Superposition $\\ket{\\psi} = \\sum_n c_n\\ket{\\varphi_n}$ $\\xrightarrow{\\text{mesure}}$ projection",
-          "tags": [
-            "mesure",
-            "interprétation",
-            "divination",
-            "Afrique"
-          ],
-          "time_estimate": 75,
-          "points": 1
-        },
-        {
-          "id": "ch2-q136",
-          "type": "qcm",
-          "difficulty": "medium",
-          "question": "Un opérateur $\\hat{A}$ a les valeurs propres 2, 3 et 5. Un état $\\ket{\\psi}$ est mesuré et donne le résultat 4. Que peut-on conclure ?",
-          "options": [
-            "L'état $\\ket{\\psi}$ n'est pas normalisé correctement",
-            "L'opérateur $\\hat{A}$ n'est pas hermitien",
-            "La mesure est impossible : le résultat doit être une valeur propre de $\\hat{A}$",
-            "L'appareil de mesure est défectueux"
-          ],
-          "correct_answer": 2,
-          "explanation": "Le Postulat 3 de la mécanique quantique stipule que le résultat d'une mesure est TOUJOURS une valeur propre de l'opérateur correspondant. Si $\\hat{A}$ a les valeurs propres {2, 3, 5}, alors une mesure de l'observable A ne peut donner QUE l'un de ces trois résultats, avec des probabilités données par la règle de Born. Un résultat de 4 est physiquement impossible (violerait les postulats). Cela ne dit rien sur la normalisation de $\\ket{\\psi}$ ou la nature de $\\hat{A}$.",
-          "section_ref": "2.2",
-          "formula": "Résultat de mesure $\\in$ {valeurs propres de $\\hat{A}$}",
-          "tags": [
-            "valeurs propres",
-            "mesure",
-            "postulat"
-          ],
-          "time_estimate": 75,
-          "points": 1
-        },
-        {
-          "id": "ch2-q137",
-          "type": "qcm",
-          "difficulty": "hard",
-          "question": "Pour un système à spin 1/2, combien d'observables de spin indépendantes (non redondantes) peut-on définir ?",
-          "options": [
-            "1 observable (le spin est un scalaire)",
-            "2 observables (spin up/down)",
-            "3 observables ($S_x$, $S_y$, $S_z$)",
-            "Une infinité d'observables (spin selon toute direction)"
-          ],
-          "correct_answer": 3,
-          "explanation": "Il existe une INFINITÉ d'observables de spin : $\\hat{S}_{\\vec{n}} = \\vec{n} \\cdot \\vec{\\hat{S}}$ pour tout vecteur unitaire $\\vec{n}$ (spin selon la direction $\\vec{n}$). Cependant, seules 3 sont INDÉPENDANTES : $S_x$, $S_y$, $S_z$. Toute autre observable de spin peut s'écrire comme combinaison linéaire de ces trois. C'est lié au fait que l'espace des matrices de Pauli (hermitiens $2×2$ sans trace) est de dimension 3. Mais on ne peut mesurer qu'UNE composante à la fois (incompatibilité) !",
-          "section_ref": "2.3",
-          "formula": "$\\hat{S}_{\\vec{n}} = n_x\\hat{S}_x + n_y\\hat{S}_y + n_z\\hat{S}_z$",
-          "tags": [
-            "spin",
-            "observables",
-            "indépendance"
-          ],
-          "time_estimate": 120,
-          "points": 2
-        },
-        {
-          "id": "ch2-h001",
-          "difficulty": "medium",
-          "question": "Sur ce diagramme de l'expérience de Stern-Gerlach, cliquez sur la zone où arrivent les atomes avec un spin DOWN (spin $-\\hbar/2$ selon z).",
-          "hotspots": [
-            {
-              "id": "zone_up",
-              "x": 150,
-              "y": 80,
-              "radius": 30,
-              "label": "Tache supérieure (spin up)"
-            },
-            {
-              "id": "zone_down",
-              "x": 150,
-              "y": 160,
-              "radius": 30,
-              "label": "Tache inférieure (spin down)"
-            },
-            {
-              "id": "zone_center",
-              "x": 150,
-              "y": 120,
-              "radius": 25,
-              "label": "Centre (distribution classique attendue)"
-            }
-          ],
-          "correct_hotspot": "zone_down",
-          "explanation": "Dans l'expérience de Stern-Gerlach, un faisceau d'atomes d'argent traverse un champ magnétique inhomogène. Les atomes avec spin DOWN ($m_s = -1/2$) sont déviés vers le BAS (zone inférieure de l'écran), tandis que ceux avec spin UP ($m_s = +1/2$) sont déviés vers le HAUT. On observe DEUX taches discrètes, et non une distribution continue au centre (prédiction classique). C'est la preuve expérimentale de la quantification du spin.",
-          "section_ref": "2.1",
-          "formula": "$\\mu_z = -g_s \\frac{e}{2m_e} S_z = \\pm \\mu_B$ (moment magnétique)",
-          "image_url": "assets/images/SternGerlachExper.png",
-          "image_alt": "Diagramme de l'expérience de Stern-Gerlach avec les deux taches",
-          "tags": [
-            "Stern-Gerlach",
-            "spin",
-            "hotspot",
-            "quantification"
-          ],
-          "time_estimate": 60,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
-        },
-        {
-          "id": "ch2-h002",
-          "difficulty": "hard",
-          "question": "Sur ce schéma représentant trois appareils de Stern-Gerlach en série (SGz → SGx → SGz), identifiez la zone de sortie où les atomes peuvent arriver après les TROIS mesures.",
-          "hotspots": [
-            {
-              "id": "sortie_up_final",
-              "x": 350,
-              "y": 80,
-              "radius": 30,
-              "label": "Sortie spin up final"
-            },
-            {
-              "id": "sortie_down_final",
-              "x": 350,
-              "y": 160,
-              "radius": 30,
-              "label": "Sortie spin down final"
-            },
-            {
-              "id": "sortie_x_plus",
-              "x": 200,
-              "y": 80,
-              "radius": 25,
-              "label": "Sortie intermédiaire Sx+"
-            },
-            {
-              "id": "sortie_x_moins",
-              "x": 200,
-              "y": 160,
-              "radius": 25,
-              "label": "Sortie intermédiaire Sx-"
-            },
-            {
-              "id": "les_deux",
-              "x": 350,
-              "y": 120,
-              "radius": 40,
-              "label": "Les deux sorties finales (up ET down)"
-            }
-          ],
-          "correct_hotspot": "les_deux",
-          "explanation": "Après SGz (disons sortie up), l'état est $\\ket{+}_z$. Après SGx, l'état devient $\\ket{+}_x$ ou $\\ket{-}_x$ (50/50). Ces états sont des superpositions : $\\ket{\\pm}_x = \\frac{1}{\\sqrt{2}}(\\ket{+}_z \\pm \\ket{-}_z)$. Donc le TROISIÈME SGz (mesure de $S_z$ à nouveau) donne BOTH up ET down avec 50% chaque. La mesure intermédiaire de $S_x$ a DÉTRUIT l'information initiale sur $S_z$ ! On perd la mémoire de la première mesure (incompatibilité des observables). Les atomes arrivent donc dans LES DEUX zones finales.",
-          "section_ref": "2.4",
-          "formula": "$\\ket{\\pm}_x = \\frac{1}{\\sqrt{2}}(\\ket{+}_z \\pm \\ket{-}_z)$",
-          "image_url": "assets/images/SGSzSxSzP.pdf",
-          "image_alt": "Trois appareils Stern-Gerlach en série montrant la perte d'information",
-          "tags": [
-            "Stern-Gerlach",
-            "mesures successives",
-            "incompatibilité",
-            "hotspot"
-          ],
-          "time_estimate": 120,
-          "points": 2,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
-        },
-        {
-          "id": "ch2-dd010",
-          "difficulty": "medium",
-          "question": "Associez chaque matrice de Pauli à sa représentation matricielle correcte :",
-          "draggable_items": [
-            {
-              "id": "pauli_x",
-              "text": "$\\sigma_x$ (Pauli X)"
-            },
-            {
-              "id": "pauli_y",
-              "text": "$\\sigma_y$ (Pauli Y)"
-            },
-            {
-              "id": "pauli_z",
-              "text": "$\\sigma_z$ (Pauli Z)"
-            }
-          ],
-          "drop_zones": [
-            {
-              "id": "matrix_1",
-              "label": "$\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$ (NOT quantique)"
-            },
-            {
-              "id": "matrix_2",
-              "label": "$\\begin{pmatrix}0&-i\\\\i&0\\end{pmatrix}$ (Phase)"
-            },
-            {
-              "id": "matrix_3",
-              "label": "$\\begin{pmatrix}1&0\\\\0&-1\\end{pmatrix}$ (Z-gate)"
-            }
-          ],
-          "correct_matches": {
-            "pauli_x": "matrix_1",
-            "pauli_y": "matrix_2",
-            "pauli_z": "matrix_3"
-          },
-          "explanation": "Les matrices de Pauli sont fondamentales en mécanique quantique : $\\sigma_x = \\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$ (échange up/down, NOT quantique), $\\sigma_y = \\begin{pmatrix}0&-i\\\\i&0\\end{pmatrix}$ (rotation complexe), $\\sigma_z = \\begin{pmatrix}1&0\\\\0&-1\\end{pmatrix}$ (distingue up/down). Elles vérifient $\\sigma_i^2 = \\mathbb{I}$ et $[\\sigma_i, \\sigma_j] = 2i\\epsilon_{ijk}\\sigma_k$. Les opérateurs de spin s'écrivent $\\hat{S}_i = \\frac{\\hbar}{2}\\sigma_i$.",
-          "section_ref": "2.3",
-          "formula": "$\\hat{\\vec{S}} = \\frac{\\hbar}{2}(\\sigma_x, \\sigma_y, \\sigma_z)$",
-          "tags": [
-            "Pauli",
-            "matrices",
-            "drag-drop"
-          ],
-          "time_estimate": 90,
-          "points": 1
-        },
-        {
-          "id": "ch2-dd011",
-          "difficulty": "medium",
-          "question": "Associez chaque type d'opérateur à sa propriété caractéristique :",
-          "draggable_items": [
-            {
-              "id": "hermitien",
-              "text": "Opérateur hermitien"
-            },
-            {
-              "id": "unitaire",
-              "text": "Opérateur unitaire"
-            },
-            {
-              "id": "projection",
-              "text": "Opérateur de projection"
-            }
-          ],
-          "drop_zones": [
-            {
-              "id": "prop_1",
-              "label": "$\\hat{A}^\\dagger = \\hat{A}$ → Valeurs propres réelles"
-            },
-            {
-              "id": "prop_2",
-              "label": "$\\hat{U}^\\dagger\\hat{U} = \\mathbb{I}$ → Conserve la norme"
-            },
-            {
-              "id": "prop_3",
-              "label": "$\\hat{P}^2 = \\hat{P}$ → Idempotent"
-            }
-          ],
-          "correct_matches": {
-            "hermitien": "prop_1",
-            "unitaire": "prop_2",
-            "projection": "prop_3"
-          },
-          "explanation": "Les trois types d'opérateurs fondamentaux : (1) HERMITIEN $\\hat{A}^\\dagger = \\hat{A}$ représente une grandeur physique mesurable (valeurs propres réelles), (2) UNITAIRE $\\hat{U}^\\dagger\\hat{U} = \\mathbb{I}$ représente une évolution temporelle (conserve probabilités), (3) PROJECTION $\\hat{P}^2 = \\hat{P}$ représente une mesure (projette sur sous-espace). Exemple : $\\hat{P}_{+z} = \\ket{+}_z\\bra{+}_z$ projette sur spin up.",
-          "section_ref": "2.2-2.3",
-          "formula": "$\\hat{H} = \\hat{H}^\\dagger$, $e^{-i\\hat{H}t/\\hbar}$ unitaire",
-          "tags": [
-            "opérateurs",
-            "hermitien",
-            "unitaire",
-            "drag-drop"
-          ],
-          "time_estimate": 90,
-          "points": 1
-        },
-        {
-          "id": "ch2-dd012",
-          "difficulty": "hard",
-          "question": "Classez ces paires d'observables selon leur degré de compatibilité :",
-          "draggable_items": [
-            {
-              "id": "pair_1",
-              "text": "$S_x$ et $S_y$ (spin x et y)"
-            },
-            {
-              "id": "pair_2",
-              "text": "$\\hat{H}$ et $\\hat{H}$ (énergie avec elle-même)"
-            },
-            {
-              "id": "pair_3",
-              "text": "$\\hat{X}$ et $\\hat{P}$ (position et impulsion)"
-            }
-          ],
-          "drop_zones": [
-            {
-              "id": "compat_complete",
-              "label": "Commutent parfaitement : $[\\hat{A},\\hat{B}] = 0$"
-            },
-            {
-              "id": "incomp_max",
-              "label": "Incompatibles (relation d'incertitude saturée)"
-            },
-            {
-              "id": "incomp_partielle",
-              "label": "Incompatibles (commutateur non nul mais pas max)"
-            }
-          ],
-          "correct_matches": {
-            "pair_1": "incomp_partielle",
-            "pair_2": "compat_complete",
-            "pair_3": "incomp_max"
-          },
-          "explanation": "Degré de compatibilité : (1) $\\hat{H}$ avec lui-même : commutation parfaite $[\\hat{H},\\hat{H}] = 0$ (mesure répétable), (2) $S_x$ et $S_y$ : $[S_x,S_y] = i\\hbar S_z \\neq 0$ incompatibles mais pas maximal (dépend de l'état), (3) $\\hat{X}$ et $\\hat{P}$ : $[\\hat{X},\\hat{P}] = i\\hbar$ incompatibilité MAXIMALE (Heisenberg $\\Delta X \\Delta P \\geq \\hbar/2$, relation saturée par états gaussiens).",
-          "section_ref": "2.4-2.5",
-          "formula": "$\\Delta A \\Delta B \\geq \\frac{1}{2}|\\langle[\\hat{A},\\hat{B}]\\rangle|$",
-          "tags": [
-            "compatibilité",
-            "commutateur",
-            "Heisenberg",
-            "drag-drop"
-          ],
-          "time_estimate": 120,
-          "points": 2
-        },
-        {
-          "id": "ch2-q138",
-          "type": "interpretation",
-          "difficulty": "hard",
-          "question": "Expliquez pourquoi le principe d'indétermination de Heisenberg ($\\Delta x \\Delta p \\geq \\hbar/2$) n'est PAS une limite technologique mais une propriété fondamentale de la nature. Donnez un exemple concret.",
-          "sample_answer": "Le principe d'Heisenberg n'est pas dû à une imperfection de nos instruments de mesure, mais à la nature ondulatoire quantique elle-même. Mathématiquement, il découle du fait que les opérateurs position $\\hat{X}$ et impulsion $\\hat{P}$ ne commutent pas : $[\\hat{X},\\hat{P}] = i\\hbar$. Cette non-commutation signifie qu'il n'existe AUCUN état quantique qui soit simultanément vecteur propre de $\\hat{X}$ et $\\hat{P}$. Exemple concret : un électron confiné dans une boîte de largeur $\\Delta x = 1$ nm (comme dans un nanotransistor). Heisenberg impose $\\Delta p \\geq \\hbar/(2\\Delta x) \\approx 5 \\times 10^{-26}$ kg·m/s. Cette incertitude sur l'impulsion est INÉVITABLE, même avec des instruments parfaits, car elle reflète la dualité onde-corpuscule : localiser l'électron (onde courte) implique une superposition d'impulsions (transformée de Fourier).",
-          "section_ref": "2.5",
-          "formula": "$\\Delta A \\Delta B \\geq \\frac{1}{2}|\\langle[\\hat{A},\\hat{B}]\\rangle|$",
-          "tags": [
-            "Heisenberg",
-            "interprétation",
-            "philosophie"
-          ],
-          "time_estimate": 180,
-          "points": 3
-        },
-        {
-          "id": "ch2-q139",
-          "type": "qcm",
-          "difficulty": "medium",
-          "question": "Un état quantique est décrit par $\\ket{\\psi} = 0.6\\ket{+}_z + 0.8\\ket{-}_z$. Quelle est la probabilité de mesurer $S_z = +\\hbar/2$ ?",
-          "options": [
-            "0.6 (60%)",
-            "0.36 (36%)",
-            "0.8 (80%)",
-            "0.5 (50%)"
-          ],
-          "correct_answer": 1,
-          "explanation": "La règle de Born (Postulat 4) donne la probabilité comme le MODULE CARRÉ de l'amplitude : $P(+\\hbar/2) = |\\langle +_z | \\psi \\rangle|^2 = |0.6|^2 = 0.36 = 36\\%$. De même, $P(-\\hbar/2) = |0.8|^2 = 0.64 = 64\\%$. Vérification : $0.36 + 0.64 = 1$ ✓ (probabilités totales). ATTENTION : la probabilité n'est PAS l'amplitude elle-même (0.6), mais son carré (0.36) !",
-          "section_ref": "2.1",
-          "formula": "$P(a_n) = |\\langle \\varphi_n | \\psi \\rangle|^2$ (règle de Born)",
-          "tags": [
-            "probabilité",
-            "Born",
-            "mesure"
-          ],
-          "time_estimate": 60,
-          "points": 1
-        },
-        {
-          "id": "ch2-q140",
-          "type": "vrai_faux",
-          "difficulty": "hard",
-          "question": "Pour un système quantique, il est toujours possible de trouver un état $\\ket{\\psi}$ tel que TOUTES les observables aient des valeurs définies (incertitude nulle).",
-          "correct_answer": false,
-          "explanation": "FAUX. C'est impossible à cause des relations d'incertitude ! Des observables incompatibles (non commutantes) ne peuvent JAMAIS avoir simultanément des valeurs définies (incertitude nulle). Par exemple, un état qui serait vecteur propre de $\\hat{X}$ (position définie) ne peut PAS être vecteur propre de $\\hat{P}$ (impulsion définie), car $[\\hat{X},\\hat{P}] \\neq 0$. Au mieux, on peut minimiser le produit $\\Delta X \\Delta P$ (états cohérents gaussiens), mais jamais l'annuler. C'est une différence fondamentale avec la mécanique classique.",
-          "section_ref": "2.5",
-          "formula": "$[\\hat{A},\\hat{B}] \\neq 0 \\Rightarrow$ pas d'état avec $\\Delta A = \\Delta B = 0$",
-          "tags": [
-            "incertitude",
-            "valeurs propres",
-            "incompatibilité"
-          ],
-          "time_estimate": 90,
-          "points": 2
-        },
-        {
-          "id": "ch2-h003",
-          "difficulty": "medium",
-          "question": "Sur ce diagramme d'un appareil de Stern-Gerlach avec filtre, identifiez le FILTRE qui ne laisse passer que les atomes spin up.",
-          "hotspots": [
-            {
-              "id": "aimant",
-              "x": 150,
-              "y": 120,
-              "radius": 40,
-              "label": "Aimant inhomogène (séparation)"
-            },
-            {
-              "id": "filtre_up",
-              "x": 250,
-              "y": 80,
-              "radius": 30,
-              "label": "Filtre sélectif spin up"
-            },
-            {
-              "id": "filtre_down",
-              "x": 250,
-              "y": 160,
-              "radius": 30,
-              "label": "Bloc pour spin down"
-            },
-            {
-              "id": "sortie",
-              "x": 350,
-              "y": 80,
-              "radius": 25,
-              "label": "Sortie filtrée"
-            }
-          ],
-          "correct_hotspot": "filtre_up",
-          "explanation": "Le filtre sélectif (ouverture positionnée sur le chemin du faisceau dévié vers le haut) ne laisse passer QUE les atomes avec spin up ($m_s = +1/2$). Les atomes spin down sont bloqués physiquement. Ce dispositif permet de PRÉPARER un état quantique pur $\\ket{+}_z$ : tous les atomes en sortie sont dans le même état de spin. C'est la réalisation pratique d'une mesure quantique avec sélection post-mesure.",
-          "section_ref": "2.1",
-          "formula": "Après filtre : $\\ket{\\psi} = \\ket{+}_z$ (état pur)",
-          "image_url": "assets/images/SGsplitterFiltre.png",
-          "image_alt": "Appareil de Stern-Gerlach avec filtre sélectif",
-          "tags": [
-            "Stern-Gerlach",
-            "filtre",
-            "préparation",
-            "hotspot"
-          ],
-          "time_estimate": 60,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
-        },
-        {
-          "id": "ch2-h004",
-          "difficulty": "easy",
-          "question": "Sur ce schéma de deux appareils Stern-Gerlach identiques en série (SGz puis SGz), combien de taches observe-t-on sur l'écran final ?",
-          "hotspots": [
-            {
-              "id": "une_tache_up",
-              "x": 350,
-              "y": 80,
-              "radius": 35,
-              "label": "Une seule tache (spin up uniquement)"
-            },
-            {
-              "id": "une_tache_down",
-              "x": 350,
-              "y": 160,
-              "radius": 35,
-              "label": "Une seule tache (spin down uniquement)"
-            },
-            {
-              "id": "deux_taches",
-              "x": 350,
-              "y": 120,
-              "radius": 50,
-              "label": "Deux taches (up ET down)"
-            }
-          ],
-          "correct_hotspot": "deux_taches",
-          "explanation": "Avec deux appareils SGz identiques en série, on observe DEUX taches finales (comme après le premier SGz). Pourquoi ? Le premier SGz sépare en deux faisceaux (up/down). Le second SGz, mesurant EXACTEMENT LA MÊME observable $S_z$, ne change rien : les atomes déjà up restent up, les down restent down. C'est une mesure RÉPÉTABLE : deux mesures successives de la même observable donnent le même résultat (propriété des états propres). Pas de nouvelle séparation !",
-          "section_ref": "2.4",
-          "formula": "Mesure répétable : $\\hat{S}_z\\ket{\\pm}_z = \\pm\\frac{\\hbar}{2}\\ket{\\pm}_z$",
-          "image_url": "assets/images/SGSzSz.png",
-          "image_alt": "Deux appareils Stern-Gerlach SGz en série",
-          "tags": [
-            "Stern-Gerlach",
-            "mesure répétable",
-            "compatibilité",
-            "hotspot"
-          ],
-          "time_estimate": 60,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
-        },
-        {
-          "id": "ch2-anim001",
-          "type": "animation",
-          "difficulty": "medium",
-          "question": "Observez l'expérience de Stern-Gerlach simulée. Que montre la séparation du faisceau en deux trajectoires ?",
-          "animation_type": "stern_gerlach",
-          "animation_description": "Un faisceau d'atomes passe à travers un champ magnétique inhomogène. Les particules se séparent en deux faisceaux distincts.",
-          "options": [
-            "La quantification du spin : seules deux valeurs (up et down) sont permises",
-            "Les atomes ont des masses différentes",
-            "Le champ magnétique dévie aléatoirement les atomes",
-            "Les atomes perdent de l'énergie en traversant le champ"
-          ],
-          "correct_answer": 0,
-          "explanation": "L'expérience de Stern-Gerlach (1922) démontre la **quantification du spin**. Un faisceau d'atomes d'argent (spin 1/2) traverse un champ magnétique inhomogène $\\nabla B_z$. Classiquement, on s'attendrait à une distribution continue. Mais quantiquement, le spin ne peut prendre que DEUX valeurs : $m_s = +1/2$ (spin up, cyan, dévié vers le haut) et $m_s = -1/2$ (spin down, rose, dévié vers le bas). La force sur l'atome est $F_z = \\mu_z \\nabla B_z$ où $\\mu_z = \\pm \\mu_B$ (magnéton de Bohr). Cette expérience révèle la nature DISCRÈTE du moment angulaire intrinsèque.",
-          "section_ref": "2.2",
-          "formula": "$S_z \\ket{\\pm} = \\pm\\frac{\\hbar}{2}\\ket{\\pm}$",
-          "tags": [
-            "Stern-Gerlach",
-            "spin",
-            "quantification",
-            "mesure",
-            "animation"
-          ],
-          "time_estimate": 120,
-          "points": 1
-        },
-        {
-          "id": "ch2-anim002",
-          "type": "animation",
-          "difficulty": "easy",
-          "question": "Dans l'expérience de Stern-Gerlach animée, les deux faisceaux sont colorés différemment (cyan et rose). Que représentent ces couleurs ?",
-          "animation_type": "stern_gerlach",
-          "animation_description": "Simulation de l'expérience de Stern-Gerlach montrant la séparation d'un faisceau d'atomes en deux composantes.",
-          "options": [
-            "Cyan = spin up ($+\\hbar/2$), Rose = spin down ($-\\hbar/2$)",
-            "Cyan = charge positive, Rose = charge négative",
-            "Cyan = haute énergie, Rose = basse énergie",
-            "Les couleurs n'ont aucune signification physique"
-          ],
-          "correct_answer": 0,
-          "explanation": "Les couleurs représentent les DEUX ÉTATS de spin possibles. Cyan (bleu-vert) = particules avec **spin up** : $S_z\\ket{+} = +\\frac{\\hbar}{2}\\ket{+}$ (déviées vers le HAUT par le gradient de champ). Rose (magenta) = particules avec **spin down** : $S_z\\ket{-} = -\\frac{\\hbar}{2}\\ket{-}$ (déviées vers le BAS). Avant la mesure, chaque atome est dans une superposition $\\ket{\\psi} = \\alpha\\ket{+} + \\beta\\ket{-}$. La mesure PROJETTE l'état dans l'un des deux résultats possibles, avec probabilités $|\\alpha|^2$ et $|\\beta|^2$. Postulat de la mesure en action !",
-          "section_ref": "2.2",
-          "formula": "$S_z = \\pm\\frac{\\hbar}{2}$ (spin 1/2)",
-          "tags": [
-            "Stern-Gerlach",
-            "spin",
-            "mesure",
-            "postulat",
-            "animation"
-          ],
-          "time_estimate": 90,
-          "points": 1
         }
       ]
     },
@@ -10256,11 +9128,7 @@
             "dynamique"
           ],
           "time_estimate": 55,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch3-q087",
@@ -10344,281 +9212,6 @@
             "drag-drop"
           ],
           "time_estimate": 90,
-          "points": 2
-        },
-        {
-          "id": "ch3-h005",
-          "difficulty": "medium",
-          "question": "Sur ce graphe des oscillations de Rabi, identifiez le point où la probabilité d'être dans l'état excité $\\ket{e}$ est MAXIMALE (100%).",
-          "hotspots": [
-            {
-              "id": "t0",
-              "x": 80,
-              "y": 150,
-              "radius": 25,
-              "label": "t = 0 (état initial)"
-            },
-            {
-              "id": "t_pi",
-              "x": 200,
-              "y": 50,
-              "radius": 30,
-              "label": "t = π/Ω (premier maximum)"
-            },
-            {
-              "id": "t_2pi",
-              "x": 320,
-              "y": 150,
-              "radius": 25,
-              "label": "t = 2π/Ω (retour état initial)"
-            },
-            {
-              "id": "t_pi_2",
-              "x": 140,
-              "y": 100,
-              "radius": 25,
-              "label": "t = π/(2Ω) (superposition équilibrée)"
-            }
-          ],
-          "correct_hotspot": "t_pi",
-          "explanation": "Les oscillations de Rabi décrivent la transition périodique entre l'état fondamental $\\ket{g}$ et l'état excité $\\ket{e}$ sous l'effet d'un champ électromagnétique résonant. À $t = \\pi/\\Omega$ (demi-période de Rabi, où $\\Omega$ est la fréquence de Rabi), le système passe COMPLÈTEMENT de $\\ket{g}$ à $\\ket{e}$ (probabilité 100%). C'est la base des impulsions $\\pi$ utilisées en RMN et en calcul quantique pour inverser un qubit : $\\ket{0} \\to \\ket{1}$.",
-          "section_ref": "3.3",
-          "formula": "$P_e(t) = \\sin^2\\left(\\frac{\\Omega t}{2}\\right)$, max à $t = \\pi/\\Omega$",
-          "image_url": "assets/images/OscilRabi.png",
-          "image_alt": "Graphe des oscillations de Rabi montrant la probabilité P_e(t)",
-          "tags": [
-            "Rabi",
-            "transitions",
-            "dynamique",
-            "hotspot"
-          ],
-          "time_estimate": 75,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
-        },
-        {
-          "id": "ch3-q101",
-          "type": "qcm",
-          "difficulty": "medium",
-          "question": "Qu'est-ce qu'un état stationnaire en mécanique quantique ?",
-          "options": [
-            "Un état qui ne change jamais, même en présence de mesures",
-            "Un état propre de l'Hamiltonien, dont seule la phase évolue en $e^{-iE_n t/\\hbar}$",
-            "Un état où la particule est au repos",
-            "Un état qui viole le principe de superposition"
-          ],
-          "correct_answer": 1,
-          "explanation": "Un état stationnaire est un état propre de l'Hamiltonien $\\hat{H}\\ket{n} = E_n\\ket{n}$. Son évolution temporelle est $\\ket{\\psi(t)} = e^{-iE_n t/\\hbar}\\ket{n}$. La phase globale n'affecte pas les probabilités, donc toutes les grandeurs mesurables sont constantes dans le temps. C'est 'stationnaire' au sens où les densités de probabilité $|\\psi(x,t)|^2$ sont indépendantes du temps.",
-          "section_ref": "3.2.2",
-          "formula": "$\\ket{\\psi(t)} = e^{-iE_n t/\\hbar}\\ket{n}$",
-          "tags": [
-            "états stationnaires",
-            "évolution",
-            "Hamiltonien"
-          ],
-          "time_estimate": 75,
-          "points": 1
-        },
-        {
-          "id": "ch3-q102",
-          "type": "vrai_faux",
-          "difficulty": "hard",
-          "question": "Le commutateur $[\\hat{A}, \\hat{H}] = 0$ implique que l'observable $A$ est une constante du mouvement (sa valeur moyenne est conservée au cours du temps).",
-          "correct_answer": true,
-          "explanation": "VRAI. Le théorème d'Ehrenfest établit que $\\frac{d\\langle A \\rangle}{dt} = \\frac{1}{i\\hbar}\\langle[\\hat{A}, \\hat{H}]\\rangle + \\langle\\frac{\\partial \\hat{A}}{\\partial t}\\rangle$. Si $\\hat{A}$ ne dépend pas explicitement du temps et commute avec $\\hat{H}$, alors $\\frac{d\\langle A \\rangle}{dt} = 0$. Exemples : l'énergie (si $\\hat{H}$ ne dépend pas de $t$), le moment cinétique pour un potentiel central, la parité pour un potentiel symétrique.",
-          "section_ref": "3.2.3",
-          "formula": "$\\frac{d\\langle A \\rangle}{dt} = \\frac{1}{i\\hbar}\\langle[\\hat{A}, \\hat{H}]\\rangle$",
-          "tags": [
-            "constantes du mouvement",
-            "commutateur",
-            "Ehrenfest"
-          ],
-          "time_estimate": 90,
-          "points": 1
-        },
-        {
-          "id": "ch3-q103",
-          "type": "qcm",
-          "difficulty": "easy",
-          "question": "Quel est l'opérateur d'évolution temporelle pour un Hamiltonien indépendant du temps ?",
-          "options": [
-            "$\\hat{U}(t) = e^{i\\hat{H}t/\\hbar}$",
-            "$\\hat{U}(t) = e^{-i\\hat{H}t/\\hbar}$",
-            "$\\hat{U}(t) = 1 - i\\hat{H}t/\\hbar$",
-            "$\\hat{U}(t) = \\hat{H}t$"
-          ],
-          "correct_answer": 1,
-          "explanation": "L'opérateur d'évolution est $\\hat{U}(t) = e^{-i\\hat{H}t/\\hbar}$. Il transforme l'état initial en état final : $\\ket{\\psi(t)} = \\hat{U}(t)\\ket{\\psi(0)}$. Cet opérateur est UNITAIRE ($\\hat{U}^\\dagger\\hat{U} = \\mathbb{1}$), ce qui garantit la conservation de la normalisation et de la probabilité totale. Le signe négatif vient de l'équation de Schrödinger.",
-          "section_ref": "3.2.1",
-          "formula": "$\\hat{U}(t) = e^{-i\\hat{H}t/\\hbar}$",
-          "tags": [
-            "évolution unitaire",
-            "opérateur",
-            "Schrödinger"
-          ],
-          "time_estimate": 60,
-          "points": 1
-        },
-        {
-          "id": "ch3-q104",
-          "type": "qcm",
-          "difficulty": "medium",
-          "question": "Quelle est la relation d'incertitude temps-énergie ?",
-          "options": [
-            "$\\Delta t \\cdot \\Delta E = 0$",
-            "$\\Delta t \\cdot \\Delta E \\geq \\hbar/2$",
-            "$\\Delta t \\cdot \\Delta E = \\hbar$ exactement",
-            "Il n'existe pas de relation d'incertitude temps-énergie"
-          ],
-          "correct_answer": 1,
-          "explanation": "La relation $\\Delta t \\cdot \\Delta E \\geq \\hbar/2$ est l'inégalité temps-énergie. Attention : son interprétation diffère de $\\Delta x \\Delta p \\geq \\hbar/2$ car le temps n'est PAS un observable en MQ (pas d'opérateur temps). Ici $\\Delta t$ est le temps caractéristique de variation d'une observable ou la durée de vie d'un état. Cette relation explique l'élargissement naturel des raies spectrales et le principe de la largeur des résonances.",
-          "section_ref": "3.2.4",
-          "formula": "$\\Delta t \\cdot \\Delta E \\geq \\hbar/2$",
-          "tags": [
-            "incertitude",
-            "temps-énergie",
-            "Heisenberg"
-          ],
-          "time_estimate": 75,
-          "points": 1
-        },
-        {
-          "id": "ch3-q105",
-          "type": "vrai_faux",
-          "difficulty": "medium",
-          "question": "L'évolution d'un système quantique fermé (sans mesure) est toujours déterministe et réversible.",
-          "correct_answer": true,
-          "explanation": "VRAI. L'évolution selon l'équation de Schrödinger est parfaitement déterministe : connaissant $\\ket{\\psi(0)}$ et $\\hat{H}$, on peut calculer $\\ket{\\psi(t)}$ à tout instant. Elle est aussi réversible car l'opérateur $\\hat{U}(t)$ est unitaire : $\\hat{U}^{-1}(t) = \\hat{U}^\\dagger(t) = \\hat{U}(-t)$. C'est uniquement la MESURE qui introduit l'indéterminisme et l'irréversibilité (collapse).",
-          "section_ref": "3.2.1",
-          "formula": "$\\ket{\\psi(t)} = \\hat{U}(t)\\ket{\\psi(0)}$ avec $\\hat{U}^\\dagger\\hat{U} = \\mathbb{1}$",
-          "tags": [
-            "évolution unitaire",
-            "déterminisme",
-            "réversibilité"
-          ],
-          "time_estimate": 75,
-          "points": 1
-        },
-        {
-          "id": "ch3-q106",
-          "type": "qcm",
-          "difficulty": "hard",
-          "question": "Pour une superposition d'états d'énergie $\\ket{\\psi(0)} = c_1\\ket{E_1} + c_2\\ket{E_2}$, quelle est la période des oscillations de la densité de probabilité ?",
-          "options": [
-            "$T = \\hbar/(E_1 + E_2)$",
-            "$T = 2\\pi\\hbar/|E_2 - E_1|$",
-            "$T = (E_1 - E_2)/\\hbar$",
-            "Il n'y a pas d'oscillation"
-          ],
-          "correct_answer": 1,
-          "explanation": "L'évolution donne $\\ket{\\psi(t)} = c_1 e^{-iE_1 t/\\hbar}\\ket{E_1} + c_2 e^{-iE_2 t/\\hbar}\\ket{E_2}$. Les termes d'interférence dans $|\\psi(x,t)|^2$ contiennent $e^{\\pm i(E_2-E_1)t/\\hbar}$, oscillant à la fréquence de Bohr $\\omega_{21} = (E_2-E_1)/\\hbar$. La période est donc $T = 2\\pi/\\omega_{21} = 2\\pi\\hbar/|E_2-E_1|$. Ces 'battements quantiques' sont observables expérimentalement.",
-          "section_ref": "3.2.2",
-          "formula": "$\\omega_{21} = \\frac{E_2-E_1}{\\hbar}$, $T = \\frac{2\\pi\\hbar}{|E_2-E_1|}$",
-          "tags": [
-            "superposition",
-            "oscillations",
-            "fréquence de Bohr"
-          ],
-          "time_estimate": 90,
-          "points": 1
-        },
-        {
-          "id": "ch3-q107",
-          "type": "numerical",
-          "difficulty": "medium",
-          "question": "Un atome à deux niveaux a une différence d'énergie $\\Delta E = E_2 - E_1 = 2.07$ eV. Calculez la période des oscillations de Rabi $T$ en femtosecondes (fs). Donnée : $\\hbar = 6.58 \\times 10^{-16}$ eV·s. Arrondissez à l'entier.",
-          "correct_answer": 2,
-          "tolerance": 0.5,
-          "unit": "fs",
-          "explanation": "La période est $T = 2\\pi\\hbar/\\Delta E = 2\\pi \\times 6.58 \\times 10^{-16} / 2.07$ s $= 2.0 \\times 10^{-15}$ s $= 2$ fs. Cette période ultra-courte est typique des transitions électroniques dans le visible (lumière verte à 600 nm). C'est pourquoi l'attoseconde (10⁻¹⁸ s) est l'échelle de temps de la physique atomique ultrarapide.",
-          "section_ref": "3.3",
-          "formula": "$T = \\frac{2\\pi\\hbar}{\\Delta E}$",
-          "tags": [
-            "Rabi",
-            "calcul",
-            "période"
-          ],
-          "time_estimate": 120,
-          "points": 1
-        },
-        {
-          "id": "ch3-q108",
-          "type": "qcm",
-          "difficulty": "easy",
-          "question": "Selon le postulat 1, dans quel espace mathématique vit le vecteur d'état d'un système quantique ?",
-          "options": [
-            "L'espace euclidien $\\mathbb{R}^3$",
-            "L'espace de phase classique",
-            "Un espace de Hilbert complexe",
-            "L'espace des matrices réelles"
-          ],
-          "correct_answer": 2,
-          "explanation": "Le postulat 1 stipule que l'état d'un système quantique est représenté par un vecteur (ket) $\\ket{\\psi}$ appartenant à un espace de Hilbert $\\mathcal{H}$ complexe. Cet espace est muni d'un produit scalaire $\\langle\\phi|\\psi\\rangle$ et peut être de dimension finie (qubits) ou infinie (particule en mécanique ondulatoire). La structure d'espace de Hilbert permet la superposition et l'interférence quantiques.",
-          "section_ref": "3.1.1",
-          "formula": "$\\ket{\\psi} \\in \\mathcal{H}$, $\\langle\\psi|\\psi\\rangle = 1$",
-          "tags": [
-            "postulat",
-            "espace de Hilbert",
-            "état quantique"
-          ],
-          "time_estimate": 45,
-          "points": 1
-        },
-        {
-          "id": "ch3-q109",
-          "type": "matching",
-          "difficulty": "medium",
-          "question": "Associez chaque postulat de la mécanique quantique à son contenu :",
-          "pairs": [
-            {
-              "left": "Postulat 1",
-              "right": "L'état est un ket dans un espace de Hilbert"
-            },
-            {
-              "left": "Postulat 2",
-              "right": "Les observables sont des opérateurs hermitiens"
-            },
-            {
-              "left": "Postulat 3 (Born)",
-              "right": "Probabilité = carré du module de l'amplitude"
-            },
-            {
-              "left": "Postulat 5",
-              "right": "Évolution via l'équation de Schrödinger"
-            }
-          ],
-          "distractors": [
-            "L'énergie est toujours conservée",
-            "La vitesse est limitée par c"
-          ],
-          "explanation": "Les six postulats de la MQ sont : (1) Espace de Hilbert, (2) Observables hermitiennes, (3) Règle de Born, (4) Projection après mesure, (5) Équation de Schrödinger, (6) Composition des systèmes par produit tensoriel. Ces axiomes forment la base complète de la théorie quantique non-relativiste.",
-          "section_ref": "3.1",
-          "tags": [
-            "postulats",
-            "fondements",
-            "matching"
-          ],
-          "time_estimate": 90,
-          "points": 2
-        },
-        {
-          "id": "ch3-q110",
-          "type": "interpretation",
-          "difficulty": "hard",
-          "question": "Expliquez pourquoi la mesure quantique est considérée comme 'irréversible' alors que l'évolution de Schrödinger est réversible.",
-          "sample_answer": "L'équation de Schrödinger décrit une évolution UNITAIRE : l'opérateur $\\hat{U}(t)$ préserve les produits scalaires et est inversible ($\\hat{U}^\\dagger = \\hat{U}^{-1}$). On peut donc toujours 'remonter le temps' théoriquement. En revanche, la MESURE projette l'état sur un vecteur propre (collapse), perdant l'information sur les autres composantes de la superposition. Cette perte d'information est irréversible : après mesure, on ne peut pas reconstituer la superposition initiale. C'est le problème de la mesure en MQ - la transition de unitaire (réversible) à non-unitaire (irréversible) n'est pas expliquée par les postulats.",
-          "explanation": "Cette asymétrie entre évolution et mesure est au cœur des interprétations de la MQ. L'interprétation de Copenhague accepte cette dualité ; la théorie de la décohérence explique l'apparente irréversibilité par l'intrication avec l'environnement ; l'interprétation des mondes multiples élimine le collapse en faveur du branchement.",
-          "section_ref": "3.1.4",
-          "tags": [
-            "mesure",
-            "réversibilité",
-            "interprétation",
-            "collapse"
-          ],
-          "time_estimate": 180,
           "points": 2
         }
       ]
@@ -12810,11 +11403,7 @@
             "hotspot"
           ],
           "time_estimate": 60,
-          "points": 2,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch4-h002",
@@ -12854,11 +11443,7 @@
             "hotspot"
           ],
           "time_estimate": 60,
-          "points": 2,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch4-h003",
@@ -12898,11 +11483,7 @@
             "hotspot"
           ],
           "time_estimate": 60,
-          "points": 2,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch4-h004",
@@ -12942,11 +11523,7 @@
             "hotspot"
           ],
           "time_estimate": 60,
-          "points": 2,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch4-h005",
@@ -12987,11 +11564,7 @@
             "hotspot"
           ],
           "time_estimate": 90,
-          "points": 3,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 3
         },
         {
           "id": "ch4-h006",
@@ -13031,11 +11604,7 @@
             "hotspot"
           ],
           "time_estimate": 45,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch4-dd001",
@@ -13660,11 +12229,7 @@
             "matrice densité"
           ],
           "time_estimate": 50,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch4-h036",
@@ -13712,11 +12277,7 @@
             "intrication"
           ],
           "time_estimate": 70,
-          "points": 2,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch4-h037",
@@ -13764,11 +12325,7 @@
             "corrélations"
           ],
           "time_estimate": 55,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch4-q115",
@@ -13902,713 +12459,6 @@
             "drag-drop"
           ],
           "time_estimate": 100,
-          "points": 2
-        },
-        {
-          "id": "ch4-h006",
-          "difficulty": "hard",
-          "question": "Sur ce diagramme d'intrication de deux quantons, identifiez la région représentant un état intriqué (NON séparable).",
-          "hotspots": [
-            {
-              "id": "separable",
-              "x": 100,
-              "y": 120,
-              "radius": 40,
-              "label": "États séparables : $\\ket{\\psi_A}\\otimes\\ket{\\psi_B}$"
-            },
-            {
-              "id": "intrique",
-              "x": 250,
-              "y": 120,
-              "radius": 45,
-              "label": "États intriqués : corrélations non-locales"
-            },
-            {
-              "id": "bell",
-              "x": 320,
-              "y": 80,
-              "radius": 35,
-              "label": "États de Bell (intrication maximale)"
-            }
-          ],
-          "correct_hotspot": "intrique",
-          "explanation": "Un état intriqué est un état de deux (ou plus) quantons qui NE PEUT PAS s'écrire comme produit tensoriel $\\ket{\\psi_A}\\otimes\\ket{\\psi_B}$. Exemple : $\\ket{\\Phi^+} = \\frac{1}{\\sqrt{2}}(\\ket{00} + \\ket{11})$ (état de Bell). Les états intriqués possèdent des corrélations NON-LOCALES : mesurer A affecte instantanément l'état de B, même si séparés par des années-lumière ! C'est l'«action fantasmagorique à distance» dénoncée par Einstein (paradoxe EPR), mais bel et bien réelle.",
-          "section_ref": "4.2",
-          "formula": "Intriqué $\\neq \\ket{\\psi_A}\\otimes\\ket{\\psi_B}$",
-          "image_url": "assets/images/Inter2Quantons.png",
-          "image_alt": "Diagramme montrant séparable vs intriqué",
-          "tags": [
-            "intrication",
-            "Bell",
-            "non-localité",
-            "hotspot"
-          ],
-          "time_estimate": 90,
-          "points": 2,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
-        },
-        {
-          "id": "ch4-h007",
-          "difficulty": "medium",
-          "question": "Sur cette sphère de Bloch étendue montrant des états mixtes, identifiez la région représentant les états PURS (pureté maximale).",
-          "hotspots": [
-            {
-              "id": "surface",
-              "x": 200,
-              "y": 150,
-              "radius": 90,
-              "label": "Surface de la sphère (états purs)"
-            },
-            {
-              "id": "interieur",
-              "x": 200,
-              "y": 150,
-              "radius": 50,
-              "label": "Intérieur (états mixtes)"
-            },
-            {
-              "id": "centre",
-              "x": 200,
-              "y": 150,
-              "radius": 15,
-              "label": "Centre (état totalement mélangé)"
-            }
-          ],
-          "correct_hotspot": "surface",
-          "explanation": "Pour un système de spin 1/2, les états PURS (superpositions cohérentes) sont représentés sur la SURFACE de la sphère de Bloch (pureté $P = 1$). Les états MIXTES (mélanges statistiques incohérents) sont à l'intérieur de la sphère (pureté $P < 1$). Le CENTRE représente l'état complètement mélangé $\\rho = \\frac{1}{2}\\mathbb{I}$ (pureté $P = 1/2$, ignorance totale). La distance au centre mesure le degré de pureté. Les états mixtes résultent de l'intrication avec un environnement (décohérence).",
-          "section_ref": "4.4",
-          "formula": "Pureté : $P = \\text{Tr}(\\rho^2)$, pur si $P=1$",
-          "image_url": "assets/images/BlochMixedStates.png",
-          "image_alt": "Sphère de Bloch avec états purs et mixtes",
-          "tags": [
-            "états mixtes",
-            "pureté",
-            "densité",
-            "hotspot"
-          ],
-          "time_estimate": 75,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
-        },
-        {
-          "id": "ch4-q118",
-          "type": "qcm",
-          "difficulty": "easy",
-          "question": "Si on a deux qubits A et B, quelle est la dimension de l'espace de Hilbert du système combiné $\\mathcal{H}_A \\otimes \\mathcal{H}_B$ ?",
-          "options": [
-            "2 (comme un seul qubit)",
-            "4 (produit des dimensions)",
-            "8 (cube de la dimension)",
-            "3 (somme des dimensions)"
-          ],
-          "correct_answer": 1,
-          "explanation": "Pour un produit tensoriel d'espaces de Hilbert, la dimension se MULTIPLIE : $\\dim(\\mathcal{H}_A \\otimes \\mathcal{H}_B) = \\dim(\\mathcal{H}_A) \\times \\dim(\\mathcal{H}_B) = 2 \\times 2 = 4$. C'est pourquoi le nombre d'états possibles explose exponentiellement avec le nombre de qubits : pour $n$ qubits, $\\dim = 2^n$. Cette croissance exponentielle est la source de la puissance du calcul quantique, mais aussi de sa difficulté de simulation classique.",
-          "section_ref": "4.1",
-          "formula": "$\\dim(\\mathcal{H}_A \\otimes \\mathcal{H}_B) = 2 \\times 2 = 4$",
-          "tags": [
-            "produit tensoriel",
-            "dimension",
-            "multi-qubits"
-          ],
-          "time_estimate": 45,
-          "points": 1
-        },
-        {
-          "id": "ch4-q119",
-          "type": "qcm",
-          "difficulty": "medium",
-          "question": "Lequel de ces états de deux qubits est un état de Bell (maximalement intriqué) ?",
-          "options": [
-            "$\\ket{00}$ (état séparable)",
-            "$\\frac{1}{\\sqrt{2}}(\\ket{01} + \\ket{10})$ (superposition symétrique)",
-            "$\\ket{0}\\otimes\\ket{1}$ (produit tensoriel)",
-            "$\\frac{1}{2}(\\ket{00} + \\ket{01} + \\ket{10} + \\ket{11})$ (superposition uniforme)"
-          ],
-          "correct_answer": 1,
-          "explanation": "L'état $\\ket{\\Phi^+} = \\frac{1}{\\sqrt{2}}(\\ket{01} + \\ket{10})$ est l'un des quatre états de Bell. C'est un état MAXIMALEMENT INTRIQUÉ : il ne peut PAS s'écrire comme produit $\\ket{\\psi_A}\\otimes\\ket{\\psi_B}$. Si on mesure le qubit A et trouve 0, le qubit B sera instantanément dans l'état $\\ket{1}$ (et vice versa). Les autres options sont soit séparables (A, C), soit pas maximalement intriqués (D). Les états de Bell sont la base de la téléportation quantique et de la cryptographie quantique.",
-          "section_ref": "4.2",
-          "formula": "$\\ket{\\Phi^+} = \\frac{1}{\\sqrt{2}}(\\ket{01} + \\ket{10})$",
-          "tags": [
-            "Bell",
-            "intrication",
-            "EPR"
-          ],
-          "time_estimate": 75,
-          "points": 1
-        },
-        {
-          "id": "ch4-q120",
-          "type": "vrai_faux",
-          "difficulty": "medium",
-          "question": "Un état intriqué de deux qubits peut toujours s'écrire comme un produit tensoriel $\\ket{\\psi_A} \\otimes \\ket{\\psi_B}$.",
-          "correct_answer": false,
-          "explanation": "FAUX ! C'est précisément la DÉFINITION de l'intrication : un état intriqué NE PEUT PAS s'écrire comme produit tensoriel. Si $\\ket{\\Psi} = \\ket{\\psi_A}\\otimes\\ket{\\psi_B}$, l'état est dit SÉPARABLE (non intriqué). Exemple d'état intriqué : $\\ket{\\Phi^+} = \\frac{1}{\\sqrt{2}}(\\ket{00} + \\ket{11})$ ne peut pas se factoriser. L'intrication crée des corrélations non-locales qui n'existent pas classiquement.",
-          "section_ref": "4.2",
-          "formula": "Intriqué $\\Leftrightarrow \\ket{\\Psi} \\neq \\ket{\\psi_A}\\otimes\\ket{\\psi_B}$",
-          "tags": [
-            "intrication",
-            "séparable",
-            "produit tensoriel"
-          ],
-          "time_estimate": 60,
-          "points": 1
-        },
-        {
-          "id": "ch4-q121",
-          "type": "numerical",
-          "difficulty": "hard",
-          "question": "Pour un système de 5 qubits, combien d'amplitudes de probabilité complexes sont nécessaires pour spécifier complètement l'état quantique ? (sans contrainte de normalisation)",
-          "correct_answer": 32,
-          "tolerance": 0,
-          "unit": "amplitudes",
-          "explanation": "Pour $n$ qubits, la dimension de l'espace de Hilbert est $2^n$. Donc pour 5 qubits : $\\dim = 2^5 = 32$. L'état général s'écrit : $\\ket{\\psi} = \\sum_{i=0}^{31} c_i \\ket{i}$ avec 32 amplitudes complexes $c_i$. C'est cette croissance exponentielle qui rend les systèmes quantiques si difficiles à simuler classiquement : simuler 50 qubits nécessiterait $2^{50} \\approx 10^{15}$ amplitudes (pétaoctets de mémoire) ! La contrainte de normalisation $\\sum_i |c_i|^2 = 1$ réduit le nombre de paramètres indépendants à $2^{n+1} - 2$.",
-          "section_ref": "4.1",
-          "formula": "$\\dim = 2^n$, pour $n=5$ : $2^5 = 32$",
-          "tags": [
-            "dimension",
-            "multi-qubits",
-            "exponentiel",
-            "calcul"
-          ],
-          "time_estimate": 90,
-          "points": 2
-        },
-        {
-          "id": "ch4-q122",
-          "type": "qcm",
-          "difficulty": "hard",
-          "question": "Dans le paradoxe EPR (Einstein-Podolsky-Rosen), Einstein s'oppose à la mécanique quantique car elle implique :",
-          "options": [
-            "Que les particules n'ont pas de masse définie",
-            "Une 'action fantasmagorique à distance' (corrélations non-locales instantanées)",
-            "Que l'énergie n'est pas conservée",
-            "Que le temps peut aller en arrière"
-          ],
-          "correct_answer": 1,
-          "explanation": "Einstein était troublé par les corrélations NON-LOCALES : si deux particules intriquées sont séparées par des années-lumière, mesurer l'une affecte INSTANTANÉMENT l'état de l'autre. Il appelait cela 'spukhafte Fernwirkung' (action fantasmagorique à distance). Pour Einstein, cela violait la relativité (pas de transmission d'information > c). Il proposa l'existence de variables cachées locales pour expliquer ces corrélations. MAIS les expériences (inégalités de Bell) ont confirmé la mécanique quantique : les corrélations sont bel et bien non-locales (sans transmission d'info utilisable).",
-          "section_ref": "4.2",
-          "formula": "Corrélations EPR > limites classiques (Bell)",
-          "tags": [
-            "EPR",
-            "non-localité",
-            "Einstein",
-            "Bell"
-          ],
-          "time_estimate": 120,
-          "points": 2
-        },
-        {
-          "id": "ch4-q123",
-          "type": "qcm",
-          "difficulty": "medium",
-          "question": "Qu'est-ce qu'une matrice densité $\\rho$ représente en mécanique quantique ?",
-          "options": [
-            "Uniquement les états purs (superpositions cohérentes)",
-            "À la fois les états purs ET les mélanges statistiques (états mixtes)",
-            "Seulement la densité de probabilité en position",
-            "La matrice identité normalisée"
-          ],
-          "correct_answer": 1,
-          "explanation": "La matrice densité $\\rho$ est un formalisme PLUS GÉNÉRAL que les vecteurs d'état. Elle peut représenter : (1) États PURS : $\\rho = \\ket{\\psi}\\bra{\\psi}$ (pureté $\\text{Tr}(\\rho^2) = 1$), (2) États MIXTES : $\\rho = \\sum_i p_i \\ket{\\psi_i}\\bra{\\psi_i}$ (mélange statistique, pureté < 1). Les états mixtes apparaissent quand on ignore une partie du système (trace partielle) ou en présence de décohérence. Exemple : état complètement mélangé $\\rho = \\frac{1}{2}\\mathbb{I}$ (ignorance totale).",
-          "section_ref": "4.4",
-          "formula": "$\\rho = \\sum_i p_i \\ket{\\psi_i}\\bra{\\psi_i}$, $\\text{Tr}(\\rho) = 1$",
-          "tags": [
-            "matrice densité",
-            "états mixtes",
-            "pureté"
-          ],
-          "time_estimate": 75,
-          "points": 1
-        },
-        {
-          "id": "ch4-q124",
-          "type": "vrai_faux",
-          "difficulty": "hard",
-          "question": "L'entropie de von Neumann $S(\\rho) = -\\text{Tr}(\\rho \\log \\rho)$ mesure le degré d'intrication d'un système quantique.",
-          "correct_answer": false,
-          "explanation": "FAUX (avec nuance). L'entropie de von Neumann mesure le degré de MÉLANGE (pureté) d'un état, PAS directement l'intrication. Pour un état PUR, $S(\\rho) = 0$ (pas de mélange), qu'il soit intriqué ou non. Pour mesurer l'intrication, on utilise l'entropie d'intrication (entropie de la trace partielle) : $S_{\\text{intrication}} = S(\\rho_A)$ où $\\rho_A = \\text{Tr}_B(\\rho_{AB})$. Si les sous-systèmes A et B sont intriqués, $S(\\rho_A) > 0$ même si $\\rho_{AB}$ est pur. Subtilité importante !",
-          "section_ref": "4.5",
-          "formula": "$S(\\rho) = -\\text{Tr}(\\rho \\log \\rho)$",
-          "tags": [
-            "entropie",
-            "von Neumann",
-            "intrication",
-            "pureté"
-          ],
-          "time_estimate": 120,
-          "points": 2
-        },
-        {
-          "id": "ch4-q125",
-          "type": "qcm",
-          "difficulty": "medium",
-          "question": "Dans le contexte de la téléportation quantique, qu'est-ce qui est réellement 'téléporté' ?",
-          "options": [
-            "La particule elle-même se déplace instantanément",
-            "L'ÉTAT quantique (information) est transféré, pas la particule",
-            "L'énergie de la particule",
-            "Rien n'est téléporté, c'est une illusion"
-          ],
-          "correct_answer": 1,
-          "explanation": "La téléportation quantique transfère l'ÉTAT quantique (l'information quantique) d'une particule A vers une particule B distante, en utilisant l'intrication et un canal classique. La particule A elle-même ne se déplace PAS. Protocole : (1) Partager un état de Bell intriqué entre Alice et Bob, (2) Alice fait une mesure conjointe sur sa particule et l'état à téléporter, (3) Alice envoie 2 bits classiques à Bob, (4) Bob applique une opération unitaire selon ces bits. Résultat : l'état de A est maintenant chez Bob, et l'état original de A est détruit (théorème de non-clonage).",
-          "section_ref": "4.2",
-          "formula": "Téléportation = Intrication + 2 bits classiques",
-          "tags": [
-            "téléportation",
-            "intrication",
-            "non-clonage"
-          ],
-          "time_estimate": 90,
-          "points": 1
-        },
-        {
-          "id": "ch4-q126",
-          "type": "qcm",
-          "difficulty": "easy",
-          "question": "Pour un système de 3 qubits, combien d'états de base possibles existe-t-il dans la base computationnelle $\\{\\ket{000}, \\ket{001}, \\ldots\\}$ ?",
-          "options": [
-            "3 états",
-            "6 états",
-            "8 états",
-            "9 états"
-          ],
-          "correct_answer": 2,
-          "explanation": "Pour $n$ qubits, il y a $2^n$ états de base dans la base computationnelle. Pour 3 qubits : $2^3 = 8$ états : $\\{\\ket{000}, \\ket{001}, \\ket{010}, \\ket{011}, \\ket{100}, \\ket{101}, \\ket{110}, \\ket{111}\\}$. Chaque qubit peut être 0 ou 1, donc $2 \\times 2 \\times 2 = 8$ combinaisons. Un état quantique général est une superposition de ces 8 états de base : $\\ket{\\psi} = \\sum_{i=0}^{7} c_i \\ket{i}$ avec 8 amplitudes complexes $c_i$.",
-          "section_ref": "4.1",
-          "formula": "Nombre d'états de base = $2^n$",
-          "tags": [
-            "base computationnelle",
-            "multi-qubits",
-            "dimension"
-          ],
-          "time_estimate": 45,
-          "points": 1
-        },
-        {
-          "id": "ch4-q127",
-          "type": "numerical",
-          "difficulty": "medium",
-          "question": "Quelle est la pureté $P = \\text{Tr}(\\rho^2)$ de l'état complètement mélangé à deux qubits $\\rho = \\frac{1}{4}\\mathbb{I}_4$ (matrice identité 4×4 normalisée) ?",
-          "correct_answer": 0.25,
-          "tolerance": 0.01,
-          "unit": "",
-          "explanation": "Pour l'état complètement mélangé $\\rho = \\frac{1}{4}\\mathbb{I}_4$, on a : $\\rho^2 = \\left(\\frac{1}{4}\\mathbb{I}_4\\right)^2 = \\frac{1}{16}\\mathbb{I}_4$. La pureté est $P = \\text{Tr}(\\rho^2) = \\text{Tr}\\left(\\frac{1}{16}\\mathbb{I}_4\\right) = \\frac{1}{16} \\times 4 = \\frac{1}{4} = 0.25$. C'est la pureté MINIMALE pour un système à 2 qubits. Pour un état pur, $P = 1$. Pour un système de dimension $d$, la pureté minimale est $P_{\\min} = 1/d$. Ici, $d = 4$, donc $P_{\\min} = 0.25$.",
-          "section_ref": "4.4",
-          "formula": "$P = \\text{Tr}(\\rho^2)$, pur si $P=1$, mixte si $P<1$",
-          "tags": [
-            "pureté",
-            "matrice densité",
-            "état mixte",
-            "calcul"
-          ],
-          "time_estimate": 120,
-          "points": 2
-        },
-        {
-          "id": "ch4-q128",
-          "type": "vrai_faux",
-          "difficulty": "easy",
-          "question": "Le théorème de non-clonage stipule qu'il est impossible de créer une copie parfaite d'un état quantique arbitraire inconnu.",
-          "correct_answer": true,
-          "explanation": "VRAI. Le théorème de non-clonage (Wootters & Zurek, 1982) est fondamental en mécanique quantique. Il est IMPOSSIBLE de construire une machine quantique qui prend un état $\\ket{\\psi}$ inconnu et produit deux copies identiques $\\ket{\\psi}\\otimes\\ket{\\psi}$. Raison : la linéarité de la mécanique quantique. Conséquences : (1) Sécurité de la cryptographie quantique (un espion ne peut pas copier une clé), (2) Impossibilité d'amplifier parfaitement un signal quantique, (3) Téléportation détruit l'état original. MAIS : on peut cloner des états CONNUS (orthogonaux).",
-          "section_ref": "4.2",
-          "formula": "Pas d'opération $\\hat{U}$ telle que $\\hat{U}\\ket{\\psi}\\ket{0} = \\ket{\\psi}\\ket{\\psi}$ $\\forall\\ket{\\psi}$",
-          "tags": [
-            "non-clonage",
-            "théorème",
-            "cryptographie"
-          ],
-          "time_estimate": 60,
-          "points": 1
-        },
-        {
-          "id": "ch4-q129",
-          "type": "qcm",
-          "difficulty": "hard",
-          "question": "Les inégalités de Bell (CHSH) testent la non-localité quantique. Quelle est la valeur maximale classique et quantique ?",
-          "options": [
-            "Classique: 2, Quantique: 2 (pas de différence)",
-            "Classique: 2, Quantique: $2\\sqrt{2} \\approx 2.83$ (violation)",
-            "Classique: 4, Quantique: 4 (identiques)",
-            "Classique: 1, Quantique: 2 (doublement)"
-          ],
-          "correct_answer": 1,
-          "explanation": "Les inégalités de Bell (version CHSH) donnent : $S = |E(a,b) - E(a,b') + E(a',b) + E(a',b')| \\leq 2$ (théories locales classiques). Mais la mécanique quantique permet $S_{\\max} = 2\\sqrt{2} \\approx 2.83$ (violation de ~41%). Cette violation, confirmée expérimentalement (Aspect, 1982; Delft, 2015), prouve que la nature est NON-LOCALE : les corrélations quantiques sont plus fortes que toute théorie locale à variables cachées. Prix Nobel 2022 (Aspect, Clauser, Zeilinger) !",
-          "section_ref": "4.2",
-          "formula": "CHSH : $S \\leq 2$ (classique), $S \\leq 2\\sqrt{2}$ (quantique)",
-          "tags": [
-            "Bell",
-            "CHSH",
-            "non-localité",
-            "variables cachées"
-          ],
-          "time_estimate": 150,
-          "points": 2
-        },
-        {
-          "id": "ch4-q130",
-          "type": "qcm",
-          "difficulty": "medium",
-          "question": "À l'African Institute for Mathematical Sciences (AIMS), un chercheur prépare un état intriqué de deux photons pour la cryptographie quantique. Quelle propriété exploite-t-il ?",
-          "options": [
-            "Les photons se déplacent à la vitesse de la lumière",
-            "Toute mesure d'un espion perturbe l'état et est détectable",
-            "Les photons ne peuvent pas être absorbés",
-            "Les photons sont invisibles"
-          ],
-          "correct_answer": 1,
-          "explanation": "La cryptographie quantique (protocole BB84, E91) exploite le fait qu'un espion (Eve) ne peut PAS mesurer l'état quantique sans le perturber. Si Eve intercepte et mesure un photon intriqué pour copier la clé, elle détruit l'intrication et introduit des erreurs détectables par Alice et Bob. Grâce au théorème de non-clonage, Eve ne peut pas faire de copie parfaite. Alice et Bob détectent la présence d'Eve en vérifiant les corrélations (taux d'erreur). Sécurité garantie par les lois de la physique, pas par la complexité algorithmique !",
-          "section_ref": "4.2",
-          "formula": "Mesure → Perturbation → Détection espion",
-          "tags": [
-            "cryptographie",
-            "BB84",
-            "intrication",
-            "AIMS",
-            "Afrique"
-          ],
-          "time_estimate": 90,
-          "points": 1
-        },
-        {
-          "id": "ch4-q131",
-          "type": "interpretation",
-          "difficulty": "hard",
-          "question": "Expliquez pourquoi l'intrication quantique ne peut PAS être utilisée pour transmettre de l'information instantanément (pas de violation de la relativité restreinte), malgré les corrélations non-locales.",
-          "sample_answer": "Bien que l'intrication crée des corrélations non-locales instantanées, elle ne peut PAS transmettre d'information utilisable. Raison : les résultats de mesure sur un qubit intriqué sont ALÉATOIRES (50/50 pour spin up/down). Alice ne peut PAS choisir le résultat qu'elle obtient, donc elle ne peut pas 'encoder' un message. Bob observe aussi des résultats aléatoires. Ce n'est qu'en COMPARANT leurs résultats (via un canal classique ≤ c) qu'ils découvrent les corrélations. Exemple : si Alice mesure up, Bob mesure instantanément down, MAIS Bob ne SAIT PAS qu'Alice a mesuré (son résultat down est indistinguable d'un résultat aléatoire). Paradoxe résolu : corrélations non-locales OUI, communication supraluminique NON.",
-          "section_ref": "4.2",
-          "formula": "Corrélation non-locale $\\neq$ Transmission d'information",
-          "tags": [
-            "intrication",
-            "non-localité",
-            "relativité",
-            "interprétation"
-          ],
-          "time_estimate": 180,
-          "points": 3
-        },
-        {
-          "id": "ch4-q132",
-          "type": "qcm",
-          "difficulty": "medium",
-          "question": "Quelle est la différence fondamentale entre un état produit $\\ket{\\psi_A}\\otimes\\ket{\\psi_B}$ et un état intriqué $\\ket{\\Psi}$ ?",
-          "options": [
-            "L'état produit peut s'écrire comme produit tensoriel, l'état intriqué non",
-            "L'état produit a plus d'énergie",
-            "L'état intriqué contient plus de qubits",
-            "Il n'y a aucune différence mathématique"
-          ],
-          "correct_answer": 0,
-          "explanation": "La différence est MATHÉMATIQUE et FONDAMENTALE : un état PRODUIT (séparable) peut s'écrire $\\ket{\\Psi} = \\ket{\\psi_A}\\otimes\\ket{\\psi_B}$ (chaque sous-système a un état défini). Un état INTRIQUÉ NE PEUT PAS se factoriser ainsi. Exemple : $\\ket{00} + \\ket{11}$ est intriqué car on ne peut pas l'écrire comme $(a\\ket{0} + b\\ket{1})_A \\otimes (c\\ket{0} + d\\ket{1})_B$. Conséquence physique : dans un état produit, mesurer A n'affecte pas l'état de B. Dans un état intriqué, mesurer A change INSTANTANÉMENT l'état de B (réduction du paquet d'ondes).",
-          "section_ref": "4.2",
-          "formula": "Séparable : $\\exists \\ket{\\psi_A}, \\ket{\\psi_B}$ tq $\\ket{\\Psi} = \\ket{\\psi_A}\\otimes\\ket{\\psi_B}$",
-          "tags": [
-            "intrication",
-            "séparable",
-            "produit tensoriel"
-          ],
-          "time_estimate": 75,
-          "points": 1
-        },
-        {
-          "id": "ch4-q133",
-          "type": "numerical",
-          "difficulty": "hard",
-          "question": "Pour un état de Bell $\\ket{\\Phi^+} = \\frac{1}{\\sqrt{2}}(\\ket{00} + \\ket{11})$, si on mesure le premier qubit et obtient 0, quelle est la probabilité de mesurer 0 sur le second qubit (en %) ?",
-          "correct_answer": 100,
-          "tolerance": 0,
-          "unit": "%",
-          "explanation": "Après avoir mesuré 0 sur le premier qubit, l'état $\\ket{\\Phi^+}$ se projette sur la partie correspondante : $\\ket{\\Phi^+} \\to \\ket{00}$ (normalisation automatique car coefficient $1/\\sqrt{2}$ disparaît). Le second qubit est maintenant CERTAINEMENT dans l'état $\\ket{0}$. Probabilité de mesurer 0 sur le second qubit : $P(0|0_{\\text{premier}}) = |\\langle 0|0\\rangle|^2 = 1 = 100\\%$. C'est la corrélation parfaite des états de Bell : si le premier est 0, le second est toujours 0 (pour $\\ket{\\Phi^+}$). Corrélation instantanée, indépendante de la distance !",
-          "section_ref": "4.2",
-          "formula": "$\\ket{\\Phi^+} = \\frac{1}{\\sqrt{2}}(\\ket{00} + \\ket{11})$, corrélation parfaite",
-          "tags": [
-            "Bell",
-            "corrélation",
-            "mesure",
-            "calcul"
-          ],
-          "time_estimate": 90,
-          "points": 2
-        },
-        {
-          "id": "ch4-q134",
-          "type": "vrai_faux",
-          "difficulty": "medium",
-          "question": "La trace partielle $\\rho_A = \\text{Tr}_B(\\rho_{AB})$ permet de décrire le sous-système A lorsqu'on ignore les informations sur le sous-système B.",
-          "correct_answer": true,
-          "explanation": "VRAI. La trace partielle est l'opération mathématique qui 'élimine' un sous-système quand on ne s'intéresse qu'à l'autre. Si $\\rho_{AB}$ décrit le système complet A+B, alors $\\rho_A = \\text{Tr}_B(\\rho_{AB})$ décrit uniquement A. Même si $\\rho_{AB}$ est un état pur (intriqué), $\\rho_A$ peut être un état MIXTE ! Exemple : pour $\\ket{\\Phi^+} = \\frac{1}{\\sqrt{2}}(\\ket{00} + \\ket{11})$, on trouve $\\rho_A = \\frac{1}{2}\\mathbb{I}$ (état complètement mélangé). L'intrication crée du 'mélange apparent' dans les sous-systèmes.",
-          "section_ref": "4.4",
-          "formula": "$\\rho_A = \\text{Tr}_B(\\rho_{AB}) = \\sum_i \\langle i|_B \\rho_{AB} |i\\rangle_B$",
-          "tags": [
-            "trace partielle",
-            "réduction",
-            "matrice densité"
-          ],
-          "time_estimate": 75,
-          "points": 1
-        },
-        {
-          "id": "ch4-q135",
-          "type": "qcm",
-          "difficulty": "medium",
-          "question": "Dans l'analogie africaine de la polyrythmie (djembé + balafon), comment représente-t-on le produit tensoriel de deux rythmes ?",
-          "options": [
-            "Jouer les deux instruments l'un après l'autre (séquentiel)",
-            "Jouer les deux instruments SIMULTANÉMENT, créant un rythme combiné plus complexe",
-            "Jouer seulement le djembé",
-            "Remplacer un instrument par l'autre"
-          ],
-          "correct_answer": 1,
-          "explanation": "Le produit tensoriel $\\ket{\\text{djembé}}\\otimes\\ket{\\text{balafon}}$ correspond à jouer les deux instruments SIMULTANÉMENT. Le rythme combiné a une complexité qui dépasse la simple addition : si chaque instrument a 4 états rythmiques, le système combiné a $4 \\times 4 = 16$ états possibles (dimension multipliée). C'est comme en quantique : 1 qubit = 2 dimensions, 2 qubits = 4 dimensions. La polyrythmie africaine illustre magnifiquement comment des systèmes indépendants créent une richesse exponentielle en se combinant !",
-          "section_ref": "4.1",
-          "formula": "$\\dim(A \\otimes B) = \\dim(A) \\times \\dim(B)$",
-          "tags": [
-            "produit tensoriel",
-            "polyrythmie",
-            "Afrique",
-            "analogie"
-          ],
-          "time_estimate": 60,
-          "points": 1
-        },
-        {
-          "id": "ch4-q136",
-          "type": "qcm",
-          "difficulty": "hard",
-          "question": "Pourquoi un ordinateur quantique à 300 qubits serait-il impossible à simuler sur un ordinateur classique, même avec tous les supercalculateurs du monde ?",
-          "options": [
-            "Parce que les qubits se déplacent trop vite",
-            "Parce qu'il faudrait stocker $2^{300}$ amplitudes complexes (plus d'atomes que dans l'univers)",
-            "Parce que l'électricité nécessaire est trop grande",
-            "Parce que les algorithmes classiques sont trop lents"
-          ],
-          "correct_answer": 1,
-          "explanation": "Pour simuler $n$ qubits, il faut stocker $2^n$ amplitudes complexes. Pour 300 qubits : $2^{300} \\approx 10^{90}$ nombres. Avec 16 octets par nombre complexe, cela fait $10^{91}$ octets. Or, l'univers observable contient ~$10^{80}$ atomes. Même en utilisant 1 atome = 1 bit de mémoire, on ne pourrait pas stocker l'état d'un système à 300 qubits ! C'est cette 'barrière exponentielle' qui rend les ordinateurs quantiques potentiellement révolutionnaires : ils exploitent naturellement cet espace de Hilbert gigantesque. À ~50 qubits, on atteint la 'suprématie quantique'.",
-          "section_ref": "4.1",
-          "formula": "$2^{300} \\approx 10^{90}$ nombres >> $10^{80}$ atomes univers",
-          "tags": [
-            "calculabilité",
-            "exponentiel",
-            "simulation",
-            "suprématie quantique"
-          ],
-          "time_estimate": 120,
-          "points": 2
-        },
-        {
-          "id": "ch4-dd013",
-          "difficulty": "medium",
-          "question": "Associez chaque état de Bell à sa forme mathématique correcte :",
-          "draggable_items": [
-            {
-              "id": "phi_plus",
-              "text": "$\\ket{\\Phi^+}$"
-            },
-            {
-              "id": "phi_minus",
-              "text": "$\\ket{\\Phi^-}$"
-            },
-            {
-              "id": "psi_plus",
-              "text": "$\\ket{\\Psi^+}$"
-            },
-            {
-              "id": "psi_minus",
-              "text": "$\\ket{\\Psi^-}$"
-            }
-          ],
-          "drop_zones": [
-            {
-              "id": "bell_1",
-              "label": "$\\frac{1}{\\sqrt{2}}(\\ket{00} + \\ket{11})$"
-            },
-            {
-              "id": "bell_2",
-              "label": "$\\frac{1}{\\sqrt{2}}(\\ket{00} - \\ket{11})$"
-            },
-            {
-              "id": "bell_3",
-              "label": "$\\frac{1}{\\sqrt{2}}(\\ket{01} + \\ket{10})$"
-            },
-            {
-              "id": "bell_4",
-              "label": "$\\frac{1}{\\sqrt{2}}(\\ket{01} - \\ket{10})$"
-            }
-          ],
-          "correct_matches": {
-            "phi_plus": "bell_1",
-            "phi_minus": "bell_2",
-            "psi_plus": "bell_3",
-            "psi_minus": "bell_4"
-          },
-          "explanation": "Les quatre états de Bell forment une base orthonormée de l'espace à 2 qubits. Ce sont les états MAXIMALEMENT INTRIQUÉS : (1) $\\ket{\\Phi^+} = \\frac{1}{\\sqrt{2}}(\\ket{00} + \\ket{11})$ (même parité, phase +), (2) $\\ket{\\Phi^-} = \\frac{1}{\\sqrt{2}}(\\ket{00} - \\ket{11})$ (même parité, phase -), (3) $\\ket{\\Psi^+} = \\frac{1}{\\sqrt{2}}(\\ket{01} + \\ket{10})$ (parité différente, phase +), (4) $\\ket{\\Psi^-} = \\frac{1}{\\sqrt{2}}(\\ket{01} - \\ket{10})$ (parité différente, phase -, état singulet). Utilisés en téléportation, cryptographie, algorithmes quantiques.",
-          "section_ref": "4.2",
-          "formula": "Base de Bell : 4 états orthogonaux maximalement intriqués",
-          "tags": [
-            "Bell",
-            "états intriqués",
-            "base",
-            "drag-drop"
-          ],
-          "time_estimate": 90,
-          "points": 1
-        },
-        {
-          "id": "ch4-dd014",
-          "difficulty": "hard",
-          "question": "Classez ces systèmes quantiques par ordre CROISSANT de dimension de leur espace de Hilbert :",
-          "draggable_items": [
-            {
-              "id": "sys_1",
-              "text": "1 qubit"
-            },
-            {
-              "id": "sys_2",
-              "text": "2 qubits"
-            },
-            {
-              "id": "sys_3",
-              "text": "3 qubits"
-            },
-            {
-              "id": "sys_4",
-              "text": "10 qubits"
-            }
-          ],
-          "drop_zones": [
-            {
-              "id": "dim_1",
-              "label": "Dimension 2"
-            },
-            {
-              "id": "dim_2",
-              "label": "Dimension 4"
-            },
-            {
-              "id": "dim_3",
-              "label": "Dimension 8"
-            },
-            {
-              "id": "dim_4",
-              "label": "Dimension 1024"
-            }
-          ],
-          "correct_matches": {
-            "sys_1": "dim_1",
-            "sys_2": "dim_2",
-            "sys_3": "dim_3",
-            "sys_4": "dim_4"
-          },
-          "explanation": "La dimension de l'espace de Hilbert croît exponentiellement avec le nombre de qubits : $\\dim = 2^n$. Donc : (1) 1 qubit : $2^1 = 2$, (2) 2 qubits : $2^2 = 4$, (3) 3 qubits : $2^3 = 8$, (4) 10 qubits : $2^{10} = 1024$. Cette croissance exponentielle est à la fois la force (puissance de calcul) et la faiblesse (difficulté de contrôle, décohérence) des ordinateurs quantiques. À 50-100 qubits, on dépasse la capacité de simulation de tous les supercalculateurs classiques.",
-          "section_ref": "4.1",
-          "formula": "$\\dim = 2^n$ où $n$ = nombre de qubits",
-          "tags": [
-            "dimension",
-            "exponentiel",
-            "qubits",
-            "drag-drop"
-          ],
-          "time_estimate": 75,
-          "points": 2
-        },
-        {
-          "id": "ch4-h008",
-          "difficulty": "medium",
-          "question": "Sur ce diagramme de téléportation quantique, identifiez le canal CLASSIQUE par lequel Alice envoie 2 bits d'information à Bob.",
-          "hotspots": [
-            {
-              "id": "canal_quantique",
-              "x": 150,
-              "y": 120,
-              "radius": 40,
-              "label": "Canal quantique (paire EPR intriquée)"
-            },
-            {
-              "id": "canal_classique",
-              "x": 300,
-              "y": 80,
-              "radius": 45,
-              "label": "Canal classique (2 bits d'information)"
-            },
-            {
-              "id": "etat_teleporte",
-              "x": 50,
-              "y": 120,
-              "radius": 35,
-              "label": "État à téléporter (Alice)"
-            },
-            {
-              "id": "etat_final",
-              "x": 450,
-              "y": 120,
-              "radius": 35,
-              "label": "État téléporté (Bob)"
-            }
-          ],
-          "correct_hotspot": "canal_classique",
-          "explanation": "Dans la téléportation quantique, le canal CLASSIQUE est essentiel : après qu'Alice a fait sa mesure de Bell sur son qubit et l'état à téléporter, elle obtient 2 bits d'information classique (4 résultats possibles). Elle DOIT envoyer ces 2 bits à Bob via un canal classique (téléphone, internet, radio, etc.). Bob utilise ces 2 bits pour savoir quelle opération unitaire appliquer (I, X, Z, ou XZ) à son qubit intriqué pour récupérer l'état original. Sans ces 2 bits classiques, Bob ne peut rien faire ! Conclusion : téléportation ≠ instantanée (limitée par c).",
-          "section_ref": "4.2",
-          "formula": "Téléportation = Intrication + 2 bits classiques (≤ c)",
-          "image_url": "assets/images/Teleportation.png",
-          "image_alt": "Schéma du protocole de téléportation quantique",
-          "tags": [
-            "téléportation",
-            "canal classique",
-            "Bell",
-            "hotspot"
-          ],
-          "time_estimate": 90,
-          "points": 2,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
-        },
-        {
-          "id": "ch4-q137",
-          "type": "qcm",
-          "difficulty": "easy",
-          "question": "Qu'est-ce qu'un 'état séparable' pour un système de deux qubits ?",
-          "options": [
-            "Un état qui peut s'écrire comme produit tensoriel $\\ket{\\psi_A}\\otimes\\ket{\\psi_B}$",
-            "Un état où les deux qubits sont physiquement éloignés",
-            "Un état où les qubits ont des énergies différentes",
-            "Un état qui n'existe pas en pratique"
-          ],
-          "correct_answer": 0,
-          "explanation": "Un état SÉPARABLE (ou non-intriqué) est un état qui peut s'écrire comme produit tensoriel : $\\ket{\\Psi} = \\ket{\\psi_A}\\otimes\\ket{\\psi_B}$. Dans un tel état, chaque qubit a un état propre bien défini, indépendamment de l'autre. Exemple : $\\ket{01} = \\ket{0}_A\\otimes\\ket{1}_B$ est séparable. Par opposition, un état INTRIQUÉ comme $\\frac{1}{\\sqrt{2}}(\\ket{00} + \\ket{11})$ ne peut PAS se factoriser ainsi. La séparabilité n'a RIEN à voir avec la distance physique entre les qubits.",
-          "section_ref": "4.2",
-          "formula": "Séparable : $\\ket{\\Psi} = \\ket{\\psi_A}\\otimes\\ket{\\psi_B}$",
-          "tags": [
-            "séparable",
-            "produit tensoriel",
-            "intrication"
-          ],
-          "time_estimate": 45,
-          "points": 1
-        },
-        {
-          "id": "ch4-q138",
-          "type": "vrai_faux",
-          "difficulty": "hard",
-          "question": "Pour un état pur intriqué $\\ket{\\Psi}_{AB}$, les sous-systèmes A et B sont TOUJOURS dans des états mixtes (matrices densité non pures).",
-          "correct_answer": true,
-          "explanation": "VRAI ! C'est un résultat profond de la théorie de l'intrication. Si $\\ket{\\Psi}_{AB}$ est un état pur intriqué (non séparable), alors les matrices densité réduites $\\rho_A = \\text{Tr}_B(\\ket{\\Psi}\\bra{\\Psi})$ et $\\rho_B = \\text{Tr}_A(\\ket{\\Psi}\\bra{\\Psi})$ sont des états MIXTES (pureté < 1). Exemple : pour $\\ket{\\Phi^+} = \\frac{1}{\\sqrt{2}}(\\ket{00} + \\ket{11})$, on trouve $\\rho_A = \\rho_B = \\frac{1}{2}\\mathbb{I}$ (complètement mélangé !). L'intrication crée de l'incertitude dans les sous-systèmes. Paradoxe : le système global est pur, mais les parties sont mixtes.",
-          "section_ref": "4.4",
-          "formula": "Intriqué pur → sous-systèmes mixtes",
-          "tags": [
-            "intrication",
-            "état mixte",
-            "trace partielle",
-            "pureté"
-          ],
-          "time_estimate": 120,
           "points": 2
         }
       ]
@@ -16817,11 +14667,7 @@
             "distribution"
           ],
           "time_estimate": 50,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch5-h035",
@@ -16869,11 +14715,7 @@
             "représentation"
           ],
           "time_estimate": 55,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch5-h036",
@@ -16921,11 +14763,7 @@
             "opérateur"
           ],
           "time_estimate": 45,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch5-h037",
@@ -16973,11 +14811,7 @@
             "dispersion"
           ],
           "time_estimate": 60,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch5-q084",
@@ -17351,11 +15185,7 @@
             "hotspot"
           ],
           "time_estimate": 55,
-          "points": 1,
-          "image_dimensions": {
-            "width": 632,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch5-h039",
@@ -17402,11 +15232,7 @@
             "hotspot"
           ],
           "time_estimate": 75,
-          "points": 2,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch5-q097",
@@ -17611,11 +15437,7 @@
             "hotspot"
           ],
           "time_estimate": 50,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch5-h041",
@@ -17664,11 +15486,7 @@
             "hotspot"
           ],
           "time_estimate": 65,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch5-q103",
@@ -17769,11 +15587,7 @@
             "hotspot"
           ],
           "time_estimate": 60,
-          "points": 1,
-          "image_dimensions": {
-            "width": 605,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch5-dd001",
@@ -18006,125 +15820,6 @@
             "drag-drop"
           ],
           "time_estimate": 110,
-          "points": 2
-        },
-        {
-          "id": "ch5-h008",
-          "difficulty": "medium",
-          "question": "Sur ce graphe montrant l'évolution d'un paquet d'ondes, identifiez le moment où le paquet d'ondes est le PLUS ÉTALÉ (dispersion maximale).",
-          "hotspots": [
-            {
-              "id": "t_initial",
-              "x": 100,
-              "y": 150,
-              "radius": 40,
-              "label": "t = 0 (paquet initial localisé)"
-            },
-            {
-              "id": "t_intermediaire",
-              "x": 200,
-              "y": 150,
-              "radius": 50,
-              "label": "t intermédiaire (étalement en cours)"
-            },
-            {
-              "id": "t_final",
-              "x": 300,
-              "y": 150,
-              "radius": 70,
-              "label": "t final (étalement maximal)"
-            }
-          ],
-          "correct_hotspot": "t_final",
-          "explanation": "Un paquet d'ondes quantique (superposition d'ondes planes avec différentes impulsions) s'étale inévitablement au cours du temps : c'est l'ÉTALEMENT QUANTIQUE. Les composantes de Fourier (différentes longueurs d'onde) se propagent à des vitesses différentes (dispersion). Plus le temps avance, plus le paquet s'élargit. À $t \\to \\infty$, il devient infiniment étalé. C'est une conséquence directe du principe d'indétermination : localiser initialement en $x$ implique une large distribution en $p$, d'où la dispersion temporelle.",
-          "section_ref": "5.5",
-          "formula": "$\\Delta x(t) = \\Delta x_0 \\sqrt{1 + \\left(\\frac{\\hbar t}{2m\\Delta x_0^2}\\right)^2}$",
-          "image_url": "assets/images/EvolPqtOndes.png",
-          "image_alt": "Évolution temporelle d'un paquet d'ondes montrant l'étalement",
-          "tags": [
-            "paquet d'ondes",
-            "étalement",
-            "dispersion",
-            "hotspot"
-          ],
-          "time_estimate": 75,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
-        },
-        {
-          "id": "ch5-h009",
-          "difficulty": "easy",
-          "question": "Sur ce graphe d'un paquet d'ondes gaussien, identifiez la région où la probabilité de trouver la particule est MAXIMALE.",
-          "hotspots": [
-            {
-              "id": "pic_central",
-              "x": 200,
-              "y": 100,
-              "radius": 40,
-              "label": "Maximum central (pic du paquet)"
-            },
-            {
-              "id": "aile_gauche",
-              "x": 100,
-              "y": 140,
-              "radius": 30,
-              "label": "Aile gauche (faible probabilité)"
-            },
-            {
-              "id": "aile_droite",
-              "x": 300,
-              "y": 140,
-              "radius": 30,
-              "label": "Aile droite (faible probabilité)"
-            }
-          ],
-          "correct_hotspot": "pic_central",
-          "explanation": "La probabilité de présence est donnée par $P(x) = |\\psi(x)|^2$. Pour un paquet d'ondes gaussien, cette probabilité est maximale au CENTRE du paquet (pic central), où l'amplitude $\\psi(x)$ est la plus grande. Les ailes du paquet correspondent à des probabilités exponentiellement décroissantes. Le paquet gaussien minimise le produit d'incertitude $\\Delta x \\Delta p = \\hbar/2$ (état cohérent). C'est la forme la plus « classique » d'un état quantique.",
-          "section_ref": "5.5",
-          "formula": "$\\psi(x) = \\left(\\frac{1}{\\pi\\Delta x^2}\\right)^{1/4} e^{-\\frac{(x-x_0)^2}{4\\Delta x^2}} e^{ip_0 x/\\hbar}$",
-          "image_url": "assets/images/PaquetOnd.png",
-          "image_alt": "Paquet d'ondes gaussien avec enveloppe et oscillations",
-          "tags": [
-            "paquet d'ondes",
-            "gaussienne",
-            "probabilité",
-            "hotspot"
-          ],
-          "time_estimate": 45,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
-        },
-        {
-          "id": "ch5-anim001",
-          "type": "animation",
-          "difficulty": "hard",
-          "question": "Observez l'étalement du paquet d'ondes gaussien au cours du temps. Quelle est la dépendance temporelle de la largeur $\\Delta x(t)$ ?",
-          "animation_type": "wave_packet",
-          "animation_description": "Un paquet d'ondes gaussien libre s'étale au cours du temps. La courbe rouge montre la densité de probabilité $|\\psi(x,t)|^2$.",
-          "options": [
-            "$\\Delta x(t) = \\Delta x_0 \\sqrt{1 + (t/\\tau)^2}$ (étalement en racine carrée du temps)",
-            "$\\Delta x(t) = \\Delta x_0 + vt$ (étalement linéaire)",
-            "$\\Delta x(t) = \\Delta x_0 e^{-t/\\tau}$ (décroissance exponentielle)",
-            "$\\Delta x(t) = \\Delta x_0$ (constant, pas d'étalement)"
-          ],
-          "correct_answer": 0,
-          "explanation": "Pour un paquet d'ondes libre (pas de potentiel), la largeur s'étale selon $\\Delta x(t) = \\Delta x_0 \\sqrt{1 + \\left(\\frac{\\hbar t}{2m(\\Delta x_0)^2}\\right)^2}$. Aux temps longs ($t \\gg \\tau$ où $\\tau = \\frac{2m(\\Delta x_0)^2}{\\hbar}$), cela donne $\\Delta x(t) \\approx \\frac{\\hbar t}{2m\\Delta x_0} \\propto \\sqrt{t}$. Raison physique : le principe d'Heisenberg impose $\\Delta p \\approx \\hbar/(2\\Delta x_0)$. Les composantes d'impulsion différentes voyagent à des vitesses $v = p/m$ différentes, causant la dispersion. Plus le paquet initial est ÉTROIT, plus il s'étale VITE !",
-          "section_ref": "5.3",
-          "formula": "$\\Delta x(t) = \\Delta x_0 \\sqrt{1 + (t/\\tau)^2}$",
-          "tags": [
-            "paquet d'ondes",
-            "étalement",
-            "dispersion",
-            "Heisenberg",
-            "animation"
-          ],
-          "time_estimate": 150,
           "points": 2
         }
       ]
@@ -20026,11 +17721,7 @@
             "hotspot"
           ],
           "time_estimate": 60,
-          "points": 2,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch6-h002",
@@ -20070,11 +17761,7 @@
             "hotspot"
           ],
           "time_estimate": 45,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch6-h003",
@@ -20114,11 +17801,7 @@
             "hotspot"
           ],
           "time_estimate": 60,
-          "points": 2,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch6-h004",
@@ -20158,11 +17841,7 @@
             "hotspot"
           ],
           "time_estimate": 75,
-          "points": 3,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 3
         },
         {
           "id": "ch6-h005",
@@ -20202,11 +17881,7 @@
             "hotspot"
           ],
           "time_estimate": 60,
-          "points": 2,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch6-dd001",
@@ -20545,11 +18220,7 @@
             "hotspot"
           ],
           "time_estimate": 40,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch6-h036",
@@ -20597,11 +18268,7 @@
             "nœuds"
           ],
           "time_estimate": 55,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 412
-          }
+          "points": 1
         },
         {
           "id": "ch6-h037",
@@ -20649,11 +18316,7 @@
             "non-classique"
           ],
           "time_estimate": 75,
-          "points": 2,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch6-h038",
@@ -20701,11 +18364,7 @@
             "limite classique"
           ],
           "time_estimate": 60,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 1
         },
         {
           "id": "ch6-h039",
@@ -20752,11 +18411,7 @@
             "hotspot"
           ],
           "time_estimate": 70,
-          "points": 2,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
+          "points": 2
         },
         {
           "id": "ch6-q089",
@@ -21058,234 +18713,6 @@
           ],
           "time_estimate": 130,
           "points": 3
-        },
-        {
-          "id": "ch6-h010",
-          "difficulty": "medium",
-          "question": "Sur ce graphe montrant la fonction d'onde de l'oscillateur harmonique quantique, identifiez le niveau d'énergie FONDAMENTAL (n = 0, état du vide).",
-          "hotspots": [
-            {
-              "id": "n0",
-              "x": 200,
-              "y": 220,
-              "radius": 35,
-              "label": "n = 0 (fondamental, pas de nœuds)"
-            },
-            {
-              "id": "n1",
-              "x": 200,
-              "y": 180,
-              "radius": 30,
-              "label": "n = 1 (1 nœud)"
-            },
-            {
-              "id": "n2",
-              "x": 200,
-              "y": 140,
-              "radius": 30,
-              "label": "n = 2 (2 nœuds)"
-            },
-            {
-              "id": "n3",
-              "x": 200,
-              "y": 100,
-              "radius": 30,
-              "label": "n = 3 (3 nœuds)"
-            }
-          ],
-          "correct_hotspot": "n0",
-          "explanation": "L'état fondamental de l'oscillateur harmonique ($n = 0$, niveau le plus bas) a une fonction d'onde GAUSSIENNE sans nœud (pas de zéros). Son énergie est $E_0 = \\hbar\\omega/2$ (énergie du point zéro, non nulle !). Les états excités $n ≥ 1$ ont $n$ nœuds. L'état fondamental représente le « vide quantique » : même sans excitation, l'oscillateur possède des fluctuations quantiques irréductibles (conséquence du principe d'indétermination). C'est l'énergie minimale permise par la mécanique quantique.",
-          "section_ref": "6.2",
-          "formula": "$\\psi_0(x) = \\left(\\frac{m\\omega}{\\pi\\hbar}\\right)^{1/4} e^{-\\frac{m\\omega x^2}{2\\hbar}}$",
-          "image_url": "assets/images/FctOndeOH.png",
-          "image_alt": "Fonctions d'onde de l'oscillateur harmonique pour différents niveaux n",
-          "tags": [
-            "oscillateur",
-            "fondamental",
-            "vide quantique",
-            "hotspot"
-          ],
-          "time_estimate": 60,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
-        },
-        {
-          "id": "ch6-h011",
-          "difficulty": "hard",
-          "question": "Sur ce diagramme des niveaux d'énergie de l'oscillateur harmonique, identifiez l'écart d'énergie constant $\\hbar\\omega$ entre niveaux successifs.",
-          "hotspots": [
-            {
-              "id": "ecart_01",
-              "x": 150,
-              "y": 180,
-              "radius": 40,
-              "label": "Écart E₁ - E₀ = ℏω"
-            },
-            {
-              "id": "ecart_12",
-              "x": 150,
-              "y": 130,
-              "radius": 40,
-              "label": "Écart E₂ - E₁ = ℏω"
-            },
-            {
-              "id": "ecart_23",
-              "x": 150,
-              "y": 80,
-              "radius": 40,
-              "label": "Écart E₃ - E₂ = ℏω"
-            },
-            {
-              "id": "niveau_0",
-              "x": 100,
-              "y": 220,
-              "radius": 30,
-              "label": "Niveau n = 0 (E₀)"
-            }
-          ],
-          "correct_hotspot": "ecart_01",
-          "explanation": "L'oscillateur harmonique quantique a un spectre d'énergie ÉQUIDISTANT : $E_n = \\hbar\\omega(n + 1/2)$. L'écart entre deux niveaux consécutifs est CONSTANT : $\\Delta E = E_{n+1} - E_n = \\hbar\\omega$ (un quantum d'énergie). C'est ce qui permet d'expliquer le rayonnement du corps noir (Planck, 1900) : les modes du champ électromagnétique sont des oscillateurs harmoniques qui échangent de l'énergie par multiples de $\\hbar\\omega$. Les trois écarts montrés sont IDENTIQUES (propriété caractéristique).",
-          "section_ref": "6.1",
-          "formula": "$E_n = \\hbar\\omega\\left(n + \\frac{1}{2}\\right)$, $\\Delta E = \\hbar\\omega$",
-          "image_url": "assets/images/OSH_EiePotClas.png",
-          "image_alt": "Niveaux d'énergie équidistants de l'oscillateur harmonique",
-          "tags": [
-            "oscillateur",
-            "niveaux",
-            "quantification",
-            "hotspot"
-          ],
-          "time_estimate": 90,
-          "points": 2,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
-        },
-        {
-          "id": "ch6-h012",
-          "difficulty": "medium",
-          "question": "Sur ce graphe de densité de probabilité de l'oscillateur harmonique, identifiez la région classiquement INTERDITE (où une particule classique ne peut pas aller).",
-          "hotspots": [
-            {
-              "id": "region_centrale",
-              "x": 200,
-              "y": 150,
-              "radius": 60,
-              "label": "Région centrale (classiquement permise)"
-            },
-            {
-              "id": "region_interdite_gauche",
-              "x": 80,
-              "y": 150,
-              "radius": 40,
-              "label": "Région interdite gauche (E < V)"
-            },
-            {
-              "id": "region_interdite_droite",
-              "x": 320,
-              "y": 150,
-              "radius": 40,
-              "label": "Région interdite droite (E < V)"
-            }
-          ],
-          "correct_hotspot": "region_interdite_droite",
-          "explanation": "Classiquement, une particule dans un potentiel $V(x) = \\frac{1}{2}m\\omega^2 x^2$ ne peut aller que dans les régions où son énergie cinétique $K = E - V(x) \\geq 0$. Au-delà des points de rebroussement classiques ($x_{\\text{class}}$ où $E = V$), l'énergie serait négative : région INTERDITE classiquement. MAIS en mécanique quantique, la fonction d'onde $\\psi(x)$ pénètre dans ces régions (décroissance exponentielle) : effet TUNNEL quantique ! On a une probabilité non nulle de trouver la particule dans des zones classiquement impossibles.",
-          "section_ref": "6.2",
-          "formula": "Classique : $|x| < \\sqrt{2E/(m\\omega^2)}$; Quantique : $|\\psi(x)|^2 \\neq 0$ au-delà",
-          "image_url": "assets/images/OSH_DensiteClas.png",
-          "image_alt": "Densité de probabilité avec limites classiques et pénétration quantique",
-          "tags": [
-            "oscillateur",
-            "classique vs quantique",
-            "tunnel",
-            "hotspot"
-          ],
-          "time_estimate": 75,
-          "points": 1,
-          "image_dimensions": {
-            "width": 600,
-            "height": 400
-          }
-        },
-        {
-          "id": "ch6-anim001",
-          "type": "animation",
-          "difficulty": "medium",
-          "question": "Observez l'animation de l'oscillateur harmonique quantique. Que pouvez-vous dire de la fonction d'onde $\\psi_n(x)$ pour le niveau fondamental n=0 ?",
-          "animation_type": "harmonic_oscillator",
-          "animation_config": {
-            "level": 0
-          },
-          "animation_description": "L'animation montre la fonction d'onde $\\psi_0(x)$ (en bleu) et la densité de probabilité $|\\psi_0(x)|^2$ (en rouge) pour l'oscillateur harmonique quantique au niveau fondamental.",
-          "animation_params": {
-            "level": {
-              "label": "Niveau n :",
-              "min": 0,
-              "max": 5,
-              "default": 0,
-              "step": 1
-            }
-          },
-          "options": [
-            "C'est une gaussienne centrée en x=0, sans nœud",
-            "Elle a 1 nœud et change de signe",
-            "Elle oscille rapidement avec plusieurs nœuds",
-            "Elle est constante sur tout l'espace"
-          ],
-          "correct_answer": 0,
-          "explanation": "Pour le niveau fondamental (n=0) de l'oscillateur harmonique, la fonction d'onde $\\psi_0(x) = \\left(\\frac{m\\omega}{\\pi\\hbar}\\right)^{1/4} e^{-m\\omega x^2/2\\hbar}$ est une GAUSSIENNE centrée en x=0, SANS NŒUD. C'est l'état d'énergie minimale $E_0 = \\frac{1}{2}\\hbar\\omega$ (énergie du point zéro). La densité de probabilité $|\\psi_0|^2$ est aussi une gaussienne, montrant que la particule est le plus probablement trouvée près de l'origine, contrairement au cas classique où elle serait aux points de retournement.",
-          "section_ref": "6.3",
-          "formula": "$\\psi_0(x) = \\left(\\frac{m\\omega}{\\pi\\hbar}\\right)^{1/4} e^{-m\\omega x^2/2\\hbar}$",
-          "tags": [
-            "oscillateur harmonique",
-            "fonction d'onde",
-            "niveau fondamental",
-            "animation"
-          ],
-          "time_estimate": 120,
-          "points": 1
-        },
-        {
-          "id": "ch6-anim002",
-          "type": "animation",
-          "difficulty": "hard",
-          "question": "En observant l'animation pour différents niveaux n, combien de NŒUDS possède la fonction d'onde $\\psi_n(x)$ de l'oscillateur harmonique ?",
-          "animation_type": "harmonic_oscillator",
-          "animation_config": {
-            "level": 2
-          },
-          "animation_description": "Faites varier le niveau quantique n avec le curseur et observez le nombre de nœuds (points où $\\psi_n(x) = 0$) de la fonction d'onde.",
-          "animation_params": {
-            "level": {
-              "label": "Niveau n :",
-              "min": 0,
-              "max": 5,
-              "default": 2,
-              "step": 1
-            }
-          },
-          "options": [
-            "La fonction d'onde $\\psi_n$ possède n nœuds",
-            "Elle possède n+1 nœuds",
-            "Elle possède 2n nœuds",
-            "Le nombre de nœuds est aléatoire"
-          ],
-          "correct_answer": 0,
-          "explanation": "La fonction d'onde $\\psi_n(x)$ de l'oscillateur harmonique possède exactement **n nœuds**. C'est une propriété générale : pour le niveau n, la fonction d'onde change de signe n fois (n=0 : aucun nœud, n=1 : 1 nœud, n=2 : 2 nœuds, etc.). Les nœuds correspondent aux zéros du polynôme de Hermite $H_n$. Plus n est élevé, plus la fonction oscille, et plus elle ressemble à la solution classique (principe de correspondance). L'énergie est $E_n = \\hbar\\omega(n + 1/2)$.",
-          "section_ref": "6.3",
-          "formula": "$\\psi_n(x) = \\text{(gaussienne)} \\times H_n(\\text{position normalisée})$",
-          "tags": [
-            "oscillateur harmonique",
-            "nœuds",
-            "polynômes de Hermite",
-            "animation"
-          ],
-          "time_estimate": 150,
-          "points": 2
         }
       ]
     }
@@ -21293,31 +18720,30 @@
   "metadata": {
     "version": "2.0.0",
     "generated_date": "2025-11-23",
-    "last_updated": "2025-11-26",
-    "total_questions": 762,
+    "last_updated": "2025-11-25 15:59:23",
+    "total_questions": 609,
     "questions_by_chapter": {
-      "chapter_1": 132,
-      "chapter_2": 157,
-      "chapter_3": 90,
-      "chapter_4": 147,
-      "chapter_5": 120,
-      "chapter_6": 106
+      "chapter_1": 123,
+      "chapter_2": 115,
+      "chapter_3": 86,
+      "chapter_4": 114,
+      "chapter_5": 83,
+      "chapter_6": 88
     },
     "difficulty_distribution": {
-      "easy": 215,
-      "medium": 315,
-      "hard": 222
+      "easy": 190,
+      "medium": 242,
+      "hard": 177
     },
     "question_types": {
-      "qcm": 475,
-      "vrai_faux": 78,
+      "qcm": 415,
+      "vrai_faux": 67,
       "matching": 7,
-      "numerical": 20,
-      "interpretation": 8,
-      "hotspot": 74,
-      "drag_drop": 50,
-      "flashcard": 34,
-      "animation": 6
+      "numerical": 14,
+      "interpretation": 6,
+      "hotspot": 33,
+      "drag_drop": 33,
+      "flashcard": 34
     }
   }
 }

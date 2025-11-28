@@ -21,7 +21,10 @@ window.MathJax = {
     svg: {
         fontCache: 'global',
         displayAlign: 'left',
-        displayIndent: '0'
+        displayIndent: '0',
+        scale: 1,
+        minScale: 0.5,
+        matchFontHeight: true
     },
     options: {
         skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
