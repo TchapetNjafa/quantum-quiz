@@ -1,0 +1,33 @@
+# Contrôle automatique de la banque de questions et du code du quiz.
+# Ne déploie rien : GitHub Pages publie toujours la branche main telle quelle.
+name: Contrôle de la banque
+
+on:
+  push:
+    paths: ["data/**", "assets/images/**", "js/**", "scripts/**", ".github/workflows/**"]
+  pull_request:
+    paths: ["data/**", "assets/images/**", "js/**", "scripts/**", ".github/workflows/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  controle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Banque de questions (formats, réponses, doublons, images)
+        run: python3 scripts/valider_questions.py
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Syntaxe JavaScript
+        run: for f in js/*.js service-worker.js; do node --check "$f"; done
