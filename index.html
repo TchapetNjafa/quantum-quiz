@@ -1,348 +1,138 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Quiz interactif pour le cours Introduction à la Mécanique Quantique PHY321 - Université de Yaoundé I">
-    <meta name="author" content="Université de Yaoundé I">
-    <meta name="keywords" content="mécanique quantique, quiz, physique, université yaoundé, PHY321, qubits, superposition">
-
-    <title>Quiz Mécanique Quantique PHY321 - Université de Yaoundé I</title>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/icons/icon-192.png">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/mobile-enhanced.css">
-
-    <!-- MathJax for LaTeX rendering -->
-    <script src="js/mathjax-config.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
-
-    <!-- PWA Configuration -->
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
-    <meta name="theme-color" content="#7c3aed">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiz PHY321 — Introduction à la mécanique quantique</title>
+<meta name="description" content="Questions corrigées du cours PHY321 (Université de Yaoundé I) : six chapitres, huit formats, correction immédiate et lien vers le Carnet. Sans compte, utilisable hors connexion.">
+<meta property="og:title" content="Quiz PHY321 — mécanique quantique">
+<meta property="og:description" content="Questions corrigées du cours PHY321 de l’Université de Yaoundé I, reliées aux laboratoires du Carnet.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f6f2e9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17150f" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
+<link rel="stylesheet" href="css/carnet.css">
+<link rel="stylesheet" href="css/quiz.css">
+<script src="js/mathjax-config.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script defer src="js/common.js"></script>
+<script defer src="js/questions.js"></script>
+<script defer src="js/home.js"></script>
 </head>
 <body>
-    <!-- Particle Background Canvas -->
-    <canvas id="particle-canvas" class="particle-background"></canvas>
+<a class="skip" href="#contenu">Aller au contenu</a>
 
-    <!-- Header injecté automatiquement par navigation.js -->
+<header class="topbar">
+  <a class="brand" href="index.html"><b>Quiz PHY321</b><span>Mécanique quantique · UY1</span></a>
+  <nav aria-label="Principal">
+    <a href="index.html" aria-current="page">Quiz</a>
+    <a href="flashcards.html">Fiches</a>
+    <a href="glossary.html">Glossaire</a>
+    <a href="resources.html">Ressources</a>
+    <a href="about.html">À propos</a>
+    <a href="https://tchapetnjafa.github.io/quantum-workbook/">Carnet</a>
+  </nav>
+  <button class="icon-btn" data-theme-toggle type="button" aria-label="Thème">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 0 0 17z" fill="currentColor"/></svg>
+  </button>
+</header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2 class="hero-title" data-i18n="home.heroTitle">Maîtrisez les Mystères du Monde Quantique</h2>
-                <p class="hero-subtitle" data-i18n="home.heroSubtitle">
-                    Une application interactive pour réviser le cours PHY321 de l'Université de Yaoundé I.
-                    Plus de 762 questions originales basées sur le contenu réel du cours.
-                </p>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-number" id="total-questions">762</div>
-                        <div class="stat-label">Questions</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">6</div>
-                        <div class="stat-label">Chapitres</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">8</div>
-                        <div class="stat-label">Types de Questions</div>
-                    </div>
-                </div>
-            </div>
+<main id="contenu" class="wrap">
+  <section class="home-head">
+    <p class="eyebrow">PHY321 · Université de Yaoundé I · 2026-2027</p>
+    <h1>Quiz de mécanique quantique</h1>
+    <p class="lede">Des questions tirées du cours, corrigées une à une. Chaque correction renvoie à la section du polycopié et au laboratoire du Carnet.</p>
+    <dl class="figures" id="figures" aria-live="polite">
+      <div><dt>questions</dt><dd data-fig="questions">…</dd></div>
+      <div><dt>chapitres</dt><dd data-fig="chapters">…</dd></div>
+      <div><dt>formats</dt><dd data-fig="types">…</dd></div>
+    </dl>
+  </section>
+
+  <div class="home-grid">
+    <form class="panel config" id="config" novalidate>
+      <h2 class="h-small">Préparer une série</h2>
+
+      <div class="field">
+        <label for="f-chapter">Chapitre</label>
+        <select id="f-chapter" name="chapitre"><option value="">Tous les chapitres</option></select>
+      </div>
+
+      <fieldset class="field">
+        <legend>Nombre de questions</legend>
+        <div class="seg" id="f-count">
+          <button type="button" data-v="10" aria-pressed="true">10</button>
+          <button type="button" data-v="20" aria-pressed="false">20</button>
+          <button type="button" data-v="30" aria-pressed="false">30</button>
+          <button type="button" data-v="40" aria-pressed="false">40</button>
         </div>
-    </section>
+      </fieldset>
 
-    <!-- Daily Question Widget -->
-    <section class="daily-question-section">
-        <div class="container">
-            <div id="daily-question-widget">
-                <!-- Contenu généré dynamiquement par daily-question.js -->
-            </div>
+      <fieldset class="field">
+        <legend>Niveau</legend>
+        <div class="chips" id="f-levels"></div>
+      </fieldset>
+
+      <fieldset class="field">
+        <legend>Mode</legend>
+        <div class="seg" id="f-mode">
+          <button type="button" data-v="train" aria-pressed="true">Entraînement</button>
+          <button type="button" data-v="exam" aria-pressed="false">Examen</button>
         </div>
-    </section>
+        <p class="field-help" id="f-mode-help"></p>
+      </fieldset>
 
-    <!-- Quiz Configuration -->
-    <section class="quiz-config">
-        <div class="container">
-            <div class="config-card">
-                <h3 class="config-title" data-i18n="home.configTitle">Configurez Votre Session de Révision</h3>
+      <details class="field formats">
+        <summary>Formats de question <span id="f-types-count"></span></summary>
+        <div class="chips" id="f-types"></div>
+      </details>
 
-                <!-- Chapter Selection -->
-                <div class="config-section">
-                    <label for="chapter-select" class="config-label">
-                        <span class="label-icon">📚</span>
-                        <span data-i18n="home.chapterSelection">Sélection du Chapitre</span>
-                    </label>
-                    <select id="chapter-select" class="config-select">
-                        <option value="all">Mode Révision Globale (Tous les chapitres)</option>
-                        <option value="1">Chapitre 1 : États Quantiques</option>
-                        <option value="2">Chapitre 2 : Mesure et Opérateurs</option>
-                        <option value="3">Chapitre 3 : Dynamique Quantique - Les Postulats</option>
-                        <option value="4">Chapitre 4 : Systèmes Multi-Qubits et Intrication</option>
-                        <option value="5">Chapitre 5 : Fonction d'État et Espace Continu</option>
-                        <option value="6">Chapitre 6 : Oscillateur Harmonique Quantique</option>
-                    </select>
-                    <p class="config-hint" id="chapter-description">
-                        Révision complète de tous les concepts du cours
-                    </p>
-                </div>
+      <div class="config-foot">
+        <p class="avail" id="avail" aria-live="polite"></p>
+        <button type="submit" class="btn accent big" id="start">Commencer</button>
+      </div>
+    </form>
 
-                <!-- Number of Questions -->
-                <div class="config-section">
-                    <label for="question-count" class="config-label">
-                        <span class="label-icon">🎯</span>
-                        <span data-i18n="home.questionCount">Nombre de Questions</span>
-                    </label>
-                    <div class="slider-container">
-                        <input type="range" id="question-count" class="config-slider"
-                               min="10" max="50" value="20" step="10">
-                        <div class="slider-labels">
-                            <span>10</span>
-                            <span>20</span>
-                            <span>30</span>
-                            <span>40</span>
-                            <span>50</span>
-                        </div>
-                    </div>
-                    <div class="slider-value">
-                        Questions sélectionnées : <strong id="question-count-display">20</strong>
-                    </div>
-                </div>
+    <aside class="panel daily" id="daily" aria-labelledby="daily-t">
+      <h2 class="h-small" id="daily-t">Question du jour</h2>
+      <p class="q-meta" id="daily-meta"></p>
+      <div id="daily-body"><p class="muted">Chargement…</p></div>
+      <div id="daily-feedback" class="q-feedback" hidden></div>
+      <button type="button" class="btn accent" id="daily-check" disabled>Valider</button>
+    </aside>
+  </div>
 
-                <!-- Difficulty Level -->
-                <div class="config-section">
-                    <label class="config-label">
-                        <span class="label-icon">⚡</span>
-                        <span data-i18n="home.difficulty">Niveau de Difficulté</span>
-                    </label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="difficulty" value="easy" checked>
-                            <span class="checkbox-custom"></span>
-                            🟢 <span data-i18n="home.easy">Facile</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="difficulty" value="medium" checked>
-                            <span class="checkbox-custom"></span>
-                            🟡 <span data-i18n="home.medium">Moyen</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="difficulty" value="hard" checked>
-                            <span class="checkbox-custom"></span>
-                            🔴 <span data-i18n="home.hard">Difficile</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Question Types Filter -->
-                <div class="config-section">
-                    <label class="config-label">
-                        <span class="label-icon">📝</span>
-                        <span data-i18n="home.questionTypes">Types de Questions</span>
-                    </label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="question-type" value="qcm" checked>
-                            <span class="checkbox-custom"></span>
-                            QCM (Choix Multiple)
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="question-type" value="vrai_faux" checked>
-                            <span class="checkbox-custom"></span>
-                            Vrai/Faux
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="question-type" value="matching" checked>
-                            <span class="checkbox-custom"></span>
-                            Correspondances
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="question-type" value="numerical" checked>
-                            <span class="checkbox-custom"></span>
-                            Numérique
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="question-type" value="interpretation" checked>
-                            <span class="checkbox-custom"></span>
-                            Interprétation
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="question-type" value="hotspot" checked>
-                            <span class="checkbox-custom"></span>
-                            Hotspot (Zones cliquables)
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="question-type" value="drag_drop" checked>
-                            <span class="checkbox-custom"></span>
-                            Glisser-Déposer
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="question-type" value="flashcard" checked>
-                            <span class="checkbox-custom"></span>
-                            Flashcard (Recto-verso)
-                        </label>
-                    </div>
-                    <p class="config-hint">
-                        Sélectionnez au moins un type de question (8 types disponibles)
-                    </p>
-                </div>
-
-                <!-- Mode Selection -->
-                <div class="config-section">
-                    <label class="config-label">
-                        <span class="label-icon">🎮</span>
-                        <span data-i18n="home.mode">Mode de Quiz</span>
-                    </label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="mode" value="learning" checked>
-                            <span class="radio-custom"></span>
-                            <div class="radio-content">
-                                <strong data-i18n="home.learning">Apprentissage</strong>
-                                <small data-i18n="home.learningDesc">Feedback immédiat, pas de chronomètre, retour possible</small>
-                            </div>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="mode" value="exam">
-                            <span class="radio-custom"></span>
-                            <div class="radio-content">
-                                <strong data-i18n="home.exam">Examen</strong>
-                                <small data-i18n="home.examDesc">Simulation réelle, chronomètre actif, pas de retour</small>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Start Button -->
-                <button id="start-quiz-btn" class="btn-primary btn-large">
-                    <span class="btn-icon">🚀</span>
-                    <span data-i18n="home.startButton">Commencer le Quiz</span>
-                    <span class="btn-arrow">→</span>
-                </button>
-            </div>
+  <section class="stats" id="stats" aria-labelledby="stats-t">
+    <h2 id="stats-t">Vos statistiques</h2>
+    <p class="muted">Elles restent dans ce navigateur : aucun compte, aucune donnée envoyée.</p>
+    <dl class="stat-grid" id="stat-grid"></dl>
+    <div class="stats-cols">
+      <div>
+        <h3 class="h-small">Par chapitre</h3>
+        <ol class="ch-bars" id="ch-bars"></ol>
+      </div>
+      <div>
+        <h3 class="h-small">Dernières séries</h3>
+        <ol class="history" id="history"></ol>
+        <div class="btn-row">
+          <a class="btn ghost" id="review-btn" href="quiz.html" hidden>Revoir mes erreurs</a>
+          <button type="button" class="btn ghost" id="reset-btn">Effacer mes statistiques</button>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
+</main>
 
-    <!-- Statistics Section -->
-    <section id="statistics" class="statistics">
-        <div class="container">
-            <h3 class="section-title" data-i18n="stats.title">Vos Statistiques</h3>
-
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon">📊</div>
-                    <div class="stat-content">
-                        <div class="stat-value" id="total-answered">0</div>
-                        <div class="stat-name" data-i18n="stats.questionsAnswered">Questions Répondues</div>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon">✅</div>
-                    <div class="stat-content">
-                        <div class="stat-value" id="correct-answers">0</div>
-                        <div class="stat-name" data-i18n="stats.correctAnswers">Réponses Correctes</div>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon">🎯</div>
-                    <div class="stat-content">
-                        <div class="stat-value" id="average-score">0%</div>
-                        <div class="stat-name" data-i18n="stats.averageScore">Score Moyen</div>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon">🔥</div>
-                    <div class="stat-content">
-                        <div class="stat-value" id="streak">0</div>
-                        <div class="stat-name" data-i18n="stats.currentStreak">Série Actuelle</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Last Quiz Results -->
-            <div class="recent-quizzes">
-                <h4 class="subsection-title" data-i18n="stats.recentQuizzes">Dernières Tentatives</h4>
-                <div id="recent-quiz-list" class="quiz-history">
-                    <p class="empty-state" data-i18n="stats.noQuizzes">Aucun quiz complété pour le moment. Lancez votre première session !</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>À Propos</h4>
-                    <p>Application de révision interactive pour le cours PHY321 - Introduction à la Mécanique Quantique</p>
-                    <p><strong>Université de Yaoundé I</strong><br>Faculté des Sciences</p>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Liens Rapides</h4>
-                    <ul>
-                        <li><a href="index.html">🏠 Accueil</a></li>
-                        <li><a href="about.html">📚 À propos du cours</a></li>
-                        <li><a href="resources.html">🔗 Ressources externes</a></li>
-                        <li><a href="#statistics">📊 Mes statistiques</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Documentation</h4>
-                    <ul>
-                        <li><a href="docs/STRUCTURE.md" target="_blank">📐 Structure technique</a></li>
-                        <li><a href="docs/EXTENDING.md" target="_blank">🔧 Guide d'extension</a></li>
-                        <li><a href="https://ocw.mit.edu/courses/8-04-quantum-physics-i-spring-2016/" target="_blank">🎓 MIT OpenCourseWare</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 Université de Yaoundé I - Tous droits réservés</p>
-                <p class="license">
-                    Contenu sous licence
-                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">
-                        CC BY-NC-SA 4.0
-                    </a>
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="js/profile-guard.js"></script>
-    <script src="js/config.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/storage.js"></script>
-    <script src="js/favorites.js"></script>
-    <script src="js/pdf-export.js"></script>
-    <script src="js/targeted-review.js"></script>
-    <script src="js/navigation.js"></script>
-    <script src="js/particles.js"></script>
-    <script src="js/audio.js"></script>
-    <script src="js/analytics.js"></script>
-    <script src="js/i18n.js"></script>
-    <script src="js/adaptive-difficulty.js"></script>
-    <script src="js/lms-integration.js"></script>
-    <script src="js/daily-question.js"></script>
-    <script src="js/gamification.js"></script>
-    <script src="js/accessibility.js"></script>
-    <script src="js/pomodoro.js"></script>
-    <script src="js/app.js"></script>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>PHY321 · Département de Physique, Faculté des Sciences, Université de Yaoundé I · S. G. Nana Engo, J.-P. Tchapet Njafa, C. Tchodimou</span>
+    <span>Contenu sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">CC BY-NC-SA 4.0</a> · <a href="https://github.com/TchapetNjafa/quantum-quiz">Sources sur GitHub</a></span>
+  </div>
+</footer>
 </body>
 </html>

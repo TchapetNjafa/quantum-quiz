@@ -1,502 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ressources - PHY321</title>
-    <!-- PWA Configuration -->
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
-    <meta name="theme-color" content="#7c3aed">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Quantum Quiz">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/responsive.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ressources — Quiz PHY321</title>
+<meta name="description" content="Cours en ligne, simulations, vidéos et outils pour compléter le cours PHY321 de mécanique quantique.">
+<meta name="theme-color" content="#f6f2e9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17150f" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
+<link rel="stylesheet" href="css/carnet.css">
+<link rel="stylesheet" href="css/quiz.css">
+<script defer src="js/common.js"></script>
 </head>
-<body class="resources-page">
-    <canvas id="particle-canvas" class="particle-background"></canvas>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <div class="page-hero">
-                <h1>📚 Ressources de Mécanique Quantique</h1>
-                <p class="subtitle">Sélection de ressources pédagogiques pour approfondir vos connaissances</p>
-            </div>
+<header class="topbar">
+  <a class="brand" href="index.html"><b>Quiz PHY321</b><span>Mécanique quantique · UY1</span></a>
+  <nav aria-label="Principal">
+    <a href="index.html">Quiz</a>
+    <a href="flashcards.html">Fiches</a>
+    <a href="glossary.html">Glossaire</a>
+    <a href="resources.html" aria-current="page">Ressources</a>
+    <a href="about.html">À propos</a>
+    <a href="https://tchapetnjafa.github.io/quantum-workbook/">Carnet</a>
+  </nav>
+  <button class="icon-btn" data-theme-toggle type="button" aria-label="Thème">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 0 0 17z" fill="currentColor"/></svg>
+  </button>
+</header>
 
-            <!-- Online Courses -->
-            <section class="resources-section">
-                <h2>🎓 Cours en Ligne</h2>
-                <div class="resources-grid">
-                    <div class="resource-card">
-                        <div class="resource-icon">🎬</div>
-                        <h3>MIT OpenCourseWare - Quantum Physics I</h3>
-                        <p>
-                            Cours complet d'Allan Adams avec vidéos, notes de cours et exercices.
-                            Excellente introduction avec approche pédagogique moderne.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Gratuit</span>
-                            <span class="badge">Vidéo</span>
-                            <span class="badge">EN</span>
-                        </div>
-                        <a href="https://ocw.mit.edu/courses/8-04-quantum-physics-i-spring-2016/" target="_blank" class="btn-primary">
-                            Accéder au cours →
-                        </a>
-                    </div>
+<main id="contenu" class="page">
+  <p class="eyebrow">Pour aller plus loin</p>
+  <h1>Ressources</h1>
+  <p class="lede">Une sélection courte. Chaque lien a été vérifié en octobre 2026.</p>
+  <p>Commencez par le <a href="https://tchapetnjafa.github.io/quantum-workbook/">Carnet PHY321</a> : il suit le cours section par section, avec des laboratoires à manipuler.</p>
+  <h2>Cours en ligne</h2>
+  <ul class="link-list">
+    <li><a href="https://ocw.mit.edu/courses/8-04-quantum-physics-i-spring-2016/" rel="noopener">MIT OpenCourseWare, 8.04 Quantum Physics I</a> <span class="src">ocw.mit.edu</span><p>Cours complet d&#x27;Allan Adams (2016) : vidéos, notes et exercices corrigés. En anglais.</p></li>
+    <li><a href="https://theoreticalminimum.com/courses/quantum-mechanics/2012/winter" rel="noopener">The Theoretical Minimum : Quantum Mechanics</a> <span class="src">theoreticalminimum.com</span><p>Cours filmés de Leonard Susskind (Stanford), accessibles avec peu de prérequis. En anglais.</p></li>
+    <li><a href="https://www.edx.org/learn/quantum-physics-mechanics" rel="noopener">edX : cours de physique quantique</a> <span class="src">edx.org</span><p>Catalogue de cours d&#x27;universités, gratuits en mode audit.</p></li>
+    <li><a href="https://www.fun-mooc.fr/fr/" rel="noopener">FUN MOOC</a> <span class="src">fun-mooc.fr</span><p>Plateforme française de cours en ligne ; chercher « physique quantique ».</p></li>
+  </ul>
+  <h2>Simulations</h2>
+  <ul class="link-list">
+    <li><a href="https://www.st-andrews.ac.uk/physics/quvis/" rel="noopener">QuVis (université de St Andrews)</a> <span class="src">st-andrews.ac.uk</span><p>Simulations interactives : expériences à un photon, spin, intrication, puits de potentiel. En anglais.</p></li>
+    <li><a href="https://phet.colorado.edu/fr/simulations/filter?subjects=quantum-phenomena&type=html" rel="noopener">PhET : phénomènes quantiques</a> <span class="src">phet.colorado.edu</span><p>Simulations de l&#x27;université du Colorado, traduites en français.</p></li>
+    <li><a href="https://algassert.com/quirk" rel="noopener">Quirk</a> <span class="src">algassert.com</span><p>Simulateur de circuits quantiques dans le navigateur : portes, mesures, sphère de Bloch de chaque qubit.</p></li>
+    <li><a href="https://quantum.cloud.ibm.com/composer" rel="noopener">IBM Quantum Composer</a> <span class="src">quantum.cloud.ibm.com</span><p>Construire un circuit, le simuler et, avec un compte gratuit, l&#x27;exécuter sur un processeur réel d&#x27;IBM Quantum Platform.</p></li>
+  </ul>
+  <h2>Vidéos</h2>
+  <ul class="link-list">
+    <li><a href="https://www.youtube.com/watch?v=lZ3bPUKo5zc" rel="noopener">Lecture 1: Introduction to Superposition</a> <span class="src">YouTube</span><p>MIT OpenCourseWare (Allan Adams). Chapitre 1. En anglais.</p></li>
+    <li><a href="https://www.youtube.com/watch?v=Usu9xZfabPM" rel="noopener">If You Don&#x27;t Understand Quantum Physics, Try This!</a> <span class="src">YouTube</span><p>Domain of Science. Vue d&#x27;ensemble, chapitre 1. En anglais.</p></li>
+    <li><a href="https://www.youtube.com/watch?v=TQKELOE9eY4" rel="noopener">What is the Heisenberg Uncertainty Principle?</a> <span class="src">YouTube</span><p>TED-Ed, Chad Orzel. Chapitres 2 et 5. En anglais.</p></li>
+    <li><a href="https://www.youtube.com/watch?v=QeUMFo8sODk" rel="noopener">What is The Schrödinger Equation, Exactly?</a> <span class="src">YouTube</span><p>Up and Atom. Chapitres 3 et 5. En anglais.</p></li>
+    <li><a href="https://www.youtube.com/watch?v=ZuvK-od647c" rel="noopener">Quantum Entanglement &amp; Spooky Action at a Distance</a> <span class="src">YouTube</span><p>Veritasium. Chapitre 4. En anglais.</p></li>
+    <li><a href="https://www.youtube.com/watch?v=zcqZHYo7ONs" rel="noopener">Bell&#x27;s Theorem: The Quantum Venn Diagram Paradox</a> <span class="src">YouTube</span><p>minutephysics. Chapitre 4. En anglais.</p></li>
+    <li><a href="https://www.youtube.com/watch?v=QuR969uMICM" rel="noopener">A beginner&#x27;s guide to quantum computing</a> <span class="src">YouTube</span><p>TED, Shohini Ghose. Qubits et applications, chapitres 1 et 4. En anglais.</p></li>
+    <li><a href="https://www.youtube.com/watch?v=spUNpyF58BY" rel="noopener">But what is the Fourier Transform? A visual introduction.</a> <span class="src">YouTube</span><p>3Blue1Brown. Outil du chapitre 5. En anglais.</p></li>
+  </ul>
+  <h2>Outils de calcul</h2>
+  <ul class="link-list">
+    <li><a href="https://qutip.org/" rel="noopener">QuTiP</a> <span class="src">qutip.org</span><p>Bibliothèque Python libre pour simuler des systèmes quantiques (spins, oscillateurs, dynamique).</p></li>
+    <li><a href="https://www.ibm.com/quantum/qiskit" rel="noopener">Qiskit</a> <span class="src">ibm.com</span><p>Bibliothèque Python libre d&#x27;IBM pour écrire et simuler des circuits quantiques.</p></li>
+    <li><a href="https://quantum.cloud.ibm.com/learning/en" rel="noopener">IBM Quantum Learning</a> <span class="src">quantum.cloud.ibm.com</span><p>Cours en ligne gratuits sur l&#x27;information quantique, avec Qiskit. En anglais.</p></li>
+  </ul>
+  <h2>Lire et échanger</h2>
+  <ul class="link-list">
+    <li><a href="https://www.quantamagazine.org/tag/quantum-physics/" rel="noopener">Quanta Magazine : physique quantique</a> <span class="src">quantamagazine.org</span><p>Articles de vulgarisation sérieuse sur la recherche actuelle. En anglais.</p></li>
+    <li><a href="https://arxiv.org/list/quant-ph/recent" rel="noopener">arXiv, quant-ph</a> <span class="src">arxiv.org</span><p>Prépublications récentes en physique quantique (niveau recherche).</p></li>
+    <li><a href="https://physics.stackexchange.com/questions/tagged/quantum-mechanics" rel="noopener">Physics Stack Exchange</a> <span class="src">physics.stackexchange.com</span><p>Questions et réponses modérées, étiquette « quantum-mechanics ». En anglais.</p></li>
+  </ul>
+</main>
 
-                    <div class="resource-card">
-                        <div class="resource-icon">📺</div>
-                        <h3>Stanford - Quantum Mechanics (Leonard Susskind)</h3>
-                        <p>
-                            Série de cours vidéo "Theoretical Minimum" par le célèbre physicien Leonard Susskind.
-                            Approche conceptuelle accessible.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Gratuit</span>
-                            <span class="badge">Vidéo</span>
-                            <span class="badge">EN</span>
-                        </div>
-                        <a href="https://theoreticalminimum.com/courses/quantum-mechanics/2012/winter" target="_blank" class="btn-primary">
-                            Voir les vidéos →
-                        </a>
-                    </div>
-
-                    <div class="resource-card">
-                        <div class="resource-icon">🌐</div>
-                        <h3>edX - Quantum Mechanics for Everyone</h3>
-                        <p>
-                            Cours introductif sans mathématiques avancées, parfait pour développer l'intuition
-                            avant d'aborder les aspects formels.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Gratuit</span>
-                            <span class="badge">Interactif</span>
-                            <span class="badge">EN</span>
-                        </div>
-                        <a href="https://www.edx.org/learn/quantum-mechanics" target="_blank" class="btn-primary">
-                            S'inscrire →
-                        </a>
-                    </div>
-
-                    <div class="resource-card">
-                        <div class="resource-icon">🎥</div>
-                        <h3>France Université Numérique (FUN)</h3>
-                        <p>
-                            Cours de mécanique quantique en français par des universités françaises.
-                            Idéal pour consolider en langue maternelle.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Gratuit</span>
-                            <span class="badge">Vidéo</span>
-                            <span class="badge">FR</span>
-                        </div>
-                        <a href="https://www.fun-mooc.fr/" target="_blank" class="btn-primary">
-                            Explorer →
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Books -->
-            <section class="resources-section">
-                <h2>📖 Livres de Référence</h2>
-                <div class="resources-grid">
-                    <div class="resource-card">
-                        <h3>📕 Introduction to Quantum Mechanics</h3>
-                        <p><strong>David J. Griffiths</strong></p>
-                        <p>
-                            LA référence pédagogique. Explications claires, nombreux exemples et exercices corrigés.
-                            Parfait pour une première approche rigoureuse.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Niveau: Débutant-Intermédiaire</span>
-                        </div>
-                    </div>
-
-                    <div class="resource-card">
-                        <h3>📘 Mécanique Quantique (Tomes I & II)</h3>
-                        <p><strong>Cohen-Tannoudji, Diu, Laloë</strong></p>
-                        <p>
-                            Bible de la MQ en français. Très complet, rigoureux mathématiquement.
-                            Excellente référence pour approfondir.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Niveau: Intermédiaire-Avancé</span>
-                        </div>
-                    </div>
-
-                    <div class="resource-card">
-                        <h3>📗 Modern Quantum Mechanics</h3>
-                        <p><strong>J.J. Sakurai, Jim Napolitano</strong></p>
-                        <p>
-                            Approche moderne avec le formalisme de Dirac dès le début.
-                            Pour ceux qui préfèrent l'abstraction mathématique.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Niveau: Intermédiaire-Avancé</span>
-                        </div>
-                    </div>
-
-                    <div class="resource-card">
-                        <h3>📙 The Feynman Lectures on Physics, Vol. III</h3>
-                        <p><strong>Richard P. Feynman</strong></p>
-                        <p>
-                            Approche intuitive et originale par un maître. Développe l'intuition physique.
-                            Complément parfait aux approches formelles.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Niveau: Tous niveaux</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Interactive Tools -->
-            <section class="resources-section">
-                <h2>🛠️ Outils Interactifs</h2>
-                <div class="resources-grid">
-                    <div class="resource-card">
-                        <div class="resource-icon">⚛️</div>
-                        <h3>PhET Interactive Simulations</h3>
-                        <p>
-                            Simulations interactives gratuites développées par l'Université du Colorado.
-                            Visualisez les phénomènes quantiques (double slit, états quantiques, etc.).
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Gratuit</span>
-                            <span class="badge">Interactif</span>
-                        </div>
-                        <a href="https://phet.colorado.edu/fr/simulations/filter?subjects=physics&type=html,prototype" target="_blank" class="btn-primary">
-                            Explorer →
-                        </a>
-                    </div>
-
-                    <div class="resource-card">
-                        <div class="resource-icon">🎯</div>
-                        <h3>QuVis - Quantum Mechanics Visualization</h3>
-                        <p>
-                            Projet de visualisation de l'Université de St Andrews. Animations et simulations
-                            interactives pour comprendre les concepts fondamentaux de la MQ.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Gratuit</span>
-                            <span class="badge">Interactif</span>
-                            <span class="badge">EN</span>
-                        </div>
-                        <a href="https://www.st-andrews.ac.uk/physics/quvis/" target="_blank" class="btn-primary">
-                            Découvrir →
-                        </a>
-                    </div>
-
-                    <div class="resource-card">
-                        <div class="resource-icon">🧮</div>
-                        <h3>Quantum Computing Playground</h3>
-                        <p>
-                            Simulateur de circuits quantiques dans le navigateur. Expérimentez avec
-                            des qubits, portes quantiques et algorithmes.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Gratuit</span>
-                            <span class="badge">Web</span>
-                        </div>
-                        <a href="http://www.quantumplayground.net/" target="_blank" class="btn-primary">
-                            Essayer →
-                        </a>
-                    </div>
-
-                    <div class="resource-card">
-                        <div class="resource-icon">💻</div>
-                        <h3>IBM Quantum Experience</h3>
-                        <p>
-                            Accès gratuit à de vrais ordinateurs quantiques d'IBM. Programmez et
-                            exécutez des circuits sur du matériel quantique réel.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Gratuit</span>
-                            <span class="badge">Cloud</span>
-                        </div>
-                        <a href="https://quantum-computing.ibm.com/" target="_blank" class="btn-primary">
-                            Accéder →
-                        </a>
-                    </div>
-
-                    <div class="resource-card">
-                        <div class="resource-icon">📊</div>
-                        <h3>Wolfram Alpha</h3>
-                        <p>
-                            Moteur de calcul symbolique. Résolvez l'équation de Schrödinger,
-                            calculez les fonctions d'onde, valeurs propres, etc.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Freemium</span>
-                            <span class="badge">Calcul</span>
-                        </div>
-                        <a href="https://www.wolframalpha.com/examples/science-and-technology/physics/quantum-physics" target="_blank" class="btn-primary">
-                            Calculer →
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Documentation -->
-            <section class="resources-section">
-                <h2>📄 Documentation & Notes</h2>
-                <div class="resources-grid">
-                    <div class="resource-card">
-                        <div class="resource-icon">📝</div>
-                        <h3>arXiv.org - Quantum Physics</h3>
-                        <p>
-                            Serveur de prépublications scientifiques. Accédez aux dernières recherches
-                            en physique quantique avant publication dans les revues.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Gratuit</span>
-                            <span class="badge">Recherche</span>
-                        </div>
-                        <a href="https://arxiv.org/list/quant-ph/recent" target="_blank" class="btn-primary">
-                            Consulter →
-                        </a>
-                    </div>
-
-                    <div class="resource-card">
-                        <div class="resource-icon">🔬</div>
-                        <h3>Quantum Magazine</h3>
-                        <p>
-                            Articles de vulgarisation scientifique sur la mécanique quantique et la physique.
-                            Excellente qualité, accessible au grand public.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Gratuit</span>
-                            <span class="badge">Vulgarisation</span>
-                        </div>
-                        <a href="https://www.quantamagazine.org/tag/quantum-physics/" target="_blank" class="btn-primary">
-                            Lire →
-                        </a>
-                    </div>
-
-                    <div class="resource-card">
-                        <div class="resource-icon">🎙️</div>
-                        <h3>Sean Carroll's Mindscape Podcast</h3>
-                        <p>
-                            Podcast avec interviews de physiciens quantiques de renom.
-                            Discussions approfondies sur les fondements et interprétations.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Gratuit</span>
-                            <span class="badge">Audio</span>
-                        </div>
-                        <a href="https://www.preposterousuniverse.com/podcast/" target="_blank" class="btn-primary">
-                            Écouter →
-                        </a>
-                    </div>
-
-                    <div class="resource-card">
-                        <div class="resource-icon">📺</div>
-                        <h3>Chaîne YouTube - Physics Girl</h3>
-                        <p>
-                            Vidéos de vulgarisation sur divers sujets de physique incluant
-                            des expériences quantiques fascinantes.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Gratuit</span>
-                            <span class="badge">Vidéo</span>
-                        </div>
-                        <a href="https://www.youtube.com/physicsgirl" target="_blank" class="btn-primary">
-                            Regarder →
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Software -->
-            <section class="resources-section">
-                <h2>💾 Logiciels & Bibliothèques</h2>
-                <div class="resources-grid">
-                    <div class="resource-card">
-                        <div class="resource-icon">🐍</div>
-                        <h3>QuTiP - Quantum Toolbox in Python</h3>
-                        <p>
-                            Bibliothèque Python pour simuler des systèmes quantiques ouverts.
-                            Idéale pour les projets numériques et recherches.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Open Source</span>
-                            <span class="badge">Python</span>
-                        </div>
-                        <a href="http://qutip.org/" target="_blank" class="btn-primary">
-                            Documentation →
-                        </a>
-                    </div>
-
-                    <div class="resource-card">
-                        <div class="resource-icon">⚡</div>
-                        <h3>Qiskit (IBM)</h3>
-                        <p>
-                            Framework open-source pour la programmation d'ordinateurs quantiques.
-                            Tutoriels complets, de l'initiation aux algorithmes avancés.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Open Source</span>
-                            <span class="badge">Python</span>
-                        </div>
-                        <a href="https://qiskit.org/" target="_blank" class="btn-primary">
-                            Commencer →
-                        </a>
-                    </div>
-
-                    <div class="resource-card">
-                        <div class="resource-icon">🔵</div>
-                        <h3>Mathematica / Wolfram Language</h3>
-                        <p>
-                            Outils de calcul symbolique et numérique puissants.
-                            Excellent pour résoudre analytiquement les problèmes quantiques.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Commercial</span>
-                            <span class="badge">Calcul</span>
-                        </div>
-                        <a href="https://www.wolfram.com/mathematica/" target="_blank" class="btn-primary">
-                            En savoir plus →
-                        </a>
-                    </div>
-
-                    <div class="resource-card">
-                        <div class="resource-icon">📊</div>
-                        <h3>MATLAB & Symbolic Math Toolbox</h3>
-                        <p>
-                            Environnement de calcul numérique et symbolique. Très utilisé
-                            en physique et ingénierie.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Commercial</span>
-                            <span class="badge">Calcul</span>
-                        </div>
-                        <a href="https://www.mathworks.com/products/matlab.html" target="_blank" class="btn-primary">
-                            Découvrir →
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Communities -->
-            <section class="resources-section">
-                <h2>👥 Communautés & Forums</h2>
-                <div class="resources-grid">
-                    <div class="resource-card">
-                        <div class="resource-icon">💬</div>
-                        <h3>Physics Stack Exchange</h3>
-                        <p>
-                            Forum de questions-réponses sur la physique. Posez vos questions
-                            et obtenez des réponses d'experts et d'étudiants avancés.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Gratuit</span>
-                            <span class="badge">Q&A</span>
-                        </div>
-                        <a href="https://physics.stackexchange.com/questions/tagged/quantum-mechanics" target="_blank" class="btn-primary">
-                            Visiter →
-                        </a>
-                    </div>
-
-                    <div class="resource-card">
-                        <div class="resource-icon">💭</div>
-                        <h3>Reddit - r/QuantumPhysics</h3>
-                        <p>
-                            Communauté active discutant de mécanique quantique, partageant
-                            des ressources et répondant aux questions.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Gratuit</span>
-                            <span class="badge">Forum</span>
-                        </div>
-                        <a href="https://www.reddit.com/r/QuantumPhysics/" target="_blank" class="btn-primary">
-                            Rejoindre →
-                        </a>
-                    </div>
-
-                    <div class="resource-card">
-                        <div class="resource-icon">🌍</div>
-                        <h3>Quantum Computing Stack Exchange</h3>
-                        <p>
-                            Forum spécialisé en informatique quantique. Idéal pour les aspects
-                            computationnels de la MQ.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Gratuit</span>
-                            <span class="badge">Q&A</span>
-                        </div>
-                        <a href="https://quantumcomputing.stackexchange.com/" target="_blank" class="btn-primary">
-                            Explorer →
-                        </a>
-                    </div>
-
-                    <div class="resource-card">
-                        <div class="resource-icon">📧</div>
-                        <h3>Mailing Lists - Quantum Foundations</h3>
-                        <p>
-                            Listes de diffusion pour rester informé des conférences, séminaires
-                            et publications récentes.
-                        </p>
-                        <div class="resource-meta">
-                            <span class="badge">Gratuit</span>
-                            <span class="badge">Email</span>
-                        </div>
-                        <a href="https://www.iqoqi.at/research/groups/quantum-foundations" target="_blank" class="btn-primary">
-                            S'abonner →
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Tips -->
-            <section class="resources-section">
-                <h2>💡 Conseils d'Apprentissage</h2>
-                <div class="tips-container">
-                    <div class="tip-card">
-                        <h3>🎯 Maîtrisez les Bases</h3>
-                        <p>Assurez-vous de bien comprendre l'algèbre linéaire (vecteurs, matrices, valeurs propres) avant d'attaquer la MQ. C'est le langage de la physique quantique.</p>
-                    </div>
-
-                    <div class="tip-card">
-                        <h3>✏️ Faites des Exercices</h3>
-                        <p>La MQ ne peut pas s'apprendre passivement. Résolvez autant de problèmes que possible. C'est en pratiquant qu'on développe l'intuition.</p>
-                    </div>
-
-                    <div class="tip-card">
-                        <h3>🔄 Soyez Patient</h3>
-                        <p>Les concepts quantiques sont contre-intuitifs. Il est normal d'être confus au début. Persistez, relisez, et les choses finiront par faire sens.</p>
-                    </div>
-
-                    <div class="tip-card">
-                        <h3>👥 Collaborez</h3>
-                        <p>Formez des groupes d'étude. Expliquer les concepts à d'autres est l'un des meilleurs moyens de solidifier sa compréhension.</p>
-                    </div>
-
-                    <div class="tip-card">
-                        <h3>🧮 Programmez</h3>
-                        <p>Implémentez numériquement ce que vous apprenez (Python + NumPy). Visualiser les fonctions d'onde aide énormément la compréhension.</p>
-                    </div>
-
-                    <div class="tip-card">
-                        <h3>📚 Variez les Sources</h3>
-                        <p>Chaque auteur a sa façon d'expliquer. Si vous bloquez avec un livre, essayez-en un autre. La clarté viendra de la multiplicité des perspectives.</p>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <p>&copy; 2025 Université de Yaoundé I - PHY321</p>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="js/particles.js"></script>
-    <script src="js/navigation.js"></script>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>PHY321 · Département de Physique, Faculté des Sciences, Université de Yaoundé I · S. G. Nana Engo, J.-P. Tchapet Njafa, C. Tchodimou</span>
+    <span>Contenu sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">CC BY-NC-SA 4.0</a> · <a href="https://github.com/TchapetNjafa/quantum-quiz">Sources sur GitHub</a></span>
+  </div>
+</footer>
 </body>
 </html>

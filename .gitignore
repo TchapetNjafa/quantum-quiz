@@ -1,24 +1,20 @@
-# OS files
+# Système et éditeurs
 .DS_Store
 Thumbs.db
-
-# Editor files
 .vscode/
 .idea/
 *.swp
-*.swo
 *~
 
-# Logs
-*.log
-
-# Source PDF (too large for GitHub)
-*.pdf
-
-# Extracted content
-extracted_content.txt
+# Secrets et dépendances locales (jamais dans le dépôt)
+.env
+.env.*
+node_modules/
+coverage/
 
 # Python
 __pycache__/
 *.pyc
-generate_questions.py
+
+# Sources lourdes
+*.pdf
