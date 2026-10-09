@@ -191,6 +191,8 @@
 .explain { margin: 0 0 .7rem; overflow-x: auto; }
 .formula { margin: 0 0 .7rem; padding: .5rem .7rem; background: var(--paper); border-radius: var(--r-sm); overflow-x: auto; }
 .refs { display: flex; flex-wrap: wrap; gap: .3rem 1.2rem; font-family: var(--sans); font-size: .84rem; color: var(--muted); margin: 0; }
+.refs .report { color: var(--muted); margin-left: auto; }
+.refs .report:hover { color: var(--accent); }
 
 .q-actions { display: flex; gap: .6rem; justify-content: flex-end; margin-top: 1rem; }
 .q-actions .btn { min-height: 3rem; min-width: 7rem; font-size: 1rem; }

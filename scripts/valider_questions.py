@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Contrôle de data/questions.json : champs requis par format, identifiants uniques,
 réponses cohérentes, images présentes. Code de sortie 1 en cas d'erreur."""
-import json, os, sys
+import json, os, re, sys
 from collections import Counter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -51,9 +51,12 @@ def main():
     questions = [q for c in data["chapters"] for q in c["questions"]]
     errors = [f"{q.get('id', '?')} : {e}" for q in questions for e in check(q)]
     errors += [f"identifiant en double : {i}" for i, n in Counter(q.get("id") for q in questions).items() if n > 1]
+    # énoncés identiques à la ponctuation et à la casse près (la banque en contenait 415 en 2025)
+    norm = lambda q: re.sub(r"[\s.,;:!?'’«»]+", " ", str(q.get("question") or q.get("front") or "")).strip().lower()
+    errors += [f"énoncé en double ({n}×) : {t[:70]}" for t, n in Counter(norm(q) for q in questions).items() if t and n > 1]
     print(f"{len(questions)} questions,", dict(Counter(q.get("type") for q in questions)))
     if data.get("metadata", {}).get("total_questions") != len(questions):
-        print("attention : metadata.total_questions ne correspond pas au nombre réel")
+        errors.append("metadata.total_questions ne correspond pas au nombre réel de questions")
     for e in errors:
         print("ERREUR", e)
     print("OK" if not errors else f"{len(errors)} erreur(s)")

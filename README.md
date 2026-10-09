@@ -59,6 +59,21 @@ service-worker.js   mode hors connexion (changer VERSION à chaque mise en ligne
 2. Lancer `python3 scripts/valider_questions.py` : il vérifie les champs de chaque format.
 3. Changer `VERSION` dans `service-worker.js` pour que les appareils récupèrent la nouvelle banque.
 
+## Signalements et contrôle automatique
+
+Sous chaque correction, « Signaler une erreur » ouvre un formulaire d'issue GitHub prérempli avec
+l'identifiant de la question (`.github/ISSUE_TEMPLATE/erreur.yml`). Les signalements arrivent dans
+l'onglet *Issues* avec l'étiquette `erreur signalée` (compte GitHub gratuit nécessaire).
+
+À chaque modification de `data/`, `js/` ou `scripts/`, l'action GitHub `Contrôle de la banque`
+(`.github/workflows/controle.yml`) lance `scripts/valider_questions.py` : formats, réponses cohérentes,
+identifiants et énoncés uniques, images présentes, total déclaré exact. Une croix rouge sur le commit
+ou la pull request signale une banque invalide. Pour vérifier en local :
+
+```bash
+python3 scripts/valider_questions.py
+```
+
 ## Auteurs
 
 S. G. Nana Engo, J.-P. Tchapet Njafa, C. Tchodimou.

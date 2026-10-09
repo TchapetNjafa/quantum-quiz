@@ -1,0 +1,48 @@
+name: Signaler une erreur dans une question
+description: Réponse fausse, explication inexacte, faute, figure illisible…
+title: "[question] "
+labels: ["erreur signalée"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci. Chaque signalement est relu par l'équipe pédagogique de PHY321 avant correction.
+        Un compte GitHub (gratuit) est nécessaire pour envoyer ce formulaire.
+  - type: input
+    id: question
+    attributes:
+      label: Identifiant de la question
+      description: Rempli automatiquement depuis le quiz (ex. ch3-q012).
+      placeholder: ch3-q012
+    validations:
+      required: true
+  - type: dropdown
+    id: nature
+    attributes:
+      label: Nature du problème
+      options:
+        - La réponse attendue est fausse
+        - L'explication est inexacte ou incomplète
+        - L'énoncé est ambigu
+        - Faute de frappe ou de formule (LaTeX)
+        - Figure ou zone cliquable incorrecte
+        - Autre
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Ce qui ne va pas
+      description: Citez le passage et expliquez pourquoi il vous semble faux.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Correction proposée (facultatif)
+      description: Avec, si possible, la section du polycopié ou une référence.
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: Rempli automatiquement.

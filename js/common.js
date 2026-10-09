@@ -92,6 +92,17 @@
   }
 
   /** Section du cours (« 1.2.3 » ou « 1.1-1.2 ») → page et ancre du Carnet. */
+  /** Lien « signaler une erreur » : formulaire d'issue GitHub prérempli avec l'identifiant de la question. */
+  function reportLink(q) {
+    const params = new URLSearchParams({
+      template: 'erreur.yml',
+      title: `[${q.id}] `,
+      question: q.id,
+      page: location.href.split('#')[0]
+    });
+    return 'https://github.com/TchapetNjafa/quantum-quiz/issues/new?' + params;
+  }
+
   function carnetLink(q) {
     const m = /([1-6])\.(\d+)/.exec(q.section_ref || '');
     const ch = m ? Number(m[1]) : q.chapter;
@@ -171,7 +182,7 @@
 
   window.Q = {
     CARNET, CHAPTERS, TYPES, AUTO_TYPES, LEVELS,
-    store, session, recordAnswer, loadBank, carnetLink, esc, shuffle, typeset, pct, plural,
+    store, session, recordAnswer, loadBank, carnetLink, reportLink, esc, shuffle, typeset, pct, plural,
     readConfig, configQuery, pool, pick
   };
 })();

@@ -3,7 +3,7 @@
    grade(q, réponse) → booléen ; correctText / answerText pour le corrigé. */
 (() => {
   'use strict';
-  const { esc, shuffle, carnetLink, TYPES, LEVELS } = window.Q;
+  const { esc, shuffle, carnetLink, reportLink, TYPES, LEVELS } = window.Q;
   let uidSeq = 0;
   const LETTERS = 'ABCDEFGH';
 
@@ -308,7 +308,8 @@
       ${q.explanation ? `<p class="explain">${esc(q.explanation)}</p>` : ''}
       ${q.formula ? `<p class="formula">${esc(q.formula)}</p>` : ''}
       <p class="refs"><span>Cours, § ${esc(q.section_ref || '—')}</span>
-        <a href="${link.href}" target="_blank" rel="noopener">${link.label} →</a></p>`;
+        <a href="${link.href}" target="_blank" rel="noopener">${link.label} →</a>
+        <a class="report" href="${reportLink(q)}" target="_blank" rel="noopener">Signaler une erreur</a></p>`;
   }
 
   const metaLine = q => `<span>Chapitre ${q.chapter}</span><span>${TYPES[q.kind]}</span><span>${LEVELS[q.difficulty] || ''}</span>`;
