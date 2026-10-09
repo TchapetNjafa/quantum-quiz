@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page introuvable — Quiz PHY321</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
+<link rel="stylesheet" href="/quantum-quiz/css/carnet.css">
+</head>
+<body>
+<main class="wrap prose" style="padding:clamp(4rem,12vw,9rem) 0">
+  <p class="eyebrow">Erreur 404</p>
+  <h1>Cette page n’existe plus.</h1>
+  <p id="why" style="font-size:1.15rem;color:var(--ink-2)">Le quiz a été réorganisé en octobre 2026.</p>
+  <div class="btn-row" style="margin-top:2rem">
+    <a class="btn accent" id="go" href="/quantum-quiz/">Aller à l’accueil du quiz</a>
+    <a class="btn ghost" href="https://tchapetnjafa.github.io/quantum-workbook/">Ouvrir le Carnet</a>
+  </div>
+</main>
+<script>
+  // Anciennes adresses (avant octobre 2026) → leur remplaçant
+  (() => {
+    const page = location.pathname.split('/').pop();
+    const carnet = 'https://tchapetnjafa.github.io/quantum-workbook/chapitres/';
+    const anim = {
+      'young-interference': '1-etats-quantiques.html#s1', 'bloch-sphere': '1-etats-quantiques.html#s4',
+      'measurement': '2-mesure-operateurs.html#s1', 'stern-gerlach': '2-mesure-operateurs.html#s1',
+      'time-evolution': '3-dynamique.html#s2', 'rabi-oscillations': '3-dynamique.html#s3',
+      'entanglement': '4-intrication.html#s2', 'teleportation': '4-intrication.html#s6',
+      'wave-packet': '5-fonction-etat.html#s5', 'fourier-transform': '5-fonction-etat.html#s2',
+      'tunneling': '5-fonction-etat.html#s4', 'potential-well': '5-fonction-etat.html#s1',
+      'harmonic-oscillator': '6-oscillateur.html#s1'
+    };
+    const m = /^animation-(.+)\.html$/.exec(page);
+    const why = document.getElementById('why'), go = document.getElementById('go');
+    if (m && anim[m[1]]) {
+      why.textContent = 'Les animations du quiz sont devenues des laboratoires interactifs dans le Carnet.';
+      go.href = carnet + anim[m[1]]; go.textContent = 'Ouvrir le laboratoire correspondant';
+    } else if (/^animations?-(gallery|demo)\.html$/.test(page)) {
+      why.textContent = 'Les animations sont désormais dans le Carnet, chapitre par chapitre.';
+      go.href = 'https://tchapetnjafa.github.io/quantum-workbook/'; go.textContent = 'Ouvrir le Carnet';
+    } else if (page === 'exam-mode.html') {
+      why.textContent = 'Le mode examen se choisit maintenant sur l’accueil du quiz.';
+    } else if (/^(leaderboard|profile|challenges)\.html$/.test(page)) {
+      why.textContent = 'Classement, profil et défis ont été retirés : ils ne pouvaient pas fonctionner sur ce site statique. Vos statistiques restent sur l’accueil.';
+    } else if (page === 'videos.html') {
+      go.href = '/quantum-quiz/resources.html'; go.textContent = 'Voir les ressources (vidéos incluses)';
+    }
+  })();
+</script>
+</body>
+</html>
