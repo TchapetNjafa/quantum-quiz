@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossary — PHY321 Quiz</title>
+<meta name="description" content="The terms of the PHY321 quantum mechanics course, with their definition and the related formula.">
+<meta name="theme-color" content="#f6f2e9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17150f" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icons/icon-192x192.png">
+<link rel="manifest" href="../manifest.json">
+<link rel="alternate" hreflang="fr" href="../glossary.html">
+<link rel="alternate" hreflang="en" href="glossary.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
+<link rel="stylesheet" href="../css/carnet.css">
+<link rel="stylesheet" href="../css/quiz.css">
+<script src="../js/mathjax-config.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script defer src="../js/common.js"></script>
+</head>
+<body>
+<a class="skip" href="#contenu">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html"><b>PHY321 Quiz</b><span>Quantum mechanics · UY1</span></a>
+  <nav aria-label="Main">
+    <a href="index.html">Quiz</a>
+    <a href="flashcards.html">Flashcards</a>
+    <a href="glossary.html" aria-current="page">Glossary</a>
+    <a href="resources.html">Resources</a>
+    <a href="about.html">About</a>
+    <a href="https://tchapetnjafa.github.io/quantum-workbook/en/">Notebook</a>
+  </nav>
+  <button class="icon-btn" data-theme-toggle type="button" aria-label="Theme">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 0 0 17z" fill="currentColor"/></svg>
+  </button>
+</header>
+
+<main id="contenu" class="page">
+  <p class="eyebrow">Course vocabulary</p>
+  <h1>Glossary</h1>
+  <p class="lede">30 terms in alphabetical order. Tap a term to read its definition.</p>
+  <label class="sr-only" for="g-search">Search for a term</label>
+  <input class="search" id="g-search" type="search" placeholder="Search for a term" autocomplete="off">
+  <div class="fc-tools">
+    <label>Chapter <select id="g-chapter"><option value="">All</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></label>
+    <span class="glossary-count" id="g-count" aria-live="polite"></span>
+  </div>
+  <div id="g-list">
+    <details class="term" data-ch="4">
+      <summary><span>Bell inequalities</span><small>ch. 4</small></summary>
+      <div><p>Inequalities satisfied by any local hidden-variable theory. Quantum mechanics violates them, and experiments confirm the violation (Nobel Prize 2022: Aspect, Clauser, Zeilinger).</p><p class="formula">$|S| \leq 2$ (CHSH); quantum maximum $2\sqrt 2$</p></div>
+    </details>
+    <details class="term" data-ch="4">
+      <summary><span>Bell states</span><small>ch. 4</small></summary>
+      <div><p>Four maximally entangled two-qubit states that form an orthonormal basis. They are used in quantum teleportation and quantum cryptography.</p><p class="formula">$\ket{\Phi^\pm} = \frac{1}{\sqrt 2}(\ket{00} \pm \ket{11})$, $\ket{\Psi^\pm} = \frac{1}{\sqrt 2}(\ket{01} \pm \ket{10})$</p></div>
+    </details>
+    <details class="term" data-ch="1">
+      <summary><span>Bloch sphere</span><small>ch. 1</small></summary>
+      <div><p>Geometric picture of the state of a qubit: each pure state is a point on the sphere of radius 1. The north pole is $\ket{0}$, the south pole $\ket{1}$. Mixed states lie inside.</p><p class="formula">$\ket{\psi} = \cos\frac{\theta}{2}\ket{0} + e^{i\phi}\sin\frac{\theta}{2}\ket{1}$</p></div>
+    </details>
+    <details class="term" data-ch="3">
+      <summary><span>Born rule</span><small>ch. 3</small></summary>
+      <div><p>Probability of obtaining the eigenvalue $a_n$ (non-degenerate case) in a measurement on the state $\ket{\psi}$ (postulate 4).</p><p class="formula">$P(a_n) = |\braket{a_n|\psi}|^2$</p></div>
+    </details>
+    <details class="term" data-ch="6">
+      <summary><span>Coherent states</span><small>ch. 6</small></summary>
+      <div><p>Eigenstates of the annihilation operator. They saturate the uncertainty relation and their mean values follow the classical motion. They give a good description of laser light.</p><p class="formula">$\hat a\ket{\alpha} = \alpha\ket{\alpha}$</p></div>
+    </details>
+    <details class="term" data-ch="2">
+      <summary><span>Commutator</span><small>ch. 2</small></summary>
+      <div><p>$[\hat A, \hat B] = \hat A\hat B - \hat B\hat A$. Two observables that do not commute have, in general, no common eigenbasis: they cannot both be given well-defined values at the same time.</p><p class="formula">$[\hat x, \hat p] = i\hbar$</p></div>
+    </details>
+    <details class="term" data-ch="6">
+      <summary><span>Creation and annihilation operators</span><small>ch. 6</small></summary>
+      <div><p>Ladder operators of the oscillator: $\hat a$ lowers the state by one level, $\hat a^\dagger$ raises it by one level.</p><p class="formula">$\hat a = \sqrt{\frac{m\omega}{2\hbar}}\left(\hat x + \frac{i\hat p}{m\omega}\right)$</p></div>
+    </details>
+    <details class="term" data-ch="1">
+      <summary><span>Decoherence</span><small>ch. 1</small></summary>
+      <div><p>Loss of interference in a system through its interaction with the environment. It explains why superpositions of macroscopic objects are not observed.</p></div>
+    </details>
+    <details class="term" data-ch="1">
+      <summary><span>Dirac notation</span><small>ch. 1</small></summary>
+      <div><p>A ket $\ket{\psi}$ represents a state vector, a bra $\bra{\phi}$ the associated linear form. Their inner product is written $\braket{\phi|\psi}$.</p><p class="formula">$\braket{\phi|\psi} = \sum_i \phi_i^* \psi_i$</p></div>
+    </details>
+    <details class="term" data-ch="4">
+      <summary><span>Entanglement</span><small>ch. 4</small></summary>
+      <div><p>A state of several systems is entangled if it cannot be written as a product of states of each one. Measurements on the parts are then correlated beyond what a local description allows.</p></div>
+    </details>
+    <details class="term" data-ch="5">
+      <summary><span>Fourier transform</span><small>ch. 5</small></summary>
+      <div><p>Relates the position and momentum representations of the same state.</p><p class="formula">$\tilde\psi(p) = \frac{1}{\sqrt{2\pi\hbar}}\int \psi(x)\, e^{-ipx/\hbar}\,\mathrm{d}x$</p></div>
+    </details>
+    <details class="term" data-ch="3">
+      <summary><span>Hamiltonian</span><small>ch. 3</small></summary>
+      <div><p>The energy observable. It governs time evolution; its eigenstates are the stationary states.</p><p class="formula">$\hat H = \frac{\hat p^2}{2m} + V(\hat x)$</p></div>
+    </details>
+    <details class="term" data-ch="6">
+      <summary><span>Hermite polynomials</span><small>ch. 6</small></summary>
+      <div><p>Polynomials that appear in the eigenfunctions of the harmonic oscillator, with $\xi = \sqrt{m\omega/\hbar}\,x$.</p><p class="formula">$\psi_n(x) = N_n H_n(\xi)\, e^{-\xi^2/2}$</p></div>
+    </details>
+    <details class="term" data-ch="2">
+      <summary><span>Hermitian operator</span><small>ch. 2</small></summary>
+      <div><p>An operator equal to its adjoint, $\hat A = \hat A^\dagger$. Its eigenvalues are real; eigenvectors belonging to distinct eigenvalues are orthogonal.</p><p class="formula">$\braket{\phi|\hat A\psi} = \braket{\hat A\phi|\psi}$</p></div>
+    </details>
+    <details class="term" data-ch="1">
+      <summary><span>Hilbert space</span><small>ch. 1</small></summary>
+      <div><p>A complete complex vector space with an inner product. The states of a system are normalised vectors of this space. For a qubit, it is $\mathbb{C}^2$.</p></div>
+    </details>
+    <details class="term" data-ch="2">
+      <summary><span>Observable</span><small>ch. 2</small></summary>
+      <div><p>A measurable physical quantity, represented by a Hermitian operator. Its eigenvalues are the possible results of a measurement.</p></div>
+    </details>
+    <details class="term" data-ch="2">
+      <summary><span>Pauli matrices</span><small>ch. 2</small></summary>
+      <div><p>Three 2×2 matrices that are both Hermitian and unitary. Together with the identity, they form a basis of the operators on a qubit. For a spin 1/2, $\hat S_i = \frac{\hbar}{2}\sigma_i$.</p><p class="formula">$\sigma_x = \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}$, $\sigma_y = \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix}$, $\sigma_z = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix}$</p></div>
+    </details>
+    <details class="term" data-ch="3">
+      <summary><span>Postulates of quantum mechanics</span><small>ch. 3</small></summary>
+      <div><p>The six postulates of the course: (1) the state is a vector in a Hilbert space; (2) every measurable quantity is represented by a Hermitian operator; (3) the results of a measurement are its eigenvalues; (4) their probability follows the Born rule; (5) after the measurement, the state is projected onto the eigenspace obtained; (6) time evolution follows the Schrödinger equation.</p></div>
+    </details>
+    <details class="term" data-ch="1">
+      <summary><span>Probability amplitude</span><small>ch. 1</small></summary>
+      <div><p>A complex number associated with a possible outcome. The probability is the square of its modulus. When several indistinguishable paths lead to the same outcome, it is the amplitudes that add, not the probabilities.</p><p class="formula">$P(k) = |\braket{k|\psi}|^2$</p></div>
+    </details>
+    <details class="term" data-ch="6">
+      <summary><span>Quantum harmonic oscillator</span><small>ch. 6</small></summary>
+      <div><p>A particle in a quadratic potential. Equally spaced energy levels, non-zero minimum energy. A model for molecular vibrations, phonons and the modes of the electromagnetic field.</p><p class="formula">$E_n = \hbar\omega\left(n + \frac{1}{2}\right)$, $n = 0, 1, 2, \dots$</p></div>
+    </details>
+    <details class="term" data-ch="4">
+      <summary><span>Quantum teleportation</span><small>ch. 4</small></summary>
+      <div><p>A protocol that transfers the state of a qubit to a distant qubit using an entangled pair and two classical bits. Neither matter nor information travels faster than light.</p></div>
+    </details>
+    <details class="term" data-ch="1">
+      <summary><span>Qubit</span><small>ch. 1</small></summary>
+      <div><p>A quantum system with two basis states $\ket{0}$ and $\ket{1}$. Its general state is a normalised superposition of these two states.</p><p class="formula">$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$, $|\alpha|^2 + |\beta|^2 = 1$</p></div>
+    </details>
+    <details class="term" data-ch="3">
+      <summary><span>Schrödinger equation</span><small>ch. 3</small></summary>
+      <div><p>Equation for the time evolution of the state of an isolated system (postulate 6). Its solutions of the form $e^{-iEt/\hbar}\ket{E}$ are the stationary states.</p><p class="formula">$i\hbar\frac{\mathrm{d}}{\mathrm{d}t}\ket{\psi(t)} = \hat H\ket{\psi(t)}$</p></div>
+    </details>
+    <details class="term" data-ch="2">
+      <summary><span>Spin</span><small>ch. 2</small></summary>
+      <div><p>Intrinsic angular momentum, with no classical equivalent. For a spin 1/2, a measurement of $S_z$ gives only $\pm\hbar/2$ (Stern–Gerlach experiment).</p><p class="formula">$\hat S^2\ket{s, m_s} = \hbar^2 s(s+1)\ket{s, m_s}$</p></div>
+    </details>
+    <details class="term" data-ch="1">
+      <summary><span>Superposition</span><small>ch. 1</small></summary>
+      <div><p>A linear combination of states. Before measurement, a system in a superposition has no definite value for the corresponding observable. This is not classical ignorance: the terms of the superposition can interfere.</p><p class="formula">$\ket{\psi} = \sum_i c_i \ket{\phi_i}$</p></div>
+    </details>
+    <details class="term" data-ch="4">
+      <summary><span>Tensor product</span><small>ch. 4</small></summary>
+      <div><p>Construction of the state space of a composite system from the spaces of its parts. For two qubits: $\mathbb{C}^2 \otimes \mathbb{C}^2 \simeq \mathbb{C}^4$.</p><p class="formula">$\ket{\psi} \otimes \ket{\phi} = \ket{\psi\phi}$</p></div>
+    </details>
+    <details class="term" data-ch="2">
+      <summary><span>Uncertainty relation</span><small>ch. 2</small></summary>
+      <div><p>For two observables, the product of the standard deviations is bounded by the mean value of their commutator. For position and momentum: $\Delta x\,\Delta p \geq \hbar/2$.</p><p class="formula">$\Delta A\,\Delta B \geq \frac{1}{2}|\langle[\hat A, \hat B]\rangle|$</p></div>
+    </details>
+    <details class="term" data-ch="5">
+      <summary><span>Wave function</span><small>ch. 5</small></summary>
+      <div><p>Components of the state in the position basis. $|\psi(x)|^2$ is the probability density for detecting the particle at $x$.</p><p class="formula">$\psi(x, t) = \braket{x|\psi(t)}$</p></div>
+    </details>
+    <details class="term" data-ch="5">
+      <summary><span>Wave packet</span><small>ch. 5</small></summary>
+      <div><p>A superposition of plane waves localised in space. The narrower it is in position, the broader its momentum distribution.</p><p class="formula">$\psi(x, t) = \frac{1}{\sqrt{2\pi}}\int \tilde\psi(k)\, e^{i(kx - \omega t)}\,\mathrm{d}k$</p></div>
+    </details>
+    <details class="term" data-ch="1">
+      <summary><span>Wave–particle duality</span><small>ch. 1</small></summary>
+      <div><p>A quantum object shows wave-like behaviour (interference) or particle-like behaviour (localised detection) depending on the set-up. Young’s slits lit one photon at a time show both: point-like impacts, and fringes as they accumulate.</p><p class="formula">$\lambda = h/p$ (de Broglie)</p></div>
+    </details>
+  </div>
+  <script>
+  (() => {
+    const q = document.getElementById('g-search'), ch = document.getElementById('g-chapter');
+    const items = [...document.querySelectorAll('.term')], count = document.getElementById('g-count');
+    const norm = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const filter = () => {
+      const s = norm(q.value.trim());
+      let n = 0;
+      items.forEach(el => {
+        const show = (!ch.value || el.dataset.ch === ch.value) && (!s || norm(el.textContent).includes(s));
+        el.hidden = !show; if (show) n++;
+        if (s && show) el.open = true;
+      });
+      count.textContent = n + (n === 1 ? ' term' : ' terms');
+    };
+    q.addEventListener('input', filter); ch.addEventListener('change', filter); filter();
+  })();
+  </script>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>PHY321 · Department of Physics, Faculty of Science, University of Yaoundé I · S. G. Nana Engo, J.-P. Tchapet Njafa, C. Tchodimou</span>
+    <span>Content licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">CC BY-NC-SA 4.0</a> · <a href="https://github.com/TchapetNjafa/quantum-quiz">Source on GitHub</a></span>
+  </div>
+</footer>
+</body>
+</html>

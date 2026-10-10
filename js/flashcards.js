@@ -3,26 +3,27 @@
    Répétition simple : « À revoir » remet la fiche en tête, « Je savais » la fait reculer. */
 (() => {
   'use strict';
-  const { loadBank, store, shuffle, esc, typeset, CHAPTERS, carnetLink } = window.Q;
+  const { loadBank, store, shuffle, esc, typeset, CHAPTERS, carnetLink, t } = window.Q;
   const $ = id => document.getElementById(id);
   let deck = [], i = 0, flipped = false;
 
   function toCard(q) {
     if (q.kind === 'flashcard') return { id: q.id, ch: q.chapter, front: q.front, back: q.back, q };
-    const answer = q.kind === 'qcm' ? q.options[q.correct_answer] : (q.correct_answer ? 'Vrai.' : 'Faux.');
+    const answer = q.kind === 'qcm' ? q.options[q.correct_answer] : (q.correct_answer ? t('Vrai.', 'True.') : t('Faux.', 'False.'));
     return { id: q.id, ch: q.chapter, front: q.question, back: answer, more: q.explanation, q };
   }
 
   async function init() {
     let bank;
     try { bank = await loadBank(); } catch (err) {
-      $('fc-card').textContent = 'Impossible de charger les fiches (' + err.message + ').';
+      $('fc-card').textContent = t('Impossible de charger les fiches (', 'The cards could not be loaded (') + err.message + ').';
       return;
     }
     const all = bank.filter(q => ['flashcard', 'qcm', 'vrai_faux'].includes(q.kind)).map(toCard);
     const sel = $('fc-chapter');
     sel.insertAdjacentHTML('beforeend', Object.entries(CHAPTERS).map(([n, c]) => `<option value="${n}">${n} · ${esc(c.title)}</option>`).join(''));
-    const ch = Number(new URLSearchParams(location.search).get('chapitre'));
+    const params = new URLSearchParams(location.search);
+    const ch = Number(params.get('chapitre') || params.get('chapter'));
     if (CHAPTERS[ch]) sel.value = String(ch);
     const build = () => {
       const boxes = store.read().boxes || {};
@@ -41,9 +42,9 @@
   function show() {
     const c = deck[i];
     flipped = false;
-    $('fc-pos').textContent = deck.length ? `Fiche ${i + 1} sur ${deck.length}` : 'Aucune fiche';
+    $('fc-pos').textContent = deck.length ? t(`Fiche ${i + 1} sur ${deck.length}`, `Card ${i + 1} of ${deck.length}`) : t('Aucune fiche', 'No cards');
     if (!c) return;
-    $('fc-card').innerHTML = `<span class="fc-side">Recto · chapitre ${c.ch}</span><p class="fc-text">${esc(c.front)}</p>`;
+    $('fc-card').innerHTML = `<span class="fc-side">${t('Recto · chapitre', 'Front · chapter')} ${c.ch}</span><p class="fc-text">${esc(c.front)}</p>`;
     $('fc-flip').hidden = false;
     $('fc-actions').hidden = true;
     typeset($('fc-card'));
@@ -54,7 +55,7 @@
     if (!c || flipped) return;
     flipped = true;
     const link = carnetLink(c.q);
-    $('fc-card').innerHTML = `<span class="fc-side">Verso · § ${esc(c.q.section_ref || '')}</span><p class="fc-text">${esc(c.back)}</p>
+    $('fc-card').innerHTML = `<span class="fc-side">${t('Verso', 'Back')} · § ${esc(c.q.section_ref || '')}</span><p class="fc-text">${esc(c.back)}</p>
       ${c.more ? `<p class="muted">${esc(c.more)}</p>` : ''}
       <p class="refs"><a href="${link.href}" target="_blank" rel="noopener">${link.label} →</a></p>`;
     $('fc-flip').hidden = true;

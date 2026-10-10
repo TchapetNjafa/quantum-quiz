@@ -142,6 +142,7 @@
 /* classement */
 .dd-bank { display: flex; flex-wrap: wrap; gap: .5rem; min-height: 3.2rem; padding: .6rem; border: 1px dashed var(--rule); border-radius: var(--r-md); margin-bottom: .8rem; }
 .dd-bank:empty::after { content: "Toutes les étiquettes sont placées."; font: .82rem var(--sans); color: var(--muted); align-self: center; }
+.dd-bank:empty:lang(en)::after { content: "All labels have been placed."; }
 .chip {
   font: 500 .92rem/1.3 var(--sans); color: var(--ink); background: var(--paper-2); border: 1px solid var(--rule);
   border-radius: var(--r-md); padding: .55rem .8rem; min-height: 2.75rem; cursor: grab; text-align: left; touch-action: manipulation;

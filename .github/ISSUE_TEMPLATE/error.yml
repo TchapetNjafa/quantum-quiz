@@ -1,0 +1,49 @@
+name: Report an error in a question (English version)
+description: Wrong answer, inaccurate explanation, typo, unreadable figure…
+title: "[question] "
+labels: ["erreur signalée"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Every report is read by the PHY321 teaching team before any correction.
+        A (free) GitHub account is needed to submit this form.
+  - type: input
+    id: question
+    attributes:
+      label: Question ID
+      description: Filled in automatically from the quiz (e.g. ch3-q012).
+      placeholder: ch3-q012
+    validations:
+      required: true
+  - type: dropdown
+    id: nature
+    attributes:
+      label: Type of problem
+      options:
+        - The expected answer is wrong
+        - The explanation is inaccurate or incomplete
+        - The question is ambiguous
+        - Typo or formula (LaTeX) error
+        - Language error (English translation)
+        - Figure or clickable area is wrong
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: What is wrong
+      description: Quote the passage and explain why it seems wrong to you.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Suggested correction (optional)
+      description: If possible, with the section of the lecture notes or a reference.
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: Filled in automatically.

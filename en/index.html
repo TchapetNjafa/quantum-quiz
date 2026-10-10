@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PHY321 Quiz — Introduction to quantum mechanics</title>
+<meta name="description" content="Worked questions from the PHY321 course (University of Yaoundé I): six chapters, eight formats, immediate correction and links to the Notebook. No account needed, works offline.">
+<meta property="og:title" content="PHY321 Quiz — quantum mechanics">
+<meta property="og:description" content="Worked questions from the PHY321 course at the University of Yaoundé I, linked to the Notebook labs.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f6f2e9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17150f" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icons/icon-192x192.png">
+<link rel="manifest" href="../manifest.json">
+<link rel="alternate" hreflang="fr" href="../index.html">
+<link rel="alternate" hreflang="en" href="index.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
+<link rel="stylesheet" href="../css/carnet.css">
+<link rel="stylesheet" href="../css/quiz.css">
+<script src="../js/mathjax-config.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script defer src="../js/common.js"></script>
+<script defer src="../js/questions.js"></script>
+<script defer src="../js/home.js"></script>
+</head>
+<body>
+<a class="skip" href="#contenu">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html"><b>PHY321 Quiz</b><span>Quantum mechanics · UY1</span></a>
+  <nav aria-label="Main">
+    <a href="index.html" aria-current="page">Quiz</a>
+    <a href="flashcards.html">Flashcards</a>
+    <a href="glossary.html">Glossary</a>
+    <a href="resources.html">Resources</a>
+    <a href="about.html">About</a>
+    <a href="https://tchapetnjafa.github.io/quantum-workbook/en/">Notebook</a>
+  </nav>
+  <button class="icon-btn" data-theme-toggle type="button" aria-label="Theme">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 0 0 17z" fill="currentColor"/></svg>
+  </button>
+</header>
+
+<main id="contenu" class="wrap">
+  <section class="home-head">
+    <p class="eyebrow">PHY321 · University of Yaoundé I · 2026-2027</p>
+    <h1>Quantum mechanics quiz</h1>
+    <p class="lede">Questions drawn from the course, corrected one by one. Each correction points to the section of the lecture notes and to the matching Notebook lab.</p>
+    <dl class="figures" id="figures" aria-live="polite">
+      <div><dt>questions</dt><dd data-fig="questions">…</dd></div>
+      <div><dt>chapters</dt><dd data-fig="chapters">…</dd></div>
+      <div><dt>formats</dt><dd data-fig="types">…</dd></div>
+    </dl>
+  </section>
+
+  <div class="home-grid">
+    <form class="panel config" id="config" novalidate>
+      <h2 class="h-small">Set up a quiz</h2>
+
+      <div class="field">
+        <label for="f-chapter">Chapter</label>
+        <select id="f-chapter" name="chapter"><option value="">All chapters</option></select>
+      </div>
+
+      <fieldset class="field">
+        <legend>Number of questions</legend>
+        <div class="seg" id="f-count">
+          <button type="button" data-v="10" aria-pressed="true">10</button>
+          <button type="button" data-v="20" aria-pressed="false">20</button>
+          <button type="button" data-v="30" aria-pressed="false">30</button>
+          <button type="button" data-v="40" aria-pressed="false">40</button>
+        </div>
+      </fieldset>
+
+      <fieldset class="field">
+        <legend>Level</legend>
+        <div class="chips" id="f-levels"></div>
+      </fieldset>
+
+      <fieldset class="field">
+        <legend>Mode</legend>
+        <div class="seg" id="f-mode">
+          <button type="button" data-v="train" aria-pressed="true">Practice</button>
+          <button type="button" data-v="exam" aria-pressed="false">Exam</button>
+        </div>
+        <p class="field-help" id="f-mode-help"></p>
+      </fieldset>
+
+      <details class="field formats">
+        <summary>Question formats <span id="f-types-count"></span></summary>
+        <div class="chips" id="f-types"></div>
+      </details>
+
+      <div class="config-foot">
+        <p class="avail" id="avail" aria-live="polite"></p>
+        <button type="submit" class="btn accent big" id="start">Start</button>
+      </div>
+    </form>
+
+    <aside class="panel daily" id="daily" aria-labelledby="daily-t">
+      <h2 class="h-small" id="daily-t">Question of the day</h2>
+      <p class="q-meta" id="daily-meta"></p>
+      <div id="daily-body"><p class="muted">Loading…</p></div>
+      <div id="daily-feedback" class="q-feedback" hidden></div>
+      <button type="button" class="btn accent" id="daily-check" disabled>Check</button>
+    </aside>
+  </div>
+
+  <section class="stats" id="stats" aria-labelledby="stats-t">
+    <h2 id="stats-t">Your statistics</h2>
+    <p class="muted">They stay in this browser: no account, no data sent anywhere.</p>
+    <dl class="stat-grid" id="stat-grid"></dl>
+    <div class="stats-cols">
+      <div>
+        <h3 class="h-small">By chapter</h3>
+        <ol class="ch-bars" id="ch-bars"></ol>
+      </div>
+      <div>
+        <h3 class="h-small">Recent sets</h3>
+        <ol class="history" id="history"></ol>
+        <div class="btn-row">
+          <a class="btn ghost" id="review-btn" href="quiz.html" hidden>Review my mistakes</a>
+          <button type="button" class="btn ghost" id="reset-btn">Delete my statistics</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>PHY321 · Department of Physics, Faculty of Science, University of Yaoundé I · S. G. Nana Engo, J.-P. Tchapet Njafa, C. Tchodimou</span>
+    <span>Content licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">CC BY-NC-SA 4.0</a> · <a href="https://github.com/TchapetNjafa/quantum-quiz">Source on GitHub</a></span>
+  </div>
+</footer>
+</body>
+</html>

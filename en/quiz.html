@@ -1,50 +1,50 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Quiz en cours — Quiz PHY321</title>
-<meta name="description" content="Série de questions du cours PHY321, Université de Yaoundé I.">
+<title>Quiz in progress — PHY321 Quiz</title>
+<meta name="description" content="A set of questions from the PHY321 course, University of Yaoundé I.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#f6f2e9" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#17150f" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
-<link rel="manifest" href="manifest.json">
-<link rel="alternate" hreflang="fr" href="quiz.html">
-<link rel="alternate" hreflang="en" href="en/quiz.html">
+<link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icons/icon-192x192.png">
+<link rel="manifest" href="../manifest.json">
+<link rel="alternate" hreflang="fr" href="../quiz.html">
+<link rel="alternate" hreflang="en" href="quiz.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
-<link rel="stylesheet" href="css/carnet.css">
-<link rel="stylesheet" href="css/quiz.css">
-<script src="js/mathjax-config.js"></script>
+<link rel="stylesheet" href="../css/carnet.css">
+<link rel="stylesheet" href="../css/quiz.css">
+<script src="../js/mathjax-config.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-<script defer src="js/common.js"></script>
-<script defer src="js/questions.js"></script>
-<script defer src="js/quiz.js"></script>
+<script defer src="../js/common.js"></script>
+<script defer src="../js/questions.js"></script>
+<script defer src="../js/quiz.js"></script>
 </head>
 <body class="quiz-page">
-<a class="skip" href="#q-card">Aller à la question</a>
+<a class="skip" href="#q-card">Skip to the question</a>
 
 <header class="topbar">
-  <a class="brand" href="index.html"><b>Quiz PHY321</b><span>Mécanique quantique · UY1</span></a>
-  <nav aria-label="Principal">
+  <a class="brand" href="index.html"><b>PHY321 Quiz</b><span>Quantum mechanics · UY1</span></a>
+  <nav aria-label="Main">
     <a href="index.html">Quiz</a>
-    <a href="flashcards.html">Fiches</a>
-    <a href="glossary.html">Glossaire</a>
-    <a href="resources.html">Ressources</a>
-    <a href="about.html">À propos</a>
-    <a href="https://tchapetnjafa.github.io/quantum-workbook/">Carnet</a>
+    <a href="flashcards.html">Flashcards</a>
+    <a href="glossary.html">Glossary</a>
+    <a href="resources.html">Resources</a>
+    <a href="about.html">About</a>
+    <a href="https://tchapetnjafa.github.io/quantum-workbook/en/">Notebook</a>
   </nav>
-  <button class="icon-btn" data-theme-toggle type="button" aria-label="Thème">
+  <button class="icon-btn" data-theme-toggle type="button" aria-label="Theme">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 0 0 17z" fill="currentColor"/></svg>
   </button>
 </header>
 
 <main class="quiz-wrap" id="quiz">
   <div class="quiz-head">
-    <p class="eyebrow" id="q-scope">Chargement…</p>
+    <p class="eyebrow" id="q-scope">Loading…</p>
     <div class="q-progress">
       <span id="q-count"></span>
       <span id="q-timer" class="timer" hidden></span>
@@ -59,11 +59,11 @@
   </article>
 
   <div class="q-actions">
-    <button type="button" class="btn ghost" id="skip">Passer</button>
-    <button type="button" class="btn accent" id="validate" disabled>Valider</button>
-    <button type="button" class="btn accent" id="next" hidden>Question suivante</button>
+    <button type="button" class="btn ghost" id="skip">Skip</button>
+    <button type="button" class="btn accent" id="validate" disabled>Check</button>
+    <button type="button" class="btn accent" id="next" hidden>Next question</button>
   </div>
-  <p class="quit"><a href="index.html">Quitter la série</a></p>
+  <p class="quit"><a href="index.html">Leave this set</a></p>
 </main>
 </body>
 </html>

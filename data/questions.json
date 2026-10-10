@@ -950,7 +950,7 @@
             }
           ],
           "correct_hotspot": "y_positive",
-          "explanation": "Les états avec phase imaginaire comme |i⟩ = (|0⟩ + i|1⟩)/√2 sont sur l'axe y.",
+          "explanation": "Les états avec phase imaginaire comme |+i⟩ = (|0⟩ + i|1⟩)/√2 sont sur l'axe y.",
           "section_ref": "1.3",
           "tags": [
             "Bloch",
@@ -2933,7 +2933,7 @@
             "Les atomes perdent de l'énergie en traversant le champ"
           ],
           "correct_answer": 0,
-          "explanation": "L'expérience de Stern-Gerlach (1922) démontre la quantification du moment magnétique, interprétée après 1925 comme celle du spin de l'électron. Un faisceau d'atomes d'argent (spin 1/2) traverse un champ magnétique inhomogène $\\nabla B_z$. Classiquement, on s'attendrait à une distribution continue. Mais quantiquement, le spin ne peut prendre que DEUX valeurs : $m_s = +1/2$ (spin up, cyan, dévié vers le haut) et $m_s = -1/2$ (spin down, rose, dévié vers le bas). La force sur l'atome est $F_z = \\mu_z \\nabla B_z$ où $\\mu_z = \\pm \\mu_B$ (magnéton de Bohr). Cette expérience révèle la nature DISCRÈTE du moment angulaire intrinsèque.",
+          "explanation": "L'expérience de Stern-Gerlach (1922) démontre la quantification du moment magnétique, interprétée après 1925 comme celle du spin de l'électron. Un faisceau d'atomes d'argent (spin 1/2) traverse un champ magnétique inhomogène, de gradient $\\partial B_z/\\partial z$. Classiquement, on s'attendrait à une distribution continue. Mais quantiquement, le spin ne peut prendre que DEUX valeurs : $m_s = +1/2$ (spin up, cyan, dévié vers le haut) et $m_s = -1/2$ (spin down, rose, dévié vers le bas). La force sur l'atome est $F_z = \\mu_z \\nabla B_z$ où $\\mu_z = \\pm \\mu_B$ (magnéton de Bohr). Cette expérience révèle la nature DISCRÈTE du moment angulaire intrinsèque.",
           "section_ref": "2.2",
           "formula": "$S_z \\ket{\\pm} = \\pm\\frac{\\hbar}{2}\\ket{\\pm}$",
           "tags": [
@@ -7070,7 +7070,7 @@
             "L'espacement varie avec n"
           ],
           "correct_answer": 1,
-          "explanation": "Les niveaux sont équidistants: $E_n = (n + \\frac{1}{2})\\hbar\\omega$, donc $\\Delta E = E_{n+1} - E_n = \\hbar\\omega$ pour tout n. C'est une propriété unique de l'oscillateur harmonique.",
+          "explanation": "Les niveaux sont équidistants: $E_n = (n + \\frac{1}{2})\\hbar\\omega$, donc $\\Delta E = E_{n+1} - E_n = \\hbar\\omega$ pour tout n. C'est une signature de l'oscillateur harmonique (les autres potentiels usuels, comme le puits infini ou l'atome d'hydrogène, n'ont pas des niveaux équidistants).",
           "section_ref": "6.1",
           "formula": null,
           "image_url": "assets/images/ch6/harmonic-oscillator.svg",
@@ -7468,7 +7468,7 @@
             "Pour T → 0 (température nulle)"
           ],
           "correct_answer": 1,
-          "explanation": "C'est le théorème de correspondance de Bohr: pour n → ∞, la densité quantique tend vers la densité classique. Cette convergence assure la cohérence entre mécanique quantique et physique classique aux grandes échelles.",
+          "explanation": "C'est le principe de correspondance de Bohr : pour n → ∞, la densité quantique tend vers la densité classique. Cette convergence assure la cohérence entre mécanique quantique et physique classique aux grandes échelles.",
           "section_ref": "6.3",
           "formula": null,
           "tags": [

@@ -59,6 +59,21 @@ service-worker.js   mode hors connexion (changer VERSION à chaque mise en ligne
 2. Lancer `python3 scripts/valider_questions.py` : il vérifie les champs de chaque format.
 3. Changer `VERSION` dans `service-worker.js` pour que les appareils récupèrent la nouvelle banque.
 
+## Version anglaise (bilingue FR / EN)
+
+Le quiz existe en anglais : <https://tchapetnjafa.github.io/quantum-quiz/en/> (bouton **FR / EN** dans la barre du haut).
+
+- Pages anglaises dans `en/` (mêmes scripts et styles que les pages françaises).
+- Banque anglaise : `data/questions.en.json`, **mêmes questions, mêmes identifiants, mêmes réponses** que
+  `data/questions.json` ; seuls les textes sont traduits. `scripts/valider_questions.py` (et l'action GitHub)
+  refuse une banque anglaise désalignée.
+- Textes générés en JavaScript : `t('français', 'English')` dans `js/common.js` et suivants.
+- Paramètres d'URL : `?chapter=N` (anglais) et `?chapitre=N` sont acceptés.
+- Signalements : formulaire anglais `.github/ISSUE_TEMPLATE/error.yml`.
+- Les statistiques locales sont communes aux deux langues.
+
+**Règle : toute modification (question, correction, interface) doit être faite dans les deux langues.**
+
 ## Signalements et contrôle automatique
 
 Sous chaque correction, « Signaler une erreur » ouvre un formulaire d'issue GitHub prérempli avec

@@ -3,15 +3,17 @@
 (() => {
   'use strict';
   const { loadBank, store, recordAnswer, readConfig, configQuery, pool, CHAPTERS, TYPES, AUTO_TYPES, LEVELS,
-    esc, pct, plural, typeset } = window.Q;
+    esc, pctText, plural, typeset, t, LOCALE, CH_PARAM } = window.Q;
   const { render, grade, feedbackHTML, metaLine } = window.Questions;
   const $ = id => document.getElementById(id);
+  const LANG_EN = window.Q.LANG === 'en';
 
   let bank = [];
 
   async function init() {
     try { bank = await loadBank(); } catch (err) {
-      $('avail').textContent = 'Impossible de charger les questions (' + err.message + '). Rechargez la page.';
+      $('avail').textContent = t('Impossible de charger les questions (' + err.message + '). Rechargez la page.',
+        'The questions could not be loaded (' + err.message + '). Reload the page.');
       $('start').disabled = true;
       return;
     }
@@ -52,7 +54,7 @@
     const sel = $('f-chapter');
     sel.insertAdjacentHTML('beforeend', Object.entries(CHAPTERS).map(([n, c]) =>
       `<option value="${n}">${n} · ${esc(c.title)} (${bank.filter(q => q.chapter === Number(n)).length})</option>`).join(''));
-    sel.options[0].textContent = `Tous les chapitres (${bank.length})`;
+    sel.options[0].textContent = `${t('Tous les chapitres', 'All chapters')} (${bank.length})`;
     sel.value = cfg.chapter || '';
 
     chips($('f-levels'), Object.entries(LEVELS), 'niveau', cfg.levels);
@@ -69,12 +71,14 @@
     function update() {
       const c = read();
       const n = pool(bank, c).length;
-      $('f-types-count').textContent = `(${c.types.length} sur ${present.length})`;
+      $('f-types-count').textContent = t(`(${c.types.length} sur ${present.length})`, `(${c.types.length} of ${present.length})`);
       $('f-mode-help').textContent = c.exam
-        ? 'Chronomètre, correction à la fin. Fiches et interprétations exclues (non corrigées automatiquement).'
-        : 'Correction et explication après chaque réponse.';
+        ? t('Chronomètre, correction à la fin. Fiches et interprétations exclues (non corrigées automatiquement).',
+          'Timed, marked at the end. Flashcards and interpretation questions are excluded (not marked automatically).')
+        : t('Correction et explication après chaque réponse.', 'Correction and explanation after each answer.');
       const empty = !c.levels.length || !c.types.length || !n;
-      $('avail').textContent = empty ? 'Aucune question avec ces réglages.'
+      $('avail').textContent = empty ? t('Aucune question avec ces réglages.', 'No questions with these settings.')
+        : LANG_EN ? `${plural(n, 'question available', 'questions available')}${n < c.n ? `: the set will have ${n}` : ''}.`
         : `${plural(n, 'question disponible', 'questions disponibles')}${n < c.n ? ` : la série en comptera ${n}` : ''}.`;
       $('start').disabled = empty;
     }
@@ -133,33 +137,33 @@
     const toReview = ids.filter(id => !seen[id][2]);
 
     $('stat-grid').innerHTML = [
-      ['séries terminées', history.length],
-      ['questions déjà vues', `${ids.length}<small> / ${bank.length}</small>`],
-      ['réussies au dernier essai', ids.length ? `${pct(lastOk, ids.length)} %` : '—'],
-      ['à revoir', toReview.length]
+      [t('séries terminées', 'sets completed'), history.length],
+      [t('questions déjà vues', 'questions seen'), `${ids.length}<small> / ${bank.length}</small>`],
+      [t('réussies au dernier essai', 'correct at last attempt'), ids.length ? pctText(lastOk, ids.length) : '—'],
+      [t('à revoir', 'to review'), toReview.length]
     ].map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
 
     $('ch-bars').innerHTML = Object.entries(CHAPTERS).map(([n, c]) => {
       const inCh = bank.filter(q => q.chapter === Number(n));
       const seenCh = inCh.filter(q => seen[q.id]);
       const okCh = seenCh.filter(q => seen[q.id][2]).length;
-      return `<li><a href="index.html?chapitre=${n}" data-ch="${n}"><span class="cb-name">${n} · ${esc(c.title)}</span>
+      return `<li><a href="index.html?${CH_PARAM}=${n}" data-ch="${n}"><span class="cb-name">${n} · ${esc(c.title)}</span>
         <span class="cb-track" aria-hidden="true"><i style="--p:${(okCh / inCh.length).toFixed(3)}"></i></span>
         <span class="cb-val">${okCh} / ${inCh.length}</span></a></li>`;
     }).join('');
 
     $('history').innerHTML = history.length ? history.slice(-5).reverse().map(h =>
-      `<li><span>${new Date(h.t).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}</span>
-        <span>${h.ch ? 'Chapitre ' + h.ch : 'Tous chapitres'}${h.exam ? ' · examen' : ''}</span>
+      `<li><span>${new Date(h.t).toLocaleDateString(LOCALE, { day: 'numeric', month: 'short' })}</span>
+        <span>${h.ch ? t('Chapitre ', 'Chapter ') + h.ch : t('Tous chapitres', 'All chapters')}${h.exam ? t(' · examen', ' · exam') : ''}</span>
         <b>${h.ok} / ${h.n}</b></li>`).join('')
-      : '<li class="muted">Aucune série terminée pour l’instant.</li>';
+      : `<li class="muted">${t('Aucune série terminée pour l’instant.', 'No completed sets yet.')}</li>`;
 
     const review = $('review-btn');
     review.hidden = !toReview.length;
     if (toReview.length) {
       const n = Math.min(toReview.length, 20);
       review.href = 'quiz.html' + configQuery({ ...readConfig(''), ids: toReview, n });
-      review.textContent = `Revoir mes erreurs (${toReview.length})`;
+      review.textContent = `${t('Revoir mes erreurs', 'Review my mistakes')} (${toReview.length})`;
     }
   }
 
@@ -173,7 +177,7 @@
     $('config').scrollIntoView({ behavior: 'smooth' });
   });
   $('reset-btn').addEventListener('click', () => {
-    if (!confirm('Effacer toutes vos statistiques et votre historique dans ce navigateur ?')) return;
+    if (!confirm(t('Effacer toutes vos statistiques et votre historique dans ce navigateur ?', 'Delete all your statistics and history in this browser?'))) return;
     store.update(s => ({ prefs: s.prefs }));
     stats();
   });
