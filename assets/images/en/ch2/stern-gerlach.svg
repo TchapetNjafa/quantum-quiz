@@ -1,50 +1,24 @@
-<svg width="700" height="300" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
-  <rect width="700" height="300" fill="#0f172a"/>
-
-  <!-- Source -->
-  <rect x="30" y="130" width="60" height="40" fill="#334155" stroke="#475569" stroke-width="2"/>
-  <text x="60" y="155" text-anchor="middle" fill="#cbd5e1" font-size="11">Oven</text>
-  <circle cx="95" cy="150" r="4" fill="#fbbf24"/>
-
-  <!-- Beam -->
-  <line x1="100" y1="150" x2="280" y2="150" stroke="#fbbf24" stroke-width="3"/>
-
-  <!-- Magnet (inhomogeneous field) -->
-  <path d="M 280 80 L 320 80 L 340 100 L 340 140 L 280 140 Z" fill="#7c3aed" stroke="#6d28d9" stroke-width="2"/>
-  <text x="310" y="100" text-anchor="middle" fill="#f8fafc" font-size="16" font-weight="bold">N</text>
-
-  <path d="M 280 160 L 320 160 L 340 180 L 340 220 L 280 220 Z" fill="#ec4899" stroke="#db2777" stroke-width="2"/>
-  <text x="310" y="200" text-anchor="middle" fill="#f8fafc" font-size="16" font-weight="bold">S</text>
-
-  <!-- Field gradient lines -->
-  <line x1="340" y1="120" x2="360" y2="110" stroke="#7c3aed" stroke-width="1" stroke-dasharray="2,2"/>
-  <line x1="340" y1="130" x2="360" y2="125" stroke="#7c3aed" stroke-width="1" stroke-dasharray="2,2"/>
-  <line x1="340" y1="170" x2="360" y2="175" stroke="#ec4899" stroke-width="1" stroke-dasharray="2,2"/>
-  <line x1="340" y1="180" x2="360" y2="190" stroke="#ec4899" stroke-width="1" stroke-dasharray="2,2"/>
-
-  <!-- Split beams -->
-  <line x1="340" y1="130" x2="580" y2="90" stroke="#10b981" stroke-width="3"/>
-  <line x1="340" y1="170" x2="580" y2="210" stroke="#ef4444" stroke-width="3"/>
-
-  <!-- Screen -->
-  <rect x="580" y="50" width="10" height="200" fill="#475569"/>
-
-  <!-- Impact spots -->
-  <circle cx="600" cy="90" r="12" fill="#10b981" opacity="0.8"/>
-  <circle cx="600" cy="210" r="12" fill="#ef4444" opacity="0.8"/>
-
-  <!-- Labels -->
-  <text x="350" y="25" text-anchor="middle" fill="#f8fafc" font-size="18" font-weight="bold">Stern–Gerlach experiment</text>
-
-  <text x="620" y="85" text-anchor="start" fill="#10b981" font-size="13" font-weight="bold">Spin ↑</text>
-  <text x="620" y="100" text-anchor="start" fill="#10b981" font-size="11">|↑⟩ or |+½⟩</text>
-
-  <text x="620" y="210" text-anchor="start" fill="#ef4444" font-size="13" font-weight="bold">Spin ↓</text>
-  <text x="620" y="225" text-anchor="start" fill="#ef4444" font-size="11">|↓⟩ or |-½⟩</text>
-
-  <text x="310" y="255" text-anchor="middle" fill="#cbd5e1" font-size="11">Inhomogeneous</text>
-  <text x="310" y="268" text-anchor="middle" fill="#cbd5e1" font-size="11">magnetic field</text>
-
-  <text x="350" y="290" text-anchor="middle" fill="#94a3b8" font-size="10">Quantisation of the magnetic moment (1922)</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="300" viewBox="0 0 700 300" lang="en" role="img" aria-label="Stern–Gerlach experiment (1922)">
+  <rect x="0.5" y="0.5" width="699" height="299" rx="10" fill="#fffdf8" stroke="#d8ceba"/>
+  <text x="350" y="30" text-anchor="middle" font-family="Newsreader, 'Iowan Old Style', Georgia, 'Times New Roman', serif" font-size="19" fill="#1d1b17">Stern–Gerlach experiment (1922)</text>
+  <rect x="30" y="122" width="60" height="56" rx="5" fill="#f3e1d8" stroke="#45413a" stroke-width="1.4"/>
+  <path d="M42,170 q4,-8 0,-16 q-4,-8 0,-16" fill="none" stroke="#b0432a" stroke-width="1.2"/>
+  <path d="M54,170 q4,-8 0,-16 q-4,-8 0,-16" fill="none" stroke="#b0432a" stroke-width="1.2"/>
+  <path d="M66,170 q4,-8 0,-16 q-4,-8 0,-16" fill="none" stroke="#b0432a" stroke-width="1.2"/>
+  <path d="M78,170 q4,-8 0,-16 q-4,-8 0,-16" fill="none" stroke="#b0432a" stroke-width="1.2"/>
+  <rect x="125" y="128" width="6" height="17" fill="#1d1b17"/>
+  <rect x="125" y="155" width="6" height="17" fill="#1d1b17"/>
+  <polygon points="240,58 380,58 380,108 318,128 302,128 240,108" fill="#45413a"/>
+  <rect x="240" y="176" width="140" height="62" fill="#776f61"/>
+  <text x="310" y="92" text-anchor="middle" font-family="Newsreader, 'Iowan Old Style', Georgia, 'Times New Roman', serif" font-size="22" fill="#fffdf8">N</text>
+  <text x="310" y="215" text-anchor="middle" font-family="Newsreader, 'Iowan Old Style', Georgia, 'Times New Roman', serif" font-size="22" fill="#fffdf8">S</text>
+  <line x1="90" y1="150" x2="250" y2="150" stroke="#45413a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M250,150 C330,150 420,92 604,90" fill="none" stroke="#b0432a" stroke-width="4" stroke-linecap="round"/>
+  <path d="M250,150 C330,150 420,208 604,210" fill="none" stroke="#2c5a85" stroke-width="4" stroke-linecap="round"/>
+  <rect x="606" y="52" width="10" height="196" fill="#d8ceba" stroke="#45413a"/>
+  <ellipse cx="611" cy="90" rx="6" ry="14" fill="#b0432a"/>
+  <ellipse cx="611" cy="210" rx="6" ry="14" fill="#2c5a85"/>
+  <line x1="662.0" y1="252.0" x2="662.0" y2="200.0" stroke="#45413a" stroke-width="1.5"/>
+  <polygon points="662.0,200.0 664.6,206.5 659.4,206.5" fill="#45413a"/>
+  <text x="670.0" y="206.0" text-anchor="start" font-family="Newsreader, 'Iowan Old Style', Georgia, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#1d1b17">z</text>
 </svg>

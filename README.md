@@ -73,7 +73,10 @@ Le quiz existe en anglais : <https://tchapetnjafa.github.io/quantum-quiz/en/> (b
 - Les statistiques locales sont communes aux deux langues.
 - Schémas : les images contenant du texte ont une version anglaise dans `assets/images/en/` (mêmes dimensions,
   donc mêmes zones cliquables) ; la banque anglaise y renvoie. Pour les régénérer après modification d'une image :
-  `python3 outils/traduire_schemas.py` (images matricielles retouchées + SVG traduits, table `SVG_EN`).
+  `python3 outils/traduire_schemas.py` (images matricielles retouchées). Les 5 schémas SVG (`assets/images/chN/`)
+  sont dessinés par `python3 outils/generer_schemas_svg.py`, qui écrit les versions française et anglaise dans le style
+  du Carnet ; un schéma ne doit jamais écrire la réponse d'une question qui l'utilise. Toute modification de leur
+  géométrie doit être reportée sur les zones cliquables (`hotspots`) des deux banques.
 - Installation sur téléphone : `manifest.json` (français) et `manifest.en.json` (anglais, démarre sur `en/`).
 
 **Règle : toute modification (question, correction, interface) doit être faite dans les deux langues.**

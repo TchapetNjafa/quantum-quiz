@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Produit les versions anglaises des schémas du quiz (assets/images/en/…) : images matricielles et SVG.
+"""Produit les versions anglaises des schémas matriciels du quiz (assets/images/en/…).
 
 Pour chaque étiquette française : on efface les pixels du texte (remplissage par la médiane des pixels
 voisins non masqués, adapté aux fonds unis des figures LaTeX), puis on écrit le texte anglais avec la
 police Latin Modern Roman (celle des figures d'origine). Les dimensions de l'image ne changent pas :
 les zones cliquables (hotspots) restent valides.
 
-Les SVG (assets/images/chN/*.svg) sont traduits par simple remplacement des textes (table SVG_EN).
+Les schémas SVG (assets/images/chN/*.svg) sont produits, en français et en anglais, par generer_schemas_svg.py.
 
 Usage : python3 outils/traduire_schemas.py   (depuis la racine du dépôt quantum-quiz)
 Dépendances : Pillow, numpy, police Latin Modern (paquet TeX « lm »).
@@ -48,56 +48,6 @@ SCHEMAS = {
         dict(boite=(1274, 523, 1454, 573), texte="Region II", x=1277, base=559, taille=49, police=TIMES),
     ],
 }
-
-
-# SVG : texte français exact (entre balises) → texte anglais. Les textes absents de la table restent tels quels
-# (symboles, formules, noms propres).
-SVG_EN = {
-    "Sphère de Bloch": "Bloch sphere",
-    "Représentation géométrique d'un qubit pur": "Geometric representation of a pure qubit",
-    "Écran": "Screen",
-    "Expérience de Young": "Young's double-slit experiment",
-    "Figure d'interférence → Preuve de la dualité onde-corpuscule": "Interference pattern → evidence of wave–particle duality",
-    "Four": "Oven",
-    "Expérience de Stern-Gerlach": "Stern–Gerlach experiment",
-    "Champ magnétique": "Inhomogeneous",
-    "inhomogène": "magnetic field",
-    "|↑⟩ ou |+½⟩": "|↑⟩ or |+½⟩",
-    "|↓⟩ ou |-½⟩": "|↓⟩ or |-½⟩",
-    "Quantification du moment magnétique (1922)": "Quantisation of the magnetic moment (1922)",
-    "Les 4 États de Bell": "The four Bell states",
-    "États maximalement intriqués à 2 qubits": "Maximally entangled two-qubit states",
-    "Identiques en Z, phase +": "Same in Z, phase +",
-    "Identiques en Z, phase −": "Same in Z, phase −",
-    "Opposés en Z, phase +": "Opposite in Z, phase +",
-    "Opposés en Z · singulet": "Opposite in Z · singlet",
-    "Base maximale d'intrication - Utilisés en cryptographie et téléportation quantique":
-        "Maximally entangled basis — used in quantum cryptography and teleportation",
-    "Oscillateur Harmonique Quantique": "Quantum harmonic oscillator",
-    "Propriétés clés": "Key properties",
-    "• Niveaux équidistants": "• Equally spaced levels",
-    "• E₀ ≠ 0 (énergie de point zéro)": "• E₀ ≠ 0 (zero-point energy)",
-    "• n nœuds pour |ψₙ⟩": "• n nodes for |ψₙ⟩",
-    "• Parité définie": "• Definite parity",
-    "Système quantique fondamental - Applications: vibrations moléculaires, photons":
-        "A fundamental quantum system — applications: molecular vibrations, photons",
-}
-
-
-def traduire_svg():
-    """Écrit assets/images/en/chN/*.svg ; signale tout texte contenant encore des lettres accentuées."""
-    import re
-    for src in sorted((RACINE / "assets/images").glob("ch*/*.svg")):
-        texte = src.read_text(encoding="utf-8")
-        texte = re.sub(r">([^<>]+)<", lambda m: ">" + SVG_EN.get(m.group(1), m.group(1)) + "<", texte)
-        texte = texte.replace('lang="fr"', 'lang="en"')
-        restes = [t for t in re.findall(r">([^<>]+)<", texte) if re.search(r"[éèàùçêâîôûÉ]", t)]
-        if restes:
-            raise SystemExit(f"{src.name} : texte non traduit {restes}")
-        dest = RACINE / "assets/images/en" / src.relative_to(RACINE / "assets/images")
-        dest.parent.mkdir(parents=True, exist_ok=True)
-        dest.write_text(texte, encoding="utf-8")
-        print(dest.relative_to(RACINE))
 
 
 def effacer(arr, boite, garde=None, seuil=235):
@@ -156,7 +106,6 @@ def main():
             dessin.text((e["x"], e["base"]), e["texte"], font=police, fill=(0, 0, 0), anchor=e.get("ancre", "ls"))
         img.save(sortie / nom, optimize=True)
         print(sortie.relative_to(RACINE) / nom, img.size)
-    traduire_svg()
 
 
 if __name__ == "__main__":

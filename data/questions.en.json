@@ -712,16 +712,16 @@
             {
               "id": "x_positive",
               "label": "+x axis",
-              "x": 320,
+              "x": 332,
               "y": 200,
               "radius": 30
             },
             {
               "id": "y_positive",
               "label": "+y axis",
-              "x": 150,
-              "y": 280,
-              "radius": 30
+              "x": 155,
+              "y": 262,
+              "radius": 32
             }
           ],
           "correct_hotspot": "x_positive",
@@ -750,14 +750,14 @@
             {
               "id": "x_negative",
               "label": "−x axis",
-              "x": 80,
+              "x": 68,
               "y": 200,
               "radius": 30
             },
             {
               "id": "x_positive",
               "label": "+x axis",
-              "x": 320,
+              "x": 332,
               "y": 200,
               "radius": 30
             },
@@ -930,14 +930,14 @@
             {
               "id": "y_positive",
               "label": "+y axis",
-              "x": 150,
-              "y": 280,
-              "radius": 30
+              "x": 155,
+              "y": 262,
+              "radius": 32
             },
             {
               "id": "x_positive",
               "label": "+x axis",
-              "x": 320,
+              "x": 332,
               "y": 200,
               "radius": 30
             },
@@ -975,14 +975,14 @@
             {
               "id": "mid_x",
               "label": "Between the pole and the +x equator",
-              "x": 260,
-              "y": 130,
+              "x": 299,
+              "y": 101,
               "radius": 35
             },
             {
               "id": "equator_x",
               "label": "Equator +x",
-              "x": 320,
+              "x": 332,
               "y": 200,
               "radius": 30
             },
@@ -1789,7 +1789,7 @@
             {
               "id": "detector",
               "label": "Screen",
-              "x": 595,
+              "x": 611,
               "y": 150,
               "radius": 25
             }
@@ -1820,21 +1820,21 @@
             {
               "id": "up",
               "label": "Upper spot",
-              "x": 600,
+              "x": 611,
               "y": 90,
               "radius": 28
             },
             {
               "id": "down",
               "label": "Lower spot",
-              "x": 600,
+              "x": 611,
               "y": 210,
               "radius": 28
             },
             {
               "id": "center",
               "label": "Centre of the screen (undeflected)",
-              "x": 600,
+              "x": 611,
               "y": 150,
               "radius": 22
             }
@@ -1865,21 +1865,21 @@
             {
               "id": "down",
               "label": "Lower spot",
-              "x": 600,
+              "x": 611,
               "y": 210,
               "radius": 28
             },
             {
               "id": "up",
               "label": "Upper spot",
-              "x": 600,
+              "x": 611,
               "y": 90,
               "radius": 28
             },
             {
               "id": "center",
               "label": "Centre of the screen (undeflected)",
-              "x": 600,
+              "x": 611,
               "y": 150,
               "radius": 22
             }
@@ -7108,7 +7108,7 @@
               "id": "n2",
               "label": "Third level",
               "x": 350,
-              "y": 210,
+              "y": 200,
               "radius": 20
             }
           ],
