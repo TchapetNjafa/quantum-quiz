@@ -18,8 +18,21 @@
   </div>
 </main>
 <script>
+  // Adresse sous en/ : page en anglais, liens vers la version anglaise
+  (() => {
+    if (!/\/en\//.test(location.pathname)) return;
+    document.documentElement.lang = 'en';
+    document.title = 'Page not found — PHY321 Quiz';
+    const set = (sel, text, href) => { const el = document.querySelector(sel); el.textContent = text; if (href) el.href = href; };
+    set('.eyebrow', 'Error 404');
+    set('h1', 'This page no longer exists.');
+    set('#why', 'The quiz was reorganised in October 2026.');
+    set('#go', 'Go to the quiz home page', '/quantum-quiz/en/');
+    set('.btn.ghost', 'Open the Notebook', 'https://tchapetnjafa.github.io/quantum-workbook/en/');
+  })();
   // Anciennes adresses (avant octobre 2026) → leur remplaçant
   (() => {
+    if (/\/en\//.test(location.pathname)) return;
     const page = location.pathname.split('/').pop();
     const carnet = 'https://tchapetnjafa.github.io/quantum-workbook/chapitres/';
     const anim = {

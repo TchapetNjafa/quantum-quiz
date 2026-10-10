@@ -3,7 +3,8 @@
    grade(q, réponse) → booléen ; correctText / answerText pour le corrigé. */
 (() => {
   'use strict';
-  const { esc, shuffle, carnetLink, reportLink, TYPES, LEVELS } = window.Q;
+  const { esc, shuffle, carnetLink, reportLink, TYPES, LEVELS, t } = window.Q;
+  const TRUE = t('Vrai', 'True'), FALSE = t('Faux', 'False');
   let uidSeq = 0;
   const LETTERS = 'ABCDEFGH';
 
@@ -30,7 +31,7 @@
   const kinds = {};
 
   kinds.qcm = {
-    html: (q, id) => `<div class="opts" role="radiogroup" aria-label="Réponses">${q.options.map((o, i) => `
+    html: (q, id) => `<div class="opts" role="radiogroup" aria-label="${t('Réponses', 'Answers')}">${q.options.map((o, i) => `
       <label class="opt"><input type="radio" name="${id}" value="${i}"><span class="opt-key" aria-hidden="true">${LETTERS[i]}</span><span class="opt-text">${esc(o)}</span></label>`).join('')}</div>`,
     read: root => { const c = root.querySelector('input:checked'); return c ? Number(c.value) : null; },
     grade: (q, a) => a === Number(q.correct_answer),
@@ -46,9 +47,9 @@
   };
 
   kinds.vrai_faux = {
-    html: (q, id) => `<div class="opts opts-vf" role="radiogroup" aria-label="Réponse">
-      <label class="opt"><input type="radio" name="${id}" value="1"><span class="opt-text">Vrai</span></label>
-      <label class="opt"><input type="radio" name="${id}" value="0"><span class="opt-text">Faux</span></label></div>`,
+    html: (q, id) => `<div class="opts opts-vf" role="radiogroup" aria-label="${t('Réponse', 'Answer')}">
+      <label class="opt"><input type="radio" name="${id}" value="1"><span class="opt-text">${TRUE}</span></label>
+      <label class="opt"><input type="radio" name="${id}" value="0"><span class="opt-text">${FALSE}</span></label></div>`,
     read: root => { const c = root.querySelector('input:checked'); return c ? c.value === '1' : null; },
     grade: (q, a) => a === Boolean(q.correct_answer),
     lock(root, q, a) {
@@ -59,16 +60,16 @@
         else if (v === a) el.classList.add('is-wrong');
       });
     },
-    correct: q => q.correct_answer ? 'Vrai' : 'Faux',
-    answer: (q, a) => a ? 'Vrai' : 'Faux'
+    correct: q => q.correct_answer ? TRUE : FALSE,
+    answer: (q, a) => a ? TRUE : FALSE
   };
 
   kinds.numerical = {
     html: (q, id) => `<div class="num-answer">
-      <label for="${id}" class="sr-only">Votre réponse</label>
-      <input id="${id}" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="ex. 0.25 ou 1/4">
+      <label for="${id}" class="sr-only">${t('Votre réponse', 'Your answer')}</label>
+      <input id="${id}" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="${t('ex. 0.25 ou 1/4', 'e.g. 0.25 or 1/4')}">
       ${q.unit ? `<span class="unit">${esc(q.unit)}</span>` : ''}</div>
-      <p class="q-help">Expressions acceptées : 1/4, 1/sqrt(2), pi/3, 2.5e-3. Virgule ou point.</p>`,
+      <p class="q-help">${t('Expressions acceptées : 1/4, 1/sqrt(2), pi/3, 2.5e-3. Virgule ou point.', 'Accepted expressions: 1/4, 1/sqrt(2), pi/3, 2.5e-3. Comma or point.')}</p>`,
     read: root => { const v = root.querySelector('input').value.trim(); return v ? v : null; },
     grade(q, a) {
       const v = parseNumber(a), t = Number(q.correct_answer), tol = Number(q.tolerance) || 0;
@@ -79,8 +80,8 @@
       input.disabled = true;
       input.classList.add(kinds.numerical.grade(q, a) ? 'is-right' : 'is-wrong');
     },
-    correct: q => `${esc(q.correct_answer)}${q.unit ? ' ' + esc(q.unit) : ''}${Number(q.tolerance) ? ` <span class="muted">(à ±${esc(q.tolerance)} près)</span>` : ''}`,
-    answer: (q, a) => Number.isFinite(parseNumber(a)) ? esc(a) : `${esc(a)} <span class="muted">(nombre non reconnu)</span>`
+    correct: q => `${esc(q.correct_answer)}${q.unit ? ' ' + esc(q.unit) : ''}${Number(q.tolerance) ? ` <span class="muted">${t(`(à ±${esc(q.tolerance)} près)`, `(within ±${esc(q.tolerance)})`)}</span>` : ''}`,
+    answer: (q, a) => Number.isFinite(parseNumber(a)) ? esc(a) : `${esc(a)} <span class="muted">${t('(nombre non reconnu)', '(number not recognised)')}</span>`
   };
 
   /* Toucher une étiquette puis une case (ou glisser à la souris).
@@ -120,7 +121,7 @@
   kinds.matching = {
     html(q) {
       const choices = shuffle([...q.pairs.map(p => p.right), ...(q.distractors || [])]);
-      return `<p class="q-help">Touchez une proposition, puis la ligne qui lui correspond.${q.distractors && q.distractors.length ? ' Certaines propositions ne servent pas.' : ''}</p>
+      return `<p class="q-help">${t('Touchez une proposition, puis la ligne qui lui correspond.', 'Tap an answer, then the row it belongs to.')}${q.distractors && q.distractors.length ? t(' Certaines propositions ne servent pas.', ' Some answers are not used.') : ''}</p>
         <div class="dd-bank" data-zone="">${choices.map((c, k) =>
           `<button type="button" class="chip" draggable="true" data-item="${k}" data-text="${esc(c)}" aria-pressed="false">${esc(c)}</button>`).join('')}</div>
         <div class="dd-zones match-zones">${q.pairs.map((p, i) => `
@@ -139,7 +140,7 @@
         const ok = a && a[i] === q.pairs[i].right;
         const chip = z.querySelector('.chip');
         if (chip) chip.classList.add(ok ? 'is-right' : 'is-wrong');
-        if (!ok) z.insertAdjacentHTML('beforeend', `<p class="match-fix">Attendu : ${esc(q.pairs[i].right)}</p>`);
+        if (!ok) z.insertAdjacentHTML('beforeend', `<p class="match-fix">${t('Attendu :', 'Expected:')} ${esc(q.pairs[i].right)}</p>`);
       });
     },
     correct: q => `<ul class="pairs">${q.pairs.map(p => `<li>${esc(p.left)} → ${esc(p.right)}</li>`).join('')}</ul>`,
@@ -148,7 +149,7 @@
 
   /* Classement : toucher une étiquette puis une case (ou glisser à la souris). */
   kinds.drag_drop = {
-    html: q => `<p class="q-help">Touchez une étiquette, puis la case où elle va.</p>
+    html: q => `<p class="q-help">${t('Touchez une étiquette, puis la case où elle va.', 'Tap a label, then the box it belongs in.')}</p>
       <div class="dd-bank" data-zone="">${shuffle(q.draggable_items).map(it =>
         `<button type="button" class="chip" draggable="true" data-item="${esc(it.id)}" aria-pressed="false">${esc(it.text)}</button>`).join('')}</div>
       <div class="dd-zones">${q.drop_zones.map(z => `
@@ -183,7 +184,7 @@
 
   /* Schéma cliquable : coordonnées des zones exprimées dans image_dimensions. */
   kinds.hotspot = {
-    html: q => `<p class="q-help">Touchez l’élément demandé sur le schéma.</p>
+    html: q => `<p class="q-help">${t('Touchez l’élément demandé sur le schéma.', 'Tap the requested part of the diagram.')}</p>
       <div class="hs-stage"><img src="${esc(q.image_url)}" alt="${esc(q.image_alt || '')}" draggable="false"><span class="hs-pick" hidden></span></div>
       <p class="hs-status" aria-live="polite"></p>`,
     setup(root, q, ctl) {
@@ -203,7 +204,7 @@
         mark.style.left = (100 * x / W) + '%'; mark.style.top = (100 * y / H) + '%';
         const hit = bestD <= 1.25 ? best : null;
         root.dataset.pick = hit ? hit.id : '';
-        root.querySelector('.hs-status').textContent = hit ? 'Zone sélectionnée.' : 'Aucun élément ici : visez une partie du schéma.';
+        root.querySelector('.hs-status').textContent = hit ? t('Zone sélectionnée.', 'Area selected.') : t('Aucun élément ici : visez une partie du schéma.', 'Nothing here: aim at a part of the diagram.');
         ctl.changed();
       });
     },
@@ -232,10 +233,10 @@
   kinds.flashcard = {
     self: true,
     html: q => `<div class="card-face"><p class="card-front">${esc(q.front)}</p>
-      ${q.hint ? `<details class="hint"><summary>Indice</summary><p>${esc(q.hint)}</p></details>` : ''}
-      <div class="card-back" hidden><span class="box-title">Verso</span><p>${esc(q.back)}</p></div></div>
-      <button type="button" class="btn ghost wide" data-flip>Retourner la fiche</button>
-      ${selfButtons('Je savais', 'À revoir')}`,
+      ${q.hint ? `<details class="hint"><summary>${t('Indice', 'Hint')}</summary><p>${esc(q.hint)}</p></details>` : ''}
+      <div class="card-back" hidden><span class="box-title">${t('Verso', 'Back')}</span><p>${esc(q.back)}</p></div></div>
+      <button type="button" class="btn ghost wide" data-flip>${t('Retourner la fiche', 'Turn the card over')}</button>
+      ${selfButtons(t('Je savais', 'I knew it'), t('À revoir', 'To review'))}`,
     setup(root, q, ctl) {
       root.querySelector('[data-flip]').addEventListener('click', e => {
         e.currentTarget.hidden = true;
@@ -249,16 +250,16 @@
     grade: (q, a) => a === true,
     lock: root => root.querySelectorAll('[data-self]').forEach(b => { b.disabled = true; }),
     correct: q => esc(q.back),
-    answer: (q, a) => a ? 'Je savais' : 'À revoir'
+    answer: (q, a) => a ? t('Je savais', 'I knew it') : t('À revoir', 'To review')
   };
 
   kinds.interpretation = {
     self: true,
-    html: (q, id) => `<label for="${id}" class="q-help">Rédigez votre réponse en quelques lignes, puis comparez.</label>
+    html: (q, id) => `<label for="${id}" class="q-help">${t('Rédigez votre réponse en quelques lignes, puis comparez.', 'Write your answer in a few lines, then compare.')}</label>
       <textarea id="${id}" rows="5" class="long-answer"></textarea>
-      <button type="button" class="btn ghost wide" data-reveal>Comparer avec la réponse type</button>
-      <div class="sample" hidden><span class="box-title">Réponse type</span><p>${esc(q.sample_answer)}</p></div>
-      ${selfButtons('Ma réponse contenait l’essentiel', 'Il me manquait l’essentiel')}`,
+      <button type="button" class="btn ghost wide" data-reveal>${t('Comparer avec la réponse type', 'Compare with the model answer')}</button>
+      <div class="sample" hidden><span class="box-title">${t('Réponse type', 'Model answer')}</span><p>${esc(q.sample_answer)}</p></div>
+      ${selfButtons(t('Ma réponse contenait l’essentiel', 'My answer covered the key points'), t('Il me manquait l’essentiel', 'I missed the key points'))}`,
     setup(root, q, ctl) {
       root.querySelector('[data-reveal]').addEventListener('click', e => {
         e.currentTarget.hidden = true;
@@ -272,7 +273,7 @@
     grade: (q, a) => a === true,
     lock: root => { root.querySelector('textarea').readOnly = true; root.querySelectorAll('[data-self]').forEach(b => { b.disabled = true; }); },
     correct: q => esc(q.sample_answer),
-    answer: (q, a) => a ? 'Réponse jugée complète' : 'Réponse jugée incomplète'
+    answer: (q, a) => a ? t('Réponse jugée complète', 'Answer judged complete') : t('Réponse jugée incomplète', 'Answer judged incomplete')
   };
 
   /* ---------- API ---------- */
@@ -281,7 +282,7 @@
     const id = 'q' + (++uidSeq);
     const changed = ctl.changed || (() => {});
     const lab = q.type === 'animation'
-      ? `<p class="lab-note">Simulation associée : <a href="${carnetLink(q).href}" target="_blank" rel="noopener">${carnetLink(q).label}</a>. Manipulez-la, puis répondez.</p>` : '';
+      ? `<p class="lab-note">${t('Simulation associée :', 'Related simulation:')} <a href="${carnetLink(q).href}" target="_blank" rel="noopener">${carnetLink(q).label}</a>. ${t('Manipulez-la, puis répondez.', 'Try it, then answer.')}</p>` : '';
     root.innerHTML = `${lab}<div class="q-text">${esc(q.question || '')}</div>${figure(q)}<div class="q-input">${k.html(q, id)}</div>`;
     const input = root.querySelector('.q-input');
     input.addEventListener('input', changed);
@@ -297,22 +298,22 @@
 
   const grade = (q, a) => a !== null && a !== undefined && kinds[q.kind].grade(q, a);
   const correctText = q => kinds[q.kind].correct(q);
-  const answerText = (q, a) => (a === null || a === undefined) ? '<span class="muted">Sans réponse</span>' : kinds[q.kind].answer(q, a);
+  const answerText = (q, a) => (a === null || a === undefined) ? `<span class="muted">${t('Sans réponse', 'No answer')}</span>` : kinds[q.kind].answer(q, a);
 
   /** Bloc de correction : verdict, réponse attendue, explication, références. */
   function feedbackHTML(q, ok, { verdict = true } = {}) {
     const link = carnetLink(q);
     const showAnswer = !ok && !kinds[q.kind].self;
-    return `${verdict ? `<p class="verdict ${ok ? 'ok' : 'ko'}">${ok ? 'Juste' : (kinds[q.kind].self ? 'À revoir' : 'Faux')}</p>` : ''}
-      ${showAnswer ? `<div class="expected"><b>Réponse attendue :</b> ${correctText(q)}</div>` : ''}
+    return `${verdict ? `<p class="verdict ${ok ? 'ok' : 'ko'}">${ok ? t('Juste', 'Correct') : (kinds[q.kind].self ? t('À revoir', 'To review') : t('Faux', 'Wrong'))}</p>` : ''}
+      ${showAnswer ? `<div class="expected"><b>${t('Réponse attendue :', 'Expected answer:')}</b> ${correctText(q)}</div>` : ''}
       ${q.explanation ? `<p class="explain">${esc(q.explanation)}</p>` : ''}
       ${q.formula ? `<p class="formula">${esc(q.formula)}</p>` : ''}
-      <p class="refs"><span>Cours, § ${esc(q.section_ref || '—')}</span>
+      <p class="refs"><span>${t('Cours', 'Lecture notes')}, § ${esc(q.section_ref || '—')}</span>
         <a href="${link.href}" target="_blank" rel="noopener">${link.label} →</a>
-        <a class="report" href="${reportLink(q)}" target="_blank" rel="noopener">Signaler une erreur</a></p>`;
+        <a class="report" href="${reportLink(q)}" target="_blank" rel="noopener">${t('Signaler une erreur', 'Report an error')}</a></p>`;
   }
 
-  const metaLine = q => `<span>Chapitre ${q.chapter}</span><span>${TYPES[q.kind]}</span><span>${LEVELS[q.difficulty] || ''}</span>`;
+  const metaLine = q => `<span>${t('Chapitre', 'Chapter')} ${q.chapter}</span><span>${TYPES[q.kind]}</span><span>${LEVELS[q.difficulty] || ''}</span>`;
 
   window.Questions = { render, grade, correctText, answerText, feedbackHTML, metaLine, parseNumber };
 })();

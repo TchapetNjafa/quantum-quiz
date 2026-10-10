@@ -2,7 +2,7 @@
    ou examen (chronomètre, correction à la fin). La série survit à un rechargement. */
 (() => {
   'use strict';
-  const { loadBank, readConfig, pick, session, store, recordAnswer, CHAPTERS, plural } = window.Q;
+  const { loadBank, readConfig, pick, session, store, recordAnswer, CHAPTERS, plural, t } = window.Q;
   const { render, grade, feedbackHTML, metaLine } = window.Questions;
   const RUN = 'phy321.quiz.run';
   const $ = id => document.getElementById(id);
@@ -12,7 +12,8 @@
   async function init() {
     cfg = readConfig(location.search);
     try { bank = await loadBank(); } catch (err) {
-      fail('Impossible de charger les questions (' + err.message + '). Vérifiez la connexion puis rechargez la page.');
+      fail(t('Impossible de charger les questions (' + err.message + '). Vérifiez la connexion puis rechargez la page.',
+        'The questions could not be loaded (' + err.message + '). Check your connection, then reload the page.'));
       return;
     }
     const saved = session.get(RUN);
@@ -20,15 +21,15 @@
       run = saved;
     } else {
       const set = pick(bank, cfg);
-      if (!set.length) { fail('Aucune question ne correspond à ces réglages.'); return; }
+      if (!set.length) { fail(t('Aucune question ne correspond à ces réglages.', 'No question matches these settings.')); return; }
       const seconds = set.reduce((s, q) => s + (q.time_estimate || 60), 0);
       run = { key: location.search, ids: set.map(q => q.id), i: 0, answers: [], started: Date.now(),
         deadline: cfg.exam ? Date.now() + seconds * 1000 : null };
     }
     run.set = run.ids.map(id => bank.find(q => q.id === id)).filter(Boolean);
     save();
-    const scope = cfg.ids ? 'Révision ciblée' : cfg.chapter ? `Chapitre ${cfg.chapter} · ${CHAPTERS[cfg.chapter].title}` : 'Tous les chapitres';
-    $('q-scope').textContent = `${scope} · ${cfg.exam ? 'Examen' : 'Entraînement'}`;
+    const scope = cfg.ids ? t('Révision ciblée', 'Targeted review') : cfg.chapter ? `${t('Chapitre', 'Chapter')} ${cfg.chapter} · ${CHAPTERS[cfg.chapter].title}` : t('Tous les chapitres', 'All chapters');
+    $('q-scope').textContent = `${scope} · ${cfg.exam ? t('Examen', 'Exam') : t('Entraînement', 'Practice')}`;
     if (run.deadline) startTimer();
     $('validate').addEventListener('click', () => answer(handle.read()));
     $('skip').addEventListener('click', () => answer(null));
@@ -37,7 +38,7 @@
   }
 
   function fail(msg) {
-    $('quiz').innerHTML = `<div class="panel empty"><p>${msg}</p><a class="btn" href="index.html">Retour aux réglages</a></div>`;
+    $('quiz').innerHTML = `<div class="panel empty"><p>${msg}</p><a class="btn" href="index.html">${t('Retour aux réglages', 'Back to settings')}</a></div>`;
   }
 
   const save = () => session.set(RUN, { ...run, set: undefined });
@@ -45,7 +46,7 @@
   function show() {
     const q = run.set[run.i];
     const n = run.set.length;
-    $('q-count').textContent = `Question ${run.i + 1} sur ${n}`;
+    $('q-count').textContent = t(`Question ${run.i + 1} sur ${n}`, `Question ${run.i + 1} of ${n}`);
     $('q-bar').style.setProperty('--p', (run.i / n).toFixed(3));
     $('q-meta').innerHTML = metaLine(q);
     $('q-feedback').hidden = true;
@@ -79,7 +80,7 @@
     $('validate').hidden = true;
     $('skip').hidden = true;
     const last = run.i === run.set.length - 1;
-    $('next').textContent = last ? 'Voir les résultats' : 'Question suivante';
+    $('next').textContent = last ? t('Voir les résultats', 'See the results') : t('Question suivante', 'Next question');
     $('next').hidden = false;
     $('next').focus({ preventScroll: true });
     fb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -114,7 +115,7 @@
     };
     const timer = setInterval(tick, 1000);
     tick();
-    el.title = `Temps total : ${plural(Math.round((run.deadline - run.started) / 60000), 'minute', 'minutes')}`;
+    el.title = `${t('Temps total :', 'Total time:')} ${plural(Math.round((run.deadline - run.started) / 60000), 'minute', 'minutes')}`;
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();

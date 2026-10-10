@@ -343,3 +343,11 @@ details.reveal > div { padding: 0 0 1rem 1.5rem; animation: unfold .3s var(--eas
   .topbar nav { -webkit-mask-image: linear-gradient(90deg, #000 82%, transparent); mask-image: linear-gradient(90deg, #000 82%, transparent); }
   .topbar nav a { padding: .4rem .5rem; }
 }
+
+/* ---------- bascule de langue ---------- */
+.lang-switch {
+  display: inline-grid; place-items: center; min-width: 2.25rem; height: 2.25rem; padding: 0 .55rem; flex: none;
+  border: 1px solid var(--rule); border-radius: var(--r-md); color: var(--ink-2); text-decoration: none;
+  font: 600 .74rem var(--mono); letter-spacing: .06em; transition: background .2s, color .2s;
+}
+.lang-switch:hover { background: var(--paper-2); color: var(--accent-ink); }
