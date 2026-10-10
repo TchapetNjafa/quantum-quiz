@@ -1,9 +1,9 @@
 {
-  "name": "Quiz PHY321 — Mécanique quantique",
-  "short_name": "Quiz PHY321",
-  "description": "Questions corrigées du cours d'introduction à la mécanique quantique PHY321, Université de Yaoundé I.",
-  "lang": "fr",
-  "start_url": "./",
+  "name": "PHY321 Quiz — Quantum mechanics",
+  "short_name": "PHY321 Quiz",
+  "description": "Worked questions for the introductory quantum mechanics course PHY321, University of Yaoundé I.",
+  "lang": "en",
+  "start_url": "./en/",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f6f2e9",
@@ -54,5 +54,5 @@
   "categories": [
     "education"
   ],
-  "id": "./"
+  "id": "./en/"
 }

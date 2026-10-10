@@ -13,7 +13,7 @@
       "chapter_number": "1",
       "chapter_title": "Quantum States",
       "chapter_description": "Discovering quantum phenomena, probability amplitudes, superposition of states and qubits",
-      "section_reference": "Sections 1.1-1.4",
+      "section_reference": "Sections 1.1-1.5",
       "key_concepts": [
         "Wave-particle duality",
         "Quantum interference",
@@ -37,7 +37,7 @@
             "A single central spot"
           ],
           "correct_answer": 1,
-          "explanation": "Even when the photons are sent one at a time, an interference pattern gradually appears. Each photon arrives at a localised point (like a particle), but their accumulation reveals a collective wave behaviour with interference fringes. This is striking evidence that a single quantum object can interfere with itself.",
+          "explanation": "Even when the photons are sent one at a time, an interference pattern gradually appears. Each photon arrives at a localised point (like a particle), but their accumulation reveals a collective wave behaviour with interference fringes. This is direct evidence that a single quantum object can interfere with itself.",
           "section_ref": "1.1.1",
           "formula": null,
           "image_url": "assets/images/InterfPhotons.jpg",
@@ -241,7 +241,7 @@
           ],
           "correct_answer": 0,
           "explanation": "Decoherence is the mechanism by which a quantum system in a superposition loses its quantum properties (such as interference) by interacting with its environment. Phase information spreads into the environment, and the system then behaves classically. This is the major challenge for quantum computers: keeping qubits coherent long enough to carry out computations.",
-          "section_ref": "1.2.3",
+          "section_ref": "1.3.2",
           "formula": null,
           "image_url": null,
           "image_alt": null,
@@ -337,7 +337,7 @@
           "question": "Schrödinger's cat is really in a superposition of dead and alive states as long as the box has not been opened.",
           "correct_answer": false,
           "explanation": "FALSE. Schrödinger's thought experiment shows the apparent absurdity of a macroscopic superposition. A cat is never isolated: it interacts constantly with its environment (air, radiation), and decoherence destroys the superposition in an extremely short time, leaving a statistical mixture of 'dead' or 'alive'. Coherent superposition is observed only for well-isolated systems.",
-          "section_ref": "1.2.3",
+          "section_ref": "1.3",
           "formula": null,
           "image_url": "assets/images/SchoedingerCat.png",
           "image_alt": "Schrödinger's cat",
@@ -537,11 +537,11 @@
           "explanation": "The points on the equator ($\\theta = \\pi/2$) are the states $\\frac{1}{\\sqrt{2}}(\\ket{0} + e^{i\\phi}\\ket{1})$: equal probabilities (50%/50%) for $\\ket{0}$ and $\\ket{1}$, with the relative phase $\\phi$ fixing the position on the equator ($\\phi=0$: $\\ket{+}$, $\\phi=\\pi/2$: $\\ket{+i}$, $\\phi=\\pi$: $\\ket{-}$).",
           "section_ref": "1.4",
           "formula": null,
-          "image_url": "assets/images/ch1/bloch-sphere.svg",
-          "image_alt": "Illustration of the concept",
+          "image_url": "assets/images/en/ch1/bloch-sphere.svg",
+          "image_alt": "Bloch sphere with the states |0⟩ and |1⟩ at the poles",
           "tags": [
-            "Wave-particle duality",
-            "Interference",
+            "Bloch sphere",
+            "Qubit",
             "Superposition"
           ],
           "time_estimate": 75,
@@ -560,14 +560,14 @@
           ],
           "correct_answer": 1,
           "explanation": "The fringes appear because the probability amplitudes coming from the two slits add up: $\\psi_{total} = \\psi_1 + \\psi_2$. The probability is $|\\psi_{total}|^2$, which contains interference terms. This is evidence of quantum behaviour.",
-          "section_ref": "1.5",
+          "section_ref": "1.1",
           "formula": null,
-          "image_url": "assets/images/ch1/young-experiment.svg",
-          "image_alt": "Illustration of the concept",
+          "image_url": "assets/images/en/ch1/young-experiment.svg",
+          "image_alt": "Diagram of Young's double-slit experiment",
           "tags": [
-            "Wave-particle duality",
+            "Young's double slit",
             "Interference",
-            "Superposition"
+            "Wave–particle duality"
           ],
           "time_estimate": 60,
           "points": 2
@@ -609,7 +609,7 @@
           "type": "hotspot",
           "difficulty": "easy",
           "question": "On the diagram of Young's double-slit experiment, identify the region where the interference fringes form",
-          "image_url": "assets/images/ch1/young-experiment.svg",
+          "image_url": "assets/images/en/ch1/young-experiment.svg",
           "image_alt": "Young's double-slit experiment",
           "hotspots": [
             {
@@ -654,7 +654,7 @@
           "type": "hotspot",
           "difficulty": "medium",
           "question": "On the Bloch sphere, identify the position representing the state |0⟩",
-          "image_url": "assets/images/ch1/bloch-sphere.svg",
+          "image_url": "assets/images/en/ch1/bloch-sphere.svg",
           "image_alt": "Bloch sphere",
           "hotspots": [
             {
@@ -699,7 +699,7 @@
           "type": "hotspot",
           "difficulty": "medium",
           "question": "On the Bloch sphere, where is the state |+⟩ = (|0⟩ + |1⟩)/√2 located?",
-          "image_url": "assets/images/ch1/bloch-sphere.svg",
+          "image_url": "assets/images/en/ch1/bloch-sphere.svg",
           "image_alt": "Bloch sphere",
           "hotspots": [
             {
@@ -744,7 +744,7 @@
           "type": "hotspot",
           "difficulty": "medium",
           "question": "On the Bloch sphere, where is the state |−⟩ = (|0⟩ − |1⟩)/√2 located?",
-          "image_url": "assets/images/ch1/bloch-sphere.svg",
+          "image_url": "assets/images/en/ch1/bloch-sphere.svg",
           "image_alt": "Bloch sphere",
           "hotspots": [
             {
@@ -789,7 +789,7 @@
           "type": "hotspot",
           "difficulty": "hard",
           "question": "On the Bloch sphere, where is the state |1⟩ located?",
-          "image_url": "assets/images/ch1/bloch-sphere.svg",
+          "image_url": "assets/images/en/ch1/bloch-sphere.svg",
           "image_alt": "Bloch sphere",
           "hotspots": [
             {
@@ -834,7 +834,7 @@
           "type": "hotspot",
           "difficulty": "easy",
           "question": "In Young's double-slit experiment, where are the two slits placed?",
-          "image_url": "assets/images/ch1/young-experiment.svg",
+          "image_url": "assets/images/en/ch1/young-experiment.svg",
           "image_alt": "Young's double-slit experiment",
           "hotspots": [
             {
@@ -879,7 +879,7 @@
           "type": "hotspot",
           "difficulty": "hard",
           "question": "In Young's double-slit experiment, identify where the coherent source is located",
-          "image_url": "assets/images/ch1/young-experiment.svg",
+          "image_url": "assets/images/en/ch1/young-experiment.svg",
           "image_alt": "Young's double-slit experiment",
           "hotspots": [
             {
@@ -924,7 +924,7 @@
           "type": "hotspot",
           "difficulty": "medium",
           "question": "On the Bloch sphere, where is the state $\\ket{+i} = \\frac{1}{\\sqrt{2}}(\\ket{0} + i\\ket{1})$ located?",
-          "image_url": "assets/images/ch1/bloch-sphere.svg",
+          "image_url": "assets/images/en/ch1/bloch-sphere.svg",
           "image_alt": "Bloch sphere",
           "hotspots": [
             {
@@ -969,7 +969,7 @@
           "type": "hotspot",
           "difficulty": "hard",
           "question": "On the Bloch sphere, where is a state with θ=π/4 and φ=0 located?",
-          "image_url": "assets/images/ch1/bloch-sphere.svg",
+          "image_url": "assets/images/en/ch1/bloch-sphere.svg",
           "image_alt": "Bloch sphere",
           "hotspots": [
             {
@@ -1426,7 +1426,7 @@
           "animation_description": "Interference of light through two slits. Adjust the slit separation with the slider and observe the interference pattern.",
           "animation_params": {
             "slit_separation": {
-              "label": "Séparation (d) :",
+              "label": "Separation (d):",
               "min": 30,
               "max": 120,
               "default": 60,
@@ -1434,7 +1434,7 @@
               "unit": " px"
             },
             "wavelength": {
-              "label": "Longueur d'onde (λ) :",
+              "label": "Wavelength (λ):",
               "min": 15,
               "max": 50,
               "default": 30,
@@ -1469,7 +1469,7 @@
       "chapter_number": "2",
       "chapter_title": "Measurement and Operators",
       "chapter_description": "Stern-Gerlach experiment, spin quantisation, Hermitian operators, eigenvalues and commutators",
-      "section_reference": "Sections 2.1-2.3",
+      "section_reference": "Sections 2.1-2.5",
       "key_concepts": [
         "Stern-Gerlach",
         "Spin quantisation",
@@ -1504,7 +1504,7 @@
           ],
           "time_estimate": 60,
           "points": 1,
-          "image_url": "assets/images/SternGerlachExper.png",
+          "image_url": "assets/images/en/SternGerlachExper.png",
           "image_alt": "Stern-Gerlach apparatus"
         },
         {
@@ -1585,7 +1585,7 @@
           "correct_answer": 5.3,
           "tolerance": 0.1,
           "unit": "×10⁻³⁵ J·s",
-          "explanation": "Eigenvalue: $S_z = +\\frac{\\hbar}{2} = \\frac{1.055 \\times 10^{-34}}{2} = 5.275 \\times 10^{-35}$ J·s $\\approx 5.3 \\times 10^{-35}$ J·s. This infinitesimal value shows why quantum effects are not visible on the macroscopic scale.",
+          "explanation": "Eigenvalue: $S_z = +\\frac{\\hbar}{2} = \\frac{1.055 \\times 10^{-34}}{2} = 5.275 \\times 10^{-35}$ J·s $\\approx 5.3 \\times 10^{-35}$ J·s. This value, tiny on a human scale, shows why quantum effects are not visible on the macroscopic scale.",
           "section_ref": "2.1.1",
           "formula": "$S_z = \\pm\\frac{\\hbar}{2}$",
           "tags": [
@@ -1695,7 +1695,7 @@
           ],
           "time_estimate": 120,
           "points": 1,
-          "image_url": "assets/images/SternGerlachExper.png",
+          "image_url": "assets/images/en/SternGerlachExper.png",
           "image_alt": "Stern-Gerlach apparatus"
         },
         {
@@ -1730,12 +1730,12 @@
           "explanation": "The Stern-Gerlach apparatus measures the component of the spin magnetic moment along the axis of the inhomogeneous magnetic field. For silver atoms, 2 spots are observed (spin ±ℏ/2).",
           "section_ref": "2.1",
           "formula": null,
-          "image_url": "assets/images/ch2/stern-gerlach.svg",
-          "image_alt": "Illustration of the concept",
+          "image_url": "assets/images/en/ch2/stern-gerlach.svg",
+          "image_alt": "Diagram of the Stern–Gerlach experiment",
           "tags": [
-            "Stern-Gerlach",
-            "Hermitian operators",
-            "Eigenvalues"
+            "Stern–Gerlach",
+            "Spin",
+            "Measurement"
           ],
           "time_estimate": 45,
           "points": 1
@@ -1756,11 +1756,10 @@
           "section_ref": "2.1",
           "formula": null,
           "image_url": null,
-          "image_alt": "Illustration of the concept",
           "tags": [
-            "Stern-Gerlach",
             "Hermitian operators",
-            "Eigenvalues"
+            "Eigenvalues",
+            "Observables"
           ],
           "time_estimate": 60,
           "points": 2
@@ -1770,7 +1769,7 @@
           "type": "hotspot",
           "difficulty": "easy",
           "question": "On the Stern-Gerlach apparatus, where are the atoms with unpolarised spin produced?",
-          "image_url": "assets/images/ch2/stern-gerlach.svg",
+          "image_url": "assets/images/en/ch2/stern-gerlach.svg",
           "image_alt": "Stern-Gerlach experiment",
           "hotspots": [
             {
@@ -1797,7 +1796,7 @@
           ],
           "correct_hotspot": "source",
           "explanation": "The atomic oven produces a beam of atoms in an unpolarised spin state.",
-          "section_ref": "2.3",
+          "section_ref": "2.1",
           "tags": [
             "Stern-Gerlach",
             "source",
@@ -1815,7 +1814,7 @@
           "type": "hotspot",
           "difficulty": "hard",
           "question": "In a Stern-Gerlach apparatus oriented along z, where would a state |↑⟩_z arrive?",
-          "image_url": "assets/images/ch2/stern-gerlach.svg",
+          "image_url": "assets/images/en/ch2/stern-gerlach.svg",
           "image_alt": "Stern-Gerlach experiment",
           "hotspots": [
             {
@@ -1842,7 +1841,7 @@
           ],
           "correct_hotspot": "up",
           "explanation": "A state |↑⟩_z (spin up along z) is deflected upwards by the field gradient.",
-          "section_ref": "2.3",
+          "section_ref": "2.1",
           "tags": [
             "Stern-Gerlach",
             "spin-up",
@@ -1860,7 +1859,7 @@
           "type": "hotspot",
           "difficulty": "hard",
           "question": "In a Stern-Gerlach apparatus oriented along z, where would a state |↓⟩_z arrive?",
-          "image_url": "assets/images/ch2/stern-gerlach.svg",
+          "image_url": "assets/images/en/ch2/stern-gerlach.svg",
           "image_alt": "Stern-Gerlach experiment",
           "hotspots": [
             {
@@ -1887,7 +1886,7 @@
           ],
           "correct_hotspot": "down",
           "explanation": "A state |↓⟩_z (spin down along z) is deflected downwards by the field gradient.",
-          "section_ref": "2.3",
+          "section_ref": "2.1",
           "tags": [
             "Stern-Gerlach",
             "spin-down",
@@ -2102,7 +2101,7 @@
           ],
           "time_estimate": 75,
           "points": 2,
-          "image_url": "assets/images/SternGerlachExper.png",
+          "image_url": "assets/images/en/SternGerlachExper.png",
           "image_alt": "Stern-Gerlach apparatus"
         },
         {
@@ -2158,7 +2157,7 @@
           "type": "hotspot",
           "difficulty": "medium",
           "question": "On this diagram of the Stern-Gerlach experiment, identify the inhomogeneous magnet that causes the trajectories to separate",
-          "image_url": "assets/images/SternGerlachExper.png",
+          "image_url": "assets/images/en/SternGerlachExper.png",
           "image_alt": "Stern-Gerlach experimental set-up",
           "hotspots": [
             {
@@ -2211,7 +2210,7 @@
           "type": "hotspot",
           "difficulty": "easy",
           "question": "On the Stern-Gerlach diagram, identify the screen where the atoms are detected",
-          "image_url": "assets/images/SternGerlachExper.png",
+          "image_url": "assets/images/en/SternGerlachExper.png",
           "image_alt": "Stern-Gerlach experiment",
           "hotspots": [
             {
@@ -2369,7 +2368,7 @@
           "type": "qcm",
           "difficulty": "hard",
           "question": "This diagram shows a Stern-Gerlach filtering device. If 100 atoms in a random state enter, how many come out after the spin-up filter?",
-          "image_url": "assets/images/SGsplitterFiltre.png",
+          "image_url": "assets/images/en/SGsplitterFiltre.png",
           "image_alt": "Spin separation and filtering",
           "options": [
             "100 atoms (all pass)",
@@ -2516,7 +2515,7 @@
           "id": "ch2-q032",
           "type": "qcm",
           "difficulty": "hard",
-          "question": "The Pauli matrices $\\sigma_x$, $\\sigma_y$, $\\sigma_z$ have the following properties (several statements are true, but one is FALSE):",
+          "question": "Which of these properties of the Pauli matrices $\\sigma_x$, $\\sigma_y$, $\\sigma_z$ is FALSE?",
           "options": [
             "$\\sigma_x^2 = \\sigma_y^2 = \\sigma_z^2 = \\mathbb{I}$ (identity)",
             "$[\\sigma_x, \\sigma_y] = 2i\\sigma_z$ (cyclic commutator)",
@@ -2639,7 +2638,7 @@
           "id": "ch2-q038",
           "type": "vrai_faux",
           "difficulty": "easy",
-          "question": "The commutator of two operators $\\hat{A}$ and $\\hat{B}$ is always a Hermitian operator.",
+          "question": "The commutator of two Hermitian operators $\\hat{A}$ and $\\hat{B}$ is always a Hermitian operator.",
           "correct_answer": false,
           "explanation": "FALSE. The commutator $[\\hat{A},\\hat{B}] = \\hat{A}\\hat{B} - \\hat{B}\\hat{A}$ is ANTI-HERMITIAN (or purely imaginary for Hermitian operators). Indeed, if $\\hat{A}$ and $\\hat{B}$ are Hermitian, then $[\\hat{A},\\hat{B}]^\\dagger = [\\hat{B},\\hat{A}] = -[\\hat{A},\\hat{B}]$. Example: $[\\hat{X},\\hat{P}] = i\\hbar$ (purely imaginary). To make the commutator Hermitian, divide it by $i$: $\\frac{1}{i}[\\hat{A},\\hat{B}]$ is Hermitian.",
           "section_ref": "2.4",
@@ -2790,7 +2789,7 @@
           "explanation": "Classically, the magnetic moment of the silver atoms could take any orientation: a continuous trace (an elongated central spot) would be expected. The experiment shows only two spots: the component of the magnetic moment (and therefore of the spin) is quantised.",
           "section_ref": "2.1",
           "formula": null,
-          "image_url": "assets/images/SternGerlachExper.png",
+          "image_url": "assets/images/en/SternGerlachExper.png",
           "image_alt": "Diagram of the Stern-Gerlach experiment with the two spots",
           "tags": [
             "Stern-Gerlach",
@@ -2904,7 +2903,7 @@
           "explanation": "The centre panel shows a splitter $S_i$ followed by an absorbing screen on the $\\ket{-}_i$ channel: only the $\\ket{+}_i$ atoms come out. Such a filter prepares a pure state $\\ket{+}_i$. The right panel filters $\\ket{-}_i$; the left one filters nothing.",
           "section_ref": "2.1",
           "formula": null,
-          "image_url": "assets/images/SGsplitterFiltre.png",
+          "image_url": "assets/images/en/SGsplitterFiltre.png",
           "image_alt": "Stern-Gerlach apparatus with a selective filter",
           "tags": [
             "Stern-Gerlach",
@@ -2953,7 +2952,7 @@
       "chapter_number": "3",
       "chapter_title": "Postulates of Quantum Mechanics",
       "chapter_description": "The six fundamental postulates, the Born rule, projection, unitary evolution and the Schrödinger equation",
-      "section_reference": "Sections 3.1-3.3",
+      "section_reference": "Sections 3.1-3.4",
       "key_concepts": [
         "Six postulates",
         "Hilbert space",
@@ -3210,7 +3209,7 @@
           "difficulty": "hard",
           "question": "Explain the 'measurement problem' in quantum mechanics: why does measurement seem incompatible with unitary Schrödinger evolution?",
           "sample_answer": "The problem comes from two incompatible types of evolution: (1) BETWEEN measurements: continuous, deterministic, reversible unitary evolution (Schrödinger) that maintains superpositions. (2) DURING measurement: non-unitary, probabilistic, irreversible collapse that destroys superpositions and projects onto an eigenstate. These two processes are mathematically inconsistent. If measurement is also a physical process, why does it not obey the Schrödinger equation? Where and when does the collapse occur? This is the core of the debates on the interpretation of QM (Copenhagen, many worlds, etc.).",
-          "explanation": "Excellent analysis. This problem, raised in particular by Schrödinger with his cat and by von Neumann, is still debated today. Modern approaches (decoherence) show that interaction with the environment can simulate an apparent collapse, but the philosophical question remains: is measurement fundamental, or does it emerge from the unitary evolution of a larger system?",
+          "explanation": "This problem, raised in particular by Schrödinger with his cat and by von Neumann, is still debated today. Modern approaches (decoherence) show that interaction with the environment can simulate an apparent collapse, but the philosophical question remains: is measurement fundamental, or does it emerge from the unitary evolution of a larger system?",
           "section_ref": "3.1.4",
           "tags": [
             "measurement problem",
@@ -3243,7 +3242,7 @@
           "tags": [
             "Schrödinger equation",
             "Unitary evolution",
-            "Measurement postulate"
+            "Postulates"
           ],
           "time_estimate": 75,
           "points": 3
@@ -3353,7 +3352,7 @@
             "heisen": "uncert"
           },
           "explanation": "Time-dependent Schrödinger equation, time-independent Schrödinger equation, Born rule, uncertainty relation.",
-          "section_ref": "3.2-3.5",
+          "section_ref": "3.2",
           "tags": [
             "equations",
             "QM",
@@ -3401,8 +3400,8 @@
             "collapse": "irreversible",
             "mixing": "irreversible"
           },
-          "explanation": "Unitary evolution: reversible. Measurement and decoherence: irreversible.",
-          "section_ref": "3.4-3.6",
+          "explanation": "Unitary evolution (free, or driven by a field as in Rabi oscillations): reversible. Measurement: irreversible (projection). Decoherence: irreversible in practice, because information leaks into the environment; the global evolution of system + environment remains unitary.",
+          "section_ref": "3.1-3.2",
           "tags": [
             "evolution",
             "measurement",
@@ -3503,7 +3502,7 @@
           "front": "What is the difference between the time-dependent and the time-independent Schrödinger equation?",
           "back": "Time-dependent: iℏ∂ψ/∂t = Ĥψ (evolution). Time-independent: Ĥψ = Eψ (eigenstates). The second is the search for stationary solutions of the first.",
           "hint": "Two forms of the Schrödinger equation",
-          "section_ref": "3.4-3.5",
+          "section_ref": "3.2",
           "tags": [
             "Schrödinger",
             "equations",
@@ -3730,7 +3729,7 @@
           "section_ref": "3.3",
           "formula": "$T = \\frac{2\\pi\\hbar}{\\Delta E}$",
           "tags": [
-            "Rabi",
+            "Bohr frequency",
             "calculation",
             "period"
           ],
@@ -3784,7 +3783,7 @@
       "chapter_number": "4",
       "chapter_title": "Multi-Qubit Systems and Entanglement",
       "chapter_description": "Tensor product, entangled states, Bell states, quantum teleportation and non-locality",
-      "section_reference": "Sections 4.1-4.3",
+      "section_reference": "Sections 4.1-4.6",
       "key_concepts": [
         "Tensor product",
         "Quantum entanglement",
@@ -4022,9 +4021,9 @@
           "id": "ch4-q010",
           "type": "vrai_faux",
           "difficulty": "easy",
-          "question": "A quantum computer with $n$ qubits can represent $2^n$ classical values simultaneously thanks to superposition.",
+          "question": "For a register of $n$ qubits, the general state is a superposition that can involve all $2^n$ binary configurations, but a final measurement reveals only one of them.",
           "correct_answer": true,
-          "explanation": "TRUE. A system of $n$ qubits has a Hilbert space of dimension $2^n$, and the general state is $\\ket{\\psi} = \\sum_{x=0}^{2^n-1} \\alpha_x \\ket{x}$, a superposition of all $2^n$ binary configurations. This is the source of the potential power of quantum computers: they can 'compute' on all these values in quantum parallel. BUT note: the final measurement yields ONLY ONE result. The art of quantum computing is to design algorithms that amplify the amplitude of the correct answer.",
+          "explanation": "TRUE. A system of $n$ qubits has a Hilbert space of dimension $2^n$: the general state is $\\ket{\\psi} = \\sum_{x=0}^{2^n-1} \\alpha_x \\ket{x}$. But the final measurement gives only ONE outcome $x$, with probability $|\\alpha_x|^2$: one does not read out “$2^n$ values in parallel”. The art of quantum computing is to make the amplitudes interfere so that the right answer becomes highly probable.",
           "section_ref": "4.1.3",
           "formula": "$n$ qubits $\\Rightarrow$ $\\dim(\\mathcal{H}) = 2^n$",
           "tags": [
@@ -4043,7 +4042,7 @@
           "difficulty": "hard",
           "question": "Explain why quantum entanglement is regarded as a 'resource' in quantum information theory, in the same way as energy in thermodynamics.",
           "sample_answer": "Entanglement is a resource because: (1) it is CONSUMED: teleportation destroys the entangled pair used; (2) it can be CONCENTRATED: distillation turns several weakly entangled pairs into fewer maximally entangled pairs; (3) it can be QUANTIFIED: the von Neumann entropy of the reduced state measures the entanglement of a pure state (in ebits); (4) it ENABLES tasks that are impossible classically: teleportation, superdense coding, E91 cryptography; (5) it cannot be increased by local operations and classical communication: a quantum interaction is needed (direct, or indirect through entanglement swapping).",
-          "explanation": "Excellent analysis. This view of entanglement as a resource transformed the field in the 1990s and 2000s (Bennett, Wootters, etc.). It led to quantum information theory, in which one measures the capacities of quantum channels, optimises the use of entanglement, and so on. Entanglement entropy plays a role analogous to thermodynamic entropy.",
+          "explanation": "This view of entanglement as a resource transformed the field in the 1990s and 2000s (Bennett, Wootters, etc.). It led to quantum information theory, in which one measures the capacities of quantum channels, optimises the use of entanglement, and so on. Entanglement entropy plays a role analogous to thermodynamic entropy.",
           "section_ref": "4.2-4.3",
           "tags": [
             "entanglement",
@@ -4103,7 +4102,7 @@
           "type": "hotspot",
           "difficulty": "medium",
           "question": "On this diagram of the Bell states, click on the state $\\ket{\\Phi^+} = \\frac{1}{\\sqrt{2}}(\\ket{00} + \\ket{11})$.",
-          "image_url": "assets/images/ch4/bell-states.svg",
+          "image_url": "assets/images/en/ch4/bell-states.svg",
           "image_alt": "Bell states",
           "hotspots": [
             {
@@ -4148,7 +4147,7 @@
           "type": "hotspot",
           "difficulty": "medium",
           "question": "On this diagram, click on the singlet state $\\ket{\\Psi^-} = \\frac{1}{\\sqrt{2}}(\\ket{01} - \\ket{10})$.",
-          "image_url": "assets/images/ch4/bell-states.svg",
+          "image_url": "assets/images/en/ch4/bell-states.svg",
           "image_alt": "Bell states",
           "hotspots": [
             {
@@ -5026,9 +5025,9 @@
           "id": "ch4-q040",
           "type": "vrai_faux",
           "difficulty": "hard",
-          "question": "The von Neumann entropy $S(\\rho) = -\\text{Tr}(\\rho \\log \\rho)$ measures the degree of entanglement of a quantum system.",
+          "question": "For a pure two-qubit state $\\rho_{AB}$, the von Neumann entropy $S(\\rho_{AB}) = -\\text{Tr}(\\rho_{AB} \\log_2 \\rho_{AB})$ measures its degree of entanglement.",
           "correct_answer": false,
-          "explanation": "FALSE (with a nuance). The von Neumann entropy measures the degree of MIXING (purity) of a state, NOT entanglement directly. For a PURE state, $S(\\rho) = 0$ (no mixing), whether it is entangled or not. To measure entanglement, one uses the entanglement entropy (entropy of the partial trace): $S_{\\text{entanglement}} = S(\\rho_A)$ where $\\rho_A = \\text{Tr}_B(\\rho_{AB})$. If the subsystems A and B are entangled, $S(\\rho_A) > 0$ even if $\\rho_{AB}$ is pure. An important subtlety.",
+          "explanation": "FALSE. For any pure state, $S(\\rho_{AB}) = 0$, whether entangled or not: the entropy of the global state measures its degree of mixing. The entanglement of a pure state is measured by the entropy of the REDUCED state, $S(\\rho_A)$ with $\\rho_A = \\text{Tr}_B(\\rho_{AB})$ (entanglement entropy): 0 for a product state, 1 bit for a Bell state.",
           "section_ref": "4.5",
           "formula": "$S(\\rho) = -\\text{Tr}(\\rho \\log \\rho)$",
           "tags": [
@@ -5113,12 +5112,12 @@
             "Photons are invisible"
           ],
           "correct_answer": 1,
-          "explanation": "Quantum cryptography (BB84 and E91 protocols) exploits the fact that an eavesdropper (Eve) CANNOT measure the quantum state without disturbing it. If Eve intercepts and measures an entangled photon to copy the key, she destroys the entanglement and introduces errors that Alice and Bob can detect. Because of the no-cloning theorem, Eve cannot make a perfect copy. Alice and Bob detect Eve's presence by checking the correlations (error rate). Security is guaranteed by the laws of physics, not by algorithmic complexity.",
+          "explanation": "Entangled-pair protocols (E91, Ekert 1991) exploit the fact that an eavesdropper (Eve) cannot measure the state without disturbing it: by intercepting a photon she degrades the correlations, which Alice and Bob detect by testing part of their results (error rate, Bell inequality). The no-cloning theorem prevents her from making a perfect copy. BB84 rests on the same principle, with single, non-entangled photons. Security is proven for the ideal protocol; real devices have implementation flaws that must be controlled.",
           "section_ref": "4.2",
           "formula": "Measurement → Disturbance → Eavesdropper detected",
           "tags": [
             "cryptography",
-            "BB84",
+            "E91",
             "entanglement",
             "AIMS",
             "Africa"
@@ -5197,7 +5196,7 @@
             "Because classical algorithms are too slow"
           ],
           "correct_answer": 1,
-          "explanation": "To simulate $n$ qubits, $2^n$ complex amplitudes must be stored. For 300 qubits: $2^{300} \\approx 10^{90}$ numbers. With 16 bytes per complex number, that makes $10^{91}$ bytes. Yet the observable universe contains ~$10^{80}$ atoms. Even using 1 atom = 1 bit of memory, the state of a 300-qubit system could not be stored. This 'exponential barrier' is what makes quantum computers potentially revolutionary: they naturally exploit this enormous Hilbert space. At ~50 qubits, 'quantum supremacy' is reached.",
+          "explanation": "To simulate $n$ qubits exactly, one must store $2^n$ complex amplitudes. For 300 qubits: $2^{300} \\approx 10^{90}$ numbers, whereas the observable universe contains about $10^{80}$ atoms: even with one atom per number, it is impossible. This “exponential barrier” explains why quantum computers are of interest for certain tasks. Note, however, that many particular states can be simulated efficiently, and the demonstrations of “quantum advantage” (Google 2019 with 53 qubits, announcements in 2025–2026) concern selected tasks and remain debated.",
           "section_ref": "4.1",
           "formula": "$2^{300} \\approx 10^{90}$ numbers >> $10^{80}$ atoms in the universe",
           "tags": [
@@ -5338,7 +5337,7 @@
       "chapter_number": "5",
       "chapter_title": "Continuous Space and Wave Functions",
       "chapter_description": "Wave function, de Broglie relation, Fourier transform, wave packets and the uncertainty principle",
-      "section_reference": "Sections 5.1-5.3",
+      "section_reference": "Sections 5.1-5.6",
       "key_concepts": [
         "Wave function",
         "Probability density",
@@ -5630,7 +5629,7 @@
           "difficulty": "hard",
           "question": "Explain the link between the Heisenberg uncertainty principle and the spreading of a wave packet over time.",
           "sample_answer": "The spreading of the wave packet is a dynamical consequence of the uncertainty principle. Initially, a localised packet has a small $\\Delta x$, and therefore necessarily a large $\\Delta p$ (Heisenberg). This momentum spread means that the packet contains components with different velocities $v = p/m$. Over time, these components separate in space: the fast components (large $p$) move away faster than the slow ones. Result: $\\Delta x(t)$ increases and the packet spreads. The tighter the initial localisation (small $\\Delta x_0$), the larger $\\Delta p$, and the FASTER the spreading. This is unavoidable: a localised packet cannot remain localised.",
-          "explanation": "Excellent explanation. This phenomenon has far-reaching implications: it is impossible to confine a quantum particle indefinitely in a restricted region without giving it a large kinetic energy (zero-point energy in a potential well). This is also why bound atomic states require an attractive potential to counter the spreading. The spreading time scale $\\tau \\sim m(\\Delta x_0)^2/\\hbar$ shows that spreading is faster for light particles (electrons) than for heavy ones.",
+          "explanation": "This phenomenon has far-reaching implications: it is impossible to confine a quantum particle indefinitely in a restricted region without giving it a large kinetic energy (zero-point energy in a potential well). This is also why bound atomic states require an attractive potential to counter the spreading. The spreading time scale $\\tau \\sim m(\\Delta x_0)^2/\\hbar$ shows that spreading is faster for light particles (electrons) than for heavy ones.",
           "section_ref": "5.3.2",
           "tags": [
             "Heisenberg",
@@ -6090,7 +6089,7 @@
           "type": "qcm",
           "difficulty": "hard",
           "question": "This figure shows a wave packet with energy $E > V_0$ arriving at a potential step. What does the reflected packet represent?",
-          "image_url": "assets/images/ReflPqtOnde.png",
+          "image_url": "assets/images/en/ReflPqtOnde.png",
           "image_alt": "Reflection of a wave packet at a barrier",
           "options": [
             "The annihilation of the particle",
@@ -6116,7 +6115,7 @@
           "type": "qcm",
           "difficulty": "hard",
           "question": "This diagram shows a wave packet with energy $E < V_0$ arriving at a potential step (region II infinite). What is observed?",
-          "image_url": "assets/images/TransPaqOnde.png",
+          "image_url": "assets/images/en/TransPaqOnde.png",
           "image_alt": "Transmission of a wave packet through a barrier",
           "options": [
             "Complete transmission ($T = 1$)",
@@ -6243,7 +6242,7 @@
           "type": "hotspot",
           "difficulty": "hard",
           "question": "On this diagram (potential step, $E < V_0$), identify the zone where the wave function penetrates into the classically forbidden region.",
-          "image_url": "assets/images/TransPaqOnde.png",
+          "image_url": "assets/images/en/TransPaqOnde.png",
           "image_alt": "Transmission with tunnelling",
           "hotspots": [
             {
@@ -7020,7 +7019,7 @@
           "difficulty": "hard",
           "question": "Explain why the quantum harmonic oscillator is regarded as 'the' central model of quantum physics, with examples of varied applications.",
           "sample_answer": "The harmonic oscillator is universal because: (1) LOCAL APPROXIMATION: any potential near a stable minimum can be approximated by $V(x) \\approx \\frac{1}{2}k(x-x_0)^2$ (second-order Taylor expansion); almost any system close to equilibrium is a harmonic oscillator. (2) APPLICATIONS: molecular vibrations (IR spectroscopy), phonons in crystals, modes of the electromagnetic field (photons, lasers), quantum LC circuits (superconducting qubits). (3) FORMALISM: the operators $\\hat{a}$, $\\hat{a}^\\dagger$ are the basis of quantum field theory. (4) EXACTLY SOLVABLE: the spectrum and eigenfunctions are known analytically.",
-          "explanation": "Excellent summary. One may add that the HO is also central in quantum information theory (Gaussian states, continuous-variable quantum computing), in cosmology (quantum fluctuations of the inflaton), and that it illustrates the classical-quantum transition well (coherent states vs Fock states). It is THE model to master.",
+          "explanation": "One may add that the HO is also central in quantum information theory (Gaussian states, continuous-variable quantum computing), in cosmology (quantum fluctuations of the inflaton), and that it illustrates the classical-quantum transition well (coherent states vs Fock states). It is THE model to master.",
           "section_ref": "6.1-6.3",
           "tags": [
             "harmonic oscillator",
@@ -7048,7 +7047,7 @@
           "explanation": "The ground-state energy is $E_0 = \\frac{1}{2}\\hbar\\omega$, called the zero-point energy. It is non-zero because of the uncertainty principle.",
           "section_ref": "6.2",
           "formula": null,
-          "image_url": "assets/images/ch6/harmonic-oscillator.svg",
+          "image_url": "assets/images/en/ch6/harmonic-oscillator.svg",
           "image_alt": "Illustration of the concept",
           "tags": [
             "Energy levels",
@@ -7073,7 +7072,7 @@
           "explanation": "The levels are equally spaced: $E_n = (n + \\frac{1}{2})\\hbar\\omega$, so $\\Delta E = E_{n+1} - E_n = \\hbar\\omega$ for all n. This is a signature of the harmonic oscillator (other common potentials, such as the infinite well or the hydrogen atom, do not have equally spaced levels).",
           "section_ref": "6.1",
           "formula": null,
-          "image_url": "assets/images/ch6/harmonic-oscillator.svg",
+          "image_url": "assets/images/en/ch6/harmonic-oscillator.svg",
           "image_alt": "Illustration of the concept",
           "tags": [
             "Energy levels",
@@ -7088,7 +7087,7 @@
           "type": "hotspot",
           "difficulty": "medium",
           "question": "On the energy-level diagram, identify the ground level $n = 0$.",
-          "image_url": "assets/images/ch6/harmonic-oscillator.svg",
+          "image_url": "assets/images/en/ch6/harmonic-oscillator.svg",
           "image_alt": "Harmonic oscillator",
           "hotspots": [
             {
@@ -7243,7 +7242,7 @@
           "section_ref": "6.2",
           "tags": [
             "harmonic oscillator",
-            "ground state",
+            "turning point",
             "hotspot"
           ],
           "time_estimate": 40,
@@ -7612,11 +7611,19 @@
             },
             {
               "id": "minimum_uncert",
-              "text": "Δx·Δp = ℏ/2"
+              "text": "Eigenstate of the annihilation operator $\\hat a$"
             },
             {
               "id": "poisson",
               "text": "Poisson distribution"
+            },
+            {
+              "id": "squeeze",
+              "text": "Reduced uncertainty in one quadrature at the expense of the other"
+            },
+            {
+              "id": "thermal_mix",
+              "text": "Statistical mixture at non-zero temperature"
             }
           ],
           "drop_zones": [
@@ -7641,10 +7648,12 @@
             "energy_eigen": "fock",
             "position_class": "coherent",
             "minimum_uncert": "coherent",
-            "poisson": "coherent"
+            "poisson": "coherent",
+            "squeeze": "squeezed",
+            "thermal_mix": "thermal"
           },
-          "explanation": "Fock states |n⟩: definite energy, eigenstates of N̂. Coherent |α⟩: eigenstates of â, classical oscillations, minimum uncertainty, photon numbers follow Poisson statistics. Squeezed: Δx < Δx_min or Δp < Δp_min. Thermal: statistical mixture.",
-          "section_ref": "6.4",
+          "explanation": "Fock states |n⟩: well-defined energy (eigenstates of N̂). Coherent states |α⟩: eigenstates of â, quasi-classical oscillations, photon number following a Poisson distribution. Squeezed states: reduced uncertainty in one quadrature (Δx or Δp) at the expense of the other. Thermal states: statistical mixture (Bose–Einstein distribution).",
+          "section_ref": "6.1-6.2",
           "tags": [
             "harmonic oscillator",
             "quantum states",

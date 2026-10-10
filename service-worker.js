@@ -1,10 +1,10 @@
 /* Service worker du Quiz PHY321 : utilisable hors connexion après une première visite.
    Pages HTML et banque de questions : réseau d'abord (contenu à jour), cache en secours.
    Autres ressources (CSS, JS, images, polices, MathJax) : cache d'abord. */
-const VERSION = 'quiz-2026-10-10-bilingue';
+const VERSION = 'quiz-2026-10-10-finitions';
 const CORE = [
   './', './index.html', './quiz.html', './results.html', './flashcards.html', './glossary.html',
-  './resources.html', './about.html', './offline.html', './manifest.json', './data/questions.json',
+  './resources.html', './about.html', './offline.html', './manifest.json', './manifest.en.json', './data/questions.json',
   './css/carnet.css', './css/quiz.css',
   './js/common.js', './js/questions.js', './js/quiz.js', './js/results.js', './js/home.js',
   './js/flashcards.js', './js/mathjax-config.js', './assets/icons/favicon.svg', './assets/icons/icon-192x192.png',

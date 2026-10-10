@@ -56,6 +56,9 @@ INVARIANTS = ["id", "type", "difficulty", "section_ref", "points", "correct_answ
 def structure(q):
     """Squelette d'une question sans ses textes : ids internes, coordonnées, nombre d'options."""
     sk = {k: q.get(k) for k in INVARIANTS}
+    # un schéma traduit vit dans assets/images/en/… : même image d'origine, chemin différent
+    if isinstance(sk.get("image_url"), str):
+        sk["image_url"] = sk["image_url"].replace("assets/images/en/", "assets/images/", 1)
     sk["n_options"] = len(q.get("options") or [])
     sk["n_pairs"] = len(q.get("pairs") or [])
     sk["items"] = [i.get("id") for i in q.get("draggable_items") or []]

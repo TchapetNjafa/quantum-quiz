@@ -3,8 +3,8 @@
   <rect width="600" height="500" fill="#0f172a"/>
 
   <!-- Title -->
-  <text x="300" y="30" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="bold">Les 4 États de Bell</text>
-  <text x="300" y="50" text-anchor="middle" fill="#94a3b8" font-size="12">États maximalement intriqués à 2 qubits</text>
+  <text x="300" y="30" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="bold">The four Bell states</text>
+  <text x="300" y="50" text-anchor="middle" fill="#94a3b8" font-size="12">Maximally entangled two-qubit states</text>
 
   <!-- Grid for 4 states -->
   <!-- Φ+ -->
@@ -20,7 +20,7 @@
 
   <path d="M 125 180 Q 155 160, 185 180" stroke="#06b6d4" stroke-width="3" fill="none"/>
   <path d="M 125 180 Q 155 200, 185 180" stroke="#06b6d4" stroke-width="3" fill="none"/>
-  <text x="155" y="230" text-anchor="middle" fill="#10b981" font-size="11">Identiques en Z, phase +</text>
+  <text x="155" y="230" text-anchor="middle" fill="#10b981" font-size="11">Same in Z, phase +</text>
 
   <!-- Φ- -->
   <rect x="320" y="80" width="250" height="180" fill="#1e293b" stroke="#ec4899" stroke-width="2" rx="10"/>
@@ -34,7 +34,7 @@
   <text x="500" y="185" text-anchor="middle" fill="#f8fafc" font-size="11">Qubit B</text>
 
   <path d="M 415 180 Q 445 165, 475 180" stroke="#ec4899" stroke-width="3" fill="none" stroke-dasharray="5,5"/>
-  <text x="445" y="230" text-anchor="middle" fill="#ef4444" font-size="11">Identiques en Z, phase −</text>
+  <text x="445" y="230" text-anchor="middle" fill="#ef4444" font-size="11">Same in Z, phase −</text>
 
   <!-- Ψ+ -->
   <rect x="30" y="290" width="250" height="180" fill="#1e293b" stroke="#fbbf24" stroke-width="2" rx="10"/>
@@ -49,7 +49,7 @@
 
   <line x1="115" y1="375" x2="195" y2="405" stroke="#fbbf24" stroke-width="3"/>
   <line x1="115" y1="405" x2="195" y2="375" stroke="#fbbf24" stroke-width="3"/>
-  <text x="155" y="440" text-anchor="middle" fill="#fbbf24" font-size="11">Opposés en Z, phase +</text>
+  <text x="155" y="440" text-anchor="middle" fill="#fbbf24" font-size="11">Opposite in Z, phase +</text>
 
   <!-- Ψ- -->
   <rect x="320" y="290" width="250" height="180" fill="#1e293b" stroke="#06b6d4" stroke-width="2" rx="10"/>
@@ -64,8 +64,8 @@
 
   <line x1="405" y1="375" x2="485" y2="405" stroke="#06b6d4" stroke-width="3" stroke-dasharray="5,5"/>
   <line x1="405" y1="405" x2="485" y2="375" stroke="#06b6d4" stroke-width="3" stroke-dasharray="5,5"/>
-  <text x="445" y="440" text-anchor="middle" fill="#06b6d4" font-size="11">Opposés en Z · singulet</text>
+  <text x="445" y="440" text-anchor="middle" fill="#06b6d4" font-size="11">Opposite in Z · singlet</text>
 
   <!-- Footer -->
-  <text x="300" y="490" text-anchor="middle" fill="#94a3b8" font-size="11">Base maximale d'intrication - Utilisés en cryptographie et téléportation quantique</text>
+  <text x="300" y="490" text-anchor="middle" fill="#94a3b8" font-size="11">Maximally entangled basis — used in quantum cryptography and teleportation</text>
 </svg>

@@ -71,6 +71,10 @@ Le quiz existe en anglais : <https://tchapetnjafa.github.io/quantum-quiz/en/> (b
 - Paramètres d'URL : `?chapter=N` (anglais) et `?chapitre=N` sont acceptés.
 - Signalements : formulaire anglais `.github/ISSUE_TEMPLATE/error.yml`.
 - Les statistiques locales sont communes aux deux langues.
+- Schémas : les images contenant du texte ont une version anglaise dans `assets/images/en/` (mêmes dimensions,
+  donc mêmes zones cliquables) ; la banque anglaise y renvoie. Pour les régénérer après modification d'une image :
+  `python3 outils/traduire_schemas.py` (images matricielles retouchées + SVG traduits, table `SVG_EN`).
+- Installation sur téléphone : `manifest.json` (français) et `manifest.en.json` (anglais, démarre sur `en/`).
 
 **Règle : toute modification (question, correction, interface) doit être faite dans les deux langues.**
 
