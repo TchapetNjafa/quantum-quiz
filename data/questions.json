@@ -13,7 +13,7 @@
       "chapter_number": "1",
       "chapter_title": "États Quantiques",
       "chapter_description": "Découverte des phénomènes quantiques, amplitudes de probabilité, superposition d'états et qubits",
-      "section_reference": "Sections 1.1-1.4",
+      "section_reference": "Sections 1.1-1.5",
       "key_concepts": [
         "Dualité onde-corpuscule",
         "Interférences quantiques",
@@ -241,7 +241,7 @@
           ],
           "correct_answer": 0,
           "explanation": "La décohérence est le mécanisme par lequel un système quantique en superposition perd ses propriétés quantiques (comme les interférences) en interagissant avec son environnement. Les informations de phase se dispersent dans l'environnement, et le système se comporte alors de manière classique. C'est le défi majeur pour les ordinateurs quantiques : maintenir la cohérence des qubits assez longtemps pour effectuer des calculs.",
-          "section_ref": "1.2.3",
+          "section_ref": "1.3.2",
           "formula": null,
           "image_url": null,
           "image_alt": null,
@@ -337,7 +337,7 @@
           "question": "Le chat de Schrödinger est réellement dans une superposition d'états mort et vivant tant que la boîte n'est pas ouverte.",
           "correct_answer": false,
           "explanation": "FAUX. L'expérience de pensée de Schrödinger montre l'absurdité apparente d'une superposition macroscopique. Un chat n'est jamais isolé : il interagit en permanence avec son environnement (air, rayonnement), et la décohérence détruit la superposition en un temps extrêmement court, laissant un mélange statistique « mort » ou « vivant ». La superposition cohérente ne s'observe que pour des systèmes bien isolés.",
-          "section_ref": "1.2.3",
+          "section_ref": "1.3",
           "formula": null,
           "image_url": "assets/images/SchoedingerCat.png",
           "image_alt": "Chat de Schrödinger",
@@ -538,10 +538,10 @@
           "section_ref": "1.4",
           "formula": null,
           "image_url": "assets/images/ch1/bloch-sphere.svg",
-          "image_alt": "Illustration du concept",
+          "image_alt": "Sphère de Bloch avec les états |0⟩ et |1⟩ aux pôles",
           "tags": [
-            "Dualité onde-corpuscule",
-            "Interférences",
+            "Sphère de Bloch",
+            "Qubit",
             "Superposition"
           ],
           "time_estimate": 75,
@@ -560,14 +560,14 @@
           ],
           "correct_answer": 1,
           "explanation": "Les franges apparaissent car les amplitudes de probabilité provenant des deux fentes s'additionnent: $\\psi_{total} = \\psi_1 + \\psi_2$. La probabilité est $|\\psi_{total}|^2$ qui contient des termes d'interférence. C'est une preuve de la nature quantique.",
-          "section_ref": "1.5",
+          "section_ref": "1.1",
           "formula": null,
           "image_url": "assets/images/ch1/young-experiment.svg",
-          "image_alt": "Illustration du concept",
+          "image_alt": "Schéma de l'expérience des fentes d'Young",
           "tags": [
-            "Dualité onde-corpuscule",
+            "Fentes d'Young",
             "Interférences",
-            "Superposition"
+            "Dualité onde-corpuscule"
           ],
           "time_estimate": 60,
           "points": 2
@@ -1469,7 +1469,7 @@
       "chapter_number": "2",
       "chapter_title": "Mesure et Opérateurs",
       "chapter_description": "Expérience de Stern-Gerlach, quantification du spin, opérateurs hermitiens, valeurs propres et commutateurs",
-      "section_reference": "Sections 2.1-2.3",
+      "section_reference": "Sections 2.1-2.5",
       "key_concepts": [
         "Stern-Gerlach",
         "Quantification du spin",
@@ -1493,7 +1493,7 @@
             "Les atomes sont tous identiques"
           ],
           "correct_answer": 1,
-          "explanation": "L'expérience de Stern-Gerlach a été une découverte révolutionnaire : en faisant passer un faisceau d'atomes d'argent dans un champ magnétique inhomogène, au lieu d'observer une déviation continue (attendue classiquement), ils ont observé deux taches discrètes. Cela a prouvé que le moment magnétique (lié au spin) est QUANTIFIÉ : il ne peut prendre que certaines valeurs discrètes (±ℏ/2 pour l'électron).",
+          "explanation": "L'expérience de Stern-Gerlach a été une découverte majeure : en faisant passer un faisceau d'atomes d'argent dans un champ magnétique inhomogène, au lieu d'observer une déviation continue (attendue classiquement), ils ont observé deux taches discrètes. Cela a prouvé que le moment magnétique (lié au spin) est QUANTIFIÉ : il ne peut prendre que certaines valeurs discrètes (±ℏ/2 pour l'électron).",
           "section_ref": "2.1",
           "formula": "$S_z = \\pm\\frac{\\hbar}{2}$ pour un spin 1/2",
           "tags": [
@@ -1585,7 +1585,7 @@
           "correct_answer": 5.3,
           "tolerance": 0.1,
           "unit": "×10⁻³⁵ J·s",
-          "explanation": "Valeur propre : $S_z = +\\frac{\\hbar}{2} = \\frac{1.055 \\times 10^{-34}}{2} = 5.275 \\times 10^{-35}$ J·s $\\approx 5.3 \\times 10^{-35}$ J·s. Cette valeur infinitésimale montre pourquoi les effets quantiques ne sont pas visibles à l'échelle macroscopique.",
+          "explanation": "Valeur propre : $S_z = +\\frac{\\hbar}{2} = \\frac{1.055 \\times 10^{-34}}{2} = 5.275 \\times 10^{-35}$ J·s $\\approx 5.3 \\times 10^{-35}$ J·s. Cette valeur, minuscule à l'échelle humaine, montre pourquoi les effets quantiques ne sont pas visibles à l'échelle macroscopique.",
           "section_ref": "2.1.1",
           "formula": "$S_z = \\pm\\frac{\\hbar}{2}$",
           "tags": [
@@ -1685,7 +1685,7 @@
             "25%"
           ],
           "correct_answer": 1,
-          "explanation": "La réponse correcte est 50%. Après la première mesure SGz, l'état est $\\ket{+}_z$. La deuxième mesure SGx projette sur $\\ket{+}_x$, qui peut s'écrire $\\ket{+}_x = \\frac{1}{\\sqrt{2}}(\\ket{+}_z + \\ket{-}_z)$. Cette mesure 'efface' complètement l'information sur $S_z$ : l'atome est maintenant en superposition égale de $\\ket{+}_z$ et $\\ket{-}_z$. La troisième mesure SGz donnera donc 50% de chance pour chaque résultat. C'est un exemple fascinant de l'effet perturbateur de la mesure quantique.",
+          "explanation": "La réponse correcte est 50%. Après la première mesure SGz, l'état est $\\ket{+}_z$. La deuxième mesure SGx projette sur $\\ket{+}_x$, qui peut s'écrire $\\ket{+}_x = \\frac{1}{\\sqrt{2}}(\\ket{+}_z + \\ket{-}_z)$. Cette mesure 'efface' complètement l'information sur $S_z$ : l'atome est maintenant en superposition égale de $\\ket{+}_z$ et $\\ket{-}_z$. La troisième mesure SGz donnera donc 50% de chance pour chaque résultat. C'est un exemple clair de l'effet perturbateur de la mesure quantique.",
           "section_ref": "2.1.3",
           "formula": "$\\ket{+}_x = \\frac{1}{\\sqrt{2}}(\\ket{+}_z + \\ket{-}_z)$",
           "tags": [
@@ -1731,11 +1731,11 @@
           "section_ref": "2.1",
           "formula": null,
           "image_url": "assets/images/ch2/stern-gerlach.svg",
-          "image_alt": "Illustration du concept",
+          "image_alt": "Schéma de l'expérience de Stern-Gerlach",
           "tags": [
             "Stern-Gerlach",
-            "Opérateurs hermitiens",
-            "Valeurs propres"
+            "Spin",
+            "Mesure"
           ],
           "time_estimate": 45,
           "points": 1
@@ -1756,11 +1756,10 @@
           "section_ref": "2.1",
           "formula": null,
           "image_url": null,
-          "image_alt": "Illustration du concept",
           "tags": [
-            "Stern-Gerlach",
             "Opérateurs hermitiens",
-            "Valeurs propres"
+            "Valeurs propres",
+            "Observables"
           ],
           "time_estimate": 60,
           "points": 2
@@ -1797,7 +1796,7 @@
           ],
           "correct_hotspot": "source",
           "explanation": "Le four atomique produit un faisceau d'atomes dans un état de spin non polarisé.",
-          "section_ref": "2.3",
+          "section_ref": "2.1",
           "tags": [
             "Stern-Gerlach",
             "source",
@@ -1842,7 +1841,7 @@
           ],
           "correct_hotspot": "up",
           "explanation": "Un état |↑⟩_z (spin up selon z) est dévié vers le haut par le gradient de champ.",
-          "section_ref": "2.3",
+          "section_ref": "2.1",
           "tags": [
             "Stern-Gerlach",
             "spin-up",
@@ -1887,7 +1886,7 @@
           ],
           "correct_hotspot": "down",
           "explanation": "Un état |↓⟩_z (spin down selon z) est dévié vers le bas par le gradient de champ.",
-          "section_ref": "2.3",
+          "section_ref": "2.1",
           "tags": [
             "Stern-Gerlach",
             "spin-down",
@@ -2516,7 +2515,7 @@
           "id": "ch2-q032",
           "type": "qcm",
           "difficulty": "hard",
-          "question": "Les matrices de Pauli $\\sigma_x$, $\\sigma_y$, $\\sigma_z$ ont les propriétés suivantes (plusieurs réponses possibles, mais une est FAUSSE) :",
+          "question": "Parmi ces propriétés des matrices de Pauli $\\sigma_x$, $\\sigma_y$, $\\sigma_z$, laquelle est FAUSSE ?",
           "options": [
             "$\\sigma_x^2 = \\sigma_y^2 = \\sigma_z^2 = \\mathbb{I}$ (identité)",
             "$[\\sigma_x, \\sigma_y] = 2i\\sigma_z$ (commutateur cyclique)",
@@ -2639,7 +2638,7 @@
           "id": "ch2-q038",
           "type": "vrai_faux",
           "difficulty": "easy",
-          "question": "Le commutateur de deux opérateurs $\\hat{A}$ et $\\hat{B}$ est toujours un opérateur hermitien.",
+          "question": "Le commutateur de deux opérateurs hermitiens $\\hat{A}$ et $\\hat{B}$ est toujours un opérateur hermitien.",
           "correct_answer": false,
           "explanation": "FAUX. Le commutateur $[\\hat{A},\\hat{B}] = \\hat{A}\\hat{B} - \\hat{B}\\hat{A}$ est ANTIHERMITIEN (ou imaginaire pur pour des opérateurs hermitiens). En effet, si $\\hat{A}$ et $\\hat{B}$ sont hermitiens, alors $[\\hat{A},\\hat{B}]^\\dagger = [\\hat{B},\\hat{A}] = -[\\hat{A},\\hat{B}]$. Exemple : $[\\hat{X},\\hat{P}] = i\\hbar$ (imaginaire pur). Pour que le commutateur soit hermitien, il faut diviser par $i$ : $\\frac{1}{i}[\\hat{A},\\hat{B}]$ est hermitien.",
           "section_ref": "2.4",
@@ -2953,7 +2952,7 @@
       "chapter_number": "3",
       "chapter_title": "Postulats de la Mécanique Quantique",
       "chapter_description": "Les six postulats fondamentaux, règle de Born, projection, évolution unitaire et équation de Schrödinger",
-      "section_reference": "Sections 3.1-3.3",
+      "section_reference": "Sections 3.1-3.4",
       "key_concepts": [
         "Six postulats",
         "Espace de Hilbert",
@@ -3210,7 +3209,7 @@
           "difficulty": "hard",
           "question": "Expliquez le 'problème de la mesure' en mécanique quantique : pourquoi la mesure semble-t-elle incompatible avec l'évolution unitaire de Schrödinger ?",
           "sample_answer": "Le problème vient de deux types d'évolution incompatibles : (1) ENTRE les mesures : évolution unitaire continue, déterministe, réversible (Schrödinger) qui maintient les superpositions. (2) PENDANT la mesure : collapse non-unitaire, probabiliste, irréversible qui détruit les superpositions et projette sur un état propre. Ces deux processus sont mathématiquement incohérents. Si la mesure est aussi un processus physique, pourquoi n'obéit-elle pas à Schrödinger ? Où et quand se produit le collapse ? C'est le cœur des débats sur l'interprétation de la MQ (Copenhague, mondes multiples, etc.).",
-          "explanation": "Excellente analyse ! Ce problème, soulevé notamment par Schrödinger avec son chat et par von Neumann, reste débattu aujourd'hui. Les approches modernes (décohérence) montrent que l'interaction avec l'environnement peut simuler un collapse apparent, mais la question philosophique persiste : la mesure est-elle fondamentale ou émerge-t-elle de l'évolution unitaire d'un système plus large ?",
+          "explanation": "Ce problème, soulevé notamment par Schrödinger avec son chat et par von Neumann, reste débattu aujourd'hui. Les approches modernes (décohérence) montrent que l'interaction avec l'environnement peut simuler un collapse apparent, mais la question philosophique persiste : la mesure est-elle fondamentale ou émerge-t-elle de l'évolution unitaire d'un système plus large ?",
           "section_ref": "3.1.4",
           "tags": [
             "problème de la mesure",
@@ -3243,7 +3242,7 @@
           "tags": [
             "Équation de Schrödinger",
             "Évolution unitaire",
-            "Postulat de mesure"
+            "Postulats"
           ],
           "time_estimate": 75,
           "points": 3
@@ -3353,7 +3352,7 @@
             "heisen": "uncert"
           },
           "explanation": "Schrödinger dépendant du temps, indépendant du temps, règle de Born, incertitude.",
-          "section_ref": "3.2-3.5",
+          "section_ref": "3.2",
           "tags": [
             "équations",
             "MQ",
@@ -3401,8 +3400,8 @@
             "collapse": "irreversible",
             "mixing": "irreversible"
           },
-          "explanation": "Évolution unitaire: réversible. Mesure et décohérence: irréversibles.",
-          "section_ref": "3.4-3.6",
+          "explanation": "Évolution unitaire (libre, ou sous l'effet d'un champ comme dans les oscillations de Rabi) : réversible. Mesure : irréversible (projection). Décohérence : irréversible en pratique, car l'information fuit dans l'environnement ; l'évolution globale système + environnement reste, elle, unitaire.",
+          "section_ref": "3.1-3.2",
           "tags": [
             "évolution",
             "mesure",
@@ -3503,7 +3502,7 @@
           "front": "Quelle est la différence entre équation de Schrödinger dépendante et indépendante du temps ?",
           "back": "Dépendante : iℏ∂ψ/∂t = Ĥψ (évolution). Indépendante : Ĥψ = Eψ (états propres). La seconde est la recherche de solutions stationnaires de la première.",
           "hint": "Deux formes de Schrödinger",
-          "section_ref": "3.4-3.5",
+          "section_ref": "3.2",
           "tags": [
             "Schrödinger",
             "équations",
@@ -3730,7 +3729,7 @@
           "section_ref": "3.3",
           "formula": "$T = \\frac{2\\pi\\hbar}{\\Delta E}$",
           "tags": [
-            "Rabi",
+            "Fréquence de Bohr",
             "calcul",
             "période"
           ],
@@ -3784,7 +3783,7 @@
       "chapter_number": "4",
       "chapter_title": "Systèmes Multi-Qubits et Intrication",
       "chapter_description": "Produit tensoriel, états intriqués, états de Bell, téléportation quantique et non-localité",
-      "section_reference": "Sections 4.1-4.3",
+      "section_reference": "Sections 4.1-4.6",
       "key_concepts": [
         "Produit tensoriel",
         "Intrication quantique",
@@ -4022,9 +4021,9 @@
           "id": "ch4-q010",
           "type": "vrai_faux",
           "difficulty": "easy",
-          "question": "Un ordinateur quantique à $n$ qubits peut représenter simultanément $2^n$ valeurs classiques grâce à la superposition.",
+          "question": "Pour un registre de $n$ qubits, l'état général est une superposition qui peut faire intervenir les $2^n$ configurations binaires, mais une mesure finale n'en révèle qu'une seule.",
           "correct_answer": true,
-          "explanation": "VRAI. Un système de $n$ qubits a un espace de Hilbert de dimension $2^n$, et l'état général est $\\ket{\\psi} = \\sum_{x=0}^{2^n-1} \\alpha_x \\ket{x}$, une superposition de toutes les $2^n$ configurations binaires. C'est la source de la puissance potentielle des ordinateurs quantiques : ils peuvent 'calculer' sur toutes ces valeurs en parallèle quantique. MAIS attention : lors de la mesure finale, on obtient UN SEUL résultat. L'art du calcul quantique est de concevoir des algorithmes qui amplifient l'amplitude de la bonne réponse.",
+          "explanation": "VRAI. Un système de $n$ qubits a un espace de Hilbert de dimension $2^n$ : l'état général est $\\ket{\\psi} = \\sum_{x=0}^{2^n-1} \\alpha_x \\ket{x}$. Mais la mesure finale ne donne qu'UN résultat $x$, avec la probabilité $|\\alpha_x|^2$ : on ne lit pas « $2^n$ valeurs en parallèle ». L'art du calcul quantique consiste à faire interférer les amplitudes pour que la bonne réponse devienne très probable.",
           "section_ref": "4.1.3",
           "formula": "$n$ qubits $\\Rightarrow$ $\\dim(\\mathcal{H}) = 2^n$",
           "tags": [
@@ -4043,7 +4042,7 @@
           "difficulty": "hard",
           "question": "Expliquez pourquoi l'intrication quantique est considérée comme une 'ressource' en théorie de l'information quantique, au même titre que l'énergie en thermodynamique.",
           "sample_answer": "L'intrication est une ressource car : (1) elle se CONSOMME : la téléportation détruit la paire intriquée utilisée ; (2) elle se CONCENTRE : la distillation transforme plusieurs paires faiblement intriquées en moins de paires maximalement intriquées ; (3) elle se QUANTIFIE : l'entropie de von Neumann de l'état réduit mesure l'intrication d'un état pur (en ebits) ; (4) elle PERMET des tâches impossibles classiquement : téléportation, codage superdense, cryptographie E91 ; (5) elle ne peut pas être augmentée par des opérations locales et une communication classique : il faut une interaction quantique (directe, ou indirecte par échange d'intrication).",
-          "explanation": "Excellente analyse ! Cette vision de l'intrication comme ressource a révolutionné le domaine dans les années 1990-2000 (Bennett, Wootters, etc.). Elle a mené à la théorie de l'information quantique, où on mesure les capacités des canaux quantiques, optimise l'utilisation de l'intrication, etc. L'entropie d'intrication joue un rôle analogue à l'entropie thermodynamique.",
+          "explanation": "Cette vision de l'intrication comme ressource a transformé le domaine dans les années 1990-2000 (Bennett, Wootters, etc.). Elle a mené à la théorie de l'information quantique, où on mesure les capacités des canaux quantiques, optimise l'utilisation de l'intrication, etc. L'entropie d'intrication joue un rôle analogue à l'entropie thermodynamique.",
           "section_ref": "4.2-4.3",
           "tags": [
             "intrication",
@@ -5026,9 +5025,9 @@
           "id": "ch4-q040",
           "type": "vrai_faux",
           "difficulty": "hard",
-          "question": "L'entropie de von Neumann $S(\\rho) = -\\text{Tr}(\\rho \\log \\rho)$ mesure le degré d'intrication d'un système quantique.",
+          "question": "Pour un état pur $\\rho_{AB}$ de deux qubits, l'entropie de von Neumann $S(\\rho_{AB}) = -\\text{Tr}(\\rho_{AB} \\log_2 \\rho_{AB})$ mesure son degré d'intrication.",
           "correct_answer": false,
-          "explanation": "FAUX (avec nuance). L'entropie de von Neumann mesure le degré de MÉLANGE (pureté) d'un état, PAS directement l'intrication. Pour un état PUR, $S(\\rho) = 0$ (pas de mélange), qu'il soit intriqué ou non. Pour mesurer l'intrication, on utilise l'entropie d'intrication (entropie de la trace partielle) : $S_{\\text{intrication}} = S(\\rho_A)$ où $\\rho_A = \\text{Tr}_B(\\rho_{AB})$. Si les sous-systèmes A et B sont intriqués, $S(\\rho_A) > 0$ même si $\\rho_{AB}$ est pur. Subtilité importante !",
+          "explanation": "FAUX. Pour tout état pur, $S(\\rho_{AB}) = 0$, qu'il soit intriqué ou non : l'entropie de l'état global mesure son degré de mélange. L'intrication d'un état pur se mesure par l'entropie de l'état RÉDUIT, $S(\\rho_A)$ avec $\\rho_A = \\text{Tr}_B(\\rho_{AB})$ (entropie d'intrication) : 0 pour un état produit, 1 bit pour un état de Bell.",
           "section_ref": "4.5",
           "formula": "$S(\\rho) = -\\text{Tr}(\\rho \\log \\rho)$",
           "tags": [
@@ -5113,12 +5112,12 @@
             "Les photons sont invisibles"
           ],
           "correct_answer": 1,
-          "explanation": "La cryptographie quantique (protocole BB84, E91) exploite le fait qu'un espion (Eve) ne peut PAS mesurer l'état quantique sans le perturber. Si Eve intercepte et mesure un photon intriqué pour copier la clé, elle détruit l'intrication et introduit des erreurs détectables par Alice et Bob. Grâce au théorème de non-clonage, Eve ne peut pas faire de copie parfaite. Alice et Bob détectent la présence d'Eve en vérifiant les corrélations (taux d'erreur). Sécurité garantie par les lois de la physique, pas par la complexité algorithmique !",
+          "explanation": "Les protocoles à paires intriquées (E91, Ekert 1991) exploitent le fait qu'un espion (Ève) ne peut pas mesurer l'état sans le perturber : en interceptant un photon, elle dégrade les corrélations, ce qu'Alice et Bob détectent en testant une partie de leurs résultats (taux d'erreur, inégalité de Bell). Le théorème de non-clonage l'empêche de faire une copie parfaite. BB84 repose sur le même principe, avec des photons uniques non intriqués. La sécurité est prouvée pour le protocole idéal ; les appareils réels ont des failles d'implémentation à maîtriser.",
           "section_ref": "4.2",
           "formula": "Mesure → Perturbation → Détection espion",
           "tags": [
             "cryptographie",
-            "BB84",
+            "E91",
             "intrication",
             "AIMS",
             "Afrique"
@@ -5173,7 +5172,7 @@
             "Remplacer un instrument par l'autre"
           ],
           "correct_answer": 1,
-          "explanation": "Le produit tensoriel $\\ket{\\text{djembé}}\\otimes\\ket{\\text{balafon}}$ correspond à jouer les deux instruments SIMULTANÉMENT. Le rythme combiné a une complexité qui dépasse la simple addition : si chaque instrument a 4 états rythmiques, le système combiné a $4 \\times 4 = 16$ états possibles (dimension multipliée). C'est comme en quantique : 1 qubit = 2 dimensions, 2 qubits = 4 dimensions. La polyrythmie africaine illustre magnifiquement comment des systèmes indépendants créent une richesse exponentielle en se combinant !",
+          "explanation": "Le produit tensoriel $\\ket{\\text{djembé}}\\otimes\\ket{\\text{balafon}}$ correspond à jouer les deux instruments SIMULTANÉMENT. Le rythme combiné a une complexité qui dépasse la simple addition : si chaque instrument a 4 états rythmiques, le système combiné a $4 \\times 4 = 16$ états possibles (dimension multipliée). C'est comme en quantique : 1 qubit = 2 dimensions, 2 qubits = 4 dimensions. La polyrythmie africaine illustre comment des systèmes indépendants créent une richesse exponentielle en se combinant.",
           "section_ref": "4.1",
           "formula": "$\\dim(A \\otimes B) = \\dim(A) \\times \\dim(B)$",
           "tags": [
@@ -5197,7 +5196,7 @@
             "Parce que les algorithmes classiques sont trop lents"
           ],
           "correct_answer": 1,
-          "explanation": "Pour simuler $n$ qubits, il faut stocker $2^n$ amplitudes complexes. Pour 300 qubits : $2^{300} \\approx 10^{90}$ nombres. Avec 16 octets par nombre complexe, cela fait $10^{91}$ octets. Or, l'univers observable contient ~$10^{80}$ atomes. Même en utilisant 1 atome = 1 bit de mémoire, on ne pourrait pas stocker l'état d'un système à 300 qubits ! C'est cette 'barrière exponentielle' qui rend les ordinateurs quantiques potentiellement révolutionnaires : ils exploitent naturellement cet espace de Hilbert gigantesque. À ~50 qubits, on atteint la 'suprématie quantique'.",
+          "explanation": "Pour simuler exactement $n$ qubits, il faut stocker $2^n$ amplitudes complexes. Pour 300 qubits : $2^{300} \\approx 10^{90}$ nombres, alors que l'univers observable contient environ $10^{80}$ atomes : même avec un atome par nombre, c'est impossible. Cette « barrière exponentielle » explique l'intérêt des ordinateurs quantiques pour certaines tâches. Attention : beaucoup d'états particuliers se simulent efficacement, et les démonstrations d'« avantage quantique » (Google 2019 avec 53 qubits, annonces de 2025-2026) portent sur des tâches choisies et restent discutées.",
           "section_ref": "4.1",
           "formula": "$2^{300} \\approx 10^{90}$ nombres >> $10^{80}$ atomes univers",
           "tags": [
@@ -5338,7 +5337,7 @@
       "chapter_number": "5",
       "chapter_title": "Espace Continu et Fonctions d'Onde",
       "chapter_description": "Fonction d'onde, relation de de Broglie, transformée de Fourier, paquets d'ondes et principe d'incertitude",
-      "section_reference": "Sections 5.1-5.3",
+      "section_reference": "Sections 5.1-5.6",
       "key_concepts": [
         "Fonction d'onde",
         "Densité de probabilité",
@@ -5388,7 +5387,7 @@
             "$\\lambda = E/p$"
           ],
           "correct_answer": 1,
-          "explanation": "La relation de de Broglie (1924) : $\\lambda = \\frac{h}{p}$ ou $p = \\hbar k$ avec $k = \\frac{2\\pi}{\\lambda}$ (nombre d'onde). Cette hypothèse révolutionnaire, confirmée par Davisson-Germer (1927), a étendu la dualité onde-corpuscule à la matière. Exemple : un électron de 1 eV a $\\lambda \\approx 1.2$ nm, comparable aux distances atomiques, d'où l'importance des effets quantiques à l'échelle nano.",
+          "explanation": "La relation de de Broglie (1924) : $\\lambda = \\frac{h}{p}$ ou $p = \\hbar k$ avec $k = \\frac{2\\pi}{\\lambda}$ (nombre d'onde). Cette hypothèse audacieuse, confirmée par Davisson-Germer (1927), a étendu la dualité onde-corpuscule à la matière. Exemple : un électron de 1 eV a $\\lambda \\approx 1.2$ nm, comparable aux distances atomiques, d'où l'importance des effets quantiques à l'échelle nano.",
           "section_ref": "5.2.1",
           "formula": "$\\lambda = \\frac{h}{p}$, $p = \\hbar k$",
           "tags": [
@@ -5630,7 +5629,7 @@
           "difficulty": "hard",
           "question": "Expliquez le lien entre le principe d'incertitude de Heisenberg et l'étalement d'un paquet d'ondes au cours du temps.",
           "sample_answer": "L'étalement du paquet d'ondes est une conséquence dynamique du principe d'incertitude. Initialement, un paquet localisé a un $\\Delta x$ petit, donc nécessairement un $\\Delta p$ grand (Heisenberg). Cette dispersion en impulsion signifie que le paquet contient des composantes avec différentes vitesses $v = p/m$. Au cours du temps, ces composantes se séparent spatialement : les composantes rapides (grand $p$) s'éloignent plus vite que les lentes. Résultat : $\\Delta x(t)$ augmente, le paquet s'étale. Plus on localise initialement (petit $\\Delta x_0$), plus grand est $\\Delta p$, et plus RAPIDE est l'étalement. C'est inévitable : un paquet localisé ne peut rester localisé.",
-          "explanation": "Excellente explication ! Ce phénomène a des implications profondes : il est impossible de confiner une particule quantique indéfiniment dans un espace restreint sans lui fournir une grande énergie cinétique (énergie de point zéro dans un puits de potentiel). C'est aussi pourquoi les états atomiques liés nécessitent un potentiel attractif pour contrer l'étalement. L'échelle de temps d'étalement $\\tau \\sim m(\\Delta x_0)^2/\\hbar$ montre que c'est plus rapide pour les particules légères (électrons) que lourdes.",
+          "explanation": "Ce phénomène a des implications profondes : il est impossible de confiner une particule quantique indéfiniment dans un espace restreint sans lui fournir une grande énergie cinétique (énergie de point zéro dans un puits de potentiel). C'est aussi pourquoi les états atomiques liés nécessitent un potentiel attractif pour contrer l'étalement. L'échelle de temps d'étalement $\\tau \\sim m(\\Delta x_0)^2/\\hbar$ montre que c'est plus rapide pour les particules légères (électrons) que lourdes.",
           "section_ref": "5.3.2",
           "tags": [
             "Heisenberg",
@@ -6957,7 +6956,7 @@
             "L'effet tunnel à travers une barrière de potentiel"
           ],
           "correct_answer": 0,
-          "explanation": "L'effet Casimir (prédit 1948, observé 1997) est une force attractive macroscopique entre deux plaques conductrices dans le vide. Origine : le vide quantique n'est pas 'vide' mais contient des fluctuations (oscillateurs harmoniques du champ EM dans tous les modes). Entre les plaques, seules certaines longueurs d'onde (modes) sont permises, réduisant l'énergie de point zéro entre les plaques par rapport à l'extérieur. Cela crée une pression : $F/A \\propto \\hbar c / d^4$. Preuve spectaculaire de la réalité physique de l'énergie du vide !",
+          "explanation": "L'effet Casimir (prédit 1948, observé 1997) est une force attractive macroscopique entre deux plaques conductrices dans le vide. Origine : le vide quantique n'est pas 'vide' mais contient des fluctuations (oscillateurs harmoniques du champ EM dans tous les modes). Entre les plaques, seules certaines longueurs d'onde (modes) sont permises, réduisant l'énergie de point zéro entre les plaques par rapport à l'extérieur. Cela crée une pression : $F/A \\propto \\hbar c / d^4$. C'est une manifestation mesurable des fluctuations du vide.",
           "section_ref": "6.1.4",
           "formula": "$\\frac{F}{A} = -\\frac{\\pi^2\\hbar c}{240\\,d^4}$ (force attractive)",
           "tags": [
@@ -7020,7 +7019,7 @@
           "difficulty": "hard",
           "question": "Expliquez pourquoi l'oscillateur harmonique quantique est considéré comme 'le' modèle central de la physique quantique, avec des exemples d'applications variées.",
           "sample_answer": "L'oscillateur harmonique est universel car : (1) APPROXIMATION LOCALE : tout potentiel au voisinage d'un minimum stable s'approxime par $V(x) \\approx \\frac{1}{2}k(x-x_0)^2$ (Taylor au 2e ordre) ; presque tout système proche de l'équilibre est un oscillateur harmonique. (2) APPLICATIONS : vibrations moléculaires (spectroscopie IR), phonons dans les cristaux, modes du champ électromagnétique (photons, lasers), circuits LC quantiques (qubits supraconducteurs). (3) FORMALISME : les opérateurs $\\hat{a}$, $\\hat{a}^\\dagger$ sont la base de la théorie quantique des champs. (4) SOLUBLE EXACTEMENT : spectre et fonctions propres sont connus analytiquement.",
-          "explanation": "Excellente synthèse ! On peut ajouter que l'OH est aussi crucial en théorie de l'information quantique (états gaussiens, calcul quantique continu avec variables continues), en cosmologie (fluctuations quantiques de l'inflaton), et qu'il illustre parfaitement la transition classique-quantique (états cohérents vs Fock). C'est vraiment LE modèle à maîtriser.",
+          "explanation": "On peut ajouter que l'OH est aussi crucial en théorie de l'information quantique (états gaussiens, calcul quantique continu avec variables continues), en cosmologie (fluctuations quantiques de l'inflaton), et qu'il illustre parfaitement la transition classique-quantique (états cohérents vs Fock). C'est un modèle central à maîtriser.",
           "section_ref": "6.1-6.3",
           "tags": [
             "oscillateur harmonique",
@@ -7243,7 +7242,7 @@
           "section_ref": "6.2",
           "tags": [
             "oscillateur harmonique",
-            "état fondamental",
+            "point de rebroussement",
             "hotspot"
           ],
           "time_estimate": 40,
@@ -7612,11 +7611,19 @@
             },
             {
               "id": "minimum_uncert",
-              "text": "Δx·Δp = ℏ/2"
+              "text": "État propre de l'opérateur d'annihilation $\\hat a$"
             },
             {
               "id": "poisson",
               "text": "Distribution de Poisson"
+            },
+            {
+              "id": "squeeze",
+              "text": "Incertitude réduite sur une quadrature au prix de l'autre"
+            },
+            {
+              "id": "thermal_mix",
+              "text": "Mélange statistique à température non nulle"
             }
           ],
           "drop_zones": [
@@ -7641,10 +7648,12 @@
             "energy_eigen": "fock",
             "position_class": "coherent",
             "minimum_uncert": "coherent",
-            "poisson": "coherent"
+            "poisson": "coherent",
+            "squeeze": "squeezed",
+            "thermal_mix": "thermal"
           },
-          "explanation": "États de Fock |n⟩ : énergie définie, états propres de N̂. Cohérents |α⟩ : états propres de â, oscillations classiques, minimum d'incertitude, photons suivent Poisson. Comprimés : Δx < Δx_min ou Δp < Δp_min. Thermiques : mélange statistique.",
-          "section_ref": "6.4",
+          "explanation": "États de Fock |n⟩ : énergie bien définie (états propres de N̂). États cohérents |α⟩ : états propres de â, oscillations quasi classiques, nombre de photons suivant une loi de Poisson. États comprimés : incertitude réduite sur une quadrature (Δx ou Δp) au prix de l'autre. États thermiques : mélange statistique (loi de Bose-Einstein).",
+          "section_ref": "6.1-6.2",
           "tags": [
             "oscillateur harmonique",
             "états quantiques",
