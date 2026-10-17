@@ -5,7 +5,7 @@
     "institution": "Université de Yaoundé I",
     "year": "2026-2027",
     "total_chapters": 6,
-    "total_questions": 247
+    "total_questions": 253
   },
   "chapters": [
     {
@@ -1460,6 +1460,32 @@
             "animation"
           ],
           "time_estimate": 120,
+          "points": 1
+        },
+        {
+          "id": "ch1-q046",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "Un message chiffré avec RSA-2048 est intercepté et stocké aujourd'hui (« récolter maintenant, déchiffrer plus tard »). Quelle affirmation est correcte ?",
+          "options": [
+            "Un qubit contient une infinité d'information : une clé QKD peut donc être copiée sans être détectée",
+            "La QKD tire sa sécurité des traces statistiques que laisse une écoute ; RSA est menacé par l'algorithme de Shor, qui factorise efficacement sur un grand ordinateur quantique",
+            "Les ordinateurs quantiques actuels cassent déjà RSA-2048, donc le message est lisible dès maintenant",
+            "La borne de Holevo prouve que RSA est sûr contre tout ordinateur quantique"
+          ],
+          "correct_answer": 1,
+          "explanation": "Un qubit ne livre au plus qu'un bit classique accessible (borne de Holevo) et un état inconnu ne peut pas être cloné : une écoute laisse des traces statistiques (QBER) qui bornent l'information d'Ève. Casser RSA revient à factoriser le module, ce que Shor rendrait faisable avec un ordinateur quantique suffisamment grand. Aucune machine actuelle n'en est capable, mais un message à garder secret longtemps reste menacé ; c'est ce qui motive la cryptographie post-quantique (normes NIST de 2024).",
+          "section_ref": "1.2",
+          "tags": [
+            "Holevo",
+            "QKD",
+            "RSA",
+            "cryptographie post-quantique"
+          ],
+          "time_estimate": 90,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
           "points": 1
         }
       ]
@@ -2943,6 +2969,26 @@
             "animation"
           ],
           "time_estimate": 120,
+          "points": 1
+        },
+        {
+          "id": "ch2-q049",
+          "type": "numerical",
+          "difficulty": "medium",
+          "question": "Un interféromètre atomique utilise $N = 10^6$ atomes indépendants. Sa limite quantique standard est $\\delta\\varphi = 1/\\sqrt{N}$. Quelle incertitude de phase (en mrad) ?",
+          "correct_answer": 1,
+          "tolerance": 0.01,
+          "unit": "mrad",
+          "explanation": "$\\delta\\varphi = 1/\\sqrt{10^6} = 10^{-3}$ rad = 1 mrad. Des atomes corrélés (états comprimés ou intriqués) et des mesures adaptées peuvent passer sous cette limite, jusqu'à $1/N$ (limite de Heisenberg).",
+          "section_ref": "2.4",
+          "formula": "$\\delta\\varphi = 1/\\sqrt{N}$",
+          "tags": [
+            "capteur quantique",
+            "limite quantique standard"
+          ],
+          "time_estimate": 90,
+          "image_url": null,
+          "image_alt": null,
           "points": 1
         }
       ]
@@ -5329,6 +5375,49 @@
           "points": 3,
           "image_url": null,
           "image_alt": null
+        },
+        {
+          "id": "ch4-q052",
+          "type": "vrai_faux",
+          "difficulty": "medium",
+          "question": "Le lien satellitaire Stellenbosch–Jinan-1 (2024) distribue ses clés en envoyant des paires de photons intriqués.",
+          "correct_answer": false,
+          "explanation": "FAUX. Le satellite Jinan-1 utilise le protocole BB84 avec états leurres et codage en polarisation : il envoie des impulsions laser atténuées, sans photons intriqués. Certains protocoles de QKD (E91) reposent sur l'intrication, d'autres non.",
+          "section_ref": "4.4.4",
+          "tags": [
+            "QKD",
+            "BB84",
+            "E91"
+          ],
+          "time_estimate": 45,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
+        },
+        {
+          "id": "ch4-q053",
+          "type": "qcm",
+          "difficulty": "hard",
+          "question": "Quelle condition la sécurité démontrée d'un protocole de QKD suppose-t-elle, en plus des lois de la mécanique quantique ?",
+          "options": [
+            "Un canal quantique sans aucune perte de photons",
+            "Une espionne qui ne dispose pas d'ordinateur quantique",
+            "Un canal classique authentifié et des appareils conformes au modèle du protocole",
+            "Des photons toujours intriqués avant l'envoi"
+          ],
+          "correct_answer": 2,
+          "explanation": "La preuve vaut pour le protocole idéal : Alice et Bob échangent sur un canal classique dont l'authenticité est garantie, et leurs appareils suivent le modèle (photons uniques ou états leurres). Elle ne dépend pas de la puissance de calcul d'Ève, mais la confidentialité des messages dépend aussi du chiffrement et des équipements réels.",
+          "section_ref": "4.4.4",
+          "tags": [
+            "QKD",
+            "sécurité"
+          ],
+          "time_estimate": 90,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
         }
       ]
     },
@@ -6726,6 +6815,30 @@
           "time_estimate": 180,
           "points": 3,
           "explanation": "Point clé : $[\\hat{X},\\hat{P}] = i\\hbar$ interdit tout état propre commun à $\\hat{X}$ et $\\hat{P}$. La borne $\\Delta x\\,\\Delta p \\geq \\hbar/2$ porte sur la dispersion des résultats sur un ensemble de systèmes préparés à l'identique, indépendamment de la qualité des instruments."
+        },
+        {
+          "id": "ch5-q045",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "Le cours rapproche la paire position/impulsion des jumeaux de la cosmogonie dogon. Quel est le statut correct de cette analogie ?",
+          "options": [
+            "Elle prouve que la cosmogonie dogon contenait la mécanique quantique",
+            "Elle est évocative : elle ne fournit aucune prédiction nouvelle, ni l'équivalence de Fourier, ni la borne $\\Delta x\\,\\Delta p \\ge \\hbar/2$",
+            "Elle est explicative : elle permet de calculer l'indétermination d'un paquet d'ondes",
+            "Elle prouve que la mécanique quantique confirme la spiritualité africaine"
+          ],
+          "correct_answer": 1,
+          "explanation": "Une analogie est un pont pour la réflexion, jamais une preuve : la physique quantique ne prouve aucune spiritualité, et aucune spiritualité ne prouve la physique quantique. Test : quelle valeur, quelle borne ou quelle expérience l'analogie permet-elle de prédire ? Aucune.",
+          "section_ref": "5.3.3",
+          "tags": [
+            "analogies",
+            "épistémologie"
+          ],
+          "time_estimate": 75,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
         }
       ]
     },
@@ -7739,6 +7852,24 @@
           ],
           "time_estimate": 150,
           "points": 2
+        },
+        {
+          "id": "ch6-q030",
+          "type": "vrai_faux",
+          "difficulty": "medium",
+          "question": "La mécanique quantique établit qu'un état de transe est une superposition quantique d'états de conscience.",
+          "correct_answer": false,
+          "explanation": "FAUX. Dans les conditions physiologiques, la décohérence supprime très rapidement les interférences entre états macroscopiquement distincts ; rien ne justifie une interprétation quantique de la transe, qui relève de la neurophysiologie et de la culture. L'analogie avec l'état cohérent ne porte que sur l'idée de phase stable.",
+          "section_ref": "6.2",
+          "tags": [
+            "analogies",
+            "décohérence"
+          ],
+          "time_estimate": 45,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
         }
       ]
     }
@@ -7746,26 +7877,26 @@
   "metadata": {
     "version": "3.0.0",
     "generated_date": "2025-11-23",
-    "last_updated": "2026-10-09",
-    "total_questions": 247,
+    "last_updated": "2026-10-17",
+    "total_questions": 253,
     "questions_by_chapter": {
-      "chapter_1": 45,
-      "chapter_2": 48,
+      "chapter_1": 46,
+      "chapter_2": 49,
       "chapter_3": 30,
-      "chapter_4": 51,
-      "chapter_5": 44,
-      "chapter_6": 29
+      "chapter_4": 53,
+      "chapter_5": 45,
+      "chapter_6": 30
     },
     "difficulty_distribution": {
       "easy": 56,
-      "medium": 119,
-      "hard": 72
+      "medium": 124,
+      "hard": 73
     },
     "question_types": {
-      "qcm": 97,
-      "vrai_faux": 32,
+      "qcm": 100,
+      "vrai_faux": 34,
       "matching": 7,
-      "numerical": 12,
+      "numerical": 13,
       "interpretation": 9,
       "hotspot": 35,
       "drag_drop": 33,

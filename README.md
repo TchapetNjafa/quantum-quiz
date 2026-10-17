@@ -8,7 +8,7 @@ Site compagnon, le Carnet : <https://tchapetnjafa.github.io/quantum-workbook/>
 
 ## Ce que fait le site
 
-- 247 questions sur les six chapitres du cours, en huit formats : QCM, vrai ou faux,
+- 253 questions sur les six chapitres du cours, en huit formats : QCM, vrai ou faux,
   calcul, associations, classement, schéma à annoter, fiche, interprétation.
 - Mode entraînement (correction et explication après chaque réponse) et mode examen
   (chronomètre, correction à la fin).
