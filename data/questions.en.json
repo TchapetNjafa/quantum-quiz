@@ -5,7 +5,7 @@
     "institution": "University of Yaoundé I",
     "year": "2026-2027",
     "total_chapters": 6,
-    "total_questions": 253
+    "total_questions": 260
   },
   "chapters": [
     {
@@ -1483,6 +1483,50 @@
             "post-quantum cryptography"
           ],
           "time_estimate": 90,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
+        },
+        {
+          "id": "ch1-q047",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "A black box computes $f:\\{0,1\\}\\to\\{0,1\\}$. How many calls are needed to tell whether $f$ is constant or balanced?",
+          "options": [
+            "One call, whatever the method",
+            "Two classically, one with Deutsch's circuit",
+            "One classically, two with Deutsch's circuit",
+            "Two in every case: interference does not help"
+          ],
+          "correct_answer": 1,
+          "explanation": "Classically, $f(0)$ and $f(1)$ must both be evaluated and compared. Deutsch's circuit obtains $f(0)\\oplus f(1)$ with a single oracle call, thanks to interference of amplitudes.",
+          "section_ref": "1.2",
+          "tags": [
+            "Deutsch",
+            "quantum algorithm",
+            "interference"
+          ],
+          "time_estimate": 75,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
+        },
+        {
+          "id": "ch1-q048",
+          "type": "vrai_faux",
+          "difficulty": "hard",
+          "question": "In Deutsch's algorithm, the information about $f$ goes into a phase $(-1)^{f(x)}$; the second Hadamard gate converts it into a measurement probability.",
+          "correct_answer": true,
+          "explanation": "TRUE. This is “phase kickback”: $U_f$ multiplies each term by $(-1)^{f(x)}$, then $H$ turns the phase difference between the two terms into an outcome $0$ (constant function) or $1$ (balanced function), deterministically.",
+          "section_ref": "1.2",
+          "tags": [
+            "Deutsch",
+            "phase",
+            "Hadamard"
+          ],
+          "time_estimate": 60,
           "formula": null,
           "image_url": null,
           "image_alt": null,
@@ -5418,6 +5462,113 @@
           "image_url": null,
           "image_alt": null,
           "points": 1
+        },
+        {
+          "id": "ch4-q054",
+          "type": "numerical",
+          "difficulty": "medium",
+          "question": "To find one marked item among $N = 4$ with Grover's algorithm, what is the minimum number of iterations (oracle then diffusion) that gets it with certainty?",
+          "correct_answer": 1,
+          "tolerance": 0.01,
+          "unit": "iteration",
+          "explanation": "The uniform state has amplitudes $(\\tfrac12,\\tfrac12,\\tfrac12,\\tfrac12)$. The oracle flips the sign of the marked item: $(\\tfrac12,\\tfrac12,\\tfrac12,-\\tfrac12)$, with mean $\\tfrac14$. Inversion about the mean gives $(0,0,0,1)$: one iteration is enough.",
+          "section_ref": "4.1",
+          "formula": "$\\sin^2((2k+1)\\theta)$, $\\sin\\theta = 1/\\sqrt{N}$",
+          "tags": [
+            "Grover",
+            "quantum algorithm"
+          ],
+          "time_estimate": 90,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
+        },
+        {
+          "id": "ch4-q055",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "What is the gain of Grover's algorithm over an unstructured classical search among $N$ items?",
+          "options": [
+            "Exponential: $\\log N$ steps instead of $N$",
+            "Quadratic: about $\\sqrt{N}$ iterations instead of about $N/2$ tries",
+            "No gain",
+            "A constant gain of 2"
+          ],
+          "correct_answer": 1,
+          "explanation": "About $\\tfrac{\\pi}{4}\\sqrt{N}$ iterations are needed. The gain is quadratic, not exponential: a quantum computer does not speed everything up spectacularly.",
+          "section_ref": "4.1",
+          "tags": [
+            "Grover",
+            "complexity"
+          ],
+          "time_estimate": 60,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
+        },
+        {
+          "id": "ch4-q056",
+          "type": "numerical",
+          "difficulty": "easy",
+          "question": "To factor $N = 15$ with $a = 7$, we look for the period $r$ of $x \\mapsto 7^x \\bmod 15$: the smallest $r > 0$ with $7^r \\equiv 1 \\pmod{15}$. What is $r$?",
+          "correct_answer": 4,
+          "tolerance": 0.01,
+          "unit": "",
+          "explanation": "$7, 4, 13, 1, \\dots$: $7^1 = 7$, $7^2 = 49 \\equiv 4$, $7^3 \\equiv 28 \\equiv 13$, $7^4 \\equiv 91 \\equiv 1$. So $r = 4$. Then $\\gcd(7^2 - 1, 15) = 3$ and $\\gcd(7^2 + 1, 15) = 5$: $15 = 3 \\times 5$.",
+          "section_ref": "4.1",
+          "tags": [
+            "Shor",
+            "period",
+            "factoring"
+          ],
+          "time_estimate": 75,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
+        },
+        {
+          "id": "ch4-q057",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "In Shor's algorithm, which step is quantum?",
+          "options": [
+            "Computing the gcds",
+            "Finding the period of $a^x \\bmod N$ with the quantum Fourier transform",
+            "Checking that $N$ is odd",
+            "Choosing $a$ at random"
+          ],
+          "correct_answer": 1,
+          "explanation": "Only the period finding is quantum: the measurement gives an approximation of a ratio $s/r$, from which a classical computation (continued fractions) extracts a candidate for $r$, to be checked; several runs may be needed. Choosing $a$ and the gcds are classical.",
+          "section_ref": "4.1",
+          "tags": [
+            "Shor",
+            "quantum Fourier transform"
+          ],
+          "time_estimate": 60,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
+        },
+        {
+          "id": "ch4-q058",
+          "type": "vrai_faux",
+          "difficulty": "easy",
+          "question": "A quantum computer speeds up any computation exponentially.",
+          "correct_answer": false,
+          "explanation": "FALSE. Known gains concern specific problems: Shor's algorithm is polynomial in the number of bits, with a superpolynomial advantage over the best known classical algorithms; Grover gives a quadratic gain. Applying Shor to large cryptographic integers requires considerable resources and error correction; it has only been demonstrated on very small numbers.",
+          "section_ref": "4.1",
+          "tags": [
+            "quantum algorithm",
+            "quantum advantage"
+          ],
+          "time_estimate": 45,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
         }
       ]
     },
@@ -7877,26 +8028,26 @@
   "metadata": {
     "version": "3.0.0",
     "generated_date": "2025-11-23",
-    "last_updated": "2026-10-17",
-    "total_questions": 253,
+    "last_updated": "2026-10-18",
+    "total_questions": 260,
     "questions_by_chapter": {
-      "chapter_1": 46,
+      "chapter_1": 48,
       "chapter_2": 49,
       "chapter_3": 30,
-      "chapter_4": 53,
+      "chapter_4": 58,
       "chapter_5": 45,
       "chapter_6": 30
     },
     "difficulty_distribution": {
-      "easy": 56,
-      "medium": 124,
-      "hard": 73
+      "easy": 58,
+      "medium": 128,
+      "hard": 74
     },
     "question_types": {
-      "qcm": 100,
-      "vrai_faux": 34,
+      "qcm": 103,
+      "vrai_faux": 36,
       "matching": 7,
-      "numerical": 13,
+      "numerical": 15,
       "interpretation": 9,
       "hotspot": 35,
       "drag_drop": 33,
