@@ -5,7 +5,7 @@
     "institution": "University of Yaoundé I",
     "year": "2026-2027",
     "total_chapters": 6,
-    "total_questions": 247
+    "total_questions": 253
   },
   "chapters": [
     {
@@ -1460,6 +1460,32 @@
             "animation"
           ],
           "time_estimate": 120,
+          "points": 1
+        },
+        {
+          "id": "ch1-q046",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "A message encrypted with RSA-2048 is intercepted and stored today (“harvest now, decrypt later”). Which statement is correct?",
+          "options": [
+            "A qubit holds infinite information, so a QKD key can be copied without being detected",
+            "QKD draws its security from the statistical traces eavesdropping leaves; RSA is threatened by Shor's algorithm, which factors efficiently on a large quantum computer",
+            "Today's quantum computers already break RSA-2048, so the message is readable now",
+            "The Holevo bound proves that RSA is safe against any quantum computer"
+          ],
+          "correct_answer": 1,
+          "explanation": "A qubit delivers at most one accessible classical bit (Holevo bound) and an unknown state cannot be cloned: eavesdropping leaves statistical traces (QBER) that bound Eve's information. Breaking RSA amounts to factoring the modulus, which Shor's algorithm would make feasible with a large enough quantum computer. No current machine can do it, but a message that must stay secret for a long time remains at risk; this motivates post-quantum cryptography (NIST standards, 2024).",
+          "section_ref": "1.2",
+          "tags": [
+            "Holevo",
+            "QKD",
+            "RSA",
+            "post-quantum cryptography"
+          ],
+          "time_estimate": 90,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
           "points": 1
         }
       ]
@@ -2943,6 +2969,26 @@
             "animation"
           ],
           "time_estimate": 120,
+          "points": 1
+        },
+        {
+          "id": "ch2-q049",
+          "type": "numerical",
+          "difficulty": "medium",
+          "question": "An atom interferometer uses $N = 10^6$ independent atoms. Its standard quantum limit is $\\delta\\varphi = 1/\\sqrt{N}$. What is the phase uncertainty (in mrad)?",
+          "correct_answer": 1,
+          "tolerance": 0.01,
+          "unit": "mrad",
+          "explanation": "$\\delta\\varphi = 1/\\sqrt{10^6} = 10^{-3}$ rad = 1 mrad. Correlated atoms (squeezed or entangled states) with suitable measurements can go below this limit, down to $1/N$ (Heisenberg limit).",
+          "section_ref": "2.4",
+          "formula": "$\\delta\\varphi = 1/\\sqrt{N}$",
+          "tags": [
+            "quantum sensor",
+            "standard quantum limit"
+          ],
+          "time_estimate": 90,
+          "image_url": null,
+          "image_alt": null,
           "points": 1
         }
       ]
@@ -5329,6 +5375,49 @@
           "points": 3,
           "image_url": null,
           "image_alt": null
+        },
+        {
+          "id": "ch4-q052",
+          "type": "vrai_faux",
+          "difficulty": "medium",
+          "question": "The Stellenbosch–Jinan-1 satellite link (2024) distributes its keys by sending entangled photon pairs.",
+          "correct_answer": false,
+          "explanation": "FALSE. The Jinan-1 satellite uses the BB84 protocol with decoy states and polarization encoding: it sends attenuated laser pulses, with no entangled photons. Some QKD protocols (E91) rely on entanglement, others do not.",
+          "section_ref": "4.4.4",
+          "tags": [
+            "QKD",
+            "BB84",
+            "E91"
+          ],
+          "time_estimate": 45,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
+        },
+        {
+          "id": "ch4-q053",
+          "type": "qcm",
+          "difficulty": "hard",
+          "question": "Besides the laws of quantum mechanics, which condition does the proven security of a QKD protocol assume?",
+          "options": [
+            "A quantum channel with no photon loss at all",
+            "An eavesdropper without a quantum computer",
+            "An authenticated classical channel and devices that match the protocol's model",
+            "Photons that are always entangled before sending"
+          ],
+          "correct_answer": 2,
+          "explanation": "The proof holds for the ideal protocol: Alice and Bob talk over a classical channel whose authenticity is guaranteed, and their devices follow the model (single photons or decoy states). It does not depend on Eve's computing power, but message confidentiality also depends on the encryption and the real equipment.",
+          "section_ref": "4.4.4",
+          "tags": [
+            "QKD",
+            "security"
+          ],
+          "time_estimate": 90,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
         }
       ]
     },
@@ -6726,6 +6815,30 @@
           "time_estimate": 180,
           "points": 3,
           "explanation": "Key point: $[\\hat{X},\\hat{P}] = i\\hbar$ forbids any common eigenstate of $\\hat{X}$ and $\\hat{P}$. The bound $\\Delta x\\,\\Delta p \\geq \\hbar/2$ concerns the spread of results over an ensemble of identically prepared systems, independently of the quality of the instruments."
+        },
+        {
+          "id": "ch5-q045",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "The course likens the position/momentum pair to the twins of Dogon cosmogony. What is the correct status of this analogy?",
+          "options": [
+            "It proves that Dogon cosmogony contained quantum mechanics",
+            "It is evocative: it yields no new prediction, neither the Fourier equivalence nor the bound $\\Delta x\\,\\Delta p \\ge \\hbar/2$",
+            "It is explanatory: it lets us compute the indeterminacy of a wave packet",
+            "It proves that quantum mechanics confirms African spirituality"
+          ],
+          "correct_answer": 1,
+          "explanation": "An analogy is a bridge for reflection, never a proof: quantum physics proves no spirituality, and no spirituality proves quantum physics. Test: which value, bound or experiment does the analogy let us predict? None.",
+          "section_ref": "5.3.3",
+          "tags": [
+            "analogies",
+            "epistemology"
+          ],
+          "time_estimate": 75,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
         }
       ]
     },
@@ -7739,6 +7852,24 @@
           ],
           "time_estimate": 150,
           "points": 2
+        },
+        {
+          "id": "ch6-q030",
+          "type": "vrai_faux",
+          "difficulty": "medium",
+          "question": "Quantum mechanics establishes that a trance state is a quantum superposition of states of consciousness.",
+          "correct_answer": false,
+          "explanation": "FALSE. Under physiological conditions, decoherence very quickly suppresses interference between macroscopically distinct states; nothing justifies a quantum interpretation of trance, which belongs to neurophysiology and culture. The analogy with the coherent state only concerns the idea of a stable phase.",
+          "section_ref": "6.2",
+          "tags": [
+            "analogies",
+            "decoherence"
+          ],
+          "time_estimate": 45,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
         }
       ]
     }
@@ -7746,26 +7877,26 @@
   "metadata": {
     "version": "3.0.0",
     "generated_date": "2025-11-23",
-    "last_updated": "2026-10-09",
-    "total_questions": 247,
+    "last_updated": "2026-10-17",
+    "total_questions": 253,
     "questions_by_chapter": {
-      "chapter_1": 45,
-      "chapter_2": 48,
+      "chapter_1": 46,
+      "chapter_2": 49,
       "chapter_3": 30,
-      "chapter_4": 51,
-      "chapter_5": 44,
-      "chapter_6": 29
+      "chapter_4": 53,
+      "chapter_5": 45,
+      "chapter_6": 30
     },
     "difficulty_distribution": {
       "easy": 56,
-      "medium": 119,
-      "hard": 72
+      "medium": 124,
+      "hard": 73
     },
     "question_types": {
-      "qcm": 97,
-      "vrai_faux": 32,
+      "qcm": 100,
+      "vrai_faux": 34,
       "matching": 7,
-      "numerical": 12,
+      "numerical": 13,
       "interpretation": 9,
       "hotspot": 35,
       "drag_drop": 33,
