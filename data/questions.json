@@ -5,7 +5,7 @@
     "institution": "Université de Yaoundé I",
     "year": "2026-2027",
     "total_chapters": 6,
-    "total_questions": 253
+    "total_questions": 260
   },
   "chapters": [
     {
@@ -1483,6 +1483,50 @@
             "cryptographie post-quantique"
           ],
           "time_estimate": 90,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
+        },
+        {
+          "id": "ch1-q047",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "Une boîte noire calcule $f:\\{0,1\\}\\to\\{0,1\\}$. Combien d'appels faut-il pour savoir si $f$ est constante ou équilibrée ?",
+          "options": [
+            "Un seul appel, quelle que soit la méthode",
+            "Deux classiquement, un seul avec le circuit de Deutsch",
+            "Un classiquement, deux avec le circuit de Deutsch",
+            "Deux dans tous les cas : l'interférence n'aide pas"
+          ],
+          "correct_answer": 1,
+          "explanation": "Classiquement, il faut évaluer $f(0)$ et $f(1)$ pour les comparer. Le circuit de Deutsch obtient $f(0)\\oplus f(1)$ en un seul appel de l'oracle, grâce à l'interférence des amplitudes.",
+          "section_ref": "1.2",
+          "tags": [
+            "Deutsch",
+            "algorithme quantique",
+            "interférence"
+          ],
+          "time_estimate": 75,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
+        },
+        {
+          "id": "ch1-q048",
+          "type": "vrai_faux",
+          "difficulty": "hard",
+          "question": "Dans l'algorithme de Deutsch, l'information sur $f$ passe dans une phase $(-1)^{f(x)}$ ; la seconde porte de Hadamard la convertit en une probabilité de mesure.",
+          "correct_answer": true,
+          "explanation": "VRAI. C'est le « rebond de phase » : $U_f$ multiplie chaque terme par $(-1)^{f(x)}$, puis $H$ transforme la différence de phase entre les deux termes en un résultat $0$ (fonction constante) ou $1$ (fonction équilibrée), de façon déterministe.",
+          "section_ref": "1.2",
+          "tags": [
+            "Deutsch",
+            "phase",
+            "Hadamard"
+          ],
+          "time_estimate": 60,
           "formula": null,
           "image_url": null,
           "image_alt": null,
@@ -5418,6 +5462,113 @@
           "image_url": null,
           "image_alt": null,
           "points": 1
+        },
+        {
+          "id": "ch4-q054",
+          "type": "numerical",
+          "difficulty": "medium",
+          "question": "Pour trouver un élément marqué parmi $N = 4$ avec l'algorithme de Grover, quel est le nombre minimal d'itérations (oracle puis diffusion) qui l'obtient avec certitude ?",
+          "correct_answer": 1,
+          "tolerance": 0.01,
+          "unit": "itération",
+          "explanation": "L'état uniforme a des amplitudes $(\\tfrac12,\\tfrac12,\\tfrac12,\\tfrac12)$. L'oracle change le signe de l'élément marqué : $(\\tfrac12,\\tfrac12,\\tfrac12,-\\tfrac12)$, de moyenne $\\tfrac14$. L'inversion autour de la moyenne donne $(0,0,0,1)$ : une itération suffit.",
+          "section_ref": "4.1",
+          "formula": "$\\sin^2((2k+1)\\theta)$, $\\sin\\theta = 1/\\sqrt{N}$",
+          "tags": [
+            "Grover",
+            "algorithme quantique"
+          ],
+          "time_estimate": 90,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
+        },
+        {
+          "id": "ch4-q055",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "Quel est le gain de l'algorithme de Grover par rapport à une recherche classique non structurée parmi $N$ éléments ?",
+          "options": [
+            "Exponentiel : $\\log N$ étapes au lieu de $N$",
+            "Quadratique : environ $\\sqrt{N}$ itérations au lieu d'environ $N/2$ essais",
+            "Aucun gain",
+            "Un gain constant de 2"
+          ],
+          "correct_answer": 1,
+          "explanation": "Il faut environ $\\tfrac{\\pi}{4}\\sqrt{N}$ itérations. Le gain est quadratique, pas exponentiel : un ordinateur quantique n'accélère pas tout de façon spectaculaire.",
+          "section_ref": "4.1",
+          "tags": [
+            "Grover",
+            "complexité"
+          ],
+          "time_estimate": 60,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
+        },
+        {
+          "id": "ch4-q056",
+          "type": "numerical",
+          "difficulty": "easy",
+          "question": "Pour factoriser $N = 15$ avec $a = 7$, on cherche la période $r$ de $x \\mapsto 7^x \\bmod 15$ : le plus petit $r > 0$ tel que $7^r \\equiv 1 \\pmod{15}$. Que vaut $r$ ?",
+          "correct_answer": 4,
+          "tolerance": 0.01,
+          "unit": "",
+          "explanation": "$7, 4, 13, 1, \\dots$ : $7^1 = 7$, $7^2 = 49 \\equiv 4$, $7^3 \\equiv 28 \\equiv 13$, $7^4 \\equiv 91 \\equiv 1$. Donc $r = 4$. Alors $\\gcd(7^2 - 1, 15) = 3$ et $\\gcd(7^2 + 1, 15) = 5$ : $15 = 3 \\times 5$.",
+          "section_ref": "4.1",
+          "tags": [
+            "Shor",
+            "période",
+            "factorisation"
+          ],
+          "time_estimate": 75,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
+        },
+        {
+          "id": "ch4-q057",
+          "type": "qcm",
+          "difficulty": "medium",
+          "question": "Dans l'algorithme de Shor, quelle étape est quantique ?",
+          "options": [
+            "Le calcul des pgcd",
+            "La recherche de la période de $a^x \\bmod N$ par transformée de Fourier quantique",
+            "La vérification que $N$ est impair",
+            "Le choix aléatoire de $a$"
+          ],
+          "correct_answer": 1,
+          "explanation": "Seule la recherche de période est quantique : la mesure donne une approximation d'un rapport $s/r$, dont un calcul classique (fractions continues) tire un candidat pour $r$, à vérifier ; plusieurs exécutions peuvent être nécessaires. Le choix de $a$ et les pgcd sont classiques.",
+          "section_ref": "4.1",
+          "tags": [
+            "Shor",
+            "transformée de Fourier quantique"
+          ],
+          "time_estimate": 60,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
+        },
+        {
+          "id": "ch4-q058",
+          "type": "vrai_faux",
+          "difficulty": "easy",
+          "question": "Un ordinateur quantique accélère de façon exponentielle n'importe quel calcul.",
+          "correct_answer": false,
+          "explanation": "FAUX. Les gains connus concernent des problèmes précis : l'algorithme de Shor est polynomial en le nombre de bits, avec un avantage superpolynomial sur les meilleurs algorithmes classiques connus ; Grover apporte un gain quadratique. Appliquer Shor à de grands entiers cryptographiques demande des ressources considérables et une correction d'erreurs ; on ne l'a démontré que sur de très petits nombres.",
+          "section_ref": "4.1",
+          "tags": [
+            "algorithme quantique",
+            "avantage quantique"
+          ],
+          "time_estimate": 45,
+          "formula": null,
+          "image_url": null,
+          "image_alt": null,
+          "points": 1
         }
       ]
     },
@@ -7877,26 +8028,26 @@
   "metadata": {
     "version": "3.0.0",
     "generated_date": "2025-11-23",
-    "last_updated": "2026-10-17",
-    "total_questions": 253,
+    "last_updated": "2026-10-18",
+    "total_questions": 260,
     "questions_by_chapter": {
-      "chapter_1": 46,
+      "chapter_1": 48,
       "chapter_2": 49,
       "chapter_3": 30,
-      "chapter_4": 53,
+      "chapter_4": 58,
       "chapter_5": 45,
       "chapter_6": 30
     },
     "difficulty_distribution": {
-      "easy": 56,
-      "medium": 124,
-      "hard": 73
+      "easy": 58,
+      "medium": 128,
+      "hard": 74
     },
     "question_types": {
-      "qcm": 100,
-      "vrai_faux": 34,
+      "qcm": 103,
+      "vrai_faux": 36,
       "matching": 7,
-      "numerical": 13,
+      "numerical": 15,
       "interpretation": 9,
       "hotspot": 35,
       "drag_drop": 33,
