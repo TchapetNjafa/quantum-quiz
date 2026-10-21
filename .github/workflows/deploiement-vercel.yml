@@ -1,0 +1,25 @@
+# Le site Vercel embarque le quiz (sous /quiz/) : il faut le redéployer quand le quiz change.
+# Nécessite le secret VERCEL_DEPLOY_HOOK (Vercel > Settings > Git > Deploy Hooks, branche main).
+# Sans ce secret, l'action ne fait rien. GitHub Pages n'est pas concerné.
+name: Redéploiement Vercel
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["README.md", "scripts/**", ".github/ISSUE_TEMPLATE/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  hook:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+    steps:
+      - name: Appeler le Deploy Hook
+        run: |
+          if [ -z "$HOOK" ]; then echo "VERCEL_DEPLOY_HOOK absent : rien à faire."; exit 0; fi
+          curl -fsS -X POST "$HOOK" -o /dev/null && echo "Redéploiement demandé."
