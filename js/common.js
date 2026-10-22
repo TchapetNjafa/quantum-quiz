@@ -49,6 +49,9 @@
       const a = document.createElement('a');
       a.href = t('/devoirs.html', '/en/assignments.html'); a.textContent = t('Devoirs', 'Assignments');
       nav.appendChild(a);
+      const cl = document.createElement('a');
+      cl.href = t('/classement.html', '/en/leaderboard.html'); cl.textContent = t('Classement', 'Leaderboard');
+      nav.appendChild(cl);
       fetch('/api/statut', { credentials: 'same-origin' }).then(r => (r.ok ? r.json() : null)).then(s => {
         if (!s || !s.connecte || !s.a_faire) return;
         a.classList.add('devoir-actif'); a.textContent += ` (${s.a_faire})`;

@@ -6,6 +6,40 @@
   const $ = id => document.getElementById(id);
   const SELF = ['flashcard', 'interpretation'];
 
+  /* Hébergement Vercel seulement : le score alimente le classement d'entraînement ou le défi joué. Envoyé une seule fois par série
+     (le statut est gardé dans l'onglet), jamais sur GitHub Pages. Le classement ne note pas : la banque est publique. */
+  async function envoyer(last, ok, n) {
+    if (/\.github\.io$/.test(location.hostname) || location.protocol === 'file:') return;
+    const zone = document.createElement('p');
+    zone.className = 'muted'; zone.setAttribute('role', 'status');
+    $('r-line').insertAdjacentElement('afterend', zone);
+    const pageProfil = t('/profil.html', '/en/profile.html'), pageClassement = t('/classement.html', '/en/leaderboard.html');
+    const dire = (statut, defi) => {
+      zone.innerHTML = {
+        200: defi ? `${t('Score du défi enregistré.', 'Challenge score recorded.')} <a href="${pageClassement}#defi=${defi}">${t('Voir les résultats du défi', 'See the challenge results')}</a>`
+          : `${t('Score ajouté à votre progression.', 'Score added to your progress.')} <a href="${pageClassement}">${t('Voir le classement', 'See the leaderboard')}</a>`,
+        400: `${t('Pour figurer au classement et jouer des défis, enregistrez votre matricule :', 'To appear in the leaderboard and play challenges, register your student number:')} <a href="${pageProfil}">${t('page Profil', 'Profile page')}</a>`,
+        401: `${t('Connectez-vous pour enregistrer vos scores :', 'Sign in to record your scores:')} <a href="${t('/connexion.html', '/en/login.html')}">${t('connexion', 'sign in')}</a>`,
+        409: t('Vous avez déjà joué ce défi : seul le premier essai compte.', 'You already played this challenge: only the first attempt counts.')
+      }[statut] || '';
+    };
+    if (last.envoye !== undefined) { dire(last.envoye, last.defi); return; }
+    if (last.review && !last.defi) return; // une révision ciblée ne compte ni au classement ni comme défi
+    const duree = Math.round((last.ended - last.started) / 1000);
+    try {
+      // Visiteur non connecté : pas de requête d'envoi (elle répondrait 401 et ferait une erreur rouge dans la console), seulement l'invitation à se connecter.
+      const etat = await fetch('/api/statut', { credentials: 'same-origin' }).then(r => (r.ok ? r.json() : null));
+      if (!etat) return;
+      if (!etat.connecte) { dire(401, last.defi); return; }
+      const r = await fetch(last.defi ? `/api/defis/${last.defi}/score` : '/api/scores', {
+        method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(last.defi ? { ok, duree } : { n, ok, duree, chapitre: last.chapter, exam: !!last.exam })
+      });
+      session.set('phy321.quiz.last', { ...last, envoye: r.status });
+      dire(r.status, last.defi);
+    } catch { /* hors connexion : rien n'est envoyé, le quiz fonctionne normalement */ }
+  }
+
   async function init() {
     const last = session.get('phy321.quiz.last');
     if (!last) {
@@ -25,6 +59,8 @@
     $('r-scope').textContent = `${scope} · ${last.exam ? t('Examen', 'Exam') : t('Entraînement', 'Practice')}`;
     $('r-score').innerHTML = `${ok}<span>/${rows.length}</span>`;
     $('r-line').textContent = `${pctText(ok, rows.length)} ${t('de réponses justes', 'correct')} · ${minutes < 1 ? t('moins d’une minute', 'under a minute') : plural(minutes, 'minute', 'minutes')}`;
+
+    envoyer(last, ok, rows.length);
 
     // bilan par format
     const byType = {};

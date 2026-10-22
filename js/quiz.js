@@ -96,6 +96,7 @@
     const answers = run.set.map((q, i) => run.answers[i] || { id: q.id, a: null, ok: false });
     const ok = answers.filter(x => x.ok).length;
     const result = { query: run.key, exam: cfg.exam, chapter: cfg.chapter, review: !!cfg.ids,
+      defi: (new URLSearchParams(run.key).get('defi') || '').toUpperCase() || null, // défi entre camarades (Vercel) : la page de résultats envoie le score
       started: run.started, ended: Date.now(), answers };
     session.set('phy321.quiz.last', result);
     session.set(RUN, { ...run, set: undefined, done: true });

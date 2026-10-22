@@ -96,6 +96,12 @@ ou la pull request signale une banque invalide. Pour vérifier en local :
 python3 scripts/valider_questions.py
 ```
 
+## Hébergement Vercel : classement et défis
+
+Sur l'hébergement Vercel (jamais sur GitHub Pages), la page de résultats envoie le score de la série au classement d'entraînement (`/api/scores`) ou au défi joué
+(`quiz.html?ids=…&defi=CODE`, `/api/defis/CODE/score`), pour les étudiants connectés ayant enregistré leur matricule. Rien n'est envoyé sans connexion ; le quiz fonctionne comme avant.
+Voir le README du Carnet (profil, classement, défis, conservation de 5 mois).
+
 ## Auteurs
 
 S. G. Nana Engo, J.-P. Tchapet Njafa, C. Tchodimou.
