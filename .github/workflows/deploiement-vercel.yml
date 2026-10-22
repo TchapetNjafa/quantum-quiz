@@ -22,4 +22,7 @@ jobs:
       - name: Appeler le Deploy Hook
         run: |
           if [ -z "$HOOK" ]; then echo "VERCEL_DEPLOY_HOOK absent : rien à faire."; exit 0; fi
+          # Vercel télécharge le quiz depuis GitHub à la construction : on laisse à GitHub le temps de publier la fusion,
+          # sinon la construction peut récupérer l'ancienne version (constaté le 2026-10-22).
+          sleep 45
           curl -fsS -X POST "$HOOK" -o /dev/null && echo "Redéploiement demandé."
