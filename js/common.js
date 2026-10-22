@@ -41,6 +41,30 @@
     });
   }
 
+  /* ---------- Devoirs (hébergement Vercel seulement : les fonctions serveur n'existent pas sur GitHub Pages) ---------- */
+  if (!/\.github\.io$/.test(location.hostname) && location.protocol !== 'file:') {
+    addEventListener('DOMContentLoaded', () => {
+      const nav = document.querySelector('.topbar nav');
+      if (!nav) return;
+      const a = document.createElement('a');
+      a.href = t('/devoirs.html', '/en/assignments.html'); a.textContent = t('Devoirs', 'Assignments');
+      nav.appendChild(a);
+      fetch('/api/statut', { credentials: 'same-origin' }).then(r => (r.ok ? r.json() : null)).then(s => {
+        if (!s || !s.connecte || !s.a_faire) return;
+        a.classList.add('devoir-actif'); a.textContent += ` (${s.a_faire})`;
+        a.title = t('Un devoir est à rendre', 'An assignment is due');
+      }).catch(() => { /* hors connexion */ });
+      // remise faite sans réseau : envoyée dès que possible, d'où que l'étudiant rouvre le site
+      try {
+        if (localStorage.getItem('phy321.file.v1')) {
+          const s = document.createElement('script');
+          s.src = '/assets/js/file-remises.js'; s.onload = () => window.phy321File && window.phy321File.flush();
+          document.head.appendChild(s);
+        }
+      } catch { /* stockage bloqué */ }
+    });
+  }
+
   /* ---------- stockage (peut être bloqué : navigation privée) ---------- */
   const KEY = 'phy321.quiz.v1';
   const store = {

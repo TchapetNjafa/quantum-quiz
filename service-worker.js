@@ -1,7 +1,7 @@
 /* Service worker du Quiz PHY321 : utilisable hors connexion après une première visite.
    Pages HTML et banque de questions : réseau d'abord (contenu à jour), cache en secours.
    Autres ressources (CSS, JS, images, polices, MathJax) : cache d'abord. */
-const VERSION = 'quiz-2026-10-18-annexe';
+const VERSION = 'quiz-2026-10-22-devoirs';
 const CORE = [
   './', './index.html', './quiz.html', './results.html', './flashcards.html', './glossary.html',
   './resources.html', './about.html', './offline.html', './manifest.json', './manifest.en.json', './data/questions.json',
@@ -28,6 +28,8 @@ self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
+  // Sur Vercel, le quiz vit sous /quiz/ : l'API (/api/) et les fichiers du Carnet (/assets/...) ne sont pas à mettre en cache ici.
+  if (url.origin === location.origin && (url.pathname.startsWith('/api/') || url.pathname.startsWith('/assets/'))) return;
   const cacheable = url.origin === location.origin ||
     /^(cdn\.jsdelivr\.net|fonts\.googleapis\.com|fonts\.gstatic\.com)$/.test(url.hostname);
   if (!cacheable) return;
