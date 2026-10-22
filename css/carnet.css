@@ -122,6 +122,8 @@ code, kbd, .mono { font-family: var(--mono); font-size: .88em; }
 }
 .topbar nav a:hover { background: var(--paper-2); color: var(--ink); }
 .topbar nav a[aria-current="page"] { color: var(--accent-ink); box-shadow: inset 0 -2px 0 var(--accent); border-radius: 0; }
+.topbar nav a.devoir-actif { background: var(--accent); color: #fff; font-weight: 600; }
+.topbar nav a.devoir-actif:hover { background: var(--accent-ink); color: #fff; }
 .icon-btn {
   display: inline-grid; place-items: center; width: 2.25rem; height: 2.25rem; flex: none;
   border: 1px solid var(--rule); border-radius: var(--r-md); background: transparent; color: var(--ink-2);
