@@ -12,8 +12,51 @@ const CORE = [
   './en/resources.html', './en/about.html', './en/offline.html', './data/questions.en.json'
 ];
 
+/* Mise à jour par différence (Vercel) : `versions.json` donne l'empreinte de chaque fichier du quiz ; la nouvelle version recopie localement
+   les fichiers inchangés et ne télécharge que les nouveaux ou modifiés. Sans `versions.json` (GitHub Pages) : noyau retéléchargé, comme avant. */
+const PREFIX = 'quiz-';
+const portee = new URL(self.registration.scope);
+const cle = u => { let p = new URL(u, portee).pathname.slice(portee.pathname.length); if (p === '' || p.endsWith('/')) p += 'index.html'; return p; };
+
+async function installerParDifference() {
+  const nouveau = await caches.open(VERSION);
+  let manifeste = null;
+  try { const r = await fetch('./versions.json', { cache: 'no-store' }); if (r.ok) manifeste = await r.json(); } catch { /* GitHub Pages, ou hors connexion */ }
+  const anciens = (await caches.keys()).filter(k => k.startsWith(PREFIX) && k !== VERSION).sort();
+  const ancien = anciens.length ? await caches.open(anciens[anciens.length - 1]) : null;
+  const rm = ancien && manifeste ? await ancien.match('./versions.json') : null;
+  const ancienManifeste = rm ? await rm.json().catch(() => null) : null;
+  const demandes = new Map(CORE.map(u => [new URL(u, portee).href, true]));
+  if (ancien && manifeste) {
+    for (const r of await ancien.keys()) {
+      const u = new URL(r.url), k = cle(r.url);
+      if (u.origin === location.origin && k !== 'versions.json' && !k.startsWith('__') && manifeste[k] !== undefined) demandes.set(r.url, false);
+    }
+  }
+  let copies = 0, telecharges = 0;
+  for (const [href, essentiel] of demandes) {
+    const k = cle(href);
+    if (ancien && ancienManifeste && manifeste && ancienManifeste[k] !== undefined && ancienManifeste[k] === manifeste[k]) {
+      const hit = await ancien.match(href);
+      if (hit) { await nouveau.put(href, hit); copies++; continue; }
+    }
+    try {
+      const res = await fetch(href, { cache: 'reload' });
+      if (!res.ok) throw new Error(String(res.status));
+      await nouveau.put(href, res); telecharges++;
+    } catch (err) { if (essentiel) throw err; }
+  }
+  // Ressources d'autres sites (MathJax, polices) : absentes du manifeste, recopiées telles quelles pour rester disponibles hors connexion.
+  if (ancien) for (const r of await ancien.keys()) {
+    if (new URL(r.url).origin === location.origin) continue;
+    const hit = await ancien.match(r); if (hit) { await nouveau.put(r.url, hit); copies++; }
+  }
+  if (manifeste) await nouveau.put('./versions.json', new Response(JSON.stringify(manifeste), { headers: { 'Content-Type': 'application/json' } }));
+  await nouveau.put('./__bilan__', new Response(JSON.stringify({ version: VERSION, copies, telecharges, par_difference: !!(ancienManifeste && manifeste) }), { headers: { 'Content-Type': 'application/json' } }));
+}
+
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(VERSION).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
+  e.waitUntil(installerParDifference().then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', e => {
