@@ -53,9 +53,16 @@
       cl.href = t('/classement.html', '/en/leaderboard.html'); cl.textContent = t('Classement', 'Leaderboard');
       nav.appendChild(cl);
       fetch('/api/statut', { credentials: 'same-origin' }).then(r => (r.ok ? r.json() : null)).then(s => {
-        if (!s || !s.connecte || !s.a_faire) return;
-        a.classList.add('devoir-actif'); a.textContent += ` (${s.a_faire})`;
-        a.title = t('Un devoir est à rendre', 'An assignment is due');
+        if (!s) return;
+        // Connecté : devoirs ouverts encore à rendre ; non connecté : devoirs ouverts (information publique).
+        const n = s.connecte ? s.a_faire : s.ouverts;
+        if (n) {
+          a.classList.add('devoir-actif'); a.textContent += ` (${n})`;
+          a.title = s.connecte ? t('Un devoir est à rendre', 'An assignment is due') : t('Un devoir est ouvert : connectez-vous pour le faire', 'An assignment is open: sign in to do it');
+        } else if (s.prochain) {
+          a.classList.add('devoir-prochain');
+          a.title = t('Prochain devoir : ouverture le ', 'Next assignment: opens on ') + new Date(s.prochain.ouvre).toLocaleString(t('fr-FR', 'en-GB'), { dateStyle: 'medium', timeStyle: 'short' });
+        }
       }).catch(() => { /* hors connexion */ });
       // remise faite sans réseau : envoyée dès que possible, d'où que l'étudiant rouvre le site
       try {
