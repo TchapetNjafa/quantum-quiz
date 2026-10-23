@@ -31,6 +31,7 @@
       const etat = await fetch('/api/statut', { credentials: 'same-origin' }).then(r => (r.ok ? r.json() : null));
       if (!etat) return;
       if (!etat.connecte) { dire(401, last.defi); return; }
+      if (etat.teacher) { zone.textContent = t('Compte enseignant : le score n’est pas enregistré (le classement et les défis sont réservés aux étudiants).', 'Teacher account: the score is not recorded (leaderboard and challenges are for students).'); return; }
       const r = await fetch(last.defi ? `/api/defis/${last.defi}/score` : '/api/scores', {
         method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(last.defi ? { ok, duree } : { n, ok, duree, chapitre: last.chapter, exam: !!last.exam })
