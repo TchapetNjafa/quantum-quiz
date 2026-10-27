@@ -113,6 +113,7 @@
       btn.hidden = true;
       typeset(fb);
     };
+    streak(today);
     if (done.d === today && done.id === q.id) {
       show(done.a, done.ok);
       return;
@@ -121,10 +122,25 @@
       const a = handle.read();
       const ok = grade(q, a);
       recordAnswer(q.id, ok);
-      store.update(s => ({ ...s, daily: { d: today, id: q.id, a, ok } }));
+      store.update(s => ({ ...s, daily: { d: today, id: q.id, a, ok }, dailyDays: [...new Set([...(s.dailyDays || []), today])].slice(-400) }));
       show(a, ok);
+      streak(today);
       stats();
     });
+  }
+
+  /* Série du défi : jours consécutifs où l'on a répondu à la question du jour (réponse juste ou non), dates UTC comme la question elle-même. */
+  function streak(today) {
+    const days = [...new Set(store.read().dailyDays || [])].sort();
+    const num = d => Date.UTC(+d.slice(0, 4), +d.slice(5, 7) - 1, +d.slice(8, 10)) / 864e5;
+    let best = 0, run = 0, prev = null;
+    for (const d of days) { run = prev !== null && num(d) - prev === 1 ? run + 1 : 1; best = Math.max(best, run); prev = num(d); }
+    const cur = prev !== null && num(today) - prev <= 1 ? run : 0;
+    const answered = days.includes(today);
+    $('daily-streak').textContent = !days.length
+      ? t('Répondez chaque jour pour construire une série.', 'Answer every day to build a streak.')
+      : t(`Série : ${cur} jour${cur > 1 ? 's' : ''} d’affilée · meilleure série : ${best}.`, `Streak: ${cur} day${cur === 1 ? '' : 's'} in a row · best streak: ${best}.`)
+        + (answered ? t(' Revenez demain pour une nouvelle question.', ' Come back tomorrow for a new question.') : t(' Répondez aujourd’hui pour la prolonger.', ' Answer today to keep it going.'));
   }
 
   /* ---------- statistiques locales ---------- */
