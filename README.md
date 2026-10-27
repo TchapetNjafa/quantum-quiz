@@ -109,3 +109,7 @@ S. G. Nana Engo, J.-P. Tchapet Njafa, C. Tchodimou.
 ## Licence
 
 Contenu sous licence [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr).
+
+## Série de la question du jour
+
+La question du jour (même question pour tous, choisie d'après la date UTC) affiche une série : jours consécutifs où l'on y a répondu, juste ou non. Les dates sont gardées dans `phy321.quiz.v1` (`dailyDays`), uniquement dans le navigateur. Test : `tests/test-ludique.mjs` du dépôt du Carnet.

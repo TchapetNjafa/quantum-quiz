@@ -264,3 +264,4 @@
 .term > div { padding: 0 0 1rem; }
 .term .related { font-family: var(--sans); font-size: .82rem; color: var(--muted); }
 .glossary-count { font-family: var(--sans); font-size: .85rem; color: var(--muted); }
+.daily-streak { margin: 0; font-family: var(--sans); font-size: .88rem; color: var(--muted); }
