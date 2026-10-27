@@ -344,11 +344,13 @@ details.reveal > div { padding: 0 0 1rem 1.5rem; animation: unfold .3s var(--eas
 /* Barre du haut adaptative : une rangée sur grand écran ; téléphone et tablette (< 1024 px) : le nom et le bouton de thème en haut,
    tous les liens (Devoirs, Classement, Connexion…) dessous, à la ligne et de taille tactile, plus jamais cachés par défilement. */
 @media (max-width: 1023px) {
-  body > .topbar { position: static; } /* trop haute pour rester collée en haut de l'écran */
+  body > .topbar { position: sticky; } /* reste visible au défilement, comme la barre du bas ; liens sur une seule rangée défilante pour rester peu haute */
   .topbar { flex-wrap: wrap; row-gap: .25rem; gap: .5rem .6rem; }
   .brand { order: 1; }
-  .topbar .icon-btn { order: 2; margin-left: auto; width: 2.75rem; height: 2.75rem; }
-  .topbar nav { order: 3; flex: 1 0 100%; margin-left: 0; flex-wrap: wrap; overflow: visible; gap: .2rem; }
+  .topbar { padding-top: .35rem; padding-bottom: .25rem; }
+  .topbar .icon-btn { order: 2; margin-left: auto; width: 2.5rem; height: 2.5rem; }
+  .topbar nav { order: 3; flex: 1 0 100%; margin-left: 0; flex-wrap: nowrap; overflow-x: auto; gap: .2rem; }
+  .topbar nav a { flex: 0 0 auto; white-space: nowrap; }
   .topbar nav a { display: inline-flex; align-items: center; min-height: 2.5rem; padding: .35rem .7rem; }
   .topbar nav a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--accent); }
 }
