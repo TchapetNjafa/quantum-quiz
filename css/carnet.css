@@ -341,11 +341,18 @@ details.reveal > div { padding: 0 0 1rem 1.5rem; animation: unfold .3s var(--eas
 .legend i.acc { background: var(--accent); }
 .legend i.blu { background: var(--blue); }
 .legend i.dash { background: repeating-linear-gradient(90deg, var(--accent) 0 4px, transparent 4px 7px); }
-@media (max-width: 640px) {
-  .topbar { gap: .6rem; }
-  .topbar nav { -webkit-mask-image: linear-gradient(90deg, #000 82%, transparent); mask-image: linear-gradient(90deg, #000 82%, transparent); }
-  .topbar nav a { padding: .4rem .5rem; }
+/* Barre du haut adaptative : une rangée sur grand écran ; téléphone et tablette (< 1024 px) : le nom et le bouton de thème en haut,
+   tous les liens (Devoirs, Classement, Connexion…) dessous, à la ligne et de taille tactile, plus jamais cachés par défilement. */
+@media (max-width: 1023px) {
+  body > .topbar { position: static; } /* trop haute pour rester collée en haut de l'écran */
+  .topbar { flex-wrap: wrap; row-gap: .25rem; gap: .5rem .6rem; }
+  .brand { order: 1; }
+  .topbar .icon-btn { order: 2; margin-left: auto; width: 2.75rem; height: 2.75rem; }
+  .topbar nav { order: 3; flex: 1 0 100%; margin-left: 0; flex-wrap: wrap; overflow: visible; gap: .2rem; }
+  .topbar nav a { display: inline-flex; align-items: center; min-height: 2.5rem; padding: .35rem .7rem; }
+  .topbar nav a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--accent); }
 }
+@media (max-width: 640px) { .topbar nav a { padding: .3rem .5rem; min-height: 2.25rem; font-size: .86rem; } }
 
 /* ---------- bascule de langue ---------- */
 .lang-switch {
@@ -354,3 +361,16 @@ details.reveal > div { padding: 0 0 1rem 1.5rem; animation: unfold .3s var(--eas
   font: 600 .74rem var(--mono); letter-spacing: .06em; transition: background .2s, color .2s;
 }
 .lang-switch:hover { background: var(--paper-2); color: var(--accent-ink); }
+
+/* Barre du bas (téléphone et tablette) : liens du compte et des devoirs, toujours visibles ; créée par le JS, absente sur ordinateur. */
+.nav-bas { display: none; }
+@media (max-width: 1023px) {
+  .nav-bas { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: var(--paper); border-top: 1px solid var(--rule); padding-bottom: env(safe-area-inset-bottom); font-family: var(--sans); }
+  .nav-bas a { flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: center; min-height: 3.25rem; padding: .3rem .25rem; text-align: center; font-size: .82rem; line-height: 1.15; color: var(--ink-2); text-decoration: none; }
+  .nav-bas a[aria-current="page"] { color: var(--accent-ink); box-shadow: inset 0 2px 0 var(--accent); }
+  .nav-bas a.devoir-actif { background: var(--accent); color: #fff; font-weight: 600; }
+  .nav-bas a.devoir-prochain { box-shadow: inset 0 0 0 2px var(--accent); color: var(--accent-ink); font-weight: 600; }
+  .topbar nav a.nav-compte { display: none; }
+  body:has(.nav-bas) { padding-bottom: calc(3.25rem + env(safe-area-inset-bottom)); }
+}
+@media print { .nav-bas { display: none !important; } }
