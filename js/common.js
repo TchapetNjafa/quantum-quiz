@@ -52,6 +52,11 @@
       const cl = document.createElement('a');
       cl.href = t('/classement.html', '/en/leaderboard.html'); cl.textContent = t('Classement', 'Leaderboard');
       nav.appendChild(cl);
+      // Téléphone et tablette : Devoirs et Classement aussi dans une barre fixe en bas de l'écran (le CSS masque alors leur copie du haut).
+      const bas = document.createElement('nav'); bas.className = 'nav-bas'; bas.setAttribute('aria-label', t('Devoirs et classement', 'Assignments and leaderboard'));
+      document.body.appendChild(bas);
+      const jumeler = () => { bas.replaceChildren(...[a, cl].map(x => { x.classList.add('nav-compte'); const j = document.createElement('a'); j.href = x.getAttribute('href'); j.textContent = x.textContent; j.title = x.title; j.className = x.className.replace('nav-compte', '').trim(); return j; })); };
+      jumeler();
       fetch('/api/statut', { credentials: 'same-origin' }).then(r => (r.ok ? r.json() : null)).then(s => {
         if (!s) return;
         // Connecté : devoirs ouverts encore à rendre ; non connecté : devoirs ouverts (information publique).
@@ -63,6 +68,7 @@
           a.classList.add('devoir-prochain');
           a.title = t('Prochain devoir : ouverture le ', 'Next assignment: opens on ') + new Date(s.prochain.ouvre).toLocaleString(t('fr-FR', 'en-GB'), { dateStyle: 'medium', timeStyle: 'short' });
         }
+        jumeler();
       }).catch(() => { /* hors connexion */ });
       // remise faite sans réseau : envoyée dès que possible, d'où que l'étudiant rouvre le site
       try {
